@@ -1,0 +1,140 @@
+[
+{
+    "name" : "organisationTypes",
+    "list" : {
+        "NGO" : "Association",
+        "LocalBusiness" : "Entreprise",
+        "Group" : "Group"
+    }
+},
+{
+    "name" : "countries",
+    "list" : {
+        "France" : "France",
+        "Guadeloupe" : "Guadeloupe",
+        "Guyanne" : "Guyanne",
+        "Martinique" : "Martinique",
+        "Mayotte" : "Mayotte",
+        "Nouvelle-Calédonie" : "Nouvelle-Calédonie",
+        "Réunion" : "Réunion"
+    }
+},
+{
+    "name" : "tags",
+    "list" : [ 
+        "Environnement", 
+        "Transports", 
+        "Déchets", 
+        "Energie", 
+        "Alimentation", 
+        "Agriculture", 
+        "Culture", 
+        "Emploi", 
+        "Surfer", 
+        "Musicien", 
+        "Artisan", 
+        "Education", 
+        "Marmaille", 
+        "Video", 
+        "Securité", 
+        "Informaticien", 
+        "Ingenieur", 
+        "Oceanographie", 
+        "Périscolaire", 
+        "Santé", 
+        "Sport"
+    ]
+},
+{
+    "name" : "listRoomTypes",
+    "list" : {
+        "survey" : "Survey",
+        "vote" : "Vote",
+        "discuss" : "Discussion",
+        "proposals" : "Brainstorm / Proposals / Ideas"
+    }
+},
+{
+    "name" : "public",
+    "list" : [ 
+        "Enseignants", 
+        "Educateurs à l'environnement", 
+        "Elus / Agents de collectivités", 
+        "Cylce 1", 
+        "Cylce 2", 
+        "Cylce 3", 
+        "Collectivités", 
+        "Collège", 
+        "Lycée", 
+        "Enseignement sup.", 
+        "Entreprises", 
+        "Etudiants", 
+        "Familles", 
+        "Adultes encadrés", 
+        "Public spécialisé", 
+        "Autres"
+    ]
+},
+{
+    "name" : "eventTypes",
+    "list" : {
+        "competition" : "Compétition",
+        "concert" : "Concert",
+        "concours" : "Concours",
+        "exposition" : "Exposition",
+        "festival" : "Festival",
+        "getTogether" : "Rencontre",
+        "market" : "Marché",
+        "meeting" : "Réunion"
+    }
+},
+{
+    "name" : "NGOCategories",
+    "list" : { 
+        "agiculture-alimentation" : "Agriculture & Alimentation",
+        "architecture-urbanisme" : "Architecture et Urbanisme",
+        "art-culture" : "Arts & Culture",
+        "droits-liberte" : "Droits & Liberté",
+        "entraide-solidarite" : "Entraide & Solidarité",
+        "ecologie-nature" : "Écologie & Nature",
+        "emploi-insertion" : "Emploi & Insertion",
+        "education-formation" : "Éducation & Formation",
+        "humanitaire" : "Humanitaire",
+        "international" : "International",
+        "politique" : "Politique",
+        "religion" : "Religion",
+        "sante-sanitaire" : "Santé, sanitaire et social",
+        "sciences-decouverte" : "Sciences & Découverte",
+        "sport-loisir" : "Sports & Loisirs",
+        "usages-numeriques" : "Usages numeriques",
+        "autres" : "Autres"
+    }
+},
+{
+    "name" : "localBusinessCategories",
+    "list" : {
+        "agiculture-alimentation" : "Agriculture & Alimentation",
+        "automobile" : "Automobile",
+        "banque-assurance" : "Banque / Assurance",
+        "bois-papier" : "Bois / Papier / Imprimerie",
+        "btp" : "BTP / Matériaux de construction",
+        "chimie" : "Chimie / Parachimie",
+        "collecter-traitement" : "Collecte, Traitement, Recyclage",
+        "commerce-distribution" : "Commerce / Distribution",
+        "edition-multimedia" : "Edition / Communication / Multimédia",
+        "electronique" : "Electronique / Electricité",
+        "environnement" : "Environnement / Espaces Verts",
+        "etudes-conseils" : "Etudes / conseils",
+        "evenementiel-tourisme" : "Evénementiel / Tourisme",
+        "informatique-telecom" : "Informatique / Télécom",
+        "logistique-transport" : "Logistique, Transport",
+        "mise-a-dispo-personnel" : "Mise à disposition de personnel",
+        "restauration" : "Restauration",
+        "rh" : "Services RH et administratifs",
+        "textile-artisanat" : "Textile, Artisanat",
+        "tourisme" : "Tourisme",
+        "sante-sanitaire" : "Santé, sanitaire et social",
+        "service-entreprises" : "Service aux entreprises"
+    }
+}
+]
