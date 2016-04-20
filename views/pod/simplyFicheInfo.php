@@ -1,22 +1,3 @@
-<?php 
-$cssAnsScriptFilesModule = array(
-	'/plugins/x-editable/css/bootstrap-editable.css',
-	'/plugins/wysihtml5/bootstrap3-wysihtml5/bootstrap3-wysihtml5.css',
-	'/plugins/wysihtml5/bootstrap3-wysihtml5/bootstrap3-wysihtml5-editor.css',
-	'/plugins/x-editable/js/bootstrap-editable.js',
-	'/plugins/wysihtml5/bootstrap3-wysihtml5/wysihtml5x-toolbar.min.js',
-	'/plugins/wysihtml5/bootstrap3-wysihtml5/bootstrap3-wysihtml5.min.js',
-	'/plugins/wysihtml5/wysihtml5.js'
-);
-
-HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule ,Yii::app()->theme->baseUrl."/assets");
-
-$cssAnsScriptFilesModule = array(
-	'/js/dataHelpers.js',
-	'/js/postalCode.js'
-);
-HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule , $this->module->assetsUrl);
-?>
 <style>
 	.fileupload, .fileupload-preview.thumbnail, 
 	.fileupload-new .thumbnail, 
@@ -112,7 +93,7 @@ HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule , $this->module
 <div class="panel panel-white">
 	<div class="panel-heading border-light">
 		<h4 class="panel-title text-dark"> 
-			<i class="fa fa-info-circle"></i> <?php echo Yii::t("common","Account info") ?>
+			<?php echo (isset($organization)) ? $organization["name"] : null; ?>
 		</h4>
 	</div>
 	<div class="panel-tools">
@@ -143,17 +124,17 @@ HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule , $this->module
 			<div class="col-sm-6 col-md-6 pull-right margin-bottom-15">
 				<div class="row text-dark" style="margin-top:10px !important;">
 					<div class="entityTitle">
-						<h2  style="font-weight:100; font-size:19px;">
+						<!-- <h2  style="font-weight:100; font-size:19px;">
 							<i class="fa fa-angle-right"></i> 
 							<a href="#" id="type" data-type="select" data-title="Type" data-emptytext="Type" class="editable editable-click required">
 							</a>
-						</h2>
-						<h2><!-- <span> - </span> -->
+						</h2> -->
+						<!-- <h2>
 							<a href="#" id="name" data-type="text" data-title="<?php echo Yii::t("common","Name") ?>" data-emptytext="<?php echo Yii::t("common","Name") ?>" 
 								class="editable-context editable editable-click required">
 								<?php echo (isset($organization)) ? $organization["name"] : null; ?>
 							</a>
-						</h2>						
+						</h2>		 -->				
 					</div>
 					<div class="row info-shortDescription" style="word-wrap:break-word;">
 						<a href="#" id="shortDescription" data-placement="bottom" data-type="wysihtml5" data-showbuttons="true" data-title="<?php echo Yii::t("common","Short Description") ?>" 
@@ -330,7 +311,7 @@ HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule , $this->module
 		$("#editFicheInfo").on("click", function(){
 			switchMode();
 		});
-		// activateEditableContext();
+		activateEditableContext();
 		manageModeContext();
 		debugMap.push(contextData);
 		

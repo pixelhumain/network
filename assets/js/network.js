@@ -577,9 +577,9 @@ function showAjaxPanel (url,title,icon) {
 		$(".main-col-search").html("");
 		$(".hover-info").hide();
 		 $.blockUI({
-		 	message : '<h2 class="homestead text-dark padding-10"><i class="fa fa-spin fa-circle-o-notch"></i> Chargement en cours...</h2>' +
+		 	message : '<h2 class=" text-dark padding-10"><i class="fa fa-spin fa-circle-o-notch"></i> Chargement en cours...</h2>'
 		 	//"<h2 class='text-red homestead'>Lancement du crowdfouding : lundi 22 février</h2>" +
-		 	"<img style='max-width:60%; margin-bottom:20px;' src='"+urlImgRand+"'>"
+		 	// "<img style='max-width:60%; margin-bottom:20px;' src='"+urlImgRand+"'>"
 		 	//"<img src='<?php echo $this->module->assetsUrl?>/images/crowdfoundez.png'/>"
 		 	//"<h2 class='text-red homestead'>ouverture du site : lundi 29 février</h2>"
 		 });
