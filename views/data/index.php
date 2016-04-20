@@ -66,11 +66,11 @@ ol.slats li p span.meta {
         	<li class="group"><h3> Can I host my own ODB ?</h3></li>
         	<li class="group"><h3> Can I host a NotODB ?</h3></li>
         	<li class="group"><h3> Semantic Translators ?</h3></li>
-        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/communecter/data/get/type/citoyens/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for a Person</a></h3></li>
-        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/communecter/data/get/type/organization/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for an Organization</a></h3></li>
-        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/communecter/data/get/type/citoyens/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for a Event</a></h3></li>
-        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/communecter/data/get/type/citoyens/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for a Project</a></h3></li>
-        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/communecter/data/get/type/citoyens/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for a City</a></h3></li>
+        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/network/data/get/type/citoyens/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for a Person</a></h3></li>
+        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/network/data/get/type/organization/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for an Organization</a></h3></li>
+        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/network/data/get/type/citoyens/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for a Event</a></h3></li>
+        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/network/data/get/type/citoyens/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for a Project</a></h3></li>
+        	<li class="group"><h3><a href="<?php echo Yii::app()->createUrl('/network/data/get/type/citoyens/id/520931e2f6b95c5cd3003d6c/format/schema')?>">Structure Standard Json for a City</a></h3></li>
         </ol>	
     
 </div>	

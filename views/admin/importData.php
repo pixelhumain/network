@@ -623,7 +623,7 @@ function bindEvents()
 			nameF = "JSON_URL";
   			typeF = "json";			
 			$.ajax({
-				url: baseUrl+'/communecter/admin/getdatabyurl/',
+				url: baseUrl+'/network/admin/getdatabyurl/',
 				type: 'POST',
 				dataType: 'json', 
 				data:{ url : $("#textUrl").val() },
@@ -642,7 +642,7 @@ function bindEvents()
 				        		idMapping : $("#chooseMapping").val(),
 				        		pathObject : $("#pathObject").val()
 				        	},
-				        url: baseUrl+'/communecter/admin/assigndata/',
+				        url: baseUrl+'/network/admin/assigndata/',
 				        dataType : 'json',
 				        async : false,
 				        success: function(data)
@@ -921,7 +921,7 @@ function bindEvents()
 	        		jsonError : $('#jsonError').val(),
 	        		nameFile : $('#nameFile').val(),
 	        		idCollection : $("#idCollection").val()},
-	        url: baseUrl+'/communecter/admin/importinmongo/',
+	        url: baseUrl+'/network/admin/importinmongo/',
 	        dataType : 'json',
 	        success: function(data)
 	        {
@@ -1007,7 +1007,7 @@ function bindEvents()
 		$.ajax({
 	        type: 'POST', 
 	        data: { list : list },
-	        url: baseUrl+'/communecter/admin/checkdataimport/',
+	        url: baseUrl+'/network/admin/checkdataimport/',
 	        dataType : 'json',
 	        success: function(data)
 	        {
@@ -1090,7 +1090,7 @@ function getInseeWithLatLon(lat, lon, cp){
 			cp : cp
 		},
 		async:false,
-		url: baseUrl+'/communecter/sig/getinseebylatlng/',
+		url: baseUrl+'/network/sig/getinseebylatlng/',
 		dataType : 'json',
 		success: function(data){
 			console.log("data.insee",data.insee);
@@ -1112,7 +1112,7 @@ function getInseeWithLatLon2(lat, lon, cp){
 			cp : cp
 		},
 		async:false,
-		url: baseUrl+'/communecter/sig/getinseebylatlng/',
+		url: baseUrl+'/network/sig/getinseebylatlng/',
 		dataType : 'json',
 		success: function(data){
 			insee = data.insee ;
@@ -1134,7 +1134,7 @@ function getInfoAdressByInsee(insee,cp){
 			cp : cp
 		},
 		async:false,
-		url: baseUrl+'/communecter/city/getinfoadressbyinsee/',
+		url: baseUrl+'/network/city/getinfoadressbyinsee/',
 		dataType : 'json',
 		success: function(data){
 			//console.log(data);
@@ -1320,7 +1320,7 @@ function autoCompleteInviteSearch(search){
 		"search" : search,
 		"searchMode" : "personOnly"
 	};
-	var urlurl = baseUrl+"/communecter/search/searchmemberautocomplete" ;
+	var urlurl = baseUrl+"/network/search/searchmemberautocomplete" ;
 	console.log("url", urlurl);
 
 	ajaxPost("", urlurl, data,
@@ -1529,7 +1529,7 @@ function assignData(idMicroformat, typeFile, idMapping){
 	$.ajax({
         type: 'POST',
         data: params,
-        url: baseUrl+'/communecter/admin/assigndata/',
+        url: baseUrl+'/network/admin/assigndata/',
         dataType : 'json',
         async : false,
         success: function(data)
@@ -1552,7 +1552,7 @@ function visualisation(params){
 	$.ajax({
         type: 'POST',
         data: params,
-        url: baseUrl+'/communecter/admin/previewData/',
+        url: baseUrl+'/network/admin/previewData/',
         dataType : 'json',
         success: function(data)
         {
@@ -1615,7 +1615,7 @@ function createJson(params){
 	$.ajax({
         type: 'POST',
         data: params,
-        url: baseUrl+'/communecter/admin/createfileforimport/',
+        url: baseUrl+'/network/admin/createfileforimport/',
         dataType : 'json',
         success: function(data)
         {

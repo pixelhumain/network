@@ -142,7 +142,7 @@ function bind()
 	        		creatorID : "<?php echo $userId; ?>",
 	        		pathFolderImage : $("#pathFolderImage").val()
 	        	},
-	        url: baseUrl+'/communecter/admin/adddataindb/',
+	        url: baseUrl+'/network/admin/adddataindb/',
 	        dataType : 'json',
 	        success: function(data)
 	        {

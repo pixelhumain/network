@@ -426,7 +426,7 @@ jQuery(document).ready(function() {
 		
 		$.ajax({
 			type: "POST",
-	        url: baseUrl+"/communecter/search/searchmemberautocomplete",
+	        url: baseUrl+"/network/search/searchmemberautocomplete",
 	        data: data,
 	        dataType: "json",
 	        success: function(data){

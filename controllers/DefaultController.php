@@ -7,7 +7,7 @@
  * @author: Tibor Katelbach <tibor@pixelhumain.com>
  * Date: 14/03/2014
  */
-class DefaultController extends CommunecterController {
+class DefaultController extends NetworkController {
 
     
     protected function beforeAction($action)

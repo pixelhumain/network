@@ -1,7 +1,7 @@
 
 <?php include ("html_map.php")?> 
 
-<script type="text/javascript" src="<?php echo $this->module->assetsUrl.'/js/sigCommunecter.js';?>" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo $this->module->assetsUrl.'/js/sigNetwork.js';?>" type="text/javascript"></script>
 <script type="text/javascript">
 
 $(document).ready( function() 
@@ -21,7 +21,7 @@ $(document).ready( function()
 });
 
 	
-	//transmet le chemin vers les asset au fichier sigCommunecterJs (sinon les icons n'apparaissent pas sur la carte)
+	//transmet le chemin vers les asset au fichier sigNetworkJs (sinon les icons n'apparaissent pas sur la carte)
 	var assetPath = "<?php echo $this->module->assetsUrl;?>";
 	
 	//déclare les variables et fonction dans le scope global,

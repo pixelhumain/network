@@ -124,7 +124,7 @@ function bindEvents(){
 				+ '<img src="'+proverbs[rand]+'" style="border:0px solid #666; border-radius:3px;"/></a><br/><br/>'
 				});
 		$.ajax({
-			url: baseUrl+'/communecter/admin/importeventsopenagendaindb/',
+			url: baseUrl+'/network/admin/importeventsopenagendaindb/',
 			type: 'POST',
 			dataType: 'json',
 			data : {
@@ -154,7 +154,7 @@ function checkEventsOpenAgendaInDB(data){
 	var arrayEvents = {} ;
 	
 	$.ajax({
-		url: baseUrl+'/communecter/admin/checkventsopenagendaindb/',
+		url: baseUrl+'/network/admin/checkventsopenagendaindb/',
 		type: 'POST',
 		dataType: 'json',
 		data : {

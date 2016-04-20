@@ -44,7 +44,7 @@ function bindCheckGeo(){
 	$("#btnCheckGeo").off().on('click', function(e){
 		$.ajax({
 	        type: 'POST',
-	        url: baseUrl+'/communecter/admin/getentitybadlygeolocalited/',
+	        url: baseUrl+'/network/admin/getentitybadlygeolocalited/',
 	        dataType : 'json',
 	        success: function(data)                                                   
 	        {

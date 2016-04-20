@@ -6,7 +6,7 @@
  * Date: 10/05/15
  * Time: 12:25 AM
  */
-class OpendataController extends CommunecterController {
+class OpendataController extends NetworkController {
   
 	public function actions() {
 	    return array(

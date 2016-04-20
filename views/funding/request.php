@@ -44,12 +44,12 @@ $this->renderPartial('../person/menuTitle',array("topTitleExists"=>true,"actionT
 		<div class="box-fund box-pod box">
 			<img style="width:100%" class="pull-right" src="<?php echo $this->module->assetsUrl?>/images/logoL.jpg"/>
 			Hey les amis, si toi aussi tu aimes manger des patates 
-			<br/> tu vas aimer te communecter pour manger encore plus de patates
+			<br/> tu vas aimer te network pour manger encore plus de patates
 			<br/> mais avant de manger les patates, tu veux nous aider a les acheter ?	
 			<br/> Je t'embete avec ce formulaire, car j'aimerais savoir 
 			<br/> si tu amerais participer a une belle aventure 
 			<br/>
-			<br/> tu vas aimer te communecter pour manger encore plus de patates
+			<br/> tu vas aimer te network pour manger encore plus de patates
 			<br/> mais avant de manger les patates, tu veux nous aider a les acheter ?	
 			<br/> Je t'embete avec ce formulaire, car j'aimerais savoir 
 			<br/> si tu amerais participer a une belle aventure 

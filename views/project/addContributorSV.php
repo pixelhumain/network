@@ -381,7 +381,7 @@ $this->renderPartial('../default/panels/toolbar');
 		var data = {"search" : searchValue};
 		$.ajax({
 			type: "POST",
-	        url: baseUrl+"/communecter/search/searchmemberautocomplete",
+	        url: baseUrl+"/network/search/searchmemberautocomplete",
 	        data: data,
 	        dataType: "json",
 	        success: function(data){

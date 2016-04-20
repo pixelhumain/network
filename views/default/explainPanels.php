@@ -6,7 +6,7 @@
 		<center class="caretExplain blue"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			Ce n'est pas la technologie qui changera la société mais la philosophie bien outillée.
-			<br/>Me communecter me permet :  
+			<br/>Me network me permet :  
 			<ul>
 				<li><i class="fa fa-angle-right"></i> de voir les acteurs autour de moi</li
 								<li><i class="fa fa-angle-right"></i> de référencer et valoriser les choses auxquelles je crois ici et là</li>
@@ -120,7 +120,7 @@
 		<div class="explainDesc">
 			<ul>
 				<li>C'est choisir et comprendre l'enjeu d'un fonctionnement démocratique</li>
-				<li>C'est contribuer au fonctionnement et au développement d'un outil comme Communecter</li>
+				<li>C'est contribuer au fonctionnement et au développement d'un outil comme Network</li>
 				<li>C'est Soutenir vos administrés et le tissu associatif et economique local dans les actions et projets</li>
 				<li>C'est officialiser le lien entre un outil citoyen et la commune, et interagir directement</li>
 				<li>C'est une possibilité de collaboration et de contribution</li>
@@ -149,7 +149,7 @@
 				<li><i class="fa fa-angle-right"></i> Vous avez trouvé un bug ?</li>
 				<li><i class="fa fa-angle-right"></i> Vous avez une idée géniale ?</li>
 				<li><i class="fa fa-angle-right"></i> Vous voulez devenir Référent ?</li>
-				<li class="text-red"><i class="fa fa-angle-right"></i> Communecter est une communauté active et collaborative, votre aide est la bienvenue !</li>
+				<li class="text-red"><i class="fa fa-angle-right"></i> Network est une communauté active et collaborative, votre aide est la bienvenue !</li>
 			</ul>
 		</div>
 	</div>
@@ -185,7 +185,7 @@
 				<li><i class="fa fa-angle-right"></i> Je suis membre ou je gère des <strong>associations</strong>, des <strong>entreprises</strong>, des <strong>groupes locaux</strong> </li>
 				<li><i class="fa fa-angle-right"></i> Je veux me connecter à mon entourage</li>
 				<!-- <li><i class="fa fa-angle-right"></i> <a href="javascript:;" onclick='toggle(".explainLinking",".explain")'>Je veux me connecter à mon entourage</a></li> -->
-				<li class="text-red"><i class="fa fa-angle-right"></i> Plus on sera nombreux à nous Communecter dans nos communes, plus nos idées auront du poids !</li>
+				<li class="text-red"><i class="fa fa-angle-right"></i> Plus on sera nombreux à nous Network dans nos communes, plus nos idées auront du poids !</li>
 				<!-- <li><i class="fa fa-angle-right"></i> <a href="">Créer un compte</a></li> -->
 			</ul>
 		</div>
@@ -282,7 +282,7 @@
 			<ul>
 				<li>La cartographie de réseau est l'étude de la connectivité physique de réseaux. La cartographie d'Internet est l'étude de la connectivité physique d'Internet. La cartographie de réseau découvre les dispositifs sur le réseau et leur connectivité. </li>
 				<li>Visualiser sur une carte qui fait quoi au sein d’un réseau, quels sont les liens internes qui structure une organisations, un groupe d’individus ? Voir comment est structuré un évennement , et quels liens externes s’y rattachent. </li>
-	<li>Au sein de Communecter, ce sont les liens entre les entités qui donnent toutes la valeur au projet, c’est aussi grâce à ces liens que l’on estime la valeur par l’usage. Les liens que l’on a avec les acteurs locaux nous permettront de dresser un vrai annuaire démocratique</li>
+	<li>Au sein de Network, ce sont les liens entre les entités qui donnent toutes la valeur au projet, c’est aussi grâce à ces liens que l’on estime la valeur par l’usage. Les liens que l’on a avec les acteurs locaux nous permettront de dresser un vrai annuaire démocratique</li>
 			</ul>
 		</div>
 	</div>
@@ -297,8 +297,8 @@
 		</div>
 	</div>
 
-	<div class="explainCommunecter <?php echo $class?> hide">
-		<h1 class="homestead explainTitle">Communecter</h1>
+	<div class="explainNetwork <?php echo $class?> hide">
+		<h1 class="homestead explainTitle">Network</h1>
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
@@ -324,7 +324,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Nom commun féminin qui évoque le voisinage avec la cité, c’est la capacité d’un territoire a créer du lien de proximité. Néologisme visant à illustrer le rapprochement du citoyen avec sa commune tel que proposé par Communecter. 
+				Nom commun féminin qui évoque le voisinage avec la cité, c’est la capacité d’un territoire a créer du lien de proximité. Néologisme visant à illustrer le rapprochement du citoyen avec sa commune tel que proposé par Network. 
 			</ul>
 		</div>
 	</div>
@@ -334,7 +334,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Le code logiciel ou code source est un texte qui représente les instructions de programme telles qu'elles ont été écrites par un programmeur. Le code source se matérialise souvent sous la forme d'un ensemble de fichiers textes. Le code source est généralement écrit dans un langage de programmation permettant ainsi une meilleure compréhension par des humains. Une fois le code source écrit, il permet de générer une représentation binaire d'une séquence d'instructions (CC BY-SA  Wikipedia). Avec Communecter, ce code logiciel est accessible au ciroyen.
+				Le code logiciel ou code source est un texte qui représente les instructions de programme telles qu'elles ont été écrites par un programmeur. Le code source se matérialise souvent sous la forme d'un ensemble de fichiers textes. Le code source est généralement écrit dans un langage de programmation permettant ainsi une meilleure compréhension par des humains. Une fois le code source écrit, il permet de générer une représentation binaire d'une séquence d'instructions (CC BY-SA  Wikipedia). Avec Network, ce code logiciel est accessible au ciroyen.
 			</ul>
 		</div>
 	</div>
@@ -344,7 +344,7 @@
 		<center class="caretExplain blue"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Un territoire connecté est un territoire maillé par un réseau complet de moyens de communication. Communecter apporte sa touche au maillage en proposant des outils de communication directe entre les citoyens d’une même commune.
+				Un territoire connecté est un territoire maillé par un réseau complet de moyens de communication. Network apporte sa touche au maillage en proposant des outils de communication directe entre les citoyens d’une même commune.
 			</ul>
 		</div>
 	</div>
@@ -354,7 +354,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Ensemble des personnes physiques et morales qui agissent dans le périmètre d’un territoire géographique donné. On parle souvent des acteurs locaux d’une commune ou d’une région. Communecter apporte des outils de partage et de communication à ces acteurs locaux.
+				Ensemble des personnes physiques et morales qui agissent dans le périmètre d’un territoire géographique donné. On parle souvent des acteurs locaux d’une commune ou d’une région. Network apporte des outils de partage et de communication à ces acteurs locaux.
 			</ul>
 		</div>
 	</div>
@@ -376,7 +376,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Est citoyen celui qui habite dans une ville et y jouit du droit de cité c'est à dire de l'aptitude juridique à jouir des droits politiques conformément aux lois du pays (CC BY-SA Wiktionnaire). Il est important de se souvenir que qui n'use pas de ses droits prend le risque de les perdre... Communecter vient proposer au citoyen d'exercer pleinement ses droits au sein de la commune.
+				Est citoyen celui qui habite dans une ville et y jouit du droit de cité c'est à dire de l'aptitude juridique à jouir des droits politiques conformément aux lois du pays (CC BY-SA Wiktionnaire). Il est important de se souvenir que qui n'use pas de ses droits prend le risque de les perdre... Network vient proposer au citoyen d'exercer pleinement ses droits au sein de la commune.
 			</ul>
 		</div>
 	</div>
@@ -386,7 +386,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Une association est la réunion, le rapprochement de plusieurs entités, tant physiques (personnes, entreprises…) que conceptuelles (idées, couleurs). (CC BY-SA 3.0 Wikipedia). Communecter propose aux associations locales de mieux se faire connaître afin de favoriser leur vie et leur développement. La vie associative est au coeur même de la vie de la cité et de ses citoyens.
+				Une association est la réunion, le rapprochement de plusieurs entités, tant physiques (personnes, entreprises…) que conceptuelles (idées, couleurs). (CC BY-SA 3.0 Wikipedia). Network propose aux associations locales de mieux se faire connaître afin de favoriser leur vie et leur développement. La vie associative est au coeur même de la vie de la cité et de ses citoyens.
 			</ul>
 		</div>
 	</div>
@@ -399,7 +399,7 @@
 				Il a fallu différencier les réseaux sociaux des réseaux sociétaux à cause de la place 
 				des premiers dans l'esprit des gens. Les réseaux sociaux sont orientés vers la création de liens entre amis, 
 				partager plus ou moins d'événement de son quotidien. 
-				Les réseaux sociétaux, comme Communecter, servent aussi à créer du lien, des événements, des groupes, et des projets 
+				Les réseaux sociétaux, comme Network, servent aussi à créer du lien, des événements, des groupes, et des projets 
 				mais ont surtout pour objectif d'améliorer le fonctionnement de la société. L'objectif est de trouver un bon équilibre 
 				entre le jeu et le fonctionnement de la société pour reprendre plaisir à y participer.
 				Plus on sera nombreux à participer à ce genre de réseau plus nos actions auront un impact convainquant.
@@ -412,7 +412,7 @@
 		<center class="caretExplain blue"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Le Toolkit Citoyen est l'architecture modulaire sur laquelle repose Communecter.
+				Le Toolkit Citoyen est l'architecture modulaire sur laquelle repose Network.
 				Il offre un vrai squelette applicatif pour construire de nouveaux modules sociétaux.
 				Facile à prendre en main le CTK permet de construire rapidement et génériquement des fonctionalités.
 				les fonctions du CTK sont faites pour être réutilisables, entre les modules.
@@ -454,7 +454,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Qui met en relation les échelles locales et mondiales, notamment dans le cadre de la mondialisation. La glocalisation est un néologisme qui désigne les processus d'interactions, d'interdépendances et d'articulations entre les échelles locales et mondiales, notamment dans le cadre de la mondialisation. (CC BY-SA 3.0 Wiktionnaire). Communecter est un acteur glocal car il permet de relier les citoyens à leur commune comme au reste du monde.
+				Qui met en relation les échelles locales et mondiales, notamment dans le cadre de la mondialisation. La glocalisation est un néologisme qui désigne les processus d'interactions, d'interdépendances et d'articulations entre les échelles locales et mondiales, notamment dans le cadre de la mondialisation. (CC BY-SA 3.0 Wiktionnaire). Network est un acteur glocal car il permet de relier les citoyens à leur commune comme au reste du monde.
 			</ul>
 		</div>
 	</div>
@@ -467,7 +467,7 @@
 				Je suis communecteur quand j'ai envie de : 
 				<li> faire bouger les choses autour de moi</li>
 				<li> faire partie d'un projet oeuvrant pour les communs</li>
-				<li> transmettre massivement Communecter </li>
+				<li> transmettre massivement Network </li>
 				<li> oeuvrer au bien commun</li>
 				<li> transmettre les valeurs de la transparence et du partage </li>
 				<li> agir, participer à gérer mon territoire</li>
@@ -492,7 +492,7 @@
 		<center class="caretExplain blue"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				<li>Communecter est un projet actuellement porté par l’association Open Atlas mais dont les racines se trouvent dans une quinzaine d’années d'expérimentations, d’essais, de pertes de motivation, d’espoirs retrouvés, de rencontres, d’amitiés et d'innovation permanente pour l’ensemble des acteurs qui ont rejoint peu à peu l’aventure jusqu’à aujourd’hui.</li>
+				<li>Network est un projet actuellement porté par l’association Open Atlas mais dont les racines se trouvent dans une quinzaine d’années d'expérimentations, d’essais, de pertes de motivation, d’espoirs retrouvés, de rencontres, d’amitiés et d'innovation permanente pour l’ensemble des acteurs qui ont rejoint peu à peu l’aventure jusqu’à aujourd’hui.</li>
 
 				<li><b>Depuis sa création en 2008</b>, l'association Open Atlas travaille sur des projets liés aux biens communs, à la cartographie et à la démocratie participative. C’est une association locale qui oeuvre au développement territorial à La Réunion. </li>
 				<li>2002 - Application et Site web Open Atlas - projet open source de Service Géolocalisé réalisé par 3 développeurs à Limoges dans le cadre d’un incubateur. </li>
@@ -509,9 +509,9 @@
 
 				<li><b>2015 - Le Forum des Communs</b> - pendant le Temps des communs, l’association a organiser une journée dédié aux rencontres et présentations d’acteurs et de projets oeuvrant pour le bien commun à la Réunion. </li>
 
-				<li><b>2014-2016 - Communecter - Réseau Social Citoyen Libre</b> pour créer un territoire connecté d’acteurs et d’activité locale.</li> 
+				<li><b>2014-2016 - Network - Réseau Social Citoyen Libre</b> pour créer un territoire connecté d’acteurs et d’activité locale.</li> 
 
-				<li><b>2016 - Projet de SCIC</b> - Le projet Communecter s’apprête à prendre son envol dans le cadre d’une SCIC. L’objectif est de le sortir du cadre de l’association pour en faire un bien commun.</li>
+				<li><b>2016 - Projet de SCIC</b> - Le projet Network s’apprête à prendre son envol dans le cadre d’une SCIC. L’objectif est de le sortir du cadre de l’association pour en faire un bien commun.</li>
 			</ul>
 		</div>
 	</div>
@@ -521,7 +521,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Communecter est autant un projet technique que sociétal. Notre équipe de développeurs s’acharne à constamment améliorer le fonctionnement de la plateforme car les bonnes idées viennent de nombreuses sources et il faut bien leur donner vie, pour continuer à aller plus loin que les idées. Une idée en amène une autre, et chaque développeur amène sa pierre a l’édifice. Donc une bonne équipe soudée et libre porte et transforme les idées d’une communauté riche et diversifiée. C’est un projet Open source, si vous êtes développeur et que vous êtes motivé, vous ne serez pas décu du voyage… on s’amuse sur tous les points : technique, philosophique, libriste…	
+				Network est autant un projet technique que sociétal. Notre équipe de développeurs s’acharne à constamment améliorer le fonctionnement de la plateforme car les bonnes idées viennent de nombreuses sources et il faut bien leur donner vie, pour continuer à aller plus loin que les idées. Une idée en amène une autre, et chaque développeur amène sa pierre a l’édifice. Donc une bonne équipe soudée et libre porte et transforme les idées d’une communauté riche et diversifiée. C’est un projet Open source, si vous êtes développeur et que vous êtes motivé, vous ne serez pas décu du voyage… on s’amuse sur tous les points : technique, philosophique, libriste…	
 			</ul>
 		</div>
 	</div>
@@ -532,7 +532,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Communecter est un médium qui permet la production et la diffusion de contenus par tous. Ces contenus restent la propriété de chacun. Certains contributeurs (individuels ou collectifs) peuvent labelliser des contenus afin de leur apporter un crédit supplémentaire. Ils agissent alors en éditeur.
+				Network est un médium qui permet la production et la diffusion de contenus par tous. Ces contenus restent la propriété de chacun. Certains contributeurs (individuels ou collectifs) peuvent labelliser des contenus afin de leur apporter un crédit supplémentaire. Ils agissent alors en éditeur.
 			</ul>
 		</div>
 	</div>
@@ -542,7 +542,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				<li>L’image graphique et la créativité artistique contribuent énormément à la bonne communication et à la transmission des valeurs que porte le projet. Les graphistes et Animateurs vidéo font un super travail de traduction de l’émotion que veut transmettre Communecter.</li>
+				<li>L’image graphique et la créativité artistique contribuent énormément à la bonne communication et à la transmission des valeurs que porte le projet. Les graphistes et Animateurs vidéo font un super travail de traduction de l’émotion que veut transmettre Network.</li>
 				<li>Nous adorons les contributions artistiques : poster, slogan, chanson, idée farfelue, tableau, sculpture… Vous serez toujours accueillit avec beaucoup d’admiration. Venez nous challenger vous ne serez pas décu, y’aura du répondant !!!</li>
 			</ul>
 		</div>
@@ -571,13 +571,13 @@
 				</ul>
 				Nos documentations, présentations
 				<ul>
-					<li><i class="fa fa-angle-right"></i> <a href="https://www.communecter.org/doc/Communecter - Plaquette Offre Services.pdf" target="_blank">Communecter - Plaquette Offre Services</a></li>
-					<li><i class="fa fa-angle-right"></i> <a href="https://www.communecter.org/doc/Présentation Courte de Communecter - OPEN ATLAS.pdf" target="_blank">Présentation Courte de Communecter - OPEN ATLAS</a></li>
-					<li><i class="fa fa-angle-right"></i> <a href="https://www.communecter.org/doc/Présentation de Communecter - OPEN ATLAS.pdf" target="_blank">Présentation de Communecter - OPEN ATLAS</a></li>
+					<li><i class="fa fa-angle-right"></i> <a href="https://www.network.org/doc/Network - Plaquette Offre Services.pdf" target="_blank">Network - Plaquette Offre Services</a></li>
+					<li><i class="fa fa-angle-right"></i> <a href="https://www.network.org/doc/Présentation Courte de Network - OPEN ATLAS.pdf" target="_blank">Présentation Courte de Network - OPEN ATLAS</a></li>
+					<li><i class="fa fa-angle-right"></i> <a href="https://www.network.org/doc/Présentation de Network - OPEN ATLAS.pdf" target="_blank">Présentation de Network - OPEN ATLAS</a></li>
 				</ul>
 				Nos vidéos
 				 <ul>
-					<li><i class="fa fa-angle-right"></i> <a href="https://vimeo.com/133636468" target="_blank">Communecter</a></li>
+					<li><i class="fa fa-angle-right"></i> <a href="https://vimeo.com/133636468" target="_blank">Network</a></li>
 					<li><i class="fa fa-angle-right"></i> <a href="https://vimeo.com/74212373" target="_blank">La philosophie Pixel Humain</a></li>
 					<li><i class="fa fa-angle-right"></i> <a href="https://vimeo.com/147290335" target="_blank">Loca’Terre - Communectez-vous !</a></li>
 				</ul>
@@ -616,7 +616,7 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 			<ul>
-				Dans Communecter on comptabilise la valeur par l'usage. Celle-ci est calculée par rapport à chaque lien de chaque individu fait avec des personnes, organisations, événements, projets. Pour résumer, la valeur calculée par les liens que vous avez avec votre environnement permet de pondérer votre activité locale. Plus tard viendront s'ajouter la qualité de vos posts, le nombre de votes et de contributions au système et donc à votre société locale.
+				Dans Network on comptabilise la valeur par l'usage. Celle-ci est calculée par rapport à chaque lien de chaque individu fait avec des personnes, organisations, événements, projets. Pour résumer, la valeur calculée par les liens que vous avez avec votre environnement permet de pondérer votre activité locale. Plus tard viendront s'ajouter la qualité de vos posts, le nombre de votes et de contributions au système et donc à votre société locale.
 			</ul>
 		</div>
 	</div>
@@ -669,7 +669,7 @@
 
 				version 0.2
 				<ul>
-					<li><i class="fa fa-angle-right"></i>Système Module Tiers : ex CommuNacelle (Communecter épuré ou en meteor à voir)</li>
+					<li><i class="fa fa-angle-right"></i>Système Module Tiers : ex CommuNacelle (Network épuré ou en meteor à voir)</li>
 					<li><i class="fa fa-angle-right"></i>Besoin et Compétence </li>
 					<li><i class="fa fa-angle-right"></i>Messagerie privé</li>
 					<li><i class="fa fa-angle-right"></i>Scope quartier pour les communes inscrites</li>
@@ -694,14 +694,14 @@
 		<center class="caretExplain"><i class="fa fa-caret-down"></i><br/></center>
 		<div class="explainDesc">
 		<ul>
-			<li>Le projet communecter est totalement open source , mais surtout un concept de base donnée partagé, multi acteur, qu’on appelle une base de donnée en commun, C’est l’O.D.B : l’Open Database a laquelle plusieurs acteurs contribue et l’utilise directement via une API libre. </li>
+			<li>Le projet network est totalement open source , mais surtout un concept de base donnée partagé, multi acteur, qu’on appelle une base de donnée en commun, C’est l’O.D.B : l’Open Database a laquelle plusieurs acteurs contribue et l’utilise directement via une API libre. </li>
 
 			<li>à terme, l’ODB suivra un modèle distribué, les résultat de requète seront construits dynamiquement et agrégés de multiples source. </li>
 
-			<li>Un peu a l’image de Wikipedia, dans Communecter le partage est dans le contenu. Une communauté (CEDRIC, buildingCommons, Le Cosystème, Synergie Numérique,… ) d’acteurs embrasse le faire ensemble pour le bien commun, rendre intéroperable et massivement distribuées les informations d’intérêt général pour accompagner les transitions (écologique, démocratique, économique,pédagaogique….). Communecter s’inscrit depuis toujours dans cette dynamique de décloisonnement des frontière créer par certains silos du web actuel, pour construire un web ouvert , sémantique, distribué et interopérant.</li>
+			<li>Un peu a l’image de Wikipedia, dans Network le partage est dans le contenu. Une communauté (CEDRIC, buildingCommons, Le Cosystème, Synergie Numérique,… ) d’acteurs embrasse le faire ensemble pour le bien commun, rendre intéroperable et massivement distribuées les informations d’intérêt général pour accompagner les transitions (écologique, démocratique, économique,pédagaogique….). Network s’inscrit depuis toujours dans cette dynamique de décloisonnement des frontière créer par certains silos du web actuel, pour construire un web ouvert , sémantique, distribué et interopérant.</li>
 
 			<li>
-			L’ouverture de la base de donnée n’est pas un dogme. Communecter est conçu afin de permettre à chacun de faire ses choix en conscience. Il peut  donc aussi y avoir des instances qui choisissent de ne pas utiliser l’ODB tout en utilisant les interfaces. Elle produit alors une NotODB, une instance indépendante de la donnée, régit par les règles de son choix, en mode “silo”, ou juste une autonomie indépendante de l’ODB.</li>
+			L’ouverture de la base de donnée n’est pas un dogme. Network est conçu afin de permettre à chacun de faire ses choix en conscience. Il peut  donc aussi y avoir des instances qui choisissent de ne pas utiliser l’ODB tout en utilisant les interfaces. Elle produit alors une NotODB, une instance indépendante de la donnée, régit par les règles de son choix, en mode “silo”, ou juste une autonomie indépendante de l’ODB.</li>
 			<li>Nous gardons ainsi la porte de tous les possibles grande ouverte avec une jolie structure de participation et de partage massif  </li>
 		</ul>
 		</div>
@@ -732,7 +732,7 @@
 			<div class="explainDesc">
 			<ul>
 				<li>Elles restent votre propriété. Elles ne sont utilisées en aucun pour des fins commerciales ou pour vous afficher de la publicité ciblée. Les données personnelles peuvent être configurées dans votre profil pour qu'elles ne soient pas visible de tous. A tout moment vous pouvez nous contacter pour les supprimer</li>
-				<li>Le réseau Communecter marche sur un critère de localité. Pour vous donner une vision de tous les acteurs locaux, autour de chez vous.</li>
+				<li>Le réseau Network marche sur un critère de localité. Pour vous donner une vision de tous les acteurs locaux, autour de chez vous.</li>
 				<li>L'outil a donc besoin de vos coordonnées géographiques pour vous permettre d'exploiter tout son potentiel</li>
 			</ul>
 		</div>

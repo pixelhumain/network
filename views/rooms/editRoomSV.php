@@ -47,7 +47,7 @@ jQuery(document).ready(function() {
   console.warn("--------------- newRoom ---------------------");
   $(".newRoom").off().on("click",function() { 
     console.warn("--------------- newRoom CLIK---------------------");
-    openSubView('Add a Room', '/communecter/rooms/editRoom',null,function(){editRoomSV ();});
+    openSubView('Add a Room', '/network/rooms/editRoom',null,function(){editRoomSV ();});
   });
 });
 

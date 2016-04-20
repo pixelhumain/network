@@ -78,7 +78,7 @@ if(isset( Yii::app()->session["userId"]) )
 		<?php echo Yii::t("survey","You created this vote.",null,Yii::app()->controller->module->id) ?>
 		<br/>
 		<?php if( Yii::app()->request->isAjaxRequest && false){ ?>
-		<a class="btn btn-xs btn-default" onclick="entryDetail('<?php echo Yii::app()->createUrl("/communecter/survey/entry/id/".(string)$survey["_id"])?>','edit')" href="javascript:;">
+		<a class="btn btn-xs btn-default" onclick="entryDetail('<?php echo Yii::app()->createUrl("/network/survey/entry/id/".(string)$survey["_id"])?>','edit')" href="javascript:;">
 			<i class='fa fa-pencil' ></i> <?php echo Yii::t("survey","Edit this Entry",null,Yii::app()->controller->module->id) ?>
 		</a>
 	<?php } ?>

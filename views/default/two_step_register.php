@@ -328,7 +328,7 @@
 	
 	
 	<div class="text-center text-dark pull-left" id="txt-info-geopos" style="font-size:15px; font-weight:300; width:100%; margin-top:15px; padding:10px;">
-		Afin d'utiliser tout le potentiel du réseau <strong>Communecter</strong>, <br>
+		Afin d'utiliser tout le potentiel du réseau <strong>Network</strong>, <br>
 		nous aurions besoin de quelques informations sur votre position géographique ...
 		<br><a href="javascript:" data-id="explainYourData" class="explainLink bold strong">En savoir + sur l'utilisation de vos données</a>
 	<br><br>
@@ -451,7 +451,7 @@
   			$("#searchBarPostalCode").val($(".input-communexion-twostep").val());
   			clearTimeout(timeoutSearch);
       		timeoutSearch = setTimeout(function(){ 
-      			showMapLegende("info-circle", "Sélectionnez la commune où vous vivez actuellement,<br><strong>en cliquant sur \"communecter\"</strong> ...")
+      			showMapLegende("info-circle", "Sélectionnez la commune où vous vivez actuellement,<br><strong>en cliquant sur \"network\"</strong> ...")
       			startNewCommunexion($("#addressCountry").val()); 
       		}, 1200);
   		});

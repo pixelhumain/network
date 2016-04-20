@@ -576,7 +576,7 @@ if (isset($follows)){
 							$img = '<img class="thumbnail-profil" width="50" height="50" alt="image" src="'.Yii::app()->createUrl('/'.$e['profilThumbImageUrl']).'">';
 						}else{
 							if(!empty($e["profilImageUrl"]))
-								$img = '<img class="thumbnail-profil" width="50" height="50" alt="image" src="'.Yii::app()->createUrl('/communecter/document/resized/50x50'.$e['profilImageUrl']).'">';
+								$img = '<img class="thumbnail-profil" width="50" height="50" alt="image" src="'.Yii::app()->createUrl('/network/document/resized/50x50'.$e['profilImageUrl']).'">';
 							else
 							$img = "<div class='thumbnail-profil'></div>";
 						}

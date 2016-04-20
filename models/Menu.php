@@ -3,7 +3,7 @@ class Menu {
 
     function __construct() {
         $cs = Yii::app()->getClientScript();
-        //$cs->registerScriptFile($moduleAssetsUrl.'/js/communecter.js');
+        //$cs->registerScriptFile($moduleAssetsUrl.'/js/network.js');
     }
 
     public static $infoMenu = array();
@@ -158,7 +158,7 @@ class Menu {
     public static function organization($organization)
     {
         //$cs = Yii::app()->getClientScript();
-        //$cs->registerScriptFile(Yii::app()->controller->module->assetsUrl.'/js/communecter.js');
+        //$cs->registerScriptFile(Yii::app()->controller->module->assetsUrl.'/js/network.js');
         
         if( !is_array( Yii::app()->controller->toolbarMBZ ))
             Yii::app()->controller->toolbarMBZ = array();

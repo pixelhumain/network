@@ -197,7 +197,7 @@
 	</div>
 	<div id="kkbb-big" style="display:none;">
 		<button class="btn btn-default" id="btn-close-globale-announce"><i class="fa fa-times"></i></button>
-		<a href="http://www.kisskissbankbank.com/fr/projects/communecter-se-connecter-a-sa-commune" target="_blank"><img class="pull-left" style="width:20%;" 
+		<a href="http://www.kisskissbankbank.com/fr/projects/network-se-connecter-a-sa-commune" target="_blank"><img class="pull-left" style="width:20%;" 
 			 src='<?php echo $this->module->assetsUrl?>/images/piggybank.png'/></a>
 		
 		<div class="pull-left homestead text-red" style="width:50%; font-size: 23px; margin-left: 10px; margin-top: 15px; line-height: 28px;">
@@ -206,7 +206,7 @@
 		</div>
 
 		
-		<a href="http://www.kisskissbankbank.com/fr/projects/communecter-se-connecter-a-sa-commune" target="_blank">
+		<a href="http://www.kisskissbankbank.com/fr/projects/network-se-connecter-a-sa-commune" target="_blank">
 			<img class="pull-right" style="width:42%; margin-top: -33px;" src='<?php echo $this->module->assetsUrl?>/images/crowdfoundez.png'/>
 		</a>
 
@@ -225,7 +225,7 @@
 
 <div id="iframe-kkbb" class="hidden">
 	<?php 
-		$kkbb_html = file_get_contents("http://www.kisskissbankbank.com/fr/projects/communecter-se-connecter-a-sa-commune/widget"); 
+		$kkbb_html = file_get_contents("http://www.kisskissbankbank.com/fr/projects/network-se-connecter-a-sa-commune/widget"); 
 		$start = strpos($kkbb_html, "<div class='widget'>");
 		$end = strpos($kkbb_html, "<div class='goal'>", $start);
 		$kkbb_html = substr($kkbb_html, $start, $end-$start)."</div>";

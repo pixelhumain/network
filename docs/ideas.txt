@@ -14,8 +14,8 @@
 
 * tiers Lieux CampTIC
 
-un reseau de tier lieu partenaire de communecter 
-partenaire de communecter signifie , qu'il y a aau moins un referant communecteur dans le lieu
+un reseau de tier lieu partenaire de network 
+partenaire de network signifie , qu'il y a aau moins un referant communecteur dans le lieu
 au sein de ce reseau de lieux seront transmis l'activité de chacun 
 et l'idée est quantic , car tous les autres lieux peuvent dire 
 je fait la meme chose en meme temps 
@@ -34,10 +34,10 @@ TKA - 12/02/2016
 * RMLL programm proposals
 
 retour d’expérience : 3ans d'un projet OS à la Réunion 
-présentation du projet : Communecter : réseau sociétal Libre
+présentation du projet : Network : réseau sociétal Libre
 Atelier Citoyen
 comment créer un territoire Ouvert et Collaboratif
-Communecter
+Network
 Fablab
 Repair café
 Travaille Distribué

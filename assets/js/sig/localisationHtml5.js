@@ -150,7 +150,7 @@ function getCityInseeByGeoPos(coords){
 					console.log("cities found : ");
 					console.dir(obj);
 				
-					$(".search-loader").html("<i class='fa fa-crosshairs'></i> Sélectionnez une commune en cliquant sur <b>Communecter</b> ...");
+					$(".search-loader").html("<i class='fa fa-crosshairs'></i> Sélectionnez une commune en cliquant sur <b>Network</b> ...");
 		        	Sig.showMapElements(Sig.map, obj);
 				}
 				else if(currentRoleLoc == "communexion_tsr"){ // && typeof obj.name != "undefined"){
@@ -159,7 +159,7 @@ function getCityInseeByGeoPos(coords){
 					console.dir(obj);
 					showMap(true);
 					//$(".search-loader").html("<i class='fa fa-crosshairs'></i> Sélectionnez une commune ...");
-		        	showMapLegende("crosshairs", "Sélectionnez votre commune en cliquant sur <b>Communecter</b> ...");
+		        	showMapLegende("crosshairs", "Sélectionnez votre commune en cliquant sur <b>Network</b> ...");
 
   					Sig.showMapElements(Sig.map, obj);
 				}

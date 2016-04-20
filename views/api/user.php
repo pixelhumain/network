@@ -2,7 +2,7 @@
 	<li class="block" id="blockCommunect">
 		<a href="/ph/<?php echo $this::$moduleKey?>/api/communect">Login</a><br/>
 		<div class="fss">
-			se communecter c'est juste suivre l'activité d'un CP <br/>
+			se network c'est juste suivre l'activité d'un CP <br/>
 			Il suffit d'un email et d'un CP<br/>
 			method type : POST <br/>
 		</div>

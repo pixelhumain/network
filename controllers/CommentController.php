@@ -6,7 +6,7 @@
  * Date: 2/7/15
  * Time: 12:25 AM
  */
-class CommentController extends CommunecterController {
+class CommentController extends NetworkController {
   
 
 	protected function beforeAction($action) {

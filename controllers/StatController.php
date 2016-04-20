@@ -6,7 +6,7 @@
  * Date: 3/18/16
  * Time: 12:25 AM
  */
-class StatController extends CommunecterController {
+class StatController extends NetworkController {
 
 	public function actions()
 	{

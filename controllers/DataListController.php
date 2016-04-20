@@ -1,6 +1,6 @@
 <?php
 
-class DataListController extends CommunecterController {
+class DataListController extends NetworkController {
 
 	protected function beforeAction($action) {
 		parent::initPage();

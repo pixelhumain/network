@@ -70,7 +70,7 @@ $this->renderPartial('../default/panels/toolbar');
     font-weight: 500;
   }
 
-  #btn-communecter{
+  #btn-network{
     width: auto;
     font-size: 20px;
     border-radius: 10px;
@@ -83,11 +83,11 @@ $this->renderPartial('../default/panels/toolbar');
     padding-bottom: 5px;
     box-shadow: 0px 0px 3px 3px RGBA(114, 114, 114, 0.31);
   }
-  #btn-communecter small{
+  #btn-network small{
     font-size:16px;
     word-break: normal;
   }
-  #btn-communecter:hover{
+  #btn-network:hover{
     background-color: #E33551;
     color:white !important;
   }
@@ -123,7 +123,7 @@ $this->renderPartial('../default/panels/toolbar');
     height: 80px;
   }
   @media screen and (max-width: 1024px) {
-    #btn-communecter{
+    #btn-network{
       font-size:17px;
     }
     h1.you-live{
@@ -232,7 +232,7 @@ $this->renderPartial('../default/panels/toolbar');
   font-weight: 300;
   text-transform: capitalize;
  }
- #btn-communecter{
+ #btn-network{
     top:60px;
  }
 }
@@ -256,7 +256,7 @@ $this->renderPartial('../default/panels/toolbar');
   <!-- <h1 class="homestead text-dark center you-live">Vous habitez ici ? <?php //echo $city["name"]; ?></h1> -->
   <a href="javascript:;" class="btn homestead text-red no-margin"
      insee-com="<?php echo $city['insee']; ?>" name-com="<?php echo $city['name']; ?>" cp-com="<?php if(@$city['cp']) echo $city['cp']; ?>" 
-     id="btn-communecter" onclick="setScopeValue($(this));">
+     id="btn-network" onclick="setScopeValue($(this));">
      <i class="fa fa-crosshairs"></i> COMMUNECTER
   </a>
 <?php //} ?>
@@ -290,7 +290,7 @@ $this->renderPartial('../default/panels/toolbar');
     <div class="panel panel-white">
       <div>
         <div class="panel-heading border-light padding-5">
-          <h2 class="homestead text-left text-blue"><i class="fa fa-info-circle"></i> Pourquoi se communecter ?</h2>
+          <h2 class="homestead text-left text-blue"><i class="fa fa-info-circle"></i> Pourquoi se network ?</h2>
         </div>
       </div>
       <div class="panel-body">
@@ -461,13 +461,13 @@ jQuery(document).ready(function() {
 
   $(".moduleLabel").html(iconCity + mine + " COMMUNE : <?php echo $city["name"] ?>");
   
-  //si on est sur la page de MA commune, on change le texte du bouton "communecter"
+  //si on est sur la page de MA commune, on change le texte du bouton "network"
   if(mineCity){
-    $("#btn-communecter").html("<i class='fa fa-check'></i> COMMUNECTÉ");
-    $("#btn-communecter").tooltip({
+    $("#btn-network").html("<i class='fa fa-check'></i> COMMUNECTÉ");
+    $("#btn-network").tooltip({
         title: 'Vous êtes communecté à cette commune.'
     });
-    $("#btn-communecter").attr("onclick", "");
+    $("#btn-network").attr("onclick", "");
   }
 
   initCityMap();
@@ -520,7 +520,7 @@ jQuery(document).ready(function() {
 });
 
 
-function communecter(){ //toastr.info('TODO : redirect to form register || OR || slide to form register');
+function network(){ //toastr.info('TODO : redirect to form register || OR || slide to form register');
 
     var cp = "<?php if(@$city['cp']) echo $city['cp']; ?>";
     $(".form-register #cp").val(cp);
@@ -594,7 +594,7 @@ function initCityMap(){
 }
 
 function discover(hash){
-  $("#btn-communecter").click();
+  $("#btn-network").click();
   loadByHash(hash);
 }
 

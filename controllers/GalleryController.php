@@ -7,7 +7,7 @@
  * @author: Tibor Katelbach <tibor@pixelhumain.com>
  * Date: 18/07/2014
  */
-class GalleryController extends CommunecterController {
+class GalleryController extends NetworkController {
 
 		protected function beforeAction($action) {
 			parent::initPage();

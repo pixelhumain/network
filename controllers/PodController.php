@@ -4,7 +4,7 @@
  *
  */
 
-class PodController extends CommunecterController {
+class PodController extends NetworkController {
 
 	protected function beforeAction($action) {
 		parent::initPage();

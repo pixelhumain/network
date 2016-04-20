@@ -186,7 +186,7 @@ $commentActive = true;
             $parentCtrler = City::CONTROLLER;
             $parentIcon = "university";
         }
-        //$parentTitle = '<a href="'.Yii::app()->createUrl("/communecter/".$parentCtrler."/dashboard/id/".$id).'">'.$parent["name"]."</a>'s ";
+        //$parentTitle = '<a href="'.Yii::app()->createUrl("/network/".$parentCtrler."/dashboard/id/".$id).'">'.$parent["name"]."</a>'s ";
         $byInfo = "by <a href='".Yii::app()->createUrl($this->module->id."/".$parentCtrler."/dashboard/id/".$value["parentId"])."'><i class='fa fa-".$parentIcon."'></i></a>";
       }
 

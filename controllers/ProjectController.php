@@ -8,7 +8,7 @@
  * @author: Tibor Katelbach <tibor@pixelhumain.com>
  * Date: 15/08/13
  */
-class ProjectController extends CommunecterController {
+class ProjectController extends NetworkController {
   	const moduleTitle = "Projet";
   	protected function beforeAction($action)
   	{
@@ -62,7 +62,7 @@ class ProjectController extends CommunecterController {
  * @author: Tibor Katelbach <tibor@pixelhumain.com>
  * Date: 15/08/13
  */
-//class ProjectController extends CommunecterController {
+//class ProjectController extends NetworkController {
   //  const moduleTitle = "Projet";
     
    /* protected function beforeAction($action) {
@@ -94,7 +94,7 @@ class ProjectController extends CommunecterController {
 		      		array_push($organizations, $organization);
 		  		}
 		    } else {
-		     // throw new CommunecterException("Données inconsistentes pour le citoyen : ".Yii::app()->session["userId"]);
+		     // throw new NetworkException("Données inconsistentes pour le citoyen : ".Yii::app()->session["userId"]);
 		    }  	
 		  }
 		}
@@ -104,14 +104,14 @@ class ProjectController extends CommunecterController {
 	public function actionPublic($id){
 	    //get The project Id
 	    if (empty($id)) {
-	      throw new CommunecterException("The project id is mandatory to retrieve the project !");
+	      throw new NetworkException("The project id is mandatory to retrieve the project !");
 	    }
 
 	    $project = Project::getPublicData($id);
 	    
 	    $this->title = (isset($project["name"])) ? $project["name"] : "";
 	    $this->subTitle = (isset($project["description"])) ? $project["description"] : "";
-	    $this->pageTitle = "Communecter - Informations publiques de ".$this->title;
+	    $this->pageTitle = "Network - Informations publiques de ".$this->title;
 
 
 	    $this->render("public", array("project" => $project));

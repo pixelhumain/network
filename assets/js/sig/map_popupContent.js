@@ -541,13 +541,13 @@
 										"<i class='fa fa-university'></i> "+cityName+
 									"</h4>" + 
 									"<h4 class='panel-title text-red homestead'>"+ cp + "</h4>" + 
-									"<button class='btn btn-default btn-communecter-city btn-sm col-md-12 text-red bold' "+
+									"<button class='btn btn-default btn-network-city btn-sm col-md-12 text-red bold' "+
 											 "name-com='" + cityName + "' " + "insee-com='" + insee + "' " + "cp-com='" + cp + "'" + "lat-com='" + lat + "'" + "lng-com='" + lng + "'" +  "reg-com='" + reg + "'" +  "ctry-com='" + cntry + "'";
 				if (typeof(nbCpByInsee) != "undefined"){
 				popupContent += " nbCpByInsee-com='" + nbCpByInsee + "'" + "cityInsee-com='" + cityInsee + "'";
 				}						
 				popupContent += 			"onclick='javascript:setScopeValue($(this))'>"+
-										"<i class='fa fa-crosshairs'></i> Communecter"+
+										"<i class='fa fa-crosshairs'></i> Network"+
 									"</button>";
 
 			if(location.hash != "#default.twostepregister")

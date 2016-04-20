@@ -8,7 +8,7 @@ $cssAnsScriptFilesTheme = array(
   '/assets/plugins/fluidlog/js/mynodes.js',
   '/assets/plugins/fluidlog/js/mylinks.js',
   '/assets/plugins/fluidlog/js/mybackground.js',
-  '/assets/plugins/fluidlog/js/extensionCommunecter.js',
+  '/assets/plugins/fluidlog/js/extensionNetwork.js',
   '/assets/plugins/fluidlog/js/semantic2.1.2.js',
   '/assets/plugins/fluidlog/css/loglink4.6.css',
   '/assets/plugins/fluidlog/css/semantic2.1.2.css',

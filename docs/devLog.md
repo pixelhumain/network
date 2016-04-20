@@ -18,7 +18,7 @@
 2016/03/18
 
 Mettre en cron les statistiques
-communecter/stat/createglobalstat
+network/stat/createglobalstat
 
 ----------------------------------------------------
 
@@ -104,7 +104,7 @@ db.citoyens.find().forEach(function(doc){
 Init scripts
 
 #import lists 
-cd communecter/data
+cd network/data
 mongoimport --db pixelhumain --collection lists lists.json --jsonArray;
 
 ----------------------------------------------------
@@ -217,11 +217,11 @@ Etape 5 : (10 minutes plus tard) Chouette la mise à jour est terminée !
 => db.cities.createIndex({"geoPosition.coordinates": "2dsphere"})
 
 Etape 5bis : (10 minutes plus tard) Vous schtroumfez une erreur bisarre ! Mais qu'est-ce qui s'est fichtrement passé ?
-==> https://github.com/pixelhumain/communecter/issues/438
+==> https://github.com/pixelhumain/network/issues/438
 
 Etape 6 : Applaudir à deux main : vous avez une base de données toute propre !
 
-Etape 7 : https://github.com/pixelhumain/communecter/issues/438
+Etape 7 : https://github.com/pixelhumain/network/issues/438
 
 ---------------------------------------------------
 

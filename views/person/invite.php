@@ -300,22 +300,22 @@ $this->renderPartial('../default/panels/toolbar');
 		</div>
 		<div class="panel panel-white" id="divGooglePlus">
         	<div class="panel-heading border-light">
-        		Publier sur Google +, pour inviter vos amis a rejoindre Communecter
+        		Publier sur Google +, pour inviter vos amis a rejoindre Network
 			</div>
 			<div class="panel-body">
 				<form class="form-googlePlus" autocomplete="off">
 					<div class="col-sm-12 col-xs-12">
 						<!-- Placez cette balise où vous souhaitez faire apparaître le gadget bouton "Partager". -->
-						<div class="g-plus" data-action="share" data-height="24" data-href="https://www.communecter.org"></div>
+						<div class="g-plus" data-action="share" data-height="24" data-href="https://www.network.org"></div>
 						<!--<a  href="#" 
 							class="g-interactivepost btn btn-primary col-md-3"
 						    data-clientid="<?php //echo Yii::app()->params['google']['client_id'] ; ?>"
-							data-contenturl="www.communecter.org"
+							data-contenturl="www.network.org"
 							data-calltoactionlabel="INVITE"
-							data-calltoactionurl="www.communecter.org"
+							data-calltoactionurl="www.network.org"
 							data-cookiepolicy="single_host_origin"
-							data-prefilltext="Bonjour, J'ai découvert un réseau sociétal citoyen appelé Communecter - être connecter à sa commune. Tu peux agir concrétement autour de chez toi et découvrir ce qui s'y passe. Viens rejoindre le réseau sur communecter.org.">
-							Partagez Communecter sur Google+
+							data-prefilltext="Bonjour, J'ai découvert un réseau sociétal citoyen appelé Network - être connecter à sa commune. Tu peux agir concrétement autour de chez toi et découvrir ce qui s'y passe. Viens rejoindre le réseau sur network.org.">
+							Partagez Network sur Google+
 						</a> -->
 					</div>
 				</form>
@@ -357,8 +357,8 @@ $this->renderPartial('../default/panels/toolbar');
 							<label for="textmail" class="control-label">Message</label>
 					</div>
         			<div id="Messages" class="col-sm-12 col-xs-12">
-		        		<textarea id="textmail" class="form-control" rows="3">Bonjour, J'ai découvert un réseau sociétal citoyen appelé "Communecter - être connecter à sa commune". 
-Tu peux agir concrétement autour de chez toi et découvrir ce qui s'y passe. Viens rejoindre le réseau sur communecter.org.</textarea>
+		        		<textarea id="textmail" class="form-control" rows="3">Bonjour, J'ai découvert un réseau sociétal citoyen appelé "Network - être connecter à sa commune". 
+Tu peux agir concrétement autour de chez toi et découvrir ce qui s'y passe. Viens rejoindre le réseau sur network.org.</textarea>
 		        		<div class="col-sm-12">&nbsp;</div>
 					</div>
 					
@@ -941,7 +941,7 @@ function newInvitation(){
 		$("#newInvite #inviteName").val($("#newInvite #inviteSearch").val());
 	}
 
-	$("#inviteText").val("Bonjour ! \nViens me rejoindre sur ce site ! \nUn email, un code postal et tu es communecter ! \ Tu peux voir tout ce qu'il se passe dans ta commune et agir pour le bien commun ! \n");
+	$("#inviteText").val("Bonjour ! \nViens me rejoindre sur ce site ! \nUn email, un code postal et tu es network ! \ Tu peux voir tout ce qu'il se passe dans ta commune et agir pour le bien commun ! \n");
 }
 
 function backToSearch(){
@@ -1121,7 +1121,7 @@ function validMail() {
 	var res = [] ;
 	$.ajax({
         type: "POST",
-        url: baseUrl+'/communecter/person/checklinkmailwithuser/',
+        url: baseUrl+'/network/person/checklinkmailwithuser/',
         dataType : "json",
         async : false ,
 		success:function(data){

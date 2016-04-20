@@ -17,7 +17,7 @@
 		<h4 class="panel-title">Ajouter un graphe</h4>
 		<ul class="panel-heading-tabs border-light ulline">
 			<li>
-				<a href="<?php echo Yii::app()->getRequest()->getBaseUrl(true).'/communecter/city/opendata/insee/'.$_GET['insee'];?>" class=""/>Back</a>
+				<a href="<?php echo Yii::app()->getRequest()->getBaseUrl(true).'/network/city/opendata/insee/'.$_GET['insee'];?>" class=""/>Back</a>
 			</li>
 		<ul>
 	</div>
@@ -310,7 +310,7 @@ function getGraph(insee, typeData, typeZone, typeGraph, optionChecked, CitiesChe
 {
 	console.warn("----------------- getGraph -----------------");
 	console.log(insee, typeData, typeZone, typeGraph, optionChecked, CitiesChecked);
-	//http://127.0.0.1/ph/communecter/city/graphcity/insee/97414
+	//http://127.0.0.1/ph/network/city/graphcity/insee/97414
 	var urlToSend = baseUrl+"/"+moduleId+"/city/graphcity/insee/"+insee;
 	urlToSend = urlToSend+"/typeData/"+typeData;
 	urlToSend = urlToSend+"/typeGraph/"+typeGraph;

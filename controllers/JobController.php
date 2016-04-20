@@ -7,7 +7,7 @@
  * @author: Sylvain Barbot <sylvain@pixelhumain.com>
  * Date: 31/03/2015
  */
-class JobController extends CommunecterController {
+class JobController extends NetworkController {
 
 	protected function beforeAction($action) {
 		parent::initPage();

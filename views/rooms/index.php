@@ -18,7 +18,7 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesTheme,Yii::app()->theme
     		<?php  
     			$urlParams = ( isset( $_GET["type"] ) && isset($_GET["id"])) ? "/type/".$_GET["type"]."/id/".$_GET["id"] : "" ;
     			?>
-    		<a class=" btn btn-info" href="#" onclick="openSubView('Add a Room', '/communecter/rooms/editroom<?php echo $urlParams ?>',null,function(){editRoomSV ();})" ><i class="fa fa-plus"></i> Room </a>
+    		<a class=" btn btn-info" href="#" onclick="openSubView('Add a Room', '/network/rooms/editroom<?php echo $urlParams ?>',null,function(){editRoomSV ();})" ><i class="fa fa-plus"></i> Room </a>
     	</li>
 		
 	</div>

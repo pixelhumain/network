@@ -194,7 +194,7 @@ function gotToPrevNav()
 </script>
 <?php if(!isset($topTitleExists)){ ?>
 	<span class="badge badge-danger" style="border-radius:10px 10px 0px 0px; font-weight:300; width:100%; line-height: 1.2;"> PRE-ALPHA-invites-only </br>( beta testing till january, early registration open ) </span>
-	<div class="text-white text-extra-large text-bold center topLogoAnim " style="cursor: pointer" onclick="showPanel('box-communecter')">
+	<div class="text-white text-extra-large text-bold center topLogoAnim " style="cursor: pointer" onclick="showPanel('box-network')">
 	<span class="titleRed text-red homestead" style="font-size:40px">CO</span>
 	<span  style="font-size:40px" class="titleWhite homestead">MMU</span>
 	<span  style="font-size:40px" class="titleWhite2 text-red homestead">NECTER</span>

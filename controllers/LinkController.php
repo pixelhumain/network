@@ -7,7 +7,7 @@
  * @author: Sylvain Barbot <sylvain@pixelhumain.com>
  * Date: 05/05/2015
  */
-class LinkController extends CommunecterController {
+class LinkController extends NetworkController {
 
 	protected function beforeAction($action) {
 		parent::initPage();

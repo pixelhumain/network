@@ -563,7 +563,7 @@ function bindAboutPodEvents()
     	console.log("exportMyDataBtn");
     	$.ajax({
 	        type: "GET",
-	        url: baseUrl+"/"+moduleId+"/data/exportinitdata/id/<?php echo Yii::app()->session["userId"] ?>/module/communecter"
+	        url: baseUrl+"/"+moduleId+"/data/exportinitdata/id/<?php echo Yii::app()->session["userId"] ?>/module/network"
 	        //dataType : "json"
 	        //data: params
 	    })

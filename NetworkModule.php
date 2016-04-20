@@ -1,13 +1,13 @@
 <?php
 /**
- * Communect Module
+ * Network Module
  *
  * @author Tibor Katelbach <oceatoon@mail.com>
  * @version 0.0.3
  *
 */
 
-class CommunecterModule extends CWebModule
+class NetworkModule extends CWebModule
 {
 	public function init()
 	{

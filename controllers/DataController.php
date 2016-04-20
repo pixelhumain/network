@@ -144,12 +144,12 @@ class DataController extends Controller {
             $data = PHDB::findAndLimitAndIndex( $type , $params, $limit, $index);
 
             $meta["limit"] = $limit;
-            $meta["next"] = "/ph/communecter/data/get/type/projects/limit/".$limit."/index/".($index+$limit) ;
+            $meta["next"] = "/ph/network/data/get/type/projects/limit/".$limit."/index/".($index+$limit) ;
             if($index != 0){
                 $newIndex = $index - $limit;
                 if($newIndex < 0)
                     $newIndex = 0 ;
-                $meta["previous"] = "/ph/communecter/data/get/type/projects/limit/".$limit."/index/".$newIndex ;
+                $meta["previous"] = "/ph/network/data/get/type/projects/limit/".$limit."/index/".$newIndex ;
             }
 
             $result["meta"] = $meta ;

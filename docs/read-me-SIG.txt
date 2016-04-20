@@ -9,7 +9,7 @@
 	
 
 **** Fichier type : ****
-*    mapViewExemple.php (/ph/communecter/docs/mapViewExemple.html)
+*    mapViewExemple.php (/ph/network/docs/mapViewExemple.html)
 *    Vous pouvez copier/coller ce fichier où vous voulez pour créer une nouvelle carte.
 ************************
 
@@ -35,10 +35,10 @@
 	*** 1 - PATH
 	-------------------------------------------------------------------------------------
 	
-		*    mapViewExemple.php (/ph/communecter/docs/mapViewExemple.html)
+		*    mapViewExemple.php (/ph/network/docs/mapViewExemple.html)
 		*	 l.4: $relativePath = "./";
  
-		Il est important de vérifier que $relativePath contient un chemin relatif correct vers le répertoire /communecter/view/sig/generic.
+		Il est important de vérifier que $relativePath contient un chemin relatif correct vers le répertoire /network/view/sig/generic.
 		$relativePath est utilisé pour charger les fichier mapLibs.php, mapCss.php, et mapView.php
 				
 				  //chargement de toutes les librairies css et js indispensable pour la carto 
@@ -243,11 +243,11 @@
 		-----------
 		Important :
 		-----------
-		Les fichiers PHP génériques se trouvent dans : 	communecter/views/sig/generic
-		Les fichiers JS se trouvent dans :				communecter/assets/js/sig
-		Les fichiers CSS se trouvent dans : 			communecter/assets/js/sig
+		Les fichiers PHP génériques se trouvent dans : 	network/views/sig/generic
+		Les fichiers JS se trouvent dans :				network/assets/js/sig
+		Les fichiers CSS se trouvent dans : 			network/assets/js/sig
 		
-		Pour afficher des cartes dans un autre module que communecter, il faut avoir ces lib aux mêmes endroits
+		Pour afficher des cartes dans un autre module que network, il faut avoir ces lib aux mêmes endroits
 		
 		
 		

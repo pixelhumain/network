@@ -1,5 +1,5 @@
 <?php
-		/* ***************** modifier l'url relative si besoin pour trouver communecter/view/sig/ *******************/
+		/* ***************** modifier l'url relative si besoin pour trouver network/view/sig/ *******************/
 		$relativePath = "/sig/";
 		/* ***********************************************************************************/
 

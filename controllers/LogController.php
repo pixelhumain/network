@@ -6,7 +6,7 @@
  * Date: 7/29/15
  * Time: 12:25 AM
  */
-class LogController extends CommunecterController {
+class LogController extends NetworkController {
 
 	public function actions()
 	{

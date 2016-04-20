@@ -6,7 +6,7 @@
  * Date: 7/09/15
  * Time: 10:00 AM
  */
-class GamificationController extends CommunecterController {
+class GamificationController extends NetworkController {
   
 
 	protected function beforeAction($action) {

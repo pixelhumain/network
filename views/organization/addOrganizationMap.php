@@ -1,6 +1,6 @@
 <?php
 
-		//modifier l'url relative si besoin pour trouver communecter/view/sig/
+		//modifier l'url relative si besoin pour trouver network/view/sig/
 		$relativePath = "../sig/";
 		
 	   	//modifier les parametre en fonction des besoins de la carte

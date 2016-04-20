@@ -1,5 +1,5 @@
 <?php
-class TestController extends CommunecterController {
+class TestController extends NetworkController {
   
   protected function beforeAction($action) {
 	return parent::beforeAction($action);
@@ -91,7 +91,7 @@ class TestController extends CommunecterController {
 		}
     }
   public function actionTest() {
-  	echo hash('sha256', "mc420011@gmail.com"."communecter974");
+  	echo hash('sha256', "mc420011@gmail.com"."network974");
     //echo $_SERVER["X-Auth-Token"];
     //Authorisation::isMeteorConnected( "TCvdPtAVCkkDvrBDtICLUfRIi93L3gOG+MwT4SvDK0U=", true );
 	//var_dump(Link::addMember("551a5c00a1aa146d160041b0", PHType::TYPE_ORGANIZATIONS, 
@@ -532,9 +532,9 @@ db.getCollection('citoyens').find({'geoPosition.coordinates': {
   }
 
   public function actionImageMarker() {
-    //$profilImage = Yii::app()->params['uploadDir']."communecter/slide1.png";
-    $profilImage = Yii::app()->params['uploadDir']."communecter/photoProfil.jpg";
-    $srcEmptyMarker = Yii::app()->params['uploadDir']."communecter/marker-citizen.png";
+    //$profilImage = Yii::app()->params['uploadDir']."network/slide1.png";
+    $profilImage = Yii::app()->params['uploadDir']."network/photoProfil.jpg";
+    $srcEmptyMarker = Yii::app()->params['uploadDir']."network/marker-citizen.png";
     
     $imageUtils = new ImagesUtils($profilImage);
     // $imageUtils->resizeImage(40,40)->display();
@@ -584,7 +584,7 @@ db.getCollection('citoyens').find({'geoPosition.coordinates': {
                      "title" => Yii::app()->name ,
                      "logo"  => "/images/logo.png",
                      "invitedUserId" => $person["_id"],
-                     "message" => "Bah alors ramène toi sur Communecter ma couille !");
+                     "message" => "Bah alors ramène toi sur Network ma couille !");
     $this->renderPartial('application.views.emails.invitation', $params);
   } 
 

@@ -5,7 +5,7 @@
  * @author: Childéric THOREAU 
  * Date: 01/01/2016
  */
-class DirectoryController extends CommunecterController {
+class DirectoryController extends NetworkController {
 
   public function actions() {
       return array(

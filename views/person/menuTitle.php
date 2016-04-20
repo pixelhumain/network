@@ -121,7 +121,7 @@
 	}
 </script>
 <?php if(!isset($topTitleExists)){ ?>
-<div class="text-white text-extra-large text-bold center topLogoAnim " style="cursor: pointer" onclick="showPanel('box-communecter')">
+<div class="text-white text-extra-large text-bold center topLogoAnim " style="cursor: pointer" onclick="showPanel('box-network')">
 	<span class="badge badge-danger "> PRE-ALPHA-invites-only ( beta in febuary, early registration open ) </span>
 	<br/>
 	<span class="titleRed text-red homestead" style="font-size:40px">CO</span>

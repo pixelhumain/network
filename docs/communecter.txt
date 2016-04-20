@@ -171,7 +171,7 @@
 				can help understand usage
 				debug any bugs 
 			add easily add gamification features
-		*** Application Communacelle : Communecter dans une nacelle
+		*** Application Communacelle : Network dans une nacelle
 			:cominspace:
 			- application smartphone ou tablet
 			- condition testing 
@@ -220,7 +220,7 @@
 			- adhésion de la commune
 				signifie qu'elle a creer son entité Organisation et fait des action contributive
 				definir une procedure d'inscription d'une commune
-			- nombre de communecter 
+			- nombre de network 
 			- nombre de flux locaux connecté
 			- taux d'activité inter commune
 			- Opendata

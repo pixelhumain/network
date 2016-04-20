@@ -514,7 +514,7 @@ Menu::organization($organization);
 	    	
 	    	$.ajax({
 	            type: "POST",
-	            url: baseUrl+"/communecter/link/connect",
+	            url: baseUrl+"/network/link/connect",
 	            data: params,
 	            dataType: "json",
 	            success: function(data){
@@ -607,7 +607,7 @@ Menu::organization($organization);
 		var data = {"search" : searchValue};
 		$.ajax({
 			type: "POST",
-	        url: baseUrl+"/communecter/search/searchmemberautocomplete",
+	        url: baseUrl+"/network/search/searchmemberautocomplete",
 	        data: data,
 	        dataType: "json",
 	        success: function(data){
@@ -839,7 +839,7 @@ function getIdByMail(mail) {
 	var res = false ;
 	$.ajax({
         type: "POST",
-        url: baseUrl+'/communecter/person/getuseridbymail/',
+        url: baseUrl+'/network/person/getuseridbymail/',
         dataType : "json",
         data: {
         	mail : mail,
@@ -925,7 +925,7 @@ function inviteImportFile(){
 				  	console.log("params", params);
 				  	$.ajax({
 			            type: "POST",
-			            url: baseUrl+"/communecter/link/connect",
+			            url: baseUrl+"/network/link/connect",
 			            data: params,
 			            dataType: "json",
 			            success: function(data){

@@ -1,4 +1,4 @@
-<div class="box-communecter box">
+<div class="box-network box">
 	
 	<section>
 		<?php /* ?>

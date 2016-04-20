@@ -1,4 +1,4 @@
-[[http://127.0.0.1/ph/communecter/city/statisticpopulation/insee/72168/]]
+[[http://127.0.0.1/ph/network/city/statisticpopulation/insee/72168/]]
 
 * StatisticPopulationAction
 	Envoie en paramètre un tableau {[nomVille] {[cdeinsee] info population ...

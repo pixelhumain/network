@@ -1,7 +1,7 @@
 <?php
 $cssAnsScriptFilesModule = array(
 	//Data helper
-	'/js/communecter.js'
+	'/js/network.js'
 	);
 HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->assetsUrl);
 ?>
@@ -138,7 +138,7 @@ function updateInvite(user, isPending, isLineToRemove) {
 		} else {
 			newLine += '<tr id="citoyens'+user.id+'">'+
 							'<td class="center">'+
-								'<a href="/ph/communecter/person/dashboard/id/'+user.id+'">';
+								'<a href="/ph/network/person/dashboard/id/'+user.id+'">';
 			//Profil Image
 			if (user.profilImageUrl == "") 
 				newLine += '<i class="fa fa-user fa-2x"></i>';

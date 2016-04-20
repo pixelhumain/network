@@ -6,7 +6,7 @@
  * Date: 25/7/15
  * Time: 11:25 PM
  */
-class FundingController extends CommunecterController {
+class FundingController extends NetworkController {
   
 
 	protected function beforeAction($action) {

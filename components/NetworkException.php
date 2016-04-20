@@ -1,8 +1,8 @@
 <?php
 /**
- * Exception for Communecter business Error
+ * Exception for Network business Error
  */
-class CommunecterException extends Exception
+class NetworkException extends Exception
 {
 
   public function __construct($message = null, $code = 0) {

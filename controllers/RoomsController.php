@@ -6,7 +6,7 @@
  * @author: Sylvain Barbot
  * Date: 24/06/2015
  */
-class RoomsController extends CommunecterController {
+class RoomsController extends NetworkController {
 
     protected function beforeAction($action) {
     	parent::initPage();

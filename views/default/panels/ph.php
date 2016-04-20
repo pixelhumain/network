@@ -9,7 +9,7 @@
 		<br/>PIxel Humain was not yet crowdfunded but has many fans all around the world. 
 		<br/>It is developed by open R & D with contributions from great minds across the globe.
 	</section>
-	<a href="#" class="homestead nextBtns pull-right" onclick="showPanel('box-communecter')">COMMUNECTER</a>
+	<a href="#" class="homestead nextBtns pull-right" onclick="showPanel('box-network')">COMMUNECTER</a>
 </div>
 
 

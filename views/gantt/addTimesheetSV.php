@@ -242,7 +242,7 @@ function initFormAddTask(){
 				//console.log(params);
 		    	$.ajax({
 		            type: "POST",
-		            url: baseUrl+"/communecter/gantt/savetask",
+		            url: baseUrl+"/network/gantt/savetask",
 		            data: params,
 		            dataType: "json",
 		            success: function(data){

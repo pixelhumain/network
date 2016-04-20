@@ -514,7 +514,7 @@ function loadByHash( hash , back ) {
 	        showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" ), 'ADD NEED '+typesLabels[hashT[3]],'cubes' );
 	} 
     else 
-        showAjaxPanel( '/default/home', 'Home Communecter ','home' );
+        showAjaxPanel( '/default/home', 'Home Network ','home' );
 
     location.hash = hash;
 

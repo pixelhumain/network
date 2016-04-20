@@ -6,7 +6,7 @@
  * Date: 7/23/12
  * Time: 12:25 AM
  */
-class DocumentController extends CommunecterController {
+class DocumentController extends NetworkController {
   
 	protected function beforeAction($action) {
 		parent::initPage();

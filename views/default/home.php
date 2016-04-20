@@ -235,7 +235,7 @@ a.btn.btn-github:hover{	color: #4078C0;	border-color: #4078C0;}
 	<!-- <hr>  -->
 
 	<!-- <h3 class="text-dark information center" style="margin-top:15px; ">
-		<strong><span class="text-red">Communecter</span> c'est simple : un code postal et c'est parti !</strong><br/>
+		<strong><span class="text-red">Network</span> c'est simple : un code postal et c'est parti !</strong><br/>
 		Je suis communecté : j'ai accès à ma ville !<br/>
 	</h3> -->
 
@@ -342,7 +342,7 @@ a.btn.btn-github:hover{	color: #4078C0;	border-color: #4078C0;}
 				<br/>
 				Etre un <span class="text-red">acteur local</span> au sens vrai du terme, <span class="text-red">se faire reconnaitre comme une ressource</span> en terme de services au citoyen
 				avec un vrai respect de la qualité, quel que soit son métier.
-				<span class="text-red">Donner de la visibilité à son activité</span> par la force et à la richesse de la plateforme Communecter.
+				<span class="text-red">Donner de la visibilité à son activité</span> par la force et à la richesse de la plateforme Network.
 			</div>
 
 			<div class="col-sm-8 information">
@@ -351,7 +351,7 @@ a.btn.btn-github:hover{	color: #4078C0;	border-color: #4078C0;}
 				<br/>
 					<span class="text-azure">Déjà <?php echo $stats['global']['events']['total']; ?> événements partagés</span>
 				<br/>
-					<span class="text-red">Communecter</span> réunit et fédère les principaux acteurs de la vie locale<br/>
+					<span class="text-red">Network</span> réunit et fédère les principaux acteurs de la vie locale<br/>
 					pour valoriser le territoire et le <span class="text-red">bien commun</span>.
 			</div>
 
@@ -381,12 +381,12 @@ a.btn.btn-github:hover{	color: #4078C0;	border-color: #4078C0;}
 			<div class="col-md-6 col-sm-12 information" style="text-align: left; color:#3c5665";>
 
 				En s'appuyant sur un <a href="javascript:;" data-id="explainSocietyNetwork" class="explainLink">réseau sociétal</a> (au service de la société) regroupant les acteurs d'un territoire,
-				<a href="javascript:;" data-id="explainCommunecter" class="explainLink">"Communecter"</a> propose des outils numériques innovants et disponibles pour tous afin de créer ensemble
+				<a href="javascript:;" data-id="explainNetwork" class="explainLink">"Network"</a> propose des outils numériques innovants et disponibles pour tous afin de créer ensemble
 				un <a href="javascript:;" data-id="explainConnectedTerritory" class="explainLink">territoire connecté</a> qui nous ressemble.
-				<br/>Tout cela gratuitement, dans le respect des données de chacun, car Communecter est un <a href="javascript:;" data-id="explainCommuns" class="explainLink">bien commun</a>
+				<br/>Tout cela gratuitement, dans le respect des données de chacun, car Network est un <a href="javascript:;" data-id="explainCommuns" class="explainLink">bien commun</a>
 				fait pour et par chacun d’entre nous, porté par une association à but non lucratif.
 				<br/><br/>
-				Plus qu'une simple application Communecter se présente sous différentes formes :
+				Plus qu'une simple application Network se présente sous différentes formes :
 				<ul class="information" style="font-weight: normal;">
 				<li>Une projet <a href="javascript:;" data-id="explainOpenSource" class="explainLink">open source</a>
 				<li>Une communauté riche et diversifiée</li>
@@ -413,14 +413,14 @@ a.btn.btn-github:hover{	color: #4078C0;	border-color: #4078C0;}
 		<div class="col-md-12" style="background-color:#fff; color:#293A46;padding-bottom:40px;  float:left; ">
 			<div class="space20 hidden-xs"></div>
 			<div class="col-sm-12">
-				<a href="http://www.kisskissbankbank.com/communecter--2" target="_blank">
+				<a href="http://www.kisskissbankbank.com/network--2" target="_blank">
 					<img class="img-responsive pull-right" style="width: 60%; border:0px solid #293A46;margin:20px 0px 20px 20px; box-shadow: 0px 0px 4px 3px rgba(84, 82, 82, 0.5);" src="<?php echo $this->module->assetsUrl; ?>/images/crowdfunding.jpg"/>
 				</a>
 
 				<div class="information" style="text-align: left; color:#3c5665">
 					Et oui ! Ces derniers temps, vous êtes très sollicités par des demandes d'aides ou de participation à des campagnes de <a href="javascript:;" data-id="explainFinancementParticipatif" class="explainLink">financement participatif</a>.
 					<br/><span class="text-red">Vous vous demandez pourquoi ?</span> L'état se désengage du financement du milieu associatif. Les mouvements citoyens s'intensifient et prennent de l'ampleur mais se heurtent au nerf de la guerre : où trouver l'argent pour aller plus loin?
-					<br/>Pour <span class="text-red">rester indépendant, citoyen et libre, le réseau sociétal Communecter </span>recherche un moyen de financement qui lui correspond le plus. Quoi de plus naturel alors que de se tourner vers ceux qui s'en serviront le plus.
+					<br/>Pour <span class="text-red">rester indépendant, citoyen et libre, le réseau sociétal Network </span>recherche un moyen de financement qui lui correspond le plus. Quoi de plus naturel alors que de se tourner vers ceux qui s'en serviront le plus.
 					<br/>A l'heure du numérique et du par-tout-le-temps connecté, nous croyons que la <span class="text-red">démocratie participative et la participation citoyenne</span> sont conditionnées par la construction d'un outil simple et à destination de tous.
 					<br/>Dans le contexte actuel, difficile de demander aux collectivités de financer cet outil qui, pensent-elles, risque de leur faire perdre une partie de leur pouvoir.
 					<br/>C'est donc vers les citoyens (vers vous) que nous nous tournons : <span class="text-red">participez à la construction de ce projet innovant</span> en choisissant votre contrepartie !
@@ -443,7 +443,7 @@ a.btn.btn-github:hover{	color: #4078C0;	border-color: #4078C0;}
 
 	<div class="col-md-12 no-padding" id="valueSection" style="width:100%; float:left;">
 		<div class="col-md-12" style="background-color:#92BE1F;width:100%;padding:8px 0px 3px 0%;">
-			<h1 class="homestead text-white center"><a href="http://www.kisskissbankbank.com/fr/projects/communecter-se-connecter-a-sa-commune/contributors" target="_blank"  class="text-dark">ILS NOUS SOUTIENNENT <i class="fa fa-child fa-2x"></i></h1>
+			<h1 class="homestead text-white center"><a href="http://www.kisskissbankbank.com/fr/projects/network-se-connecter-a-sa-commune/contributors" target="_blank"  class="text-dark">ILS NOUS SOUTIENNENT <i class="fa fa-child fa-2x"></i></h1>
 		</div>
 		<div class="col-md-12" style="background-color:#fff;width:100%;padding:8px 0px 3px 0%;">
 			<h1 class="homestead center"><a href="javascript:loadByHash('#default.view.page.crowdfunding')"  class="text-dark">Aidez Nous</a> réussir la campagne <i class="fa fa-diamond fa-2x"></i></h1>
@@ -535,7 +535,7 @@ a.btn.btn-github:hover{	color: #4078C0;	border-color: #4078C0;}
 				<a href="javascript:showTagOnMap ('#contributeur')" data-id="explainContributor" class=" btn btn-default text-bold">Contributeurs</a>
 				<div class="space20"></div>
 				<a href="javascript:loadByHash('#organization.detail.id.<?php echo Yii::app()->params['openatlasId'] ?>');" class=" btn btn-default text-bold">Association Open Atlas</a>
-				<a href="javascript:loadByHash('#project.detail.id.<?php echo Yii::app()->params['communecterId'] ?>')"  class="btn btn-default text-bold">Projet Communecter</a>
+				<a href="javascript:loadByHash('#project.detail.id.<?php echo Yii::app()->params['networkId'] ?>')"  class="btn btn-default text-bold">Projet Network</a>
 			</div>
 		</center>
 		<div class="space20"></div>
@@ -548,10 +548,10 @@ a.btn.btn-github:hover{	color: #4078C0;	border-color: #4078C0;}
 			+ 262 262 34 36 86<br><a href="#">contact@pixelhumain.com</a>
 
 			<ul class="social-list">
-				<li><a target="_blank" href="https://www.facebook.com/communecter" class="btn btn-facebook btn-social"><span class="fa fa-facebook"></span></a></li>
-				<li><a target="_blank" href="https://twitter.com/communecter" class="btn btn-twitter btn-social"><span class="fa fa-twitter"></span></a></li>
+				<li><a target="_blank" href="https://www.facebook.com/network" class="btn btn-facebook btn-social"><span class="fa fa-facebook"></span></a></li>
+				<li><a target="_blank" href="https://twitter.com/network" class="btn btn-twitter btn-social"><span class="fa fa-twitter"></span></a></li>
 				<li><a target="_blank" href="https://plus.google.com/communities/111483652487023091469" class="btn btn-google btn-social"><span class="fa fa-google-plus"></span> </a></li>
-				<li><a target="_blank" href="https://github.com/pixelhumain/communecter" class="btn btn-github btn-social"><span class="fa fa-github"></span> </a></li>
+				<li><a target="_blank" href="https://github.com/pixelhumain/network" class="btn btn-github btn-social"><span class="fa fa-github"></span> </a></li>
 			</ul>
 
 			<a href="javascript:;" data-id="explainOpenAtlas" class="explainLink">L'association Open Atlas</a>

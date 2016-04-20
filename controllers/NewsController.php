@@ -6,7 +6,7 @@
  * @author: Tristan Goguet
  * Date: 09/11/2014
  */
-class NewsController extends CommunecterController {
+class NewsController extends NetworkController {
 
     protected function beforeAction($action) {
     	parent::initPage();

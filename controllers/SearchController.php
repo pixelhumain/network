@@ -7,7 +7,7 @@
  * @author: Tibor Katelbach <tibor@pixelhumain.com>
  * Date: 14/03/2014
  */
-class SearchController extends CommunecterController {
+class SearchController extends NetworkController {
 
   protected function beforeAction($action) {
       return parent::beforeAction($action);

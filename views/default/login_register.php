@@ -219,7 +219,7 @@
 							<div>
 								<label for="agree" class="checkbox-inline">
 									<input type="checkbox" class="grey agree" id="agree" name="agree">
-									<?php echo Yii::t("login","I agree to the Terms of") ?> <a href="https://www.communecter.org/doc/Conditions Générales d'Utilisation.pdf" target="_blank" class="bootbox-spp"><?php echo Yii::t("login","Service and Privacy Policy") ?></a>
+									<?php echo Yii::t("login","I agree to the Terms of") ?> <a href="https://www.network.org/doc/Conditions Générales d'Utilisation.pdf" target="_blank" class="bootbox-spp"><?php echo Yii::t("login","Service and Privacy Policy") ?></a>
 								</label>
 							</div>
 						</div>			

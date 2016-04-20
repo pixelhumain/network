@@ -5,7 +5,7 @@
  * @author: Raphael RIVIERE
  * Date:
  */
-class AdminpublicController extends CommunecterController {
+class AdminpublicController extends NetworkController {
 
   protected function beforeAction($action)
   {

@@ -6,7 +6,7 @@
  * @author: Sylvain Barbot
  * Date: 24/06/2015
  */
-class GanttController extends CommunecterController {
+class GanttController extends NetworkController {
 
     protected function beforeAction($action) {
     	parent::initPage();

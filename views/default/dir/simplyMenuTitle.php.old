@@ -193,9 +193,9 @@ function gotToPrevNav()
 	}
 </script>
 <?php 
-if(isset($params['skin']['loginTitle']) && $params['skin']['loginTitle'] == "communecter"){ ?>
+if(isset($params['skin']['loginTitle']) && $params['skin']['loginTitle'] == "network"){ ?>
 	<span class="badge badge-danger" style="border-radius:10px 10px 0px 0px; font-weight:300; width:100%; line-height: 1.2;"> Ouverture totale prévue pour bientôt ! <br/> Restez informé en vous inscrivant. </span>
-	<div class="text-white text-extra-large text-bold center topLogoAnim " style="cursor: pointer" onclick="showPanel('box-communecter')">
+	<div class="text-white text-extra-large text-bold center topLogoAnim " style="cursor: pointer" onclick="showPanel('box-network')">
 	<span class="titleRed text-red homestead" style="font-size:40px">CO</span>
 	<span  style="font-size:40px" class="titleWhite homestead">MMU</span>
 	<span  style="font-size:40px" class="titleWhite2 text-red homestead">NECTER</span>

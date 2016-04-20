@@ -3,10 +3,10 @@
 * contact metamaps for Ecosystem 
 * Cities details when no content add.specific msg,  be the first citizen to join xxxx and start a new era !! 
 	Special ponts ? , Explain creating links,  value by usage 
-* open Communecter
-	Au reseau proche , Commencer a communecter la famille 
+* open Network
+	Au reseau proche , Commencer a network la famille 
 * Test a brand new user 
-* Communecter: quel interet
+* Network: quel interet
 * Traduction : crowdfunding
 * Ubiquity nano station m5 : [[http://www.ldlc.com/fiche/PB00142273.html#utm_source=Google%2BShopping&utm_medium=cpc&utm_campaign=LDLC%2B-%2BGoogle%2BShopping]]
 * Follow a tag
@@ -131,7 +131,7 @@ openId
 				[ ] superieur
 			[ ] autre...
 		[ ] Contact
-			[ ] faire comme dans linkin verifier si les contacts ne sont pas déjà dans communecter
+			[ ] faire comme dans linkin verifier si les contacts ne sont pas déjà dans network
 	** SYLVAIN
 	** TIBOR
 		Jean Marc Laurent > prise de vue 
@@ -174,8 +174,8 @@ openId
 [ ] trier events by date show date 
 [ ] on admin show orga counts, people counts, event counts, project count
 [ ] test creating orga/person dash list and project
-[ ] Impossible de s'ajouter à l'organisation [[https://github.com/pixelhumain/communecter/issues/92]]
-[ ] Bug lors de l'affichage du formulaire d'un nouvel évènement dans le pod "organizations" #82 [[https://github.com/pixelhumain/communecter/issues/82]]
+[ ] Impossible de s'ajouter à l'organisation [[https://github.com/pixelhumain/network/issues/92]]
+[ ] Bug lors de l'affichage du formulaire d'un nouvel évènement dans le pod "organizations" #82 [[https://github.com/pixelhumain/network/issues/82]]
 [ ] Orga : Rééditer un membre #104
 
 		[ ] test creating a user with an existing email
@@ -236,7 +236,7 @@ openId
 				[ ] question 
 					[ ] become tete de reseau pour crowdfunding
 					[ ] become beta tester 
-					[ ] use Communecter to connect your terrritory
+					[ ] use Network to connect your terrritory
 
 		* FORUM DES COMMUNS
 			[ ] cartographier les projet des biens communs d'un territoire
@@ -269,7 +269,7 @@ openId
 				commune histoire
 					commencons par communiquer 
 					et commettre un crime des communs 
-					et communecter les 
+					et network les 
 		[ ] apply filter tags and scope 
 			[ ] survey
 			[ ] maps

@@ -320,7 +320,7 @@ $tags = array_iunique($tags);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Annuaire communecter</a>
+      <a class="navbar-brand" href="#">Annuaire network</a>
     </div>
     <div class="navbar-collapse collapse" id="searchbar">
      
@@ -684,7 +684,7 @@ function buildDirectoryLine( $e, $collection, $type, $icon, $moduleId, &$tags, &
             //   $img = '<img class="thumbnail-profil" width="50" height="50" alt="image" src="'.Yii::app()->createUrl('/'.$e['profilThumbImageUrl']).'">';
             // }else{
             //   if(!empty($e["profilImageUrl"]))
-            //     $img = '<img class="thumbnail-profil" width="50" height="50" alt="image" src="'.Yii::app()->createUrl('/communecter/document/resized/50x50'.$e['profilImageUrl']).'">';
+            //     $img = '<img class="thumbnail-profil" width="50" height="50" alt="image" src="'.Yii::app()->createUrl('/network/document/resized/50x50'.$e['profilImageUrl']).'">';
             //   else
             //   $img = "<div class='thumbnail-profil'></div>";
             // }

@@ -7,7 +7,7 @@
  * @author: Tibor Katelbach <tibor@pixelhumain.com>
  * Date: 14/03/2014
  */
-class GraphController extends CommunecterController {
+class GraphController extends NetworkController {
 
     protected function beforeAction($action) {
         parent::initPage();

@@ -1,5 +1,5 @@
 <?php
-class PersonController extends CommunecterController {
+class PersonController extends NetworkController {
 
   public $hasSocial = false;
   public $loginRegister = true;

@@ -6,7 +6,7 @@
  * @author: Sylvain Barbot
  * Date: 24/06/2015
  */
-class NeedController extends CommunecterController {
+class NeedController extends NetworkController {
 
     protected function beforeAction($action) {
     	parent::initPage();

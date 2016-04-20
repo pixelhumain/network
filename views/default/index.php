@@ -10,7 +10,7 @@
 	//Data helper
 	$cs->registerScriptFile($this->module->assetsUrl. '/js/dataHelpers.js' , CClientScript::POS_END);
 	//Data helper
-	//$cs->registerScriptFile($this->module->assetsUrl. '/js/communecter.js' , CClientScript::POS_END);
+	//$cs->registerScriptFile($this->module->assetsUrl. '/js/network.js' , CClientScript::POS_END);
 	//Validation
 	$cs->registerScriptFile(Yii::app()->theme->baseUrl. '/assets/plugins/jquery-validation/dist/jquery.validate.min.js' , CClientScript::POS_END);
 	//select2
@@ -33,11 +33,11 @@
 
 	function random_pic()
     {
-        if(file_exists ( "../../modules/communecter/assets/images/proverb" )){
-          $files = glob('../../modules/communecter/assets/images/proverb/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+        if(file_exists ( "../../modules/network/assets/images/proverb" )){
+          $files = glob('../../modules/network/assets/images/proverb/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
           $res = array();
           for ($i=0; $i < 8; $i++) { 
-            array_push( $res , str_replace("../../modules/communecter/assets", Yii::app()->controller->module->assetsUrl, $files[array_rand($files)]) );
+            array_push( $res , str_replace("../../modules/network/assets", Yii::app()->controller->module->assetsUrl, $files[array_rand($files)]) );
           }
           return $res;
         } else
@@ -263,11 +263,11 @@
 	
 	<?php if(isset(Yii::app()->session['userId'])) { ?>
 	<a href="javascript:loadByHash('#news.index.type.citoyens.id.<?php echo Yii::app()->session['userId']?>?isSearchDesign=1')" class="hidden-xs" >
-		<img class="hidden-xs" id="logo-main-menu" src="<?php echo $this->module->assetsUrl?>/images/Communecter-32x32.svg"/>
+		<img class="hidden-xs" id="logo-main-menu" src="<?php echo $this->module->assetsUrl?>/images/Network-32x32.svg"/>
 	</a>
 	<?php }else{ ?> 
 	<a href="javascript:loadByHash('#default.home')" class="hidden-xs" >
-		<img class="hidden-xs" id="logo-main-menu" src="<?php echo $this->module->assetsUrl?>/images/Communecter-32x32.svg"/>
+		<img class="hidden-xs" id="logo-main-menu" src="<?php echo $this->module->assetsUrl?>/images/Network-32x32.svg"/>
 	</a>
 	<?php } ?>
 
@@ -739,8 +739,8 @@ function setScopeValue(btn){
 		}else
 		if(location.hash.indexOf("#city.detail") >= 0) {
 			showLocalActorsCityCommunexion();
-			$("#btn-communecter").html("<i class='fa fa-check'></i> COMMUNECTÉ");
-    		$("#btn-communecter").attr("onclick", "");
+			$("#btn-network").html("<i class='fa fa-check'></i> COMMUNECTÉ");
+    		$("#btn-network").attr("onclick", "");
 			//showMap(false);
 		}else
 		if(location.hash.indexOf("#default.twostepregister") >= 0) {
@@ -763,7 +763,7 @@ function setScopeValue(btn){
 			if(inseeCommunexion != ""){
 				showLocalActorsCityCommunexion();
 				//toastr.success('Vous êtes communecté !<br/>' + cityNameCommunexion + ', ' + cpCommunexion);
-				//$("#cityDetail #btn-communecter").html("<i class='fa fa-check'></i> Communecté");
+				//$("#cityDetail #btn-network").html("<i class='fa fa-check'></i> Communecté");
 				//showMap(false);
 			}
 		}

@@ -7,7 +7,7 @@
  * @author: Tibor Katelbach <tibor@pixelhumain.com>
  * Date: 14/03/2014
  */
-class SigController extends CommunecterController {
+class SigController extends NetworkController {
 
     protected function beforeAction($action) {
 		  return parent::beforeAction($action);
