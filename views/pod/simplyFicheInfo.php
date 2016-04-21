@@ -88,11 +88,17 @@
 	    float:left;
 	}
 
+	.simply-title{
+    	font-weight: 200;
+    	font-size: 21px;
+    	font-family: "homestead";
+    }
+
 </style>
 
 <div class="panel panel-white">
 	<div class="panel-heading border-light">
-		<h4 class="panel-title text-dark"> 
+		<h4 class="simply-title text-dark"> 
 			<?php echo (isset($organization)) ? $organization["name"] : null; ?>
 		</h4>
 	</div>
@@ -150,21 +156,24 @@
 				<div class="row info-coordonnees entityDetails text-dark" style="margin-top: 10px !important;">
 					<div class="col-md-6 col-sm-6">	
 						<i class="fa fa-road fa_streetAddress hidden"></i> 
-						<a href="#" id="streetAddress" data-type="text" data-title="<?php echo Yii::t("common","Street Address") ?>" data-emptytext="<?php echo Yii::t("common","Street Address") ?>" class="editable-context editable editable-click">
+						<!-- <a href="#" id="streetAddress" data-type="text" data-title="<?php echo Yii::t("common","Street Address") ?>" data-emptytext="<?php echo Yii::t("common","Street Address") ?>" class="editable-context editable editable-click">
 							<?php echo (isset( $organization["address"]["streetAddress"])) ? $organization["address"]["streetAddress"] : null; ?>
-						</a>
+						</a> -->
+						<?php echo (isset( $organization["address"]["streetAddress"])) ? $organization["address"]["streetAddress"] : null;?>
 						<br>
 					
 						<i class="fa fa-bullseye fa_postalCode  hidden"></i> 
-						<a href="#" id="address" data-type="postalCode" data-title="<?php echo Yii::t("common","Postal code") ?>" 
+						<!-- <a href="#" id="address" data-type="postalCode" data-title="<?php echo Yii::t("common","Postal code") ?>" 
 							data-emptytext="<?php echo Yii::t("common","Postal code") ?>" class="editable editable-click" data-placement="bottom">	
-						</a>
+						</a> -->
+						<?php echo (isset( $organization["address"]["postalCode"])) ? $organization["address"]["postalCode"] : null; ?>
 						<br>
 						
 						<i class="fa fa-globe fa_addressCountry  hidden"></i> 
-						<a href="#" id="addressCountry" data-type="select" data-title="<?php echo Yii::t("common","Country") ?>" 
+						<!-- <a href="#" id="addressCountry" data-type="select" data-title="<?php echo Yii::t("common","Country") ?>" 
 							data-emptytext="<?php echo Yii::t("common","Country") ?>" data-original-title="" class="editable editable-click">
-						</a>
+						</a> -->
+						<?php echo (isset( $organization["address"]["addressCountry"])) ? $organization["address"]["addressCountry"] : ""; ?>
 						<br>
 
 						<a href="javascript:" id="btn-update-geopos" class="btn btn-primary btn-sm hidden" style="margin: 10px 0px;">
@@ -230,22 +239,22 @@
 									}
 								}
 								
-								echo '<i class="fa fa-phone fa_telephone  hidden"></i>
-														<a href="#" id="telephone" data-type="select2" data-type="text" data-title="'. Yii::t("common","Phone number").'" 
-							data-emptytext="'. Yii::t("common","Phone number") .'" class="tel editable editable-click">'.$telephone . "</a><br>" ;
+							// 	echo '<i class="fa fa-phone fa_telephone  hidden"></i>
+							// 							<a href="#" id="telephone" data-type="select2" data-type="text" data-title="'. Yii::t("common","Phone number").'" 
+							// data-emptytext="'. Yii::t("common","Phone number") .'" class="tel editable editable-click">'.$telephone . "</a><br>" ;
 
 								
 							}
-
-
+							echo '<i class="fa fa-phone fa_telephone  hidden"></i>'.@$telephone.'<br>';
 
 						?>
 
 
 						<i class="fa fa-envelope fa_email  hidden"></i> 
-						<a href="#" id="email" data-type="text" data-title="Email" data-emptytext="Email" class="editable-context editable editable-click required">
+						<!-- <a href="#" id="email" data-type="text" data-title="Email" data-emptytext="Email" class="editable-context editable editable-click required">
 							<?php echo (isset($organization["email"])) ? $organization["email"] : null; ?>
-						</a>
+						</a> -->
+						<?php echo (isset($organization["email"])) ? $organization["email"] : null; ?>
 						<br>
 					
 						<?php //If there is no http:// in the url
@@ -255,11 +264,11 @@
 						}?>
 
 						<i class="fa fa-desktop fa_url hidden"></i> 
-						<a href="<?php echo (isset($organization["url"])) ? $scheme.$organization['url'] : '#'; ?>" target="_blank" id="url" data-type="text" data-title="<?php echo Yii::t("common","Website URL") ?>" 
+						<!-- <a href="<?php echo (isset($organization["url"])) ? $scheme.$organization['url'] : '#'; ?>" target="_blank" id="url" data-type="text" data-title="<?php echo Yii::t("common","Website URL") ?>" 
 							data-emptytext="<?php echo Yii::t("common","Website URL") ?>" style="cursor:pointer;" class="editable-context editable editable-click">
 							<?php echo (isset($organization["url"])) ? $organization["url"] : null; ?>
-						</a>
-
+						</a> -->
+						<?php echo (isset($organization["url"])) ? $organization["url"] : null; ?>
 						<div class="hidden" id="entity-insee-value" 
 							 insee-val="<?php echo (isset( $organization["address"]["codeInsee"])) ? $organization["address"]["codeInsee"] : ""; ?>">
 						</div>
@@ -271,8 +280,7 @@
 		<div class="row">
 			<div class="col-sm-12 col-xs-12">
 				<div class="text-dark lbl-info-details"><i class="fa fa-angle-down"></i> Description</div>
-				<a href="#" id="description" data-title="Description" data-type="wysihtml5" data-emptytext="Description" class="editable editable-click">
-				</a>
+				 <?php echo (isset($organization["description"])) ? $organization["description"] : "''"; ?>
 			</div>
 		</div>
 		<div class="row tag_group">
@@ -283,8 +291,9 @@
 			<div class="col-md-12 padding-20 text-red text-right pull-right">
 				<!-- <h3><i class="fa fa-angle-down"></i> Thématiques</h3> -->
 				<i class="fa fa-tags"></i> Tags : 
-				<a href="#" id="tags" data-type="select2" data-type="Tags" data-emptytext="Tags" class="text-red editable editable-click">
-				</a>
+				<!-- <a href="#" id="tags" data-type="select2" data-type="Tags" data-emptytext="Tags" class="text-red editable editable-click">
+				</a> -->
+				<?php echo (isset($organization["tags"])) ? implode(",", $organization["tags"]) : "''"; ?>;
 			</div>
 		</div>
 		
@@ -311,7 +320,7 @@
 		$("#editFicheInfo").on("click", function(){
 			switchMode();
 		});
-		activateEditableContext();
+		// activateEditableContext();
 		manageModeContext();
 		debugMap.push(contextData);
 		
@@ -458,16 +467,16 @@
 		});
 
 		//Select2 tags
-		$('#tags').editable({
-			url: baseUrl+"/"+moduleId+"/organization/updatefield", 
-			mode: 'popup',
-			value: returnttag(),
-			select2: {
-				tags: <?php if(isset($tags)) echo json_encode($tags); else echo json_encode(array())?>,
-				tokenSeparators: [","],
-				width: 200
-			}
-		});
+		// $('#tags').editable({
+		// 	url: baseUrl+"/"+moduleId+"/organization/updatefield", 
+		// 	mode: 'popup',
+		// 	value: returnttag(),
+		// 	select2: {
+		// 		tags: <?php if(isset($tags)) echo json_encode($tags); else echo json_encode(array())?>,
+		// 		tokenSeparators: [","],
+		// 		width: 200
+		// 	}
+		// });
 
 
 		$('#telephone').editable({

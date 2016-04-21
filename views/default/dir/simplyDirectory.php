@@ -29,7 +29,7 @@ $params = json_decode($json, true);
   <?php } ?>
   
   //********** FILTER CATEGORY AND TAG**********
-  var searchTag = ["Création"];
+  var searchTag = [];
   var allSearchTag = [];
 
   //********** FILTER CATEGORY **********
@@ -488,8 +488,8 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                    <?php } ?>
                     str += "<div class='entityMiddle col-md-5 name' onclick='"+onclick+"'>";
                         str += "<a class='entityName text-dark'>" + name + "</a><br/>";
-                        // if(website != "" && website != " ")
-                        str += "<i class='fa fa-desktop fa_url'></i><a href='"+website+"' target='_blank'>"+website+"url à recup</a><br/>";
+                        if(website != "" && website != " ")
+                        str += "<i class='fa fa-desktop fa_url'></i><a href='"+website+"' target='_blank'>"+website+"</a><br/>";
                         <?php if(isset($params['result']['fullLocality']) && $params['result']['fullLocality']) { ?>
                           if(fullLocality != "" && fullLocality != " ")
                           str += "<a href='"+url+"' onclick='"+onclickCp+"'"+target+ ' data-id="' + dataId + '"' + "  class='entityLocality'><i class='fa fa-home'></i> " + fullLocality + "</a><br/>";
@@ -585,11 +585,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   // $(".my-main-container").scrollTop(95);
                 }
 
-                //on affiche le nombre de résultat en bas
-                var s = "";
-                var length = ($( "div.searchEntity" ).length);
-                if(length > 1) s = "s";
-                $("#countResult").html(length+" résultat"+s);
+               
 
                 //On met à jour les filtres
                 <?php if(isset($params['mode']) && $params['mode'] == "client"){ ?>
@@ -605,7 +601,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
                 //remet l'icon "loupe" du bouton search
                 $(".btn-start-search").html("<i class='fa fa-search'></i>");
-                $.unblockUI();
+                
 
                 //active le chargement de la suite des résultat au survol du bouton "afficher plus de résultats"
                 //(au cas où le scroll n'ait pas lancé le chargement comme prévu)
@@ -647,6 +643,14 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
             //affiche les éléments sur la carte
             Sig.showMapElements(Sig.map, mapElements);
+
+             //on affiche le nombre de résultat en bas
+              var s = "";
+              var length = ($( "div.searchEntity" ).length);
+              if(length > 1) s = "s";
+              $("#countResult").html(length+" résultat"+s);
+            
+            $.unblockUI();
           }
     });               
   }
