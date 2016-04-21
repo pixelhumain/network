@@ -8,8 +8,8 @@ class NetworkController extends Controller
   public $version = "v0.098";
   public $versionDate = "13/04/2016 08:00";
   public $title = "Network";
-  public $subTitle = "se connecter à sa commune";
-  public $pageTitle = "Network, se connecter à sa commune";
+  public $subTitle = "Annuaire";
+  public $pageTitle = "Network, Annuaire";
   public static $moduleKey = "network";
   public $keywords = "connecter, réseau, sociétal, citoyen, société, regrouper, commune, network, social";
   public $description = "Network : Connecter a sa commune, reseau societal, le citoyen au centre de la société.";
@@ -115,6 +115,32 @@ class NetworkController extends Controller
       "getlistbyid"         => array("href"=> "ph/network/document/getlistbyid"),
       "upload"              => array("href"=> "ph/network/document/upload"),
       "delete"              => array("href"=> "ph/network/document/delete")
+    ),
+    "notification"=> array(
+      "getnotifications"          => array("href" => "/ph/network/notification/get"),
+      "marknotificationasread"    => array("href" => "/ph/network/notification/remove"),
+      "markallnotificationasread" => array("href" => "/ph/network/notification/removeall"),
+    ),
+    "city"=> array(
+      "index"               => array("href" => "/ph/network/city/index", "public" => true),
+      "detail"              => array("href" => "/ph/network/city/detail", "public" => true),
+      "dashboard"           => array("href" => "/ph/network/city/dashboard", "public" => true), 
+      "directory"           => array("href" => "/ph/network/city/directory", "public" => true, "title"=>"City Directory", "subTitle"=>"Find Local Actors and Actions : People, Organizations, Events"),
+      'statisticpopulation' => array("href" => "/ph/network/city/statisticpopulation", "public" => true),
+      'getcitydata'         => array("href" => "/ph/network/city/getcitydata", "public" => true),
+      'getcityjsondata'     => array("href" => "/ph/network/city/getcityjsondata", "public" => true),
+      'statisticcity'       => array("href" => "/ph/network/city/statisticcity", "public" => true),
+      'getcitiesdata'       => array("href" => "/ph/network/city/getcitiesdata"),
+      'opendata'            => array("href" => "/ph/network/city/opendata","public" => true),
+      'getoptiondata'       => array("href" => "/ph/network/city/getoptiondata"),
+      'getlistoption'       => array("href" => "/ph/network/city/getlistoption"),
+      'getpodopendata'      => array("href" => "/ph/network/city/getpodopendata"),
+      'addpodopendata'      => array("href" => "/ph/network/city/addpodopendata"),
+      'getlistcities'       => array("href" => "/ph/network/city/getlistcities"),
+      'creategraph'         => array("href" => "/ph/network/city/creategraph"),
+      'graphcity'           => array("href" => "/ph/network/city/graphcity"),
+      'updatecitiesgeoformat' => array("href" => "/ph/network/city/updatecitiesgeoformat","public" => true),
+      'getinfoadressbyinsee'  => array("href" => "/ph/network/city/getinfoadressbyinsee"),
     ),
     "log"=> array(
       "monitoring" => array("href" => "/ph/network/log/monitoring"),
