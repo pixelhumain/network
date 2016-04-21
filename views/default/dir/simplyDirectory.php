@@ -35,11 +35,6 @@ $params = json_decode($json, true);
   //********** FILTER CATEGORY **********
   var searchCategory = [];
   var allsearchCategory = []; 
-  <?php if(isset($_GET['category']) && $_GET['category'] != ""){ ?>
-    searchCategory = ["<?php echo $_GET['category']; ?>"];
-    // addSearchCategory("<?php echo $_GET['category']; ?>");
-    // if($('.searchCategory[value="<?php echo $_GET['category']; ?>"]').length)$('.searchCategory[value="<?php echo $_GET['category']; ?>"]').addClass('active');
-  <?php } ?> 
 
   //Par défaut
   location.hash = "#default.simplydirectory"; 
@@ -66,6 +61,17 @@ $params = json_decode($json, true);
   jQuery(document).ready(function() {
 
     showMap(true);
+
+    <?php if(isset($_GET['category']) && $_GET['category'] != ""){ ?>
+      searchCategory = ["<?php echo $_GET['category']; ?>"];
+      if($('.checkbox[data-parent="'+category+'"]').length){
+        $('.checkbox[data-parent="'+category+'"]').each(function(){
+          addSearchTag($(this).attr("value"));
+        });
+      }
+      // addSearchCategory("<?php echo $_GET['category']; ?>");
+      // if($('.searchCategory[value="<?php echo $_GET['category']; ?>"]').length)$('.searchCategory[value="<?php echo $_GET['category']; ?>"]').addClass('active');
+    <?php } ?> 
 
     selectScopeLevelCommunexion(levelCommunexion);
 
@@ -1082,21 +1088,26 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
     //Display active
     var breadcum  = "";
+
+    //All desacactivate
     $('.tagFilter').prop("checked", false );
+    $('.categoryFilter').prop("checked", false );
     $.each(searchTag, function(index, value){
-      $('.tagFilter[value="'+value+'"]').addClass('active');
+      // $('.tagFilter[value="'+value+'"]').addClass('active');
       $('.tagFilter[value="'+value+'"]').prop("checked", true );
-      breadcum = breadcum+"<span class='label label-danger tagFilter' value='"+value+"'>"+value+"</span> ";
+      $('.categoryFilter[value="'+$('.tagFilter[value="'+value+'"]').attr("data-parent")+'"]').prop("checked", true );
+      // console.log($('.tagFilter[value="'+value+'"]'));
+      breadcum = breadcum+"<span class='label label-danger tagFilter' value='"+value+"'>"+$('.tagFilter[value="'+value+'"]').attr("data-label")+"</span> ";
       manageCollapse(value,true);
     });
 
-    $.each(searchCategory, function(index, value){
-      $('.categoryFilter[value="'+value+'"]').addClass('active')
-      $('.categoryFilter[value="'+value+'"]').prop( "checked", true );
+    // $.each(searchCategory, function(index, value){
+    //   $('.categoryFilter[value="'+value+'"]').addClass('active')
+    //   $('.categoryFilter[value="'+value+'"]').prop( "checked", true );
       // breadcum = breadcum+"#"+value+", ";
       // breadcum = breadcum+"<span class='label label-danger categoryFilter' value='"+value+"'>"+value+"</span> ";
-      manageCollapse(value,true);
-    });
+    //   manageCollapse(value,true);
+    // });
 
     if(breadcum != ""){
       $('#breadcum').html('<i id="breadcum_search" class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i>'+breadcum+'<i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><label id="countResult" class="text-dark"></label>');

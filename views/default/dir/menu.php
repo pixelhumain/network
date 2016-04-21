@@ -5,6 +5,7 @@
 
 </style>
 <div  class="col-md-12" id="dropdown_params">
+
   <!-- <center><button id="reset" class="btn btn-default">Initialiser filtre</button></center>--> 
   <!-- <label id='countResult' class='text-dark'></label> -->
   <!-- FILTER TEXT -->
@@ -29,8 +30,8 @@
           <div id="list_<?php echo $listTag['tagParent']; ?>" class="panel-collapse collapse">
             <ul class="list-group">
                <!-- Tags -->
-              <?php foreach($listTag['tags'] as $tag){?>
-                <li class="list-group-item"><input type="checkbox" class="checkbox tagFilter" value="<?php echo $tag; ?>" data-parent="<?php echo $listTag['tagParent']; ?>"/><?php echo $tag; ?></li>
+              <?php foreach($listTag['tags'] as $label => $tag){?>
+                <li class="list-group-item"><input type="checkbox" class="checkbox tagFilter" value="<?php echo $tag; ?>" data-parent="<?php echo $listTag['tagParent']; ?>" data-label="<?php echo $label; ?>"/><?php echo $label; ?></li>
               <?php } ?>
             </ul>
           </div>
@@ -71,3 +72,4 @@
   }
 
 </script>
+
