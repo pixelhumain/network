@@ -5,7 +5,7 @@
 function getCountries(selectType) {
 	var result = new Array();
 	$.ajax({
-		url: baseUrl+"/opendata/getcountries",
+		url: baseUrl+'/'+moduleId+"/opendata/getcountries",
 		type: 'post',
 		global: false,
 		async: false,
