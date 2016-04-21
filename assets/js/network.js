@@ -578,10 +578,6 @@ function showAjaxPanel (url,title,icon) {
 		$(".hover-info").hide();
 		 $.blockUI({
 		 	message : '<h2 class=" text-dark padding-10"><i class="fa fa-spin fa-circle-o-notch"></i> Chargement en cours...</h2>'
-		 	//"<h2 class='text-red homestead'>Lancement du crowdfouding : lundi 22 février</h2>" +
-		 	// "<img style='max-width:60%; margin-bottom:20px;' src='"+urlImgRand+"'>"
-		 	//"<img src='<?php echo $this->module->assetsUrl?>/images/crowdfoundez.png'/>"
-		 	//"<h2 class='text-red homestead'>ouverture du site : lundi 29 février</h2>"
 		 });
 		$(".moduleLabel").html("<i class='fa fa-spin fa-circle-o-notch'></i>"); //" Chargement en cours ...");
 		//$(".main-col-search").show();
@@ -611,17 +607,6 @@ function showAjaxPanel (url,title,icon) {
 			 });
 
 			$.unblockUI();
-
-			// setTimeout(function(){
-			// 	console.log("call timeout MAP MAP");
-			// 	getAjax('#mainMap',baseUrl+'/'+moduleId+"/search/mainmap",function(){ 
-			// 		toastr.info('<i class="fa fa-check"></i> Cartographie activée');
-			// 		showMap(false); 
-			// 		$("#btn-toogle-map").show(400);
-			// 		//console.log("getAJAX OK timeout MAIN MAP");
-					
-			// 	},"html");
-			// }, 2000);
 
 		},"html");
 	}, 800);

@@ -29,7 +29,7 @@ $params = json_decode($json, true);
   <?php } ?>
   
   //********** FILTER CATEGORY AND TAG**********
-  var searchTag = [];
+  var searchTag = ["Création"];
   var allSearchTag = [];
 
   //********** FILTER CATEGORY **********

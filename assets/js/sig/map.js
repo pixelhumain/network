@@ -1,4 +1,4 @@
-
+	
 	//variable qui permet de charger une instance Sig différente à chaque éxecution
 	var SigLoader = new Array();
 
