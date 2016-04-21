@@ -8,7 +8,7 @@
   <!-- <center><button id="reset" class="btn btn-default">Initialiser filtre</button></center>--> 
   <!-- <label id='countResult' class='text-dark'></label> -->
   <!-- FILTER TEXT -->
-  <input id="searchBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control">
+  <!-- <input id="searchBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control"> -->
   
   <div class="panel-group">
     <div class="panel panel-default">

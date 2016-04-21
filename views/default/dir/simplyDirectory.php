@@ -34,7 +34,7 @@ $params = json_decode($json, true);
 
   //********** FILTER CATEGORY **********
   var searchCategory = [];
-  var allsearchCategory = ["Travail"]; 
+  var allsearchCategory = []; 
   <?php if(isset($_GET['category']) && $_GET['category'] != ""){ ?>
     searchCategory = ["<?php echo $_GET['category']; ?>"];
     // addSearchCategory("<?php echo $_GET['category']; ?>");
@@ -65,8 +65,6 @@ $params = json_decode($json, true);
 
   jQuery(document).ready(function() {
 
-    $('#breadcum').html('<i class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><label id="countResult" class="text-dark"></label>');
-
     showMap(true);
 
     selectScopeLevelCommunexion(levelCommunexion);
@@ -83,6 +81,7 @@ $params = json_decode($json, true);
     $('.tooltips').tooltip();
 
     $('.main-btn-toogle-map').click(function(e){ showMap(); });
+    $('#breadcum_search').click(function(e){ showMap();    });
 
     <?php if(isset($params['mode']) && $params['mode'] == "client"){ ?>
 
@@ -271,10 +270,17 @@ function removeSearchType(type){
 }
 
 function addSearchCategory(category){
-  console.log('add'+category+' dans '+searchCategory);;
+  console.log('add'+category+' dans '+searchCategory);
   var index = searchCategory.indexOf(category);
+
   if (index == -1) {
-    searchCategory.push(category);
+
+    //Ajoute tous les tags des catégories
+    $('.checkbox[data-parent="'+category+'"]').each(function(){
+      addSearchTag($(this).attr("value"));
+    });
+
+    // searchCategory.push(category);
     $('.categoryFilter[value="'+category+'"]').addClass('active');
     // console.log($('.checkbox[data-parent="'+category+'"]'));
     $('.checkbox[data-parent="'+category+'"]').prop( "checked", true );
@@ -285,6 +291,12 @@ function removeSearchCategory(category){
   console.log('remove '+category+' dans '+searchCategory);
   var index = searchCategory.indexOf(category);
   if (index > -1) {
+
+    //Masquer tous les tags des catégories
+    $('.checkbox[data-parent="'+category+'"]').each(function(){
+      removeSearchTag($(this).attr("value"));
+    });
+
     searchCategory.splice(index, 1);
     $('.categoryFilter[value="'+category+'"]').removeClass('active');
     $('.checkbox[data-parent="'+category+'"]').prop( "checked", false );
@@ -649,7 +661,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
               var length = ($( "div.searchEntity" ).length);
               if(length > 1) s = "s";
               $("#countResult").html(length+" résultat"+s);
-            
+
             $.unblockUI();
           }
     });               
@@ -1069,17 +1081,32 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     });
 
     //Display active
+    var breadcum  = "";
+    $('.tagFilter').prop("checked", false );
     $.each(searchTag, function(index, value){
       $('.tagFilter[value="'+value+'"]').addClass('active');
       $('.tagFilter[value="'+value+'"]').prop("checked", true );
+      breadcum = breadcum+"<span class='label label-danger tagFilter' value='"+value+"'>"+value+"</span> ";
       manageCollapse(value,true);
-
     });
+
     $.each(searchCategory, function(index, value){
       $('.categoryFilter[value="'+value+'"]').addClass('active')
       $('.categoryFilter[value="'+value+'"]').prop( "checked", true );
+      // breadcum = breadcum+"#"+value+", ";
+      // breadcum = breadcum+"<span class='label label-danger categoryFilter' value='"+value+"'>"+value+"</span> ";
       manageCollapse(value,true);
     });
+
+    if(breadcum != ""){
+      $('#breadcum').html('<i id="breadcum_search" class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i>'+breadcum+'<i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><label id="countResult" class="text-dark"></label>');
+    }
+    else{
+
+      $('#breadcum').html('<i class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><label id="countResult" class="text-dark"></label>');
+    }
+
+    
     
 
     $(".tagFilter").click(function(e){
