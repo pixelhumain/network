@@ -24,22 +24,22 @@ class DefaultController extends NetworkController {
      */
 	public function actionIndex() 
 	{
-    $this->layout = "//layouts/mainSearch";
-    $this->render("index");
-  }
-
-
-  public function actionDirectory() 
-  {
-    $this->layout = "//layouts/mainSearch";
-    $this->renderPartial("directory");
-  }
-
-  public function actionDir() 
-  {
     $this->layout = "//layouts/mainDirectory";
     $this->render("dir/indexDirectory");
   }
+
+
+  // public function actionDirectory() 
+  // {
+  //   $this->layout = "//layouts/mainSearch";
+  //   $this->renderPartial("directory");
+  // }
+
+  // public function actionDir() 
+  // {
+  //   $this->layout = "//layouts/mainDirectory";
+  //   $this->render("dir/indexDirectory");
+  // }
 
   public function actionSimplyDirectory() 
   {
