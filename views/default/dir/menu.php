@@ -23,7 +23,7 @@
     display: inline-block"/>
               <a data-toggle="collapse" href="#<?php echo $listTag['tagParent']; ?>" style="color:#719FAB">
                 <?php echo $category; ?>
-                <i class="fa fa-chevron-down" aria-hidden="true" id="fa_<?php echo $listTag['tagParent']; ?>"></i>
+                <i class="fa fa-chevron-right" aria-hidden="true" id="fa_<?php echo $listTag['tagParent']; ?>"></i>
               </a>
             </h4>
           </div>
@@ -62,12 +62,12 @@
       $("#list_"+div).toggle();
     }
     if($("#list_"+div).is(":visible")){
-      $("#fa_"+div).removeClass('fa-chevron-down');
-      $("#fa_"+div).addClass('fa-chevron-up');
+      $("#fa_"+div).addClass('fa-chevron-down');
+      $("#fa_"+div).removeClass('fa-chevron-right');
     }
     else{
-      $("#fa_"+div).addClass('fa-chevron-down');
-      $("#fa_"+div).removeClass('fa-chevron-up');
+      $("#fa_"+div).removeClass('fa-chevron-down');
+      $("#fa_"+div).addClass('fa-chevron-right');
     }
   }
 
