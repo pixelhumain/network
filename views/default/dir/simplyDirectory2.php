@@ -1016,7 +1016,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     if($(".typeFilter").length == 0){
       $("#listTypesFilter").html(' ');
       $.each(types, function(index, value){
-        $("#listTypesFilter").append('<a href="#default.simplydirectory" class="typeFilter" data-value="'+index+'s">'+index+' ('+value+')</a>');
+        $("#listTypesFilter").append('<a href="#default.simplyDirectory" class="typeFilter" data-value="'+index+'s">'+index+' ('+value+')</a>');
       });
       
       i=0;

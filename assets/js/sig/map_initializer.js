@@ -50,6 +50,7 @@
 				//thisMap.on('moveend', function(e) { thisSig.checkListElementMap(thisMap); });
 				//losque on effectue une recherche dans le champs de texte
 				$(this.cssModuleName + " #input_name_filter" ).keyup(function (){ thisSig.checkListElementMap(thisMap); });
+
 				//lorsqu'on active/désactive le filtre par zone
 				$(this.cssModuleName + " #chk-scope").click(function (){ thisSig.checkListElementMap(thisMap); });
 			}

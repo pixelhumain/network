@@ -24,8 +24,11 @@ class DefaultController extends NetworkController {
      */
 	public function actionIndex() 
 	{
+
+    $params = self::getParams();
+
     $this->layout = "//layouts/mainDirectory";
-    $this->render("indexDirectory");
+    $this->render("indexDirectory", array("params" => $params));
   }
 
 
@@ -43,8 +46,11 @@ class DefaultController extends NetworkController {
 
   public function actionSimplyDirectory() 
   {
+
+    $params = self::getParams();
+
     $this->layout = "//layouts/mainDirectory";
-    $this->render("simplyDirectory");
+    $this->render("simplyDirectory", array("params" => $params));
   }
 
   public function actionSimplyDirectory2() 
@@ -60,6 +66,9 @@ class DefaultController extends NetworkController {
 
   public function actionHome() 
   {
+
+    $params = self::getParams();
+
     //$this->layout = "//layouts/mainSearch";
     $this->layout = "//layouts/mainDirectory";
 
@@ -67,8 +76,9 @@ class DefaultController extends NetworkController {
     // $stats = Stat::getWhere(array(),null,1);
     // if(is_array($stats)) $stats = array_pop($stats);
 
-    $this->renderPartial("home");
+    $this->renderPartial("home", array("params" => $params));
   }
+  
   public function actionLogin() 
   {
     $this->layout = "//layouts/mainSearch";
@@ -99,5 +109,18 @@ class DefaultController extends NetworkController {
         $this->layout = "//layouts/empty";
         Yii::app()->session["lang"] = $lang;
         $this->redirect(Yii::app()->createUrl("/".$this->module->id));
+    }
+
+    function getParams(){
+       $pathParams = Yii::app()->controller->module->viewPath.'/default/params/';
+      if(isset($_GET['params']) && is_file($pathParams.$_GET['params'].'.json')){
+        $json = file_get_contents($pathParams.$_GET['params'].'.json');
+        $params = json_decode($json, true);
+      }
+      else{
+        $json = file_get_contents($pathParams."default.json");
+        $params = json_decode($json, true);
+      }
+      return $params;
     }
 }

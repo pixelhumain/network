@@ -414,7 +414,7 @@ var loadableUrls = {
 	"#log.monitoring" : {title:'LOG MONITORING ', icon : 'plus'},
     "#adminpublic.index" : {title:'SOURCE ADMIN', icon : 'download'},
     "#default.directory" : {title:'COMMUNECTED DIRECTORY', icon : 'connectdevelop',"urlExtraParam":"isSearchDesign=1"},
-    "#default.simplydirectory" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
+    "#default.simplyDirectory" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
     "#default.simplydirectory2" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
     "#default.news" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
     "#default.agenda" : {title:'COMMUNECTED AGENDA ', icon : 'calendar'},
@@ -500,7 +500,7 @@ function loadByHash( hash , back ) {
         hashT = hash.split(".");
         showAjaxPanel( 'detail-col-search','detail' );
     }
-    else if( hash.indexOf("#default.simplydirectory") >= 0 ){
+    else if( hash.indexOf("#default.simplyDirectory") >= 0 ){
         hashT = hash.split(".");
         showAjaxPanel( 'main-col-search','list' );
     }
@@ -522,7 +522,7 @@ function loadByHash( hash , back ) {
 	//         showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" ), 'ADD NEED '+typesLabels[hashT[3]],'cubes' );
 	// } 
     else 
-        showAjaxPanel( '/default#default.simplydirectory', 'Home Network ','home' );
+        showAjaxPanel( '/default#default.simplyDirectory', 'Home Network ','home' );
 
     location.hash = hash;
 

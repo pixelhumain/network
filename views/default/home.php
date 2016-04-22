@@ -5,7 +5,6 @@
 		//'js/svg/tonfichier.js'
 	);
 	HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->assetsUrl);
-
 ?>
 
 

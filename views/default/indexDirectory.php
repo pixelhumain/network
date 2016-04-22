@@ -42,10 +42,6 @@
         } else
           return array();
     }
-
-    $pathParams = Yii::app()->controller->module->viewPath.'/default/dir/';
-	$json = file_get_contents($pathParams."params.json");
-	$params = json_decode($json, true);
 ?>
 
 <?php 
@@ -249,7 +245,7 @@
 
 <div class="col-md-12 col-sm-12 col-xs-12 main-top-menu">
 	
-	<a href="javascript:loadByHash('#default.simplydirectory')" class="hidden-xs" >
+	<a href="javascript:loadByHash('#default.simplyDirectory')" class="hidden-xs" >
 		<?php if(isset($params['skin']['logo']) && $params['skin']['logo']) echo $params['skin']['logo']; ?>
 	</a>
 	<?php 
@@ -265,7 +261,7 @@
 		<i class="fa fa-connectdevelop"></i> <span id="main-title-menu">L'Annuaire</span> <span class="text-red">COMMUNE</span>CTÉ
 	</h1>-->
 
-	<?php $this->renderPartial("simply_short_info_profil"); ?> 
+	<?php $this->renderPartial("simply_short_info_profil", array("params" => $params)); ?> 
 
 	<!-- <button class="menu-button btn-menu btn-menu-top bg-azure tooltips" id="btn-toogle-map"
 			data-toggle="tooltip" data-placement="right" title="Carte" alt="Carte">
@@ -275,30 +271,19 @@
 </div>
 
 
-<div class="col-md-12 col-sm-12 col-xs-12 no-padding no-margin my-main-container bgpixeltree">
+<div class="col-md-12 col-sm-12 col-xs-12 no-padding no-margin my-main-container bgpixeltree" style="opacity:0">
 
 	<div class="col-md-2 col-sm-2 col-xs-2 menu-col-search" style="top: 50px;">
-		<?php $this->renderPartial("menu", array("params" => $params)); ?>
+		<?php $this->renderPartial("simplyMenu", array("params" => $params)); ?>
 	</div>
 
-	<div class="col-md-10 col-sm-10 col-xs-10 main-col-search" style="top: 50px;">
+	<div class="col-md-10 col-sm-10 col-xs-10 main-col-search" style="top: 50px">
 	</div>
-
-	<div id="floopDrawerDirectory" class="floopDrawer"></div>
 
 	<?php //if(!isset(Yii::app()->session['userId'])) 
-	$this->renderPartial("simply_login_register"); 
+	$this->renderPartial("simply_login_register", array("params" => $params)); 
 	?>
 </div>
-
-<?php  
-	if(isset(Yii::app()->session['userId'])) {
-		$layoutPath = 'webroot.themes.'.Yii::app()->theme->name.'.views.layouts.';
-		$this->renderPartial($layoutPath.'notifications2');
-	}
-?>
-
-
 
 <script type="text/javascript">
 	
@@ -708,51 +693,8 @@ function setScopeValue(btn){
 		if(location.hash == "#default.home"){
 			showLocalActorsCityCommunexion();
 		}else
-		if(location.hash == "#default.directory"){
+		if(location.hash == "#default.simplyDirectory"){
 			startSearch();
-		}else
-		if(location.hash == "#default.agenda"){
-			startSearch();
-		}else
-		if(location.hash == "#default.news"){
-			startSearch();
-			showMap(false);
-		}else
-		if(location.hash.indexOf("#city.detail") >= 0) {
-			showLocalActorsCityCommunexion();
-			$("#btn-network").html("<i class='fa fa-check'></i> COMMUNECTÉ");
-    		$("#btn-network").attr("onclick", "");
-			//showMap(false);
-		}else
-		if(location.hash.indexOf("#default.twostepregister") >= 0) {
-			
-			showMap(false);
-			$("#tsr-commune-name-cp").html(cityNameCommunexion + ", " + cpCommunexion);
-
-			$("#conf-commune").html(cityNameCommunexion + ", " + cpCommunexion);
-
-			$("#TSR-load-conf-communexion").html("<h1><i class='fa fa-spin fa-circle-o-notch text-white'></i></h1>");
-			showTwoStep("load-conf-communexion");
-
-			$.cookie('inseeCommunexion',   	inseeCommunexion,  	{ expires: 365, path: path });
-			$.cookie('cityNameCommunexion', cityNameCommunexion,{ expires: 365, path: path });
-			$.cookie('cpCommunexion',   	cpCommunexion,  	{ expires: 365, path: path });	
-			$.cookie('regionNameCommunexion',   regionNameCommunexion,  { expires: 365, path: path });
-			$.cookie('countryCommunexion',   	countryCommunexion,  	{ expires: 365, path: path });
-
-			$(".btn-param-postal-code").attr("data-original-title", cityNameCommunexion + " en détail");
-			$(".btn-param-postal-code").attr("onclick", "loadByHash('#city.detail.insee."+inseeCommunexion+"')");
-			$(".search-loader").html("<i class='fa fa-check'></i> Vous êtes communecté : " + cityNameCommunexion + ', ' + cpCommunexion);
-			$(".lbl-btn-menu-name-city").html('<span class="lbl-btn-menu-name">'+cityNameCommunexion + ", </span>" + cpCommunexion);
-			setTimeout(function(){ showTwoStep("street");  }, 2000);
-			//showMap(false);
-		}else{
-			if(inseeCommunexion != ""){
-				showLocalActorsCityCommunexion();
-				//toastr.success('Vous êtes communecté !<br/>' + cityNameCommunexion + ', ' + cpCommunexion);
-				//$("#cityDetail #btn-network").html("<i class='fa fa-check'></i> Communecté");
-				//showMap(false);
-			}
 		}
 	}
 	

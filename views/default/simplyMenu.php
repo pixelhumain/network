@@ -10,6 +10,7 @@
   <!-- <label id='countResult' class='text-dark'></label> -->
   <!-- FILTER TEXT -->
   <!-- <input id="searchBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control"> -->
+  <!-- <input id="searchClientBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control"> -->
   
   <div class="panel-group">
     <div class="panel panel-default">
@@ -70,6 +71,15 @@
       $("#fa_"+div).addClass('fa-chevron-right');
     }
   }
+
+
+  // jQuery(document).ready(function() {
+  //   $('#searchClientBarText').keyup(function(e){
+  //     // console.log($('#searchClientBarText').val());
+  //     $('#input_name_filter').val($('#searchClientBarText').val());
+  //     $('#input_name_filter').keyup();
+  //   });
+  // });
 
 </script>
 

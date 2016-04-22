@@ -7,12 +7,6 @@
           $urlPhotoProfil = $this->module->assetsUrl.'/images/news/profile_default_l.png';
       }
 
-
-    /** PARAMS PATAPOUF **/
-    $pathParams = Yii::app()->controller->module->viewPath.'/default/dir/';
-    $json = file_get_contents($pathParams."params.json");
-    $params = json_decode($json, true);
-
     ?>
   <style>
 
@@ -327,7 +321,7 @@
 
     $('#btn-start-search').click(function(e){
       console.log("#btn-start-search");
-      if(window.location.hash == "#default.simplydirectory") {
+      if(window.location.hash == "#default.simplyDirectory") {
         // Fragment exists
         loadingData = false;
         startSearch(0, 100);

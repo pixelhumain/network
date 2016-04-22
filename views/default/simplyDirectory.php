@@ -6,9 +6,9 @@
 // $params['result']['datesEvent'] = true;
 
 // $params['source']['sourcekey'] = 'patapouf';
-$pathParams = Yii::app()->controller->module->viewPath.'/default/dir/';
-$json = file_get_contents($pathParams."params.json");
-$params = json_decode($json, true);
+// $pathParams = Yii::app()->controller->module->viewPath.'/default/dir/';
+// $json = file_get_contents($pathParams."params.json");
+// $params = json_decode($json, true);
 
 ?>
 
@@ -37,7 +37,7 @@ $params = json_decode($json, true);
   var allsearchCategory = []; 
 
   //Par défaut
-  location.hash = "#default.simplydirectory"; 
+  // location.hash = "#default.simplyDirectory"; 
 
   var allElement = new Array();
   var allTags = new Object();
@@ -61,8 +61,6 @@ $params = json_decode($json, true);
   jQuery(document).ready(function() {
 
     // addSearchTag("CIGALES");
-
-
     showMap(true);
 
     <?php if(isset($_GET['category']) && $_GET['category'] != ""){ ?>
@@ -464,7 +462,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
                   var url = "javascript:"; //baseUrl+'/'+moduleId+ "/default/simple#" + o.type + ".detail.id." + id;
                   var url = baseUrl+'/'+moduleId+ "/default/dir#" + type + ".simply.id." + id;
-                  var onclick = 'loadByHash("#' + type + '.simply.id.' + id + '");';
+                  var onclick = 'loadByHash("#organization.simply.id.' + id + '");';
                   var onclickCp = "";
                   var target = " target='_blank'";
                   var dataId = "";

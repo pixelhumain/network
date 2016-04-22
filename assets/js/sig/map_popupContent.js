@@ -127,7 +127,7 @@
 		//##
 		//création du contenu de la popup d'un data
 		var action = "detail";
-		if(location.hash == "#default.simplydirectory") action = "simply";
+		if(location.hash == "#default.simplyDirectory") action = "simply";
 		Sig.getPopupSimple = function(data){
 			
 			var type = typeof data['typeSig'] != "undefined" ? data['typeSig'] : data['type'];

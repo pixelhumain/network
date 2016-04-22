@@ -43,7 +43,7 @@ jQuery(document).ready(function() {
 	Sig.showMapElements(Sig.map, contextMap);		
 });
 
- if(window.location.hash != "#default.simplydirectory") {
+ if(window.location.hash != "#default.simplyDirectory") {
  	$("#grid").hide();
  	$("#list").hide();
  	$("#dropdown_paramsBtn").hide();
