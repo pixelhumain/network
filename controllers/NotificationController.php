@@ -6,7 +6,7 @@
  * Date: 8/09/15
  * Time: 10:00 AM
  */
-class NotificationController extends CommunecterController {
+class NotificationController extends NetworkController {
   
 
 	protected function beforeAction($action) {

@@ -6,7 +6,7 @@
  * Date: 7/23/12
  * Time: 12:25 AM
  */
-class CityController extends CommunecterController {
+class CityController extends NetworkController {
   
 
 	protected function beforeAction($action) {

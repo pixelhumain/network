@@ -60,7 +60,7 @@ $params = json_decode($json, true);
 
   jQuery(document).ready(function() {
 
-    addSearchTag("CIGALES");
+    // addSearchTag("CIGALES");
 
 
     showMap(true);
