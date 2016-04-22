@@ -394,7 +394,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
     $.ajax({
       type: "POST",
-          url: baseUrl+"/" + moduleId + "/search/globalautocomplete",
+          url: baseUrl+"/" + moduleId + "/search/simplyautocomplete",
           data: data,
           dataType: "json",
           error: function (data){
@@ -415,14 +415,17 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
               var mapElements = new Array();
               allTags = new Object();
 
+              //affiche les éléments sur la carte
+              Sig.showMapElements(Sig.map, data);
+
               //parcours la liste des résultats de la recherche
               $.each(data, function(i, o) {
                   var typeIco = i;
                   var ico = mapIconTop["default"];
                   var color = mapColorIconTop["default"];
 
-                  mapElements.push(o);
-                  allElement.push(o);
+                  // mapElements.push(o);
+                  // allElement.push(o);
 
                   typeIco = o.type;
                   ico = ("undefined" != typeof mapIconTop[typeIco]) ? mapIconTop[typeIco] : mapIconTop["default"];
@@ -679,14 +682,13 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
               scrollEnd = false;
             }
 
-            //affiche les éléments sur la carte
-            Sig.showMapElements(Sig.map, mapElements);
+           
 
-             //on affiche le nombre de résultat en bas
-              var s = "";
-              var length = ($( "div.searchEntity" ).length);
-              if(length > 1) s = "s";
-              $("#countResult").html(length+" résultat"+s);
+           //on affiche le nombre de résultat en bas
+            var s = "";
+            var length = ($( "div.searchEntity" ).length);
+            if(length > 1) s = "s";
+            $("#countResult").html(length+" résultat"+s);
 
             $.unblockUI();
           }
