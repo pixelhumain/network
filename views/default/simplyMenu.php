@@ -10,7 +10,7 @@
   <!-- <label id='countResult' class='text-dark'></label> -->
   <!-- FILTER TEXT -->
   <!-- <input id="searchBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control"> -->
-  <!-- <input id="searchClientBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control"> -->
+  <input id="searchClientBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control">
   
   <div class="panel-group">
     <div class="panel panel-default">
@@ -73,13 +73,18 @@
   }
 
 
-  // jQuery(document).ready(function() {
-  //   $('#searchClientBarText').keyup(function(e){
-  //     // console.log($('#searchClientBarText').val());
-  //     $('#input_name_filter').val($('#searchClientBarText').val());
-  //     $('#input_name_filter').keyup();
-  //   });
-  // });
+  jQuery(document).ready(function() {
+    $('#searchClientBarText').keyup(function(e){
+      // console.log($('#searchClientBarText').val());
+      $('#input_name_filter').val($('#searchClientBarText').val());
+      Sig.checkListElementMap(Sig.map);
+    });
+
+     $('#input_name_filter').keyup(function(e){
+      // console.log($('#searchClientBarText').val());
+      $('#searchClientBarText').val($('#input_name_filter').val());
+    });
+  });
 
 </script>
 
