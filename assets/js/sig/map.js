@@ -136,9 +136,11 @@
 
 				var markerName = this.getIcoNameByType(thisData);
 				var iconUrl = assetPath+'/images/sig/markers/'+markerName+'.png';
+				// console.log(assetPath);
 				if(typeof thisData.profilMarkerImageUrl !== "undefined" && thisData.profilMarkerImageUrl != "") 
-					iconUrl = baseUrl + thisData.profilMarkerImageUrl;
-
+					//Attention commenté par Childé pour livraison car plus d'image sur la carte du module network
+					//iconUrl = baseUrl + thisData.profilMarkerImageUrl;
+					// console.log(iconUrl);
 				return L.icon({
 				    iconUrl: iconUrl,
 				    iconSize: [53, 60], //38, 95],
@@ -505,7 +507,7 @@
 													name : thisData["name"],
 													faIcon : this.getIcoByType(thisData),
 													content: content };
-
+								// console.log(properties);
 								var marker;
 								var coordinates;
 
@@ -649,7 +651,7 @@
 				if(len >= 1){
 					$.each(data, function (key, value){
 						var oneData = key;
-						if((value.typeSig == "news" /*|| value.typeSig == "activityStream"*/) && typeof value.author !== "undefined") 
+						if((value.typeSig == "news" || value.typeSig == "activityStream") && typeof value.author !== "undefined") 
 							oneData = key.author;
 						thisSig.showFilterOnMap(data, key, thisMap);
 					});
