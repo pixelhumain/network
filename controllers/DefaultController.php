@@ -25,7 +25,7 @@ class DefaultController extends NetworkController {
 	public function actionIndex() 
 	{
     $this->layout = "//layouts/mainDirectory";
-    $this->render("dir/indexDirectory");
+    $this->render("indexDirectory");
   }
 
 
@@ -44,7 +44,7 @@ class DefaultController extends NetworkController {
   public function actionSimplyDirectory() 
   {
     $this->layout = "//layouts/mainDirectory";
-    $this->render("dir/simplyDirectory");
+    $this->render("simplyDirectory");
   }
 
   public function actionSimplyDirectory2() 
@@ -61,12 +61,13 @@ class DefaultController extends NetworkController {
   public function actionHome() 
   {
     //$this->layout = "//layouts/mainSearch";
+    $this->layout = "//layouts/mainDirectory";
 
     //Get the last global statistics
-    $stats = Stat::getWhere(array(),null,1);
-    if(is_array($stats)) $stats = array_pop($stats);
+    // $stats = Stat::getWhere(array(),null,1);
+    // if(is_array($stats)) $stats = array_pop($stats);
 
-    $this->renderPartial("home", array("stats"=>$stats));
+    $this->renderPartial("home");
   }
   public function actionLogin() 
   {

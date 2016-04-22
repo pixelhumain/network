@@ -60,6 +60,9 @@ $params = json_decode($json, true);
 
   jQuery(document).ready(function() {
 
+    addSearchTag("CIGALES");
+
+
     showMap(true);
 
     <?php if(isset($_GET['category']) && $_GET['category'] != ""){ ?>
@@ -330,6 +333,7 @@ function addSearchTag(tag){
   if (index == -1) {
     searchTag.push(tag);
     $('.tagFilter[value="'+tag+'"]').addClass('active');
+    $('.tagFilter[value="'+tag+'"]').prop("checked", true );
   }
 }
 
@@ -338,6 +342,7 @@ function removeSearchTag(tag){
   if (index > -1) {
     searchTag.splice(index, 1);
     $('.tagFilter[value="'+tag+'"]').removeClass('active');
+    $('.tagFilter[value="'+tag+'"]').prop("checked", false );
   }
 }
 

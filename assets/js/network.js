@@ -495,26 +495,34 @@ function loadByHash( hash , back ) {
         else
             title = "WELCOM MUNECT HEY !!!";
         showPanel(panelName,null,title);
-    } 
-    else if( hash.indexOf("#rooms.index.type") >= 0 ){
-        hashT = hash.split(".");
-        showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" )+'?&isNotSV=1', 'ACTIONS in this '+typesLabels[hashT[3]],'rss' );
     }
-    else if( hash.indexOf("#news.index.type") >= 0 ){
+    else if( hash.indexOf("#organization.simply") >= 0 ){
         hashT = hash.split(".");
-        showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" )+'?isFirst=1', 'KESS KISS PASS in this '+typesLabels[hashT[3]],'rss' );
+        showAjaxPanel( 'detail-col-search','detail' );
+    }
+    else if( hash.indexOf("#default.simplydirectory") >= 0 ){
+        hashT = hash.split(".");
+        showAjaxPanel( 'main-col-search','list' );
+    }
+ //    else if( hash.indexOf("#rooms.index.type") >= 0 ){
+ //        hashT = hash.split(".");
+ //        showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" )+'?&isNotSV=1', 'ACTIONS in this '+typesLabels[hashT[3]],'rss' );
+ //    }
+ //    else if( hash.indexOf("#news.index.type") >= 0 ){
+ //        hashT = hash.split(".");
+ //        showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" )+'?isFirst=1', 'KESS KISS PASS in this '+typesLabels[hashT[3]],'rss' );
 
-    } 
-    else if( hash.indexOf("#city.directory") >= 0 ){
-        hashT = hash.split(".");
-        showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" ), 'KESS KISS PASS in this '+typesLabels[hashT[3]],'rss' );
-    } 
-	else if( hash.indexOf("#need.addneedsv") >= 0 ){
-	        hashT = hash.split(".");
-	        showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" ), 'ADD NEED '+typesLabels[hashT[3]],'cubes' );
-	} 
+ //    } 
+ //    else if( hash.indexOf("#city.directory") >= 0 ){
+ //        hashT = hash.split(".");
+ //        showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" ), 'KESS KISS PASS in this '+typesLabels[hashT[3]],'rss' );
+ //    } 
+	// else if( hash.indexOf("#need.addneedsv") >= 0 ){
+	//         hashT = hash.split(".");
+	//         showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" ), 'ADD NEED '+typesLabels[hashT[3]],'cubes' );
+	// } 
     else 
-        showAjaxPanel( '/default/home', 'Home Network ','home' );
+        showAjaxPanel( '/default#default.simplydirectory', 'Home Network ','home' );
 
     location.hash = hash;
 

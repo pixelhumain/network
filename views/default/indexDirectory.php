@@ -278,7 +278,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12 no-padding no-margin my-main-container bgpixeltree">
 
 	<div class="col-md-2 col-sm-2 col-xs-2 menu-col-search" style="top: 50px;">
-		<?php $this->renderPartial("dir/menu", array("params" => $params)); ?>
+		<?php $this->renderPartial("menu", array("params" => $params)); ?>
 	</div>
 
 	<div class="col-md-10 col-sm-10 col-xs-10 main-col-search" style="top: 50px;">
