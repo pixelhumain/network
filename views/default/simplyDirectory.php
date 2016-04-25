@@ -28,9 +28,8 @@
   <?php 
     if(isset($params['filter']['linksTag'])){
       foreach($params['filter']['linksTag'] as $key => $val){
-        if(isset($val['images'])){?>
+        if(isset($val['image'])){?>
         linksTagImages.<?php echo $val['tagParent']; ?> = {};
-        linksTagImages.<?php echo $val['tagParent']; ?> = <?php echo json_encode($val['images']);?>;
       <?php 
       }
     }
@@ -509,12 +508,14 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                           allTags[value] = 1;
                         } 
 
-                        //Default Image
+                        //Default Image adn color
                         if(find == false && value in linksTagImages == true){
                           find = true;
-                          $.each(linksTagImages[value], function(key2, value2){
-                            o[key2] = value2;
-                          });
+                          // $.each(linksTagImages[value], function(key2, value2){
+                          //   o[key2] = value2;
+                          // });
+                          o.typeSig = value;
+                          o.type = "organization";
                         }
 
                         //Filter Client (Attention erreur firefox js)

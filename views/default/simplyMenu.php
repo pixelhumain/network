@@ -23,8 +23,8 @@
               <input type="checkbox" class="checkbox categoryFilter" value="<?php echo $listTag['tagParent']; ?>" style="vertical-align: bottom;
     display: inline-block"/>
               <a data-toggle="collapse" href="#<?php echo $listTag['tagParent']; ?>" style="color:#719FAB">
-                <?php if(isset($listTag['images']['profilImageUrl'])){
-                  echo "<img src='".Yii::app()->baseUrl ."/".$listTag['images']['profilImageUrl']."' width='20px'/>";
+                <?php if(isset($listTag['image'])){
+                  echo "<img src='".$this->module->assetsUrl."/images/network/".$listTag['image']."' width='20px'/>";
                 } ?>
                 <?php echo $category; ?>
                 <i class="fa fa-chevron-right right" aria-hidden="true" id="fa_<?php echo $listTag['tagParent']; ?>"></i>

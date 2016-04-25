@@ -188,26 +188,39 @@
 			//TODO : définir les icons et couleurs de chaque type disponoble
 			this.icoMarkersMap = { 		"default" 			: "CITOYEN_A",
 
-										  	"city" 				: "COLLECTIVITE_A",
-											
-											"news" 				: "NEWS_A",
+									  	"city" 				: "COLLECTIVITE_A",
+										
+										"news" 				: "NEWS_A",
 
-											"citoyen" 			: "CITOYEN_A",
-											"citoyens" 			: "CITOYEN_A",
-											"people" 			: "CITOYEN_A",
+										"citoyen" 			: "CITOYEN_A",
+										"citoyens" 			: "CITOYEN_A",
+										"people" 			: "CITOYEN_A",
 
-											"NGO" 				: "ASSO_A",
-											"organizations" 	: "ASSO_A",
-											"organization" 		: "ASSO_A",
+										"NGO" 				: "ASSO_A",
+										"organizations" 	: "ASSO_A",
+										"organization" 		: "ASSO_A",
 
-											"event" 			: "EVENEMENTS_A",
-											"events" 			: "EVENEMENTS_A",
-											"meeting" 			: "EVENEMENTS_A",
+										"event" 			: "EVENEMENTS_A",
+										"events" 			: "EVENEMENTS_A",
+										"meeting" 			: "EVENEMENTS_A",
 
-											"project" 			: "PROJET_A",
-											"projects" 			: "PROJET_A",
+										"project" 			: "PROJET_A",
+										"projects" 			: "PROJET_A",
 
-											"markerPlace" 		: "map-marker",
+										"markerPlace" 		: "map-marker",
+
+										"Alimentation"		: "ALIMENTATION",
+										"Financement"		: "FINANCEMENT",
+										"Service"		: "SERVICE",
+										"Loisir"		: "LOISIR",
+										"Réparation"		: "REPARATION",
+										"Création"		: "CREATION",
+										"équipement"		: "EQUIPEMENT",
+										"Information"		: "INFORMATION",
+										"Mobilité"		: "MOBILITE",
+										"Logement"		: "LOGEMENT",
+										"Travail"		: "TRAVAIL"
+
 
 									  };
 
@@ -235,7 +248,33 @@
 											"markerPlace" 		: { ico : "map-marker", color : "red" 	},
 											"me" 				: { ico : "map-marker", color : "blue" 	},
 
+											"Alimentation"		: { ico : "group", color : "green" 		},
+											"Financement"		: { ico : "group", color : "green" 		},
+											"Service"		: { ico : "group", color : "green" 		},
+											"Loisir"		: { ico : "group", color : "green" 		},
+											"Réparation"		: { ico : "group", color : "green" 		},
+											"Création"		: { ico : "group", color : "green" 		},
+											"équipement"		: { ico : "group", color : "green" 		},
+											"Information"		: { ico : "group", color : "green" 		},
+											"Mobilité"		: { ico : "group", color : "green" 		},
+											"Logement"		: { ico : "group", color : "green" 		},
+											"Travail"		: { ico : "group", color : "green" 		}
+
 									  };
+
+			this.networkCategoryImage = {
+				"Alimentation" : "Alimentation.png",
+				"Financement" : "Financement.png",
+				"Service" : "Service.png",
+				"Loisir" : "Loisir.png",
+				"Réparation" : "Reparation.png",
+				"Création" : "Creation.png",
+				"équipement" : "Equipement.png",
+				"Information" : "Information.png",
+				"Mobilité" : "Mobilite.png",
+				"Logement" : "Logement.png",
+				"Travail" : "Travail.png"
+			};
 
 			//TODO : définir les icons et couleurs de chaque tag
 			this.icoMarkersTags = { 		"default" 		: { ico : "tag", color : "grey" } };/*,
@@ -330,6 +369,10 @@
 				imgProfilPath =  baseUrl + "/" + moduleId + "/document/resized/50x50" + element.profilImageUrl;
 			if( typeof element.typeSig !== "undefined" && element.typeSig == "city")
 				imgProfilPath =  assetPath + "/images/city/city_default_l.png";
+			if( typeof element.typeSig !== "undefined" && this.networkCategoryImage[element.typeSig] != null){
+				imgProfilPath =  assetPath + "/images/network/"+this.networkCategoryImage[element.typeSig];
+			}
+			
 			return imgProfilPath;
 		};
 

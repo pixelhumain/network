@@ -25,11 +25,7 @@
             "Se nourrir" : {
                 "tagParent" : "Alimentation",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Alimentation/fa-cutlery.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Alimentation/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Alimentation/thumb/profil-marker.png"
-                },
+                "image" : "Alimentation.png",
                 "tags" : {
                     "Amap" : "Amap",
                     "magasin de producteurs" : "MagasinDeProducteurs",
@@ -47,11 +43,7 @@
             "Se financer" : {
                 "tagParent" : "Financement",
                 "background-color" : "#f5f5f5",
-                 "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Financement/fa-money.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Financement/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Financement/thumb/profil-marker.png"
-                },
+                "image" : "Financement.png",
                 "tags" : {
                     "CIGALES" : "CIGALES",
                     "Monnaie locale" : "MonnaieLocale",
@@ -62,11 +54,7 @@
             "Se rendre service" : {
                 "tagParent" : "Service",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Service/fa-exchange.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Service/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Service/thumb/profil-marker.png"
-                },
+                "image" : "Service.png",
                 "tags" : {
                     "Troc" : "Troc",
                     "RERS" : "RERS",
@@ -81,11 +69,7 @@
             "Se divertir" : {
                 "tagParent" : "Loisir",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Loisir/fa-book.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Loisir/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Loisir/thumb/profil-marker.png"
-                },
+                "image" : "Loisir.png",
                 "tags" : {
                     "Cinéma associatif" : "CinémaAssociatif",
                     "Bibliothèque de rue" : "BibliothèqueDeRue",
@@ -96,11 +80,7 @@
             "Bricoler/Réparer" : {
                 "tagParent" : "Réparation",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Reparation/fa-wrench.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Reparation/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Reparation/thumb/profil-marker.png"
-                },
+                "image" : "Reparation.png",
                 "tags" : {
                     "Atelier de réparation de vélo" : "AtelierDeRéparationDeVélo",
                     "FabLab" : "FabLab",
@@ -112,11 +92,7 @@
             "Co-créer" : {
                 "tagParent" : "Création",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Creation/fa-users.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Creation/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Creation/thumb/profil-marker.png"
-                },
+                "image" : "Creation.png",
                 "tags" : {
                     "MuséoMix" : "MuséoMix",
                     "MaisonMix" : "MaisonMix"
@@ -125,11 +101,7 @@
             "S'équiper" : {
                 "tagParent" : "équipement",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Equipement/fa-shopping-cart.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Equipement/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Equipement/thumb/profil-marker.png"
-                },
+                "image" : "Equipement.png",
                 "tags" : {
                     "Recyclerie" : "Recyclerie",
                     "mutualisation de matériels" : "MutualisationDeMatériels",
@@ -146,11 +118,7 @@
             "S'informer" : {
                 "tagParent" : "Information",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Information/fa-info-circle.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Information/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Information/thumb/profil-marker.png"
-                },
+                "image" : "Information.png",
                 "tags" : {
                     "Wiki territorial" : "WikiTerritorial",
                     "Greeters" : "Greeters",
@@ -161,11 +129,7 @@
             "Se déplacer" : {
                 "tagParent" : "Mobilité",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Mobilite/fa-bicycle.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Mobilite/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Mobilite/thumb/profil-marker.png"
-                },
+                "image" : "Mobilite.png",
                 "tags" : {
                     "Covoiturage" : "Covoiturage",
                     "Pédibus" : "Pédibus",
@@ -179,11 +143,7 @@
             "Se loger" : {
                 "tagParent" : "Logement",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Logement/fa-home.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Logement/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Logement/thumb/profil-marker.png"
-                },
+                "image" : "Logement.png",
                 "tags" : {
                     "habitat partagé" : "HabitatPartagé",
                     "Location de logement" : "LocationDeLogement",
@@ -194,11 +154,7 @@
              "Travailler" : {
                 "tagParent" : "Travail",
                 "background-color" : "#f5f5f5",
-                "images" : {
-                    "profilImageUrl" : "/upload/communecter/network/Travail/fa-briefcase.png",
-                    "profilThumbImageUrl" : "/upload/communecter/network/Travail/thumb/profil-resized.png",
-                    "profilMarkerImageUrl" : "/upload/communecter/network/Travail/thumb/profil-marker.png"
-                },
+                "image" : "Travail.png",
                 "tags" : {
                     "Groupement d'employeur" : "GroupementDEmployeur",
                     "Coworking" : "Coworking",
