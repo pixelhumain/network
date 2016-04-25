@@ -31,19 +31,6 @@ class DefaultController extends NetworkController {
     $this->render("indexDirectory", array("params" => $params));
   }
 
-
-  // public function actionDirectory() 
-  // {
-  //   $this->layout = "//layouts/mainSearch";
-  //   $this->renderPartial("directory");
-  // }
-
-  // public function actionDir() 
-  // {
-  //   $this->layout = "//layouts/mainDirectory";
-  //   $this->render("dir/indexDirectory");
-  // }
-
   public function actionSimplyDirectory() 
   {
 

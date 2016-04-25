@@ -1302,7 +1302,7 @@ li input{
    margin-right: 10px;
 }
 
-.panel-title i{
+.panel-title i.right{
 	display: inline-block;
    	float: right;
 }

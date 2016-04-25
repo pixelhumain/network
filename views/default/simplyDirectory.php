@@ -22,6 +22,22 @@
 
 <script type="text/javascript">
 
+
+  //Icons by default categories
+  var linksTagImages = new Object();
+  <?php 
+    if(isset($params['filter']['linksTag'])){
+      foreach($params['filter']['linksTag'] as $key => $val){
+        if(isset($val['images'])){?>
+        linksTagImages.<?php echo $val['tagParent']; ?> = {};
+        linksTagImages.<?php echo $val['tagParent']; ?> = <?php echo json_encode($val['images']);?>;
+      <?php 
+      }
+    }
+  }
+  echo "console.log(linksTagImages);";
+  ?>
+
   //********** FILTER TYPE ITEM **********
   <?php if(isset($params['searchType']) && is_array($params['searchType'])){ ?>
     var searchType = <?php echo json_encode($params['searchType']); ?>;
@@ -413,9 +429,6 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
               var mapElements = new Array();
               allTags = new Object();
 
-              //affiche les éléments sur la carte
-              Sig.showMapElements(Sig.map, data);
-
               //parcours la liste des résultats de la recherche
               $.each(data, function(i, o) {
                   var typeIco = i;
@@ -424,16 +437,20 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
                   // mapElements.push(o);
                   // allElement.push(o);
-
+                  
+                 
                   typeIco = o.type;
                   ico = ("undefined" != typeof mapIconTop[typeIco]) ? mapIconTop[typeIco] : mapIconTop["default"];
                   color = ("undefined" != typeof mapColorIconTop[typeIco]) ? mapColorIconTop[typeIco] : mapColorIconTop["default"];
                   
                   htmlIco ="<i class='fa "+ ico +" text-"+color+"'></i>";
                   if("undefined" != typeof o.profilThumbImageUrl && o.profilThumbImageUrl != ""){
-                    var htmlIco= "<img width='80' height='80' alt='' class='img-circle bg-"+color+"' src='"+baseUrl+o.profilThumbImageUrl+"'/>"
+                    var htmlIco= "<img width='80' height='80' alt='' class='img-circle bg-"+color+"' src='"+baseUrl+o.profilThumbImageUrl+"'/>";
                   }
-
+                  
+                  // o.profilImageUrl = "/upload/communecter/network/Alimentation/fa-cutlery505719fabnone.png";
+                  // o.profilMarkerImageUrl = "/upload/communecter/network/Alimentation/thumb/profil-marker.png";
+                  // o.profilThumbImageUrl = "/upload/communecter/network/Alimentation/thumb/profil-resized.png";
                   city="";
 
                   var postalCode = o.cp
@@ -475,6 +492,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   }
 
                   var tags = "";
+                  var find = false;
                   if(typeof o.tags != "undefined" && o.tags != null){
                     $.each(o.tags, function(key, value){
                       if(value != ""){
@@ -491,11 +509,21 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                           allTags[value] = 1;
                         } 
 
+                        //Default Image
+                        if(find == false && value in linksTagImages == true){
+                          find = true;
+                          $.each(linksTagImages[value], function(key2, value2){
+                            o[key2] = value2;
+                          });
+                        }
+
                         //Filter Client (Attention erreur firefox js)
                         // tagsClasses += ' '+value.replace("/[^A-Za-z0-9]/", "", value) ;
                       }
                     });
                   }
+
+                  mapElements.push(o);
                   // console.log(tagsClasses);
 
                   var name = typeof o.name != "undefined" ? o.name : "";
@@ -680,7 +708,8 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
               scrollEnd = false;
             }
 
-           
+           //affiche les éléments sur la carte
+            Sig.showMapElements(Sig.map, mapElements);
 
            //on affiche le nombre de résultat en bas
             var s = "";
