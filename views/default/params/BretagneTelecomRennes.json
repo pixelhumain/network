@@ -177,6 +177,18 @@
         "pagination" : 1000,
         "searchType" : [
             "organizations"
+        ],
+        "searchLocalityNAME" : [
+            "RENNES",
+            "LANMEUR",
+            "ACIGNE"
+        ],
+        "searchTag" : [
+            "Greeters"
+        ],
+        "searchCategory" : [
+            "Travail",
+            "Financement"
         ]
-    } 
+    }
 }

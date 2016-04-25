@@ -34,25 +34,40 @@
       }
     }
   }
-  echo "console.log(linksTagImages);";
+  // echo "console.log(linksTagImages);";
   ?>
 
   //********** FILTER TYPE ITEM **********
-  <?php if(isset($params['searchType']) && is_array($params['searchType'])){ ?>
-    var searchType = <?php echo json_encode($params['searchType']); ?>;
-    var allSearchType = <?php echo json_encode($params['searchType']); ?>;
+  <?php if(isset($params['request']['searchType']) && is_array($params['request']['searchType'])){ ?>
+    var searchType = <?php echo json_encode($params['request']['searchType']); ?>;
+    var allSearchType = <?php echo json_encode($params['request']['searchType']); ?>;
   <?php } ?>
   
   //********** FILTER CATEGORY AND TAG**********
-  var searchTag = [];
-  var allSearchTag = [];
+  // var searchTag = [];
+  // var allSearchTag = [];
 
   //********** FILTER CATEGORY **********
-  var searchCategory = [];
-  var allsearchCategory = []; 
+  // var searchCategory = [];
+  // var allsearchCategory = []; 
 
-  //Par défaut
-  // location.hash = "#default.simplyDirectory"; 
+
+  //********** FILTER LOCALITY **********
+  <?php
+  $allSearchParams = array("searchTag","searchCategory","searchLocalityNAME","searchLocalityCODE_POSTAL_INSEE","searchLocalityDEPARTEMENT","searchLocalityINSEE","searchLocalityREGION");
+
+  foreach ($allSearchParams as $oneSearchParam) {
+    //In params set with value
+    if(isset($params['request'][$oneSearchParam]) && is_array($params['request'][$oneSearchParam])){ ?>
+    <?php echo "var ".$oneSearchParam;?> = <?php echo json_encode($params['request'][$oneSearchParam]); ?>;
+    <?php echo "var all".$oneSearchParam;?> = <?php echo json_encode($params['request'][$oneSearchParam]); ?>;
+  <?php
+    }//Set with no value
+    else{
+       echo "var ".$oneSearchParam;?> = [];
+       <?php echo "var all".$oneSearchParam;?> = [];
+    <?php }
+  }?>
 
   var allElement = new Array();
   var allTags = new Object();
@@ -79,17 +94,17 @@
     showMap(true);
 
     <?php if(isset($_GET['category']) && $_GET['category'] != ""){ ?>
-      searchCategory = ["<?php echo $_GET['category']; ?>"];
-      if($('.checkbox[data-parent="'+category+'"]').length){
-        $('.checkbox[data-parent="'+category+'"]').each(function(){
-          addSearchTag($(this).attr("value"));
-        });
-      }
+      // searchCategory = ["<?php echo $_GET['category']; ?>"];
+      // if($('.checkbox[data-parent="'+category+'"]').length){
+      //   $('.checkbox[data-parent="'+category+'"]').each(function(){
+      //     addSearchTag($(this).attr("value"));
+      //   });
+      // }
       // addSearchCategory("<?php echo $_GET['category']; ?>");
       // if($('.searchCategory[value="<?php echo $_GET['category']; ?>"]').length)$('.searchCategory[value="<?php echo $_GET['category']; ?>"]').addClass('active');
     <?php } ?> 
 
-    selectScopeLevelCommunexion(levelCommunexion);
+    // selectScopeLevelCommunexion(levelCommunexion);
 
     topMenuActivated = true;
     hideScrollTop = true; 
@@ -166,22 +181,11 @@
     });
 
     /******** EVENTS ********/
-    $(".categoryFilter").click(function(e){
-      var category = $(this).attr("value");
-      var index = searchCategory.indexOf(category);
-      ;
-      if($(this).is(':checked') == false){
-        removeSearchCategory(category);
-      }
-      else{
-        addSearchCategory(category);
-      }
-      startSearch(0, indexStepInit);
-    });
+    
 
     $('#reset').on('click', function() {
-      searchTag = [];
-      searchCategory = [];
+      searchTag = allsearchTag;
+      searchCategory = allsearchCategory;
       $('.tagFilter').removeClass('active');
       $('.categoryFilter').removeClass('active');
       startSearch(0, indexStepInit);
@@ -296,6 +300,8 @@ function removeSearchType(type){
 
 function addSearchCategory(category){
   console.log('add'+category+' dans '+searchCategory);
+  var index = searchCategory.indexOf(category);
+  if (index == -1) searchCategory.push(category);
   // var index = searchCategory.indexOf(category);
 
   // if (index == -1) {
@@ -319,6 +325,9 @@ function addSearchCategory(category){
 
 function removeSearchCategory(category){
   console.log('remove '+category+' dans '+searchCategory);
+
+  var index = searchCategory.indexOf(category);
+  if (index > -1) searchCategory.splice(index, 1);
 
   if($('.checkbox[data-parent="'+category+'"]').length){
     $('.checkbox[data-parent="'+category+'"]').each(function(){
@@ -374,17 +383,37 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                              4 : "REGION"
                            };
     // console.log("levelCommunexionName", levelCommunexionName[levelCommunexion]);
-    locality = "";
+    // locality = "RENNES";
+    var searchBy = levelCommunexionName[levelCommunexion];
+    // searchBy = "NAME";
+    console.log("searchLocalityNAME : ",searchLocalityNAME);
+    console.log("searchLocalityCODE_POSTAL_INSEE : ",searchLocalityCODE_POSTAL_INSEE);
+    console.log("searchLocalityDEPARTEMENT : ",searchLocalityDEPARTEMENT);
+    console.log("searchLocalityINSEE : ",searchLocalityINSEE);
+    console.log("searchLocalityREGION : ",searchLocalityREGION);
     console.log("searchTag : ",searchTag);
     console.log("searchCategory : ",searchCategory);
+    
+    //To merge Category and tags which are finally all tags
     var searchTagGlobal = [];
     if (undefined !== searchTag && searchTag.length)$.merge(searchTagGlobal,searchTag);
     if (undefined !== searchCategory && searchCategory.length)$.unique($.merge(searchTagGlobal,searchCategory));
-    console.log("searchGlobal : "+searchTagGlobal);
+    console.log("searchTagGlobal : "+searchTagGlobal);
 
-    var data = {"name" : name, "locality" : locality, "searchType" : searchType, "searchTag" : searchTagGlobal, "searchBy" : levelCommunexionName[levelCommunexion], 
-                "indexMin" : indexMin, "indexMax" : indexMax, 
-                "sourceKey" : "<?php echo (isset($params['request']['sourcekey'])) ? $params['request']['sourcekey'] : false;?>"  };
+    var data = {
+      "name" : name, 
+      "locality" : locality, 
+      "searchType" : searchType, 
+      "searchTag" : searchTagGlobal, 
+      "searchLocalityNAME" : searchLocalityNAME,
+      "searchLocalityCODE_POSTAL_INSEE" : searchLocalityCODE_POSTAL_INSEE, 
+      "searchLocalityDEPARTEMENT" : searchLocalityDEPARTEMENT,
+      "searchLocalityINSEE" : searchLocalityINSEE,
+      "searchLocalityREGION" : searchLocalityREGION,
+      "searchBy" : searchBy, 
+      "indexMin" : indexMin, "indexMax" : indexMax, 
+      "sourceKey" : "<?php echo (isset($params['request']['sourcekey'])) ? $params['request']['sourcekey'] : false;?>"  
+    };
 
     //console.log("loadingData true");
     loadingData = true;
@@ -515,7 +544,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                           //   o[key2] = value2;
                           // });
                           o.typeSig = value;
-                          o.type = "organization";
+                          o.type = "organizations";
                         }
 
                         //Filter Client (Attention erreur firefox js)
@@ -1147,19 +1176,21 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     $.each(searchTag, function(index, value){
       // $('.tagFilter[value="'+value+'"]').addClass('active');
       $('.tagFilter[value="'+value+'"]').prop("checked", true );
-      $('.categoryFilter[value="'+$('.tagFilter[value="'+value+'"]').attr("data-parent")+'"]').prop("checked", true );
+      // $('.categoryFilter[value="'+$('.tagFilter[value="'+value+'"]').attr("data-parent")+'"]').prop("checked", true );
+
       // console.log($('.tagFilter[value="'+value+'"]'));
       breadcum = breadcum+"<span class='label label-danger tagFilter' value='"+value+"'>"+$('.tagFilter[value="'+value+'"]').attr("data-label")+"</span> ";
       manageCollapse(value,true);
     });
 
-    // $.each(searchCategory, function(index, value){
-    //   $('.categoryFilter[value="'+value+'"]').addClass('active')
-    //   $('.categoryFilter[value="'+value+'"]').prop( "checked", true );
+    //One by One Category
+    $.each(searchCategory, function(index, value){
+      $('.categoryFilter[value="'+value+'"]').prop( "checked", true );
+      // $('.tagFilter[data-parent="'+value+'"]').prop("checked", true );
       // breadcum = breadcum+"#"+value+", ";
-      // breadcum = breadcum+"<span class='label label-danger categoryFilter' value='"+value+"'>"+value+"</span> ";
-    //   manageCollapse(value,true);
-    // });
+      breadcum = breadcum+"<span class='label label-danger categoryFilter' value='"+value+"'>"+value+"</span> ";
+      // manageCollapse(value,true);
+    });
 
     if(breadcum != ""){
       $('#breadcum').html('<i id="breadcum_search" class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i>'+breadcum+'<i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><label id="countResult" class="text-dark"></label>');
@@ -1170,8 +1201,6 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     }
 
     
-    
-
     $(".tagFilter").off().click(function(e){
 
       var tag = $(this).attr("value");
@@ -1189,6 +1218,18 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
       if (index > -1) removeSearchTag(tag);
       else addSearchTag(tag);
+      startSearch(0, indexStepInit);
+    });
+
+    $(".categoryFilter").off().click(function(e){
+      var category = $(this).attr("value");
+      ;
+      if($(this).is(':checked') == false){
+        removeSearchCategory(category);
+      }
+      else{
+        addSearchCategory(category);
+      }
       startSearch(0, indexStepInit);
     });
 

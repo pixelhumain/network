@@ -452,7 +452,7 @@ jQuery(document).ready(function() {
 		}
 		else{ 
 			//console.log("userConnected", userConnected);
-				loadByHash("#default.home");
+				loadByHash("#default.simplyDirectory.params.BretagneTelecom");
 			//}
 
 			//loadByHash("#default.home");

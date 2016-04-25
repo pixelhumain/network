@@ -22,7 +22,7 @@
             <h4 class="panel-title" onclick="manageCollapse('<?php echo $listTag['tagParent']; ?>', 'false')">
               <input type="checkbox" class="checkbox categoryFilter" value="<?php echo $listTag['tagParent']; ?>" style="vertical-align: bottom;
     display: inline-block"/>
-              <a data-toggle="collapse" href="#<?php echo $listTag['tagParent']; ?>" style="color:#719FAB">
+              <a data-toggle="collapse" href="#<?php echo $listTag['tagParent']; ?>" style="color:#719FAB" data-label="<?php echo $listTag['tagParent']; ?>">
                 <?php if(isset($listTag['image'])){
                   echo "<img src='".$this->module->assetsUrl."/images/network/".$listTag['image']."' width='20px'/>";
                 } ?>

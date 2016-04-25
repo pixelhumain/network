@@ -15,9 +15,6 @@
         "iconeSearchPlus" : false,
         "loginTitle":""
     },
-    "searchType" : [
-        "organizations"
-    ], 
     "filter" : {
         "types" : false,
         "tags" : true,
@@ -25,6 +22,7 @@
             "Se nourrir" : {
                 "tagParent" : "Alimentation",
                 "background-color" : "#f5f5f5",
+                "image" : "Alimentation.png",
                 "tags" : {
                     "Amap" : "Amap",
                     "magasin de producteurs" : "MagasinDeProducteurs",
@@ -40,8 +38,9 @@
                 }
             },
             "Se financer" : {
-                "tagParent" : "financement",
+                "tagParent" : "Financement",
                 "background-color" : "#f5f5f5",
+                "image" : "Financement.png",
                 "tags" : {
                     "CIGALES" : "CIGALES",
                     "Monnaie locale" : "MonnaieLocale",
@@ -52,6 +51,7 @@
             "Se rendre service" : {
                 "tagParent" : "Service",
                 "background-color" : "#f5f5f5",
+                "image" : "Service.png",
                 "tags" : {
                     "Troc" : "Troc",
                     "RERS" : "RERS",
@@ -66,6 +66,7 @@
             "Se divertir" : {
                 "tagParent" : "Loisir",
                 "background-color" : "#f5f5f5",
+                "image" : "Loisir.png",
                 "tags" : {
                     "Cinéma associatif" : "CinémaAssociatif",
                     "Bibliothèque de rue" : "BibliothèqueDeRue",
@@ -76,6 +77,7 @@
             "Bricoler/Réparer" : {
                 "tagParent" : "Réparation",
                 "background-color" : "#f5f5f5",
+                "image" : "Reparation.png",
                 "tags" : {
                     "Atelier de réparation de vélo" : "AtelierDeRéparationDeVélo",
                     "FabLab" : "FabLab",
@@ -87,14 +89,16 @@
             "Co-créer" : {
                 "tagParent" : "Création",
                 "background-color" : "#f5f5f5",
+                "image" : "Creation.png",
                 "tags" : {
                     "MuséoMix" : "MuséoMix",
                     "MaisonMix" : "MaisonMix"
                 }
             },
             "S'équiper" : {
-                "tagParent" : "Equipement",
+                "tagParent" : "équipement",
                 "background-color" : "#f5f5f5",
+                "image" : "Equipement.png",
                 "tags" : {
                     "Recyclerie" : "Recyclerie",
                     "mutualisation de matériels" : "MutualisationDeMatériels",
@@ -111,6 +115,7 @@
             "S'informer" : {
                 "tagParent" : "Information",
                 "background-color" : "#f5f5f5",
+                "image" : "Information.png",
                 "tags" : {
                     "Wiki territorial" : "WikiTerritorial",
                     "Greeters" : "Greeters",
@@ -121,6 +126,7 @@
             "Se déplacer" : {
                 "tagParent" : "Mobilité",
                 "background-color" : "#f5f5f5",
+                "image" : "Mobilite.png",
                 "tags" : {
                     "Covoiturage" : "Covoiturage",
                     "Pédibus" : "Pédibus",
@@ -134,6 +140,7 @@
             "Se loger" : {
                 "tagParent" : "Logement",
                 "background-color" : "#f5f5f5",
+                "image" : "Logement.png",
                 "tags" : {
                     "habitat partagé" : "HabitatPartagé",
                     "Location de logement" : "LocationDeLogement",
@@ -144,6 +151,7 @@
              "Travailler" : {
                 "tagParent" : "Travail",
                 "background-color" : "#f5f5f5",
+                "image" : "Travail.png",
                 "tags" : {
                     "Groupement d'employeur" : "GroupementDEmployeur",
                     "Coworking" : "Coworking",
@@ -166,6 +174,9 @@
     },
     "request" : {
         "sourcekey" : "BretagneTelecom",
-        "pagination" : 1000
+        "pagination" : 1000,
+        "searchType" : [
+            "organizations"
+        ]
     }
 }
