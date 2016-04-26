@@ -18,8 +18,8 @@ class NotificationController extends NetworkController {
 	{
 	    return array(
 	        'getnotifications'    => 'citizenToolKit.controllers.notification.GetAction',
-	        'marknotificationasread'    => 'citizenToolKit.controllers.notification.RemoveAction',
-	        'markallnotificationasread'    => 'citizenToolKit.controllers.notification.RemoveAllAction'
+	        // 'marknotificationasread'    => 'citizenToolKit.controllers.notification.RemoveAction',
+	        // 'markallnotificationasread'    => 'citizenToolKit.controllers.notification.RemoveAllAction'
 	    );
 	}
 }

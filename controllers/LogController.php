@@ -11,8 +11,8 @@ class LogController extends NetworkController {
 	public function actions()
 	{
 	    return array(
-	        'monitoring'    	 	 => 'citizenToolKit.controllers.log.MonitoringAction',
-	        'cleanup'    			 => 'citizenToolKit.controllers.log.CleanUpAction'
+	        // 'monitoring'    	 	 => 'citizenToolKit.controllers.log.MonitoringAction',
+	        // 'cleanup'    			 => 'citizenToolKit.controllers.log.CleanUpAction'
 	    );
 	}
 }
