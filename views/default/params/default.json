@@ -1,5 +1,5 @@
 {
-    "name" : "simply",
+    "name" : "simplyDefault",
     "mode" : "server",
     "skin" : {
         "logo" : false,
@@ -174,7 +174,7 @@
     },
     "request" : {
         "sourcekey" : "BretagneTelecom",
-        "pagination" : 1000,
+        "pagination" : 10,
         "searchType" : [
             "organizations"
         ]

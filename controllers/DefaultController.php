@@ -98,8 +98,8 @@ class DefaultController extends NetworkController {
         $this->redirect(Yii::app()->createUrl("/".$this->module->id));
     }
 
-    function getParams(){
-       $pathParams = Yii::app()->controller->module->viewPath.'/default/params/';
+    public function getParams(){
+      $pathParams = Yii::app()->controller->module->viewPath.'/default/params/';
       if(isset($_GET['params']) && is_file($pathParams.$_GET['params'].'.json')){
         $json = file_get_contents($pathParams.$_GET['params'].'.json');
         $params = json_decode($json, true);

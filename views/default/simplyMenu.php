@@ -14,7 +14,7 @@
   
   <div class="panel-group">
     <div class="panel panel-default">
-      <?php 
+      <?php
       if(isset($params['filter']['linksTag']) && is_array($params['filter']['linksTag'])){
         foreach($params['filter']['linksTag'] as $category => $listTag){ ?>
             <!-- Title category -->
@@ -41,7 +41,23 @@
           </div>
         <?php }
       } 
-      ?>
+      if(isset($params['filter']['tags']) && is_array($params['filter']['tags'])){ ?>
+        <div class="panel-heading">
+          <h4 class="panel-title" onclick="manageCollapse('tags', 'false')">
+            <input type="checkbox" class="checkbox categoryFilter" value="tags" style="vertical-align: bottom;
+  display: inline-block"/>
+            <a data-toggle="collapse" href="#tags" style="color:#719FAB" data-label="<?php echo $listTag['tagParent']; ?>">
+              <?php echo "tags"; ?>
+              <i class="fa fa-chevron-right right" aria-hidden="true" id="fa_tags"></i>
+            </a>
+          </h4>
+        </div>
+        <div id="list_tags" class="panel-collapse collapse">
+          <ul class="list-group">
+             <!-- Tags -->
+          </ul>
+        </div>
+      <?php } ?>
       <div class="panel-heading">
         <h4 class="panel-title">
           <center><a href="https://docs.google.com/forms/d/1HzoRFzt4iK2REVAI0_wRDHkKnU0sRWZD8W5PfGj0dC0/viewform?embedded=true#start=embed" target="_blank" ><i class="fa fa-plus fa-2x"></i>Ajouter un projet</a></center>

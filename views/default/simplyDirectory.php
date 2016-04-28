@@ -1,18 +1,3 @@
-<?php 
-
- /** PARAMS PATAPOUF **/
-// $params['result']['displayType'] = false;
-// $params['result']['fullLocality'] = true;
-// $params['result']['datesEvent'] = true;
-
-// $params['source']['sourcekey'] = 'patapouf';
-// $pathParams = Yii::app()->controller->module->viewPath.'/default/dir/';
-// $json = file_get_contents($pathParams."params.json");
-// $params = json_decode($json, true);
-
-?>
-
-
 
 <div class="my-main-container col-md-10" >
   <div id="dropdown_search" class="container list-group-item"></div>
@@ -92,17 +77,6 @@
 
     // addSearchTag("CIGALES");
     showMap(true);
-
-    <?php if(isset($_GET['category']) && $_GET['category'] != ""){ ?>
-      // searchCategory = ["<?php echo $_GET['category']; ?>"];
-      // if($('.checkbox[data-parent="'+category+'"]').length){
-      //   $('.checkbox[data-parent="'+category+'"]').each(function(){
-      //     addSearchTag($(this).attr("value"));
-      //   });
-      // }
-      // addSearchCategory("<?php echo $_GET['category']; ?>");
-      // if($('.searchCategory[value="<?php echo $_GET['category']; ?>"]').length)$('.searchCategory[value="<?php echo $_GET['category']; ?>"]').addClass('active');
-    <?php } ?> 
 
     // selectScopeLevelCommunexion(levelCommunexion);
 
@@ -1179,7 +1153,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       // $('.categoryFilter[value="'+$('.tagFilter[value="'+value+'"]').attr("data-parent")+'"]').prop("checked", true );
 
       // console.log($('.tagFilter[value="'+value+'"]'));
-      breadcum = breadcum+"<span class='label label-danger tagFilter' value='"+value+"'>"+$('.tagFilter[value="'+value+'"]').attr("data-label")+"</span> ";
+      if($('.tagFilter[value="'+value+'"]').length)breadcum = breadcum+"<span class='label label-danger tagFilter' value='"+value+"'>"+$('.tagFilter[value="'+value+'"]').attr("data-label")+"</span> ";
       manageCollapse(value,true);
     });
 
