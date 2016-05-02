@@ -440,6 +440,7 @@ jQuery(document).ready(function() {
     //console.warn("isMapEnd 3",isMapEnd);
     console.log("userConnected");
 	console.dir(userConnected);
+
 	//si l'utilisateur doit passer par le two_step_register
 	if(userConnected != null && typeof userConnected["two_steps_register"] != "undefined" && userConnected["two_steps_register"] == true){
 		loadByHash("#default.twostepregister");
@@ -447,15 +448,12 @@ jQuery(document).ready(function() {
 	} 
 	else{ //si l'utilisateur est déjà passé par le two_step_register
  		if(location.hash != "#default.home" && location.hash != "#" && location.hash != ""){
+
 			loadByHash(location.hash);
 			return;
 		}
 		else{ 
-			//console.log("userConnected", userConnected);
-				loadByHash("#default.simplyDirectory.params.BretagneTelecom");
-			//}
-
-			//loadByHash("#default.home");
+			loadByHash("#default.simplyDirectory.params.<?php echo $get; ?>");
 		}
 	}
 	checkScroll();
