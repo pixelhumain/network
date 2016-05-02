@@ -24,22 +24,13 @@
 
   //********** FILTER TYPE ITEM **********
   <?php if(isset($params['request']['searchType']) && is_array($params['request']['searchType'])){ ?>
-    var searchType = <?php echo json_encode($params['request']['searchType']); ?>;
-    var allSearchType = <?php echo json_encode($params['request']['searchType']); ?>;
+    // var searchType = <?php echo json_encode($params['request']['searchType']); ?>;
+    // var allSearchType = <?php echo json_encode($params['request']['searchType']); ?>;
   <?php } ?>
-  
-  //********** FILTER CATEGORY AND TAG**********
-  // var searchTag = [];
-  // var allSearchTag = [];
 
-  //********** FILTER CATEGORY **********
-  // var searchCategory = [];
-  // var allsearchCategory = []; 
-
-
-  //********** FILTER LOCALITY **********
+  //********** FILTERS **********
   <?php
-  $allSearchParams = array("searchTag","searchCategory","searchLocalityNAME","searchLocalityCODE_POSTAL_INSEE","searchLocalityDEPARTEMENT","searchLocalityINSEE","searchLocalityREGION");
+  $allSearchParams = array("sourceKey", "searchType", "searchTag","searchCategory","searchLocalityNAME","searchLocalityCODE_POSTAL_INSEE","searchLocalityDEPARTEMENT","searchLocalityINSEE","searchLocalityREGION");
 
   foreach ($allSearchParams as $oneSearchParam) {
     //In params set with value
@@ -172,8 +163,6 @@
         
         //Charger tous les éléments
      
-
-
     <?php } else{ ?>
       $(".my-main-container").scroll(function(){
         if(!loadingData && !scrollEnd){
@@ -385,8 +374,9 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       "searchLocalityINSEE" : searchLocalityINSEE,
       "searchLocalityREGION" : searchLocalityREGION,
       "searchBy" : searchBy, 
-      "indexMin" : indexMin, "indexMax" : indexMax, 
-      "sourceKey" : "<?php echo (isset($params['request']['sourcekey'])) ? $params['request']['sourcekey'] : false;?>"  
+      "indexMin" : indexMin,
+      "indexMax" : indexMax, 
+      "sourceKey" : sourceKey
     };
 
     //console.log("loadingData true");
@@ -418,21 +408,21 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
              console.dir(data);          
           },
           success: function(data){
-            if(!data){ toastr.error(data.content); }
+            if(!data.res){ toastr.error(data.content); }
             else
             {
               var countData = 0;
-              $.each(data, function(i, v) { if(v.length!=0){ countData++; } });
+              $.each(data.res, function(i, v) { if(v.length!=0){ countData++; } });
               
               totalData += countData;
             
               str = "";
               var city, postalCode = "";
               var mapElements = new Array();
-              allTags = new Object();
+              allTags = data.filters;
 
               //parcours la liste des résultats de la recherche
-              $.each(data, function(i, o) {
+              $.each(data.res, function(i, o) {
                   var typeIco = i;
                   var ico = mapIconTop["default"];
                   var color = mapColorIconTop["default"];
@@ -504,12 +494,12 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                         // manageTagFilter("#"+value); 
 
                         //Consolidate tags
-                        if(typeof allTags[value] != "undefined"){
-                          allTags[value] = allTags[value] + 1;
-                        }
-                        else{
-                          allTags[value] = 1;
-                        } 
+                        // if(typeof allTags[value] != "undefined"){
+                        //   allTags[value] = allTags[value] + 1;
+                        // }
+                        // else{
+                        //   allTags[value] = 1;
+                        // } 
 
                         //Default Image adn color
                         if(find == false && value in linksTagImages == true){
@@ -1120,6 +1110,10 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     var classToHide = "";
     var i = 0;
 
+    // console.log(tags);
+    //We update the tag menu
+
+
     // $("#listTypesFilter").html(' ');
     // $.each(types, function(index, value){
     //   $("#listTypesFilter").append('<a href="#default.simplydirectory" class="typeFilter" data-value="'+index+'s">'+index+' ('+value+')</a>');
@@ -1148,12 +1142,12 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
     //One by One Tag
     $.each(searchTag, function(index, value){
-      // $('.tagFilter[value="'+value+'"]').addClass('active');
-      $('.tagFilter[value="'+value+'"]').prop("checked", true );
-      // $('.categoryFilter[value="'+$('.tagFilter[value="'+value+'"]').attr("data-parent")+'"]').prop("checked", true );
 
-      // console.log($('.tagFilter[value="'+value+'"]'));
+      //Display
+      $('.tagFilter[value="'+value+'"]').prop("checked", true );
+
       if($('.tagFilter[value="'+value+'"]').length)breadcum = breadcum+"<span class='label label-danger tagFilter' value='"+value+"'>"+$('.tagFilter[value="'+value+'"]').attr("data-label")+"</span> ";
+      //Open menu
       manageCollapse(value,true);
     });
 
@@ -1206,9 +1200,6 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       }
       startSearch(0, indexStepInit);
     });
-
-
-
   }
 
   // function loadClientFilters(types, tags){

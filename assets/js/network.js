@@ -421,6 +421,7 @@ var loadableUrls = {
 	"#default.home" : {title:'COMMUNECTED HOME ', icon : 'home',"menu":"homeShortcuts"},
 	"#default.twostepregister" : {title:'TWO STEP REGISTER', icon : 'home', "menu":"homeShortcuts"},
 	"#default.view.page" : {title:'FINANCEMENT PARTICIPATIF ', icon : 'euro'},
+	"#admin.moderate" : {title:'MODERATE ', icon : 'check'},
 	//"#home" : {"alias":"#default.home"},
 	"#default.login" : {title:'COMMUNECTED AGENDA ', icon : 'calendar'},
 	"#project.addcontributorsv" : {title:'Add contributors', icon : 'plus'},
@@ -576,6 +577,7 @@ function showAjaxPanel (url,title,icon) {
 
 	var rand = Math.floor((Math.random() * 7) + 1); 
 	var urlImgRand = proverbs[rand];
+	var urlImgRand = "";
 	
 	showNotif(false);
 			

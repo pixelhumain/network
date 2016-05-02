@@ -5,8 +5,8 @@
         "logo" : false,
         "title" : false,
         "displayScope" : false,
-        "displayCommunexion" : false,
-        "profilBar" : false,
+        "displayCommunexion" : true,
+        "profilBar" : true,
         "displayButtonGridList" : false,
         "class" : {
             "mainContainer" : false
@@ -17,7 +17,15 @@
     },
     "filter" : {
         "types" : false,
-        "tags" : true,
+        "tags" : {
+            "activate" : true,
+            "title" : "Toutes les catégories",
+            "background-color" : "#f5f5f5",
+            "image" : "All.png",
+            "tagsAdditional" : {
+                "Autre" : "Autre"
+            }
+        },
         "linksTag" : {
             "Se nourrir" : {
                 "tagParent" : "Alimentation",
@@ -59,7 +67,6 @@
                     "Givebox" : "Givebox",
                     "Fournisseur d'accès à internet" : "FournisseurDAccèsàInternet",
                     "Réseau social de proximité" : "RéseauSocialDeProximité",
-                    "Autre" : "Autre",
                     "café associatif" : "CaféAssociatif"
                 }
             },
@@ -108,8 +115,7 @@
                     "ludothèque" : "Ludothèque",
                     "Outillothèque" : "Outillothèque",
                     "CUMA" : "CUMA",
-                    "Instrumenthèque" : "Instrumenthèque",
-                    "Autre" : "Autre"
+                    "Instrumenthèque" : "Instrumenthèque"
                 }
             },
             "S'informer" : {
@@ -119,8 +125,7 @@
                 "tags" : {
                     "Wiki territorial" : "WikiTerritorial",
                     "Greeters" : "Greeters",
-                    "carte ouverte" : "CarteOuverte",
-                    "Autre" : "Autre"
+                    "carte ouverte" : "CarteOuverte"
                 }
             },
             "Se déplacer" : {
@@ -148,15 +153,14 @@
                     "CoLocation" : "CoLocation"
                 }
             },
-             "Travailler" : {
+            "Travailler" : {
                 "tagParent" : "Travail",
                 "background-color" : "#f5f5f5",
                 "image" : "Travail.png",
                 "tags" : {
                     "Groupement d'employeur" : "GroupementDEmployeur",
                     "Coworking" : "Coworking",
-                    "Tiers Lieu" : "TiersLieu",
-                    "Autre" : "Autre"
+                    "Tiers Lieu" : "TiersLieu"
                 }
             }
         }
@@ -173,8 +177,10 @@
         "datesEvent" : false
     },
     "request" : {
-        "sourcekey" : "BretagneTelecom",
-        "pagination" : 1000,
+        "sourceKey" :[
+            "BretagneTelecom"
+        ],
+        "pagination" : 2000,
         "searchType" : [
             "organizations"
         ]

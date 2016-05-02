@@ -10,30 +10,25 @@
 class DefaultController extends NetworkController {
 
     
-    protected function beforeAction($action)
-  	{
+  protected function beforeAction($action)
+	{
+    parent::initPage();      
+		return parent::beforeAction($action);
+  }
 
-      parent::initPage();
-
-      
-		  return parent::beforeAction($action);
-  	}
-
-    /**
-     * Home page
-     */
+  /**
+   * Home page
+   */
 	public function actionIndex() 
 	{
-
     $params = self::getParams();
 
     $this->layout = "//layouts/mainDirectory";
-    $this->render("indexDirectory", array("params" => $params));
+    $this->render("indexDirectory", array("params" => $params, "get" => @$_GET['params']));
   }
 
   public function actionSimplyDirectory() 
   {
-
     $params = self::getParams();
 
     $this->layout = "//layouts/mainDirectory";
@@ -56,13 +51,7 @@ class DefaultController extends NetworkController {
 
     $params = self::getParams();
 
-    //$this->layout = "//layouts/mainSearch";
     $this->layout = "//layouts/mainDirectory";
-
-    //Get the last global statistics
-    // $stats = Stat::getWhere(array(),null,1);
-    // if(is_array($stats)) $stats = array_pop($stats);
-
     $this->renderPartial("home", array("params" => $params));
   }
   

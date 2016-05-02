@@ -10,10 +10,20 @@
   <!-- <label id='countResult' class='text-dark'></label> -->
   <!-- FILTER TEXT -->
   <!-- <input id="searchBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control"> -->
-  <input id="searchClientBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control">
   
   <div class="panel-group">
+
+    
     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <center><a href="https://docs.google.com/forms/d/1HzoRFzt4iK2REVAI0_wRDHkKnU0sRWZD8W5PfGj0dC0/viewform?embedded=true#start=embed" target="_blank" style="color:#719FAB;vertical-align: bottom;
+    display: inline-block"><i class="fa fa-plus fa-2x"></i>Ajouter un projet</a></center>
+        </h4>
+      </div>
+
+      <input id="searchClientBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control">
+
       <?php
       if(isset($params['filter']['linksTag']) && is_array($params['filter']['linksTag'])){
         foreach($params['filter']['linksTag'] as $category => $listTag){ ?>
@@ -41,13 +51,15 @@
           </div>
         <?php }
       } 
-      if(isset($params['filter']['tags']) && is_array($params['filter']['tags'])){ ?>
+      if(isset($params['filter']['tags']) && isset($params['filter']['tags']['activate']) && $params['filter']['tags']['activate']){ ?>
         <div class="panel-heading">
           <h4 class="panel-title" onclick="manageCollapse('tags', 'false')">
-            <input type="checkbox" class="checkbox categoryFilter" value="tags" style="vertical-align: bottom;
-  display: inline-block"/>
-            <a data-toggle="collapse" href="#tags" style="color:#719FAB" data-label="<?php echo $listTag['tagParent']; ?>">
-              <?php echo "tags"; ?>
+            <!-- <input type="checkbox" class="checkbox categoryFilter" value="tags" style="vertical-align: bottom; display: inline-block"/>-->
+            <a data-toggle="collapse" href="#tags" style="color:#719FAB" data-label="tags">
+             <?php if(isset($listTag['image'])){
+                  echo "<img src='".$this->module->assetsUrl."/images/network/".$params['filter']['tags']['image']."' width='20px'/>";
+              } ?>
+              <?php echo $params['filter']['tags']['title']; ?>
               <i class="fa fa-chevron-right right" aria-hidden="true" id="fa_tags"></i>
             </a>
           </h4>
@@ -55,14 +67,12 @@
         <div id="list_tags" class="panel-collapse collapse">
           <ul class="list-group">
              <!-- Tags -->
+              <?php foreach($params['filter']['tags']['tagsAdditional'] as $label => $tag){?>
+                <li class="list-group-item"><input type="checkbox" class="checkbox tagFilter" value="<?php echo $tag; ?>" data-parent="tags" data-label="<?php echo $label; ?>"/><?php echo $label; ?></li>
+              <?php } ?>
           </ul>
         </div>
       <?php } ?>
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <center><a href="https://docs.google.com/forms/d/1HzoRFzt4iK2REVAI0_wRDHkKnU0sRWZD8W5PfGj0dC0/viewform?embedded=true#start=embed" target="_blank" ><i class="fa fa-plus fa-2x"></i>Ajouter un projet</a></center>
-        </h4>
-      </div>
       <div class="panel-heading">
          <h4 class="panel-title">
           <center><a id="reset" ><i class="fa fa-refresh"></i>Réinitialiser</a></center>

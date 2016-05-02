@@ -246,7 +246,7 @@
     <div class="topMenuButtons pull-right">
 
 
-      <?php if(isset($params['profilBar']) || isset( Yii::app()->session['userId'])){ ?>
+      <?php if((isset($params['profilBar']) && $params['profilBar']) || isset(Yii::app()->session['userId'])){ ?>
         <?php if( isset( Yii::app()->session['userId']) ){ ?>
           <div class="dropdown pull-right hidden-xs">
             <button class="dropdown-toggle menu-name-profil text-dark" data-toggle="dropdown">
@@ -292,7 +292,8 @@
             <span class="notifications-count topbar-badge badge badge-danger animated bounceIn"><?php count($this->notifications); ?></span>
           </button>
         
-        <?php }else{ ?>
+        <?php }
+        else{ ?>
           <button class="btn-top btn btn-success  hidden-xs" onclick="showPanel('box-register');"><i class="fa fa-plus-circle"></i> <span class="hidden-sm hidden-md hidden-xs">S'inscrire</span></button>
           <button class="btn-top btn bg-red  hidden-xs" style="margin-right:15px;" onclick="showPanel('box-login');"><i class="fa fa-sign-in"></i> <span class="hidden-sm hidden-md hidden-xs">Se connecter</span></button> 
         <?php } ?>
