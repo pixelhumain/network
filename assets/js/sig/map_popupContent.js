@@ -146,9 +146,10 @@
 			if(type == "people") 		typeElement = "person";
 			if(type == "citoyens") 		typeElement = "person";
 			if(type == "organizations") typeElement = "organization";
+			if(type == "organization")	typeElement = "organization";
 			if(type == "events") 		typeElement = "event";
 			if(type == "projects") 		typeElement = "project";
-			//console.log("type", type);
+			console.log("type", type);
 			
 			
 			

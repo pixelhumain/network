@@ -44,7 +44,7 @@ if($('#breadcum').length)$('#breadcum').html('<i class="fa fa-search fa-2x" styl
 						"localBusinessCategories" => $localBusinessCategories,
 	    				"contextMap" => $contextMap,
 	    				"publics" => $public,
-	    				"contentKeyBase" => $contentKeyBase
+	    				"contentKeyBase" => @$contentKeyBase
 	    			);
 	    			//print_r($params);
 	    			$this->renderPartial('../pod/simplyFicheInfo',$params); 

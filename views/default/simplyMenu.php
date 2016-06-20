@@ -15,12 +15,14 @@
 
     
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <center><a href="https://docs.google.com/forms/d/1HzoRFzt4iK2REVAI0_wRDHkKnU0sRWZD8W5PfGj0dC0/viewform?embedded=true#start=embed" target="_blank" style="color:#719FAB;vertical-align: bottom;
-    display: inline-block"><i class="fa fa-plus fa-2x"></i>Ajouter un projet</a></center>
-        </h4>
-      </div>
+      <?php if(isset($params['skin']['iconeAdd']) && $params['skin']['iconeAdd']){ ?>
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <center><a href="https://docs.google.com/forms/d/1HzoRFzt4iK2REVAI0_wRDHkKnU0sRWZD8W5PfGj0dC0/viewform?embedded=true#start=embed" target="_blank" style="color:#719FAB;vertical-align: bottom;
+      display: inline-block"><i class="fa fa-plus fa-2x"></i>Ajouter un projet</a></center>
+          </h4>
+        </div>
+      <?php } ?>
 
       <input id="searchClientBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control">
 
@@ -67,7 +69,7 @@
         <div id="list_tags" class="panel-collapse collapse">
           <ul class="list-group">
              <!-- Tags -->
-              <?php foreach($params['filter']['tags']['tagsAdditional'] as $label => $tag){?>
+              <?php if(isset($params['filter']['tags']['tagsAdditional']) && is_array($params['filter']['tags']['tagsAdditional']))foreach($params['filter']['tags']['tagsAdditional'] as $label => $tag){?>
                 <li class="list-group-item"><input type="checkbox" class="checkbox tagFilter" value="<?php echo $tag; ?>" data-parent="tags" data-label="<?php echo $label; ?>"/><?php echo $label; ?></li>
               <?php } ?>
           </ul>
