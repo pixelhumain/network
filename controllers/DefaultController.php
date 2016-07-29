@@ -19,17 +19,16 @@ class DefaultController extends NetworkController {
   /**
    * Home page
    */
-	public function actionIndex() 
-	{
-    $params = self::getParams();
-
+  public function actionIndex() 
+  {
+    $params = self::getParams(@$_GET['params']);
     $this->layout = "//layouts/mainDirectory";
     $this->render("indexDirectory", array("params" => $params, "get" => @$_GET['params']));
   }
 
   public function actionSimplyDirectory() 
   {
-    $params = self::getParams();
+    $params = self::getParams(@$_GET['params']);
 
     $this->layout = "//layouts/mainDirectory";
     $this->render("simplyDirectory", array("params" => $params));
@@ -87,10 +86,10 @@ class DefaultController extends NetworkController {
         $this->redirect(Yii::app()->createUrl("/".$this->module->id));
     }
 
-    public function getParams(){
+    public function getParams($paramsGet=""){
       $pathParams = Yii::app()->controller->module->viewPath.'/default/params/';
-      if(isset($_GET['params']) && is_file($pathParams.$_GET['params'].'.json')){
-        $json = file_get_contents($pathParams.$_GET['params'].'.json');
+      if(isset($paramsGet) && !empty($paramsGet) && is_file($pathParams.$paramsGet.'.json')){
+        $json = file_get_contents($pathParams.$paramsGet.'.json');
         $params = json_decode($json, true);
       }
       else{

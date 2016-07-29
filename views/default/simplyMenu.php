@@ -4,8 +4,7 @@
 }
 
 </style>
-<div  class="col-md-12" id="dropdown_params">
-
+<div  class="col-md-12 padding-5" id="dropdown_params">
   <!-- <center><button id="reset" class="btn btn-default">Initialiser filtre</button></center>--> 
   <!-- <label id='countResult' class='text-dark'></label> -->
   <!-- FILTER TEXT -->
@@ -58,7 +57,7 @@
           <h4 class="panel-title" onclick="manageCollapse('tags', 'false')">
             <!-- <input type="checkbox" class="checkbox categoryFilter" value="tags" style="vertical-align: bottom; display: inline-block"/>-->
             <a data-toggle="collapse" href="#tags" style="color:#719FAB" data-label="tags">
-             <?php if(isset($listTag['image'])){
+             <?php if(isset($params['filter']['tags'])){
                   echo "<img src='".$this->module->assetsUrl."/images/network/".$params['filter']['tags']['image']."' width='20px'/>";
               } ?>
               <?php echo $params['filter']['tags']['title']; ?>
@@ -67,7 +66,7 @@
           </h4>
         </div>
         <div id="list_tags" class="panel-collapse collapse">
-          <ul class="list-group">
+          <ul class="list-group no-margin">
              <!-- Tags -->
               <?php if(isset($params['filter']['tags']['tagsAdditional']) && is_array($params['filter']['tags']['tagsAdditional']))foreach($params['filter']['tags']['tagsAdditional'] as $label => $tag){?>
                 <li class="list-group-item"><input type="checkbox" class="checkbox tagFilter" value="<?php echo $tag; ?>" data-parent="tags" data-label="<?php echo $label; ?>"/><?php echo $label; ?></li>

@@ -218,7 +218,7 @@
 	}
 
 } 
-	
+
 </style>
 <?php if(isset($params['skin']['displayScope']) && $params['skin']['displayScope']){ ?>
 	<button class="btn-scope btn-scope-niv-5 tooltips" level="5"
@@ -244,23 +244,17 @@
 
 
 <div class="col-md-12 col-sm-12 col-xs-12 main-top-menu">
-	
-	<a href="javascript:loadByHash('#default.simplyDirectory')" class="hidden-xs" >
-		<?php if(isset($params['skin']['logo']) && $params['skin']['logo']) echo $params['skin']['logo']; ?>
-	</a>
 	<?php 
 		if(!isset($urlPhotoProfil)) $urlPhotoProfil = "";
 	 	if(!isset($me)) $me = "";
 	 	// $this->renderPartial("menuSmall", array("me"=>$me,"urlPhotoProfil"=>$urlPhotoProfil)); 
 	?> 
 	
-	<?php if(isset($params['skin']['title']) && $params['skin']['title']) echo $params['skin']['title']; ?>
 	<!-- <h1 class="homestead text-dark no-padding moduleLabel" id="main-title"
 		style="font-size:22px;margin-bottom: 0px; margin-top: 15px; display: inline-block;">
 		
 		<i class="fa fa-connectdevelop"></i> <span id="main-title-menu">L'Annuaire</span> <span class="text-red">COMMUNE</span>CTÉ
 	</h1>-->
-
 	<?php $this->renderPartial("simply_short_info_profil", array("params" => $params)); ?> 
 
 	<!-- <button class="menu-button btn-menu btn-menu-top bg-azure tooltips" id="btn-toogle-map"
@@ -272,7 +266,6 @@
 
 
 <div class="col-md-12 col-sm-12 col-xs-12 no-padding no-margin my-main-container bgpixeltree" style="opacity:0">
-
 	<div class="col-md-2 col-sm-2 col-xs-2 menu-col-search" style="top: 50px;">
 		<?php $this->renderPartial("simplyMenu", array("params" => $params)); ?>
 	</div>
@@ -346,10 +339,12 @@ var isMapEnd = <?php echo (isset( $_GET["map"])) ? "true" : "false" ?>;
 
 //console.warn("isMapEnd 1",isMapEnd);
 jQuery(document).ready(function() {
-
 	//Simply load default
+	$('.bg-main-menu').hide();
 	$('.bg-main-menu').html($('.menu-col-search').html());
-
+	$('#btn-menu-launch').click(function(){
+		$('.bg-main-menu').toggle("slow")
+	})
 	<?php if(isset(Yii::app()->session['userId']) && //et que le two_step est terminé
 			(!isset($me["two_steps_register"]) || $me["two_steps_register"] != true)){ ?>
 		

@@ -105,6 +105,10 @@ class NetworkController extends Controller
       "detail"          => array("href" => "/ph/network/project/detail", "public" => true),
       "simply"          => array("href" => "/ph/network/project/detail", "public" => true),
     ),
+	"element"=> array(
+      "detail"          => array("href" => "/ph/network/element/detail", "public" => true),
+      "simply"          => array("href" => "/ph/network/element/simply", "public" => true),
+    ),
     
     "document" => array(
       "resized"             => array("href"=> "/ph/network/document/resized", "public" => true),

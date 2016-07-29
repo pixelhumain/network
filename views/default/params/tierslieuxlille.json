@@ -1,12 +1,13 @@
 {
-    "name" : "tierslieux",
+    "name" : "tierslieuxlille",
     "mode" : "server",
     "skin" : {
-        "logo" : false,
-        "title" : false,
+        "logo" : "mel.png",
+        "title" : "Cartographie des Tiers-Lieux",
         "displayScope" : false,
         "displayCommunexion" : false,
         "profilBar" : false,
+        "breadcrumb" : false,
         "displayButtonGridList" : false,
         "class" : {
             "mainContainer" : false
@@ -15,12 +16,25 @@
         "iconeSearchPlus" : false,
         "loginTitle":""
     },
-    "filter" : {
+   "filter" : {
         "types" : false,
-        "tags" : true
+        "tags" : {
+            "activate" : true,
+            "title" : "Type de tiers-lieux",
+            "background-color" : "#f5f5f5",
+            "image" : "Travail.png",
+            "tagsAdditional" : {
+				"Coworking" : "Coworking",
+                "Tiers Lieu" : "TiersLieu",
+                "FabLab" : "fablab",
+                "FabLab" : "fablab",
+                "Atelier artistique" : "atelierArtistique"
+
+            }
+        }
     },
     "add" : {
-        "organization" : false,
+        "organization" : true,
         "project" : false,
         "event" : false
     },
@@ -34,6 +48,9 @@
         "pagination" : 1000,
         "searchType" : [
             "organizations"
+        ],
+        "searchLocalityDEPARTEMENT" : [
+            "59"
         ],
         "searchLocalityNAME" : [
             "LILLE"

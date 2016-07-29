@@ -398,6 +398,7 @@ var loadableUrls = {
     "#gantt.addtimesheetsv" : {title:'EDIT TIMELINE ', icon : 'tasks' },
     "#news.detail" : {title:'NEWS DETAIL ', icon : 'rss' },
     "#organization.detail" : {title:'ORGANIZATION DETAIL ', icon : 'users' },
+    "#element.detail" : {title:'ORGANIZATION DETAIL ', icon : 'users' },
     "#organization.simply" : {title:'ORGANIZATION DETAIL ', icon : 'users' },
     "#need.detail" : {title:'NEED DETAIL ', icon : 'cubes' },
     "#city.detail" : {title:'CITY ', icon : 'university' },
@@ -415,6 +416,8 @@ var loadableUrls = {
     "#adminpublic.index" : {title:'SOURCE ADMIN', icon : 'download'},
     "#default.directory" : {title:'COMMUNECTED DIRECTORY', icon : 'connectdevelop',"urlExtraParam":"isSearchDesign=1"},
     "#default.simplyDirectory" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
+    //"#default.index" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
+    "#element.detail" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
     "#default.simplydirectory2" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
     "#default.news" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
     "#default.agenda" : {title:'COMMUNECTED AGENDA ', icon : 'calendar'},
@@ -480,7 +483,6 @@ function jsController(hash){
 //ne sert plus, juste a savoir d'ou vient drait l'appel
 function loadByHash( hash , back ) { 
 	allReadyLoad = true;
-	
 	//alert("loadByHash");
     console.warn("loadByHash",hash,back);
     if( jsController(hash) ){
@@ -505,6 +507,15 @@ function loadByHash( hash , back ) {
         hashT = hash.split(".");
         showAjaxPanel( 'main-col-search','list' );
     }
+    /*else if( hash.indexOf("#default.index") >= 0 ){
+        hashT = hash.split(".");
+        showAjaxPanel( 'main-col-search','list' );
+    }*/
+    else if( hash.indexOf("#element.detail") >= 0 ){
+        hashT = hash.split(".");
+        showAjaxPanel( 'detail-col-search','detail' );
+    }
+
  //    else if( hash.indexOf("#rooms.index.type") >= 0 ){
  //        hashT = hash.split(".");
  //        showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" )+'?&isNotSV=1', 'ACTIONS in this '+typesLabels[hashT[3]],'rss' );
@@ -522,9 +533,9 @@ function loadByHash( hash , back ) {
 	//         hashT = hash.split(".");
 	//         showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" ), 'ADD NEED '+typesLabels[hashT[3]],'cubes' );
 	// } 
-    else 
+    else {
         showAjaxPanel( '/default#default.simplyDirectory', 'Home Network ','home' );
-
+	}
     location.hash = hash;
 
     /*if(!back){

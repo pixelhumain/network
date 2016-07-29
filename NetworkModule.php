@@ -4,7 +4,7 @@
  *
  * @author Tibor Katelbach <oceatoon@mail.com>
  * @version 0.0.3
- *
+ * 
 */
 
 class NetworkModule extends CWebModule
