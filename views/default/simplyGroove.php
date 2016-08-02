@@ -2,7 +2,11 @@
 <div class="my-main-container col-md-10" >
   <div id="dropdown_search" class="container list-group-item"></div>
 </div>
-
+<div class="col-md-10 hide" id="ficheInfoDetail" style="top: 0px;
+    opacity: 1;
+    display: block;">
+    <i class="fa fa-spin fa-refresh"></i> Chargement des activités ...</h2>
+</div>
 <?php $this->renderPartial(@$path."first_step_directory"); ?> 
 
 <script type="text/javascript">
@@ -1235,7 +1239,17 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
   //   loadClientFeatures();
 
   // }
+ function getAjaxFiche(contextCollection,contextController, contextId){
+    $("#ficheInfoDetail").removeClass("hide");
+    $("#repertory").fadeOut();
+    getAjax('#ficheInfoDetail',baseUrl+'/'+moduleId+"/element/detail/type/"+contextController+"/id/"+contextId,function(){},"html");
+  }
+  function reverseToRepertory(){
+    $("#ficheInfoDetail").addClass("hide");
+    $("#repertory").fadeIn();
+  }
 
+</script>
 
 
 

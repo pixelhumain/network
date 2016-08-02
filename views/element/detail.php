@@ -49,12 +49,12 @@ if($('#breadcum').length)$('#breadcum').html('<i class="fa fa-search fa-2x" styl
 ?>
 <div class="col-xs-12 infoPanel dataPanel">
 		<div class="row">
-			<div class="col-sm-12 col-xs-12 col-md-12">
+			<div class="col-sm-12 col-xs-12 col-md-8 no-padding" style="margin-top:10px;">
 	    		<?php 
 	    			$params = array(
 	    				"element" => $element,
 						"tags" => $tags, 
-						"images" => array("profil"=>$element["profilImageUrl"]),
+						"images" => array("profil"=>array($element["profilImageUrl"])),
 						"elementTypes" => $listTypes,
 						"countries" => $countries,
 						"typeIntervention" => $typeIntervention,

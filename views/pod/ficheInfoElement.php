@@ -98,64 +98,15 @@
 
 <div class="panel panel-white">
 	<div class="panel-heading border-light">
-		<h4 class="simply-title text-dark"> 
-			<?php echo (isset($element)) ? $element["name"] : null; ?>
+		<h4 class="panel-title text-dark"> 
+			<i class="fa fa-info-circle"></i> <?php echo Yii::t("common","Account info") ?>
 		</h4>
 	</div>
-	<div class="panel-tools">
-		<?php if (isset($element["_id"]) && isset(Yii::app()->session["userId"])
-			 && Authorisation::isOrganizationAdmin(Yii::app()->session["userId"], $element["_id"])) { 
-				if(!isset($element["disabled"])){
-			 	?>
-				<a href="javascript:" id="editFicheInfo" class="btn btn-sm btn-default tooltips" data-toggle="tooltip" data-placement="bottom" title="Editer les informations" alt=""><i class="fa fa-pencil"></i> <span class="hidden-xs"> Editer les informations</span></a>
-				<a href="javascript:" id="editGeoPosition" class="btn btn-sm btn-default tooltips" data-toggle="tooltip" data-placement="bottom" title="Modifier la position géographique" alt=""><i class="fa fa-map-marker"></i><span class="hidden-xs"> Modifier la position géographique</span></a>
-				<a href="javascript:" id="disableOrganization" class="btn btn-sm btn-red tooltips" data-id="<?php echo $element["_id"] ?>" data-toggle="tooltip" data-placement="bottom" title="Disable this organization" alt=""><i class="fa fa-times"></i> <span class="hidden-xs"> Supprimer</span></a>
-		<?php } else {?>
-				<span class="label label-danger">DISABLED</span>
-		<?php }} ?>
-	</div>
-	<div class="panel-body border-light panelDetails" id="organizationDetail">
-		<div class="row">
-
-			<div class="col-sm-6 col-md-6">
-				<?php 
-					$this->renderPartial('../pod/fileupload', array("itemId" => $element["_id"],
-																	  "type" => Organization::COLLECTION,
-																	  "resize" => false,
-																	  "contentId" => Document::IMG_PROFIL,
-																	  "editMode" => false,//Authorisation::isOrganizationAdmin(Yii::app()->session["userId"], (String) $element["_id"]),
-																	  "image" => $images)); 
-				?>
-			</div>
-			<div class="col-sm-6 col-md-6 pull-right margin-bottom-15">
-				<div class="row text-dark" style="margin-top:10px !important;">
-					<div class="entityTitle">
-						<!-- <h2  style="font-weight:100; font-size:19px;">
-							<i class="fa fa-angle-right"></i> 
-							<a href="#" id="type" data-type="select" data-title="Type" data-emptytext="Type" class="editable editable-click required">
-							</a>
-						</h2> -->
-						<!-- <h2>
-							<a href="#" id="name" data-type="text" data-title="<?php echo Yii::t("common","Name") ?>" data-emptytext="<?php echo Yii::t("common","Name") ?>" 
-								class="editable-context editable editable-click required">
-								<?php echo (isset($element)) ? $element["name"] : null; ?>
-							</a>
-						</h2>		 -->				
-					</div>
-					<div class="row info-shortDescription" style="word-wrap:break-word;">
-						<a href="#" id="shortDescription" data-placement="bottom" data-type="wysihtml5" data-showbuttons="true" data-title="<?php echo Yii::t("common","Short Description") ?>" 
-							data-emptytext="<?php echo Yii::t("common","Short Description") ?>" class="editable editable-click">
-							<?php echo (isset($element["shortDescription"])) ? $element["shortDescription"] : null; ?>
-						</a>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-md-12">	
-				<div class="text-dark lbl-info-details"><i class="fa fa-angle-down"></i> Coordonnées</div>
-				<div class="row info-coordonnees entityDetails text-dark" style="margin-top: 10px !important;">
-					<div class="col-md-6 col-sm-6">	
-						<i class="fa fa-road fa_streetAddress hidden"></i> 
+	<div class="panel-body border-light panelDetails" id="contentGeneralInfos">	
+		<div class="text-dark lbl-info-details"><i class="fa fa-angle-down"></i> Coordonnées</div>
+			<div class="row info-coordonnees entityDetails text-dark" style="margin-top: 10px !important;">
+				<div class="col-md-6 col-sm-6">	
+					<i class="fa fa-road fa_streetAddress hidden"></i> 
 						<!-- <a href="#" id="streetAddress" data-type="text" data-title="<?php echo Yii::t("common","Street Address") ?>" data-emptytext="<?php echo Yii::t("common","Street Address") ?>" class="editable-context editable editable-click">
 							<?php echo (isset( $element["address"]["streetAddress"])) ? $element["address"]["streetAddress"] : null; ?>
 						</a> -->
@@ -273,31 +224,13 @@
 							 insee-val="<?php echo (isset( $element["address"]["codeInsee"])) ? $element["address"]["codeInsee"] : ""; ?>">
 						</div>
 					</div>			
-				</div>			
-			</div>
-			
-		</div>
-		<div class="row">
-			<div class="col-sm-12 col-xs-12">
+				</div>
+				
+			<div class="col-sm-12 col-xs-12 col-md-12 no-padding">
 				<div class="text-dark lbl-info-details"><i class="fa fa-angle-down"></i> Description</div>
 				 <?php echo (isset($element["description"])) ? $element["description"] : "''"; ?>
 			</div>
 		</div>
-		<div class="row tag_group">
-			<!-- <div class="col-sm-6 col-xs-6 padding-20 text-dark">
-				<h3><i class="fa fa-angle-down"></i> Activités</h3>
-				<a href="#" id="category" data-title="Categories" data-type="checklist" data-emptytext="Catégories" class="editable editable-click"></a>
-			</div> -->
-			<div class="col-md-12 padding-20 text-red text-right pull-right">
-				<!-- <h3><i class="fa fa-angle-down"></i> Thématiques</h3> -->
-				<i class="fa fa-tags"></i> Tags : 
-				<!-- <a href="#" id="tags" data-type="select2" data-type="Tags" data-emptytext="Tags" class="text-red editable editable-click">
-				</a> -->
-				<?php echo (isset($element["tags"])) ? implode(",", $element["tags"]) : "''"; ?>;
-			</div>
-		</div>
-		
-	</div>
 </div>
 
 <script type="text/javascript"> 

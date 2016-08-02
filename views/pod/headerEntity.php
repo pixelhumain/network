@@ -96,6 +96,12 @@
 
 		<div class="col-lg-12 col-md-12 col-sm-12 no-padding">
 			<div class="col-md-12 no-padding margin-top-15">
+				<h2  style="font-weight:100; font-size:19px;text-align:left;">
+					<i class="fa fa-angle-right"></i> 
+					<a href="#" id="type" data-type="select" data-title="Type" data-emptytext="Type" class="editable editable-click required">
+							<?php echo (@$entity["type"]) ? $entity["type"] : "" ; ?>
+					</a>
+				</h2>
 				<span class="lbl-entity-name">
 					<i class="fa fa-<?php echo Element::getFaIcon($type); ?>"></i> <?php echo @$entity["name"]; ?>
 				</span>
