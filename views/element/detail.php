@@ -28,6 +28,25 @@ HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule , $this->module
 <script>
 if($('#breadcum').length)$('#breadcum').html('<i class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><a href="javascript:;" onclick="reverseToRepertory();">Répertoire</a><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><?php echo addslashes($element["name"]); ?>');
 </script>
+<?php 
+	if($type != City::CONTROLLER)
+	$this->renderPartial('../pod/headerEntity', array("entity"=>$element, "type" => $type)); 
+?>
+<?php 
+	if( isset($type) && $type == Organization::COLLECTION && isset($element) ){
+		Menu::organization( $element );
+	}
+	else if((isset($type) && $type == Person::COLLECTION) || (isset($element) && !@$type)){
+		Menu::person($element);	
+	}
+	else if( isset($type) && $type == Project::COLLECTION && isset($element) ){
+		Menu::project( $element );
+	}
+	else if( isset($type) && $type == Event::COLLECTION && isset($element) ){
+		Menu::event( $element );
+	}
+		$this->renderPartial('../default/panels/toolbar'); 
+?>
 <div class="col-xs-12 infoPanel dataPanel">
 		<div class="row">
 			<div class="col-sm-12 col-xs-12 col-md-12">

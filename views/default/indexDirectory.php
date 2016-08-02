@@ -243,7 +243,7 @@
 <?php } ?>
 
 
-<div class="col-md-12 col-sm-12 col-xs-12 main-top-menu">
+<div class="col-md-12 col-sm-12 col-xs-12 main-top-menu no-padding">
 	<?php 
 		if(!isset($urlPhotoProfil)) $urlPhotoProfil = "";
 	 	if(!isset($me)) $me = "";

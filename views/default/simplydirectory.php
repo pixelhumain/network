@@ -2,9 +2,8 @@
 <div class="my-main-container col-md-12" id="repertory" >
   <div id="dropdown_search" class="col-md-12 container list-group-item"></div>
 </div>
-<div class="col-md-10 hide" id="ficheInfoDetail" style="top: 0px;
-    opacity: 1;
-    display: block;">
+<div class="col-md-12 no-padding hide" id="ficheInfoDetail" style="top: 0px;
+    opacity: 1;">
     <i class="fa fa-spin fa-refresh"></i> Chargement des activités ...</h2>
 </div>
 

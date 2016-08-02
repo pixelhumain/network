@@ -162,21 +162,7 @@
 	-o-box-shadow: 4px 0px 5px -4px rgba(66, 66, 66, 0.79) !important;
 	box-shadow: 4px 0px 5px -4px rgba(66, 66, 66, 0.79) !important;
 }
-button#btn-toogle-map {
-    right: 0px;
-    font-size: 24px;
-    width: 45px;
-    height: 51px;
-    padding: 5px;
-    top: 0px;
-    position: absolute !important;
-    border-radius: 0px 0px 10px 0px;
-    z-index: 15;
-    box-shadow: 2px 0px 5px -1px rgba(66, 66, 66, 0.79) !important;
-    -webkit-box-shadow: 2px 0px 5px -1px rgba(66, 66, 66, 0.79) !important;
-    -o-box-shadow: 2px 0px 5px -1px rgba(66, 66, 66, 0.79) !important;
-    box-shadow: 2px 0px 5px -1px rgba(66, 66, 66, 0.79) !important;
-}
+
 </style>
   
 
@@ -271,8 +257,8 @@ button#btn-toogle-map {
           <!-- </div> -->
       <!--</form>
     </div>-->
-    <button class="menu-button btn-menu btn-menu-top bg-azure tooltips pull-right" id="btn-toogle-map"
-      data-toggle="tooltip" data-placement="right" title="Carte" alt="Carte">
+    <button class="btn-menu btn-menu-top bg-white text-azure tooltips pull-right" id="btn-toogle-map"
+      data-toggle="tooltip" data-placement="bottom" title="Carte" alt="Carte">
       <i class="fa fa-map-marker"></i>
   </button>
 
