@@ -1,23 +1,23 @@
 <?php 
-
-$cssAnsScriptFilesModule = array(
-	'/plugins/x-editable/css/bootstrap-editable.css',
-	'/plugins/wysihtml5/bootstrap3-wysihtml5/bootstrap3-wysihtml5.css',
-	'/plugins/wysihtml5/bootstrap3-wysihtml5/bootstrap3-wysihtml5-editor.css',
-	'/plugins/x-editable/js/bootstrap-editable.js',
-	'/plugins/wysihtml5/bootstrap3-wysihtml5/wysihtml5x-toolbar.min.js',
-	'/plugins/wysihtml5/bootstrap3-wysihtml5/bootstrap3-wysihtml5.min.js',
-	'/plugins/wysihtml5/wysihtml5.js'
-);
-
-HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule ,Yii::app()->theme->baseUrl."/assets");
-
-
-$cssAnsScriptFilesModule = array(
-	'/js/dataHelpers.js',
-	'/js/postalCode.js'
-);
-HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule , $this->module->assetsUrl);
+if(!isset($_GET["renderPartial"])){
+	$cssAnsScriptFilesModule = array(
+		'/plugins/x-editable/css/bootstrap-editable.css',
+		'/plugins/wysihtml5/bootstrap3-wysihtml5/bootstrap3-wysihtml5.css',
+		'/plugins/wysihtml5/bootstrap3-wysihtml5/bootstrap3-wysihtml5-editor.css',
+		'/plugins/x-editable/js/bootstrap-editable.js',
+		'/plugins/wysihtml5/bootstrap3-wysihtml5/wysihtml5x-toolbar.min.js',
+		'/plugins/wysihtml5/bootstrap3-wysihtml5/bootstrap3-wysihtml5.min.js',
+		'/plugins/wysihtml5/wysihtml5.js'
+	);
+	
+	HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule ,Yii::app()->theme->baseUrl."/assets");
+	
+	
+	$cssAnsScriptFilesModule = array(
+		'/js/dataHelpers.js',
+		'/js/postalCode.js'
+	);
+	HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule , $this->module->assetsUrl);
 
 ?>
 <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
@@ -29,44 +29,114 @@ HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule , $this->module
 if($('#breadcum').length)$('#breadcum').html('<i class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><a href="javascript:;" onclick="reverseToRepertory();">Répertoire</a><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><?php echo addslashes($element["name"]); ?>');
 </script>
 <?php 
-	if($type != City::CONTROLLER)
-	$this->renderPartial('../pod/headerEntity', array("entity"=>$element, "type" => $type)); 
-?>
-<?php 
-	if( isset($type) && $type == Organization::COLLECTION && isset($element) ){
-		Menu::organization( $element );
-	}
-	else if((isset($type) && $type == Person::COLLECTION) || (isset($element) && !@$type)){
-		Menu::person($element);	
-	}
-	else if( isset($type) && $type == Project::COLLECTION && isset($element) ){
-		Menu::project( $element );
-	}
-	else if( isset($type) && $type == Event::COLLECTION && isset($element) ){
-		Menu::event( $element );
-	}
+		if($type != City::CONTROLLER)
+			$this->renderPartial('../pod/headerEntity', array("entity"=>$element, "type" => $type)); 
+	
+		Menu::element($element,$type);
 		$this->renderPartial('../default/panels/toolbar'); 
+//End isset renderPartial
+}
 ?>
-<div class="col-xs-12 infoPanel dataPanel">
-		<div class="row">
-			<div class="col-sm-12 col-xs-12 col-md-8 no-padding" style="margin-top:10px;">
-	    		<?php 
-	    			$params = array(
-	    				"element" => $element,
-						"tags" => $tags, 
-						"images" => array("profil"=>array($element["profilImageUrl"])),
-						"elementTypes" => $listTypes,
-						"countries" => $countries,
-						"typeIntervention" => $typeIntervention,
-						"NGOCategories" => $NGOCategories,
-						"localBusinessCategories" => $localBusinessCategories,
-	    				"contextMap" => @$contextMap,
-	    				"publics" => $public,
-	    				"contentKeyBase" => "profil"
-	    			);
-	    			$this->renderPartial('../pod/ficheInfoElement',$params); 
-	    		?>
-	    	</div>
-	    </div>
-	 </div>
+<?php if(!isset($_GET["renderPartial"])){ ?>
+<div class="col-md-12 padding-15" id="pad-element-container">
+<?php } ?>
+	<div class="col-xs-12 infoPanel dataPanel">
+			<div class="row">
+				<div class="col-sm-12 col-xs-12 col-md-8 no-padding" >
+		    		<?php 
+		    			$params = array(
+		    				"element" => $element,
+							"tags" => $tags, 
+							"images" => array("profil"=>array($element["profilImageUrl"])),
+							"elementTypes" => $listTypes,
+							"countries" => $countries,
+							"typeIntervention" => $typeIntervention,
+							"NGOCategories" => $NGOCategories,
+							"localBusinessCategories" => $localBusinessCategories,
+		    				"contextMap" => @$contextMap,
+		    				"publics" => $public,
+		    				"contentKeyBase" => "profil"
+		    			);
+		    			$this->renderPartial('../pod/ficheInfoElement',$params); 
+		    		?>
+		    	</div>
+			    <div class="col-md-4 no-padding">
+					<div class="col-md-12 col-xs-12">
+						<?php   $this->renderPartial('../pod/usersList', array(  $controller => $element,
+																"users" => $members,
+																"userCategory" => Yii::t("common","COMMUNITY"), 
+																"contentType" => $type,
+																"countStrongLinks" => $countStrongLinks,
+																"countLowLinks" => $countLowLinks,
+																"admin" => false	));
+						?>
+			    	</div>
+				</div>
+			</div>
+		 </div>
+	</div>
+<?php if(!isset($_GET["renderPartial"])){ ?>
 </div>
+<script type="text/javascript">
+var elementLinks = <?php echo isset($element["links"]) ? json_encode($element["links"]) : "''"; ?>;
+jQuery(document).ready(function() {
+	$.ajax({
+		url: baseUrl+"/"+moduleId+"/element/getalllinks/type/<?php echo $type ?>/id/<?php echo (string)$element["_id"] ?>",
+		type: 'POST',
+		data:{ "links" : elementLinks },
+		//async:false,
+		dataType: "json",
+		complete: function () {},
+		success: function (obj){
+			contextMap = obj;
+			Sig.restartMap();
+			Sig.showMapElements(Sig.map, contextMap);		
+		},
+		error: function (error) {
+			console.log("error findGeoposByInsee");
+			callbackFindByInseeError(error);	
+			$("#iconeChargement").hide();	
+		}
+	});	
+});
+
+function showElementPad(type){
+	
+	var mapUrl = { 	"detail": 
+						{ 
+							"url"  : "element/detail/type/<?php echo $controller ?>/id/<?php echo (string)$element["_id"] ?>", 
+							"hash" : "element.detail.type.<?php echo $controller ?>.id.<?php echo (string)$element["_id"] ?>"
+						} ,
+					"news": 
+						{ 
+							"url"  : "news/index/type/<?php echo $type ?>/id/<?php echo (string)$element["_id"] ?>?isFirst=1", 
+							"hash" : "news.index.type.<?php echo $type ?>.id.<?php echo (string)$element["_id"] ?>"
+						} ,
+					"directory": 
+						{ "url"  : "survey/entries", 
+						  "hash" : "survey.entries"
+						} ,
+					"gallery" :
+						{ 
+							"url"  : "gallery/index/type/<?php echo $type ?>/id/<?php echo (string)$element["_id"] ?>", 
+							"hash" : "gallery.index.type.<?php echo $type ?>.id.<?php echo (string)$element["_id"] ?>"
+						}
+					}
+
+	var url  = mapUrl[type]["url"];
+	var hash = mapUrl[type]["hash"];
+
+	$("#pad-element-container").hide(200);
+	$.blockUI({
+				message : "<h4 style='font-weight:300' class='text-dark padding-10'><i class='fa fa-spin fa-circle-o-notch'></i><br>Chargement en cours ...</span></h4>"
+			});
+	
+	getAjax('#pad-element-container',baseUrl+'/'+moduleId+'/'+url+"?renderPartial=true", 
+			function(){ 
+				history.pushState(null, "New Title", "communecter#" + hash);
+				$("#pad-element-container").show(200);
+				$.unblockUI();
+			},"html");
+}
+</script>
+<?php } ?>

@@ -264,13 +264,13 @@
 
 </div>
 
-	<div class="col-md-2 col-sm-2 col-xs-2 menu-col-search no-padding no-margin" style="top: 50px;">
+	<div class="col-md-2 col-sm-2 col-xs-2 menu-col-search no-padding no-margin" style="top: 50px; height:100%;">
 		<?php $this->renderPartial("simplyMenu", array("params" => $params)); ?>
 	</div>
-<div class="col-md-10 col-sm-10 col-xs-10 no-padding no-margin my-main-container bgpixeltree" style="opacity:0">
+<div class="col-md-10 col-sm-10 col-xs-10 no-padding no-margin my-main-container bgpixeltree" style="opacity:0;height:692px;">
 
 
-	<div class="col-md-10 col-sm-10 col-xs-10 main-col-search" style="top: 50px">
+	<div class="col-md-12 col-sm-12 col-xs-12 main-col-search" style="top: 50px">
 	</div>
 
 	<?php //if(!isset(Yii::app()->session['userId'])) 
@@ -343,7 +343,7 @@ jQuery(document).ready(function() {
 	$('.bg-main-menu').hide();
 	$('.bg-main-menu').html($('.menu-col-search').html());
 	$('#btn-menu-launch').click(function(){
-		$('.bg-main-menu').toggle("slow")
+		$('.menu-col-search').toggle("slow")
 	})
 	<?php if(isset(Yii::app()->session['userId']) && //et que le two_step est terminé
 			(!isset($me["two_steps_register"]) || $me["two_steps_register"] != true)){ ?>
@@ -364,7 +364,7 @@ jQuery(document).ready(function() {
   		$(".btn-menu2, .btn-menu3, .btn-menu4 ").show(400);
   	}
 
-  	$(".my-main-container").css("min-height", $(".sigModuleBg").height());
+  	//$(".my-main-container").css("min-height", $(".sigModuleBg").height());
     $(".main-col-search").css("min-height", $(".sigModuleBg").height());
 
     $('#btn-toogle-map').click(function(e){ showMap();  	});
@@ -519,7 +519,7 @@ function resizeInterface()
   //console.log("heightDif", heightDif);
   $(".floopScroll").css({"minHeight" : height-heightDif});
   $(".floopScroll").css({"maxHeight" : height-heightDif});
-  $(".my-main-container").css("min-height", $(".sigModuleBg").height());
+  $(".my-main-container").css("min-height", "692");
   $(".main-col-search").css("min-height", $(".sigModuleBg").height());
   //$("ul.notifList").css({"maxHeight" : height-heightDif});
 
@@ -906,6 +906,7 @@ function selectScopeLevelCommunexion(level){
 	if(typeof startSearch == "function")
 	startSearch();
 }
+
 
 </script>
 

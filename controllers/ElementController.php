@@ -8,7 +8,7 @@
  * Date: 15/08/13
  */
 class ElementController extends NetworkController {
-    const moduleTitle = "Évènement";
+    const moduleTitle = "Élément";
     
   protected function beforeAction($action) {
     parent::initPage();
@@ -18,6 +18,7 @@ class ElementController extends NetworkController {
   {
       return array(
             'detail'                => 'citizenToolKit.controllers.element.DetailAction',
+            'getalllinks'                => 'citizenToolKit.controllers.element.GetAllLinksAction',
         );
   }
 }
