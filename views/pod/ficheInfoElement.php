@@ -237,7 +237,6 @@
 
 	var contextData = <?php echo json_encode($element)?>;
 	var contextId = "<?php echo isset($element["_id"]) ? $element["_id"] : ""; ?>";
-	var contextMap = <?php echo json_encode(@$contextMap)?>;
 	var contentKeyBase = "<?php echo isset($contentKeyBase) ? $contentKeyBase : ""; ?>";
 	//By default : view mode
 	var mode = "view";
@@ -255,13 +254,13 @@
 		});
 		// activateEditableContext();
 		manageModeContext();
-		debugMap.push(contextData);
+		//debugMap.push(contextData);
 		
 		//Sig.contextData = contextData;
 		//Sig.restartMap();
-		Sig.showMapElements(Sig.map, contextMap);
-		console.log("contextMap");
-		console.dir(contextMap);
+		//Sig.showMapElements(Sig.map, contextMap);
+		//console.log("contextMap");
+		//console.dir(contextMap);
 		$('#avatar').change(function() {
 		  $('#photoAddEdit').submit();
 		});

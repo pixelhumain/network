@@ -19,19 +19,19 @@ class DefaultController extends NetworkController {
   /**
    * Home page
    */
-  public function actionIndex() 
+  public function actionIndex($src) 
   {
-    $params = self::getParams(@$_GET['params']);
+	Yii::app()->params['networkParams'] = self::getParams($src);
     $this->layout = "//layouts/mainDirectory";
-    $this->render("indexDirectory", array("params" => $params, "get" => @$_GET['params']));
+    $this->render("indexDirectory", array("get"=> $src));
   }
 
   public function actionSimplyDirectory() 
   {
-    $params = self::getParams(@$_GET['params']);
+    //$params = self::getParams(@$_GET['params']);
 
     $this->layout = "//layouts/mainDirectory";
-    $this->render("simplyDirectory", array("params" => $params));
+    $this->render("simplyDirectory");
   }
 
   public function actionSimplyDirectory2() 
@@ -87,6 +87,7 @@ class DefaultController extends NetworkController {
     }
 
     public function getParams($paramsGet=""){
+	//   echo Yii::app()->controller->module->viewPath;
       $pathParams = Yii::app()->controller->module->viewPath.'/default/params/';
       if(isset($paramsGet) && !empty($paramsGet) && is_file($pathParams.$paramsGet.'.json')){
         $json = file_get_contents($pathParams.$paramsGet.'.json');

@@ -167,13 +167,10 @@
 	}*/
 
 
-	.my-main-container{
+	
+	/*.main-col-search{
 		min-height:1000px;
-	}
-
-	.main-col-search{
-		min-height:1000px;
-	}
+	}*/
 
 
 @media screen and (min-width: 900px) and (max-width: 1120px) {
@@ -220,7 +217,7 @@
 } 
 
 </style>
-<?php if(isset($params['skin']['displayScope']) && $params['skin']['displayScope']){ ?>
+<?php if(isset(Yii::app()->params['networkParams']['skin']['displayScope']) && Yii::app()->params['networkParams']['skin']['displayScope']){ ?>
 	<button class="btn-scope btn-scope-niv-5 tooltips" level="5"
 			data-toggle="tooltip" data-placement="top" title="Niveau 5 : Global" alt="Niveau 5 : Global" ></button>
 	<button class="bg-red btn-scope btn-scope-niv-4 tooltips" level="4"
@@ -235,7 +232,7 @@
 		<i class="fa fa-crosshairs"></i>
 	</button> 
 <?php } ?>
-<?php if(isset($params['skin']['displayCommunexion']) && $params['skin']['displayCommunexion']){ ?>
+<?php if(isset(Yii::app()->params['networkParams']['skin']['displayCommunexion']) && Yii::app()->params['networkParams']['skin']['displayCommunexion']){ ?>
 	<div id="input-communexion">
 		<span class="search-loader text-red">Communexion : <span style='font-weight:300;'>un code postal et c'est parti !</span></span>
 		<input id="searchBarPostalCode" class="input-search text-red" type="text" placeholder="un code postal ?">
@@ -255,7 +252,7 @@
 		
 		<i class="fa fa-connectdevelop"></i> <span id="main-title-menu">L'Annuaire</span> <span class="text-red">COMMUNE</span>CTÉ
 	</h1>-->
-	<?php $this->renderPartial("simply_short_info_profil", array("params" => $params)); ?> 
+	<?php $this->renderPartial("simply_short_info_profil", array("params" => Yii::app()->params['networkParams'])); ?> 
 
 	<!-- <button class="menu-button btn-menu btn-menu-top bg-azure tooltips" id="btn-toogle-map"
 			data-toggle="tooltip" data-placement="right" title="Carte" alt="Carte">
@@ -264,17 +261,19 @@
 
 </div>
 
-	<div class="col-md-2 col-sm-2 col-xs-2 menu-col-search no-padding no-margin" style="top: 50px; height:100%;">
-		<?php $this->renderPartial("simplyMenu", array("params" => $params)); ?>
-	</div>
+<div class="col-md-2 col-sm-2 col-xs-2 menu-col-search no-padding no-margin" style="top: 50px; height:100%;">
+	<?php $this->renderPartial("simplyMenu", array("params" => Yii::app()->params['networkParams'])); ?>
+</div>
 <div class="col-md-10 col-sm-10 col-xs-10 no-padding no-margin my-main-container bgpixeltree" style="opacity:0;height:692px;">
 
 
 	<div class="col-md-12 col-sm-12 col-xs-12 main-col-search" style="top: 50px">
+		<?php $this->renderPartial("simplyDirectory",array("params" => Yii::app()->params['networkParams'])); ?> 
 	</div>
 
+
 	<?php //if(!isset(Yii::app()->session['userId'])) 
-	$this->renderPartial("simply_login_register", array("params" => $params)); 
+	$this->renderPartial("simply_login_register", array("params" => Yii::app()->params['networkParams'])); 
 	?>
 </div>
 
@@ -343,8 +342,8 @@ jQuery(document).ready(function() {
 	$('.bg-main-menu').hide();
 	$('.bg-main-menu').html($('.menu-col-search').html());
 	$('#btn-menu-launch').click(function(){
-		$('.menu-col-search').toggle("slow")
-	})
+		$('.menu-col-search').toggle("slow");
+	});
 	<?php if(isset(Yii::app()->session['userId']) && //et que le two_step est terminé
 			(!isset($me["two_steps_register"]) || $me["two_steps_register"] != true)){ ?>
 		
@@ -360,9 +359,9 @@ jQuery(document).ready(function() {
 	<?php } ?>
 
 
-  	if(inseeCommunexion != ""){
+  	/*if(inseeCommunexion != ""){
   		$(".btn-menu2, .btn-menu3, .btn-menu4 ").show(400);
-  	}
+  	}*/
 
   	//$(".my-main-container").css("min-height", $(".sigModuleBg").height());
     $(".main-col-search").css("min-height", $(".sigModuleBg").height());
@@ -377,7 +376,7 @@ jQuery(document).ready(function() {
     	checkScroll();
     });
 
-    $(".btn-scope").click(function(){
+/*    $(".btn-scope").click(function(){
     	var level = $(this).attr("level");
     	selectScopeLevelCommunexion(level);
     });
@@ -386,10 +385,10 @@ jQuery(document).ready(function() {
     });
     $(".btn-scope").mouseout(function(){
     	$(".btn-scope-niv-"+levelCommunexion).addClass("selected");
-    });
+    });*/
     
     initNotifications();
-	initFloopDrawer();
+	//initFloopDrawer();
     
     $(window).resize(function(){
       resizeInterface();
@@ -403,13 +402,12 @@ jQuery(document).ready(function() {
 		$(".search-loader").html("<i class='fa fa-check'></i> Vous êtes communecté à " + cityNameCommunexion + ', ' + cpCommunexion);
 	}
 
-	toogleCommunexion();
-
+	//toogleCommunexion();
 	//manages the back button state 
 	//every url change (loadByHash) is pushed into history.pushState 
 	//onclick back btn popstate is launched
 	//
-    $(window).bind("popstate", function(e) {
+   /* $(window).bind("popstate", function(e) {
       //console.dir(e);
       console.log("history.state",$.isEmptyObject(history.state),location.hash);
       console.warn("popstate history.state",history.state);
@@ -424,7 +422,7 @@ jQuery(document).ready(function() {
 
       lastUrl = location.hash;
     });
-
+*/
 
 	//console.log("start timeout MAIN MAP LOOOOOL");
 	//$("#btn-toogle-map").hide();
@@ -448,13 +446,13 @@ jQuery(document).ready(function() {
 			return;
 		}
 		else{ 
-			loadByHash("#default.simplyDirectory.params.<?php echo $get; ?>");
+			//loadByHash("#default.simplyDirectory");
 		}
 	}
 	checkScroll();
 });
 
-function startNewCommunexion(country){
+/*function startNewCommunexion(country){
 	var locality = $('#searchBarPostalCode').val();
 	locality = locality.replace(/[^\w\s-']/gi, '');
 
@@ -507,7 +505,7 @@ function startNewCommunexion(country){
           
       }
     });
-}
+}*/
 
 function resizeInterface()
 {
@@ -519,7 +517,7 @@ function resizeInterface()
   //console.log("heightDif", heightDif);
   $(".floopScroll").css({"minHeight" : height-heightDif});
   $(".floopScroll").css({"maxHeight" : height-heightDif});
-  $(".my-main-container").css("min-height", "692");
+  $(".my-main-container").css("height", "100%");
   $(".main-col-search").css("min-height", $(".sigModuleBg").height());
   //$("ul.notifList").css({"maxHeight" : height-heightDif});
 
@@ -694,7 +692,7 @@ function setScopeValue(btn){
   	console.log("setScopeValue", inseeCommunexion, cityNameCommunexion, cpCommunexion);
 }
 
-function showLocalActorsCityCommunexion(){
+/*function showLocalActorsCityCommunexion(){
 	console.log("showLocalActorsCityCommunexion");
 	var data = { "name" : "", 
  			 "locality" : inseeCommunexion,
@@ -734,7 +732,7 @@ function showLocalActorsCityCommunexion(){
           }
  	});
 
-	}
+	}*/
 
 
 var topMenuActivated = true;
@@ -752,7 +750,7 @@ function showTopMenu(show){
 }
 
 
-function initFloopDrawer(){
+/*function initFloopDrawer(){
 	console.log("initFloopDrawer");
 	//console.dir(myContacts);
 	if(myContacts != null){
@@ -773,7 +771,7 @@ function initFloopDrawer(){
 
       bindEventFloopDrawer();
     }
-}
+}*/
 
 // function initBtnScopeList(){
 // 	$(".btn-scope-list").click(function(){
@@ -781,7 +779,7 @@ function initFloopDrawer(){
 // 	});
 // }
 
-function setInputPlaceValue(thisBtn){
+/*function setInputPlaceValue(thisBtn){
 	//if(location.hash == "#default.home"){
 		//$("#autoGeoPostalCode").val($(thisBtn).attr("val"));
 	//}else{
@@ -795,9 +793,9 @@ function setInputPlaceValue(thisBtn){
 	//}
 	//$.cookie("HTML5CityName", 	 $(thisBtn).attr("val"), 	   { path : '/ph/' });
 	startNewCommunexion();
-}
+}*/
 
-var communexionActivated = false;
+/*var communexionActivated = false;
 function toogleCommunexion(init){ //this = jQuery Element
   
   if(init != true)
@@ -848,14 +846,14 @@ function showInputCommunexion(){
 	$("#input-communexion").show(300);
 	$(".main-col-search").animate({ opacity:0.3 }, 200 );
 	$(".hover-info").hide();
-}
+}*/
 
 //niv 1 : city
 //niv 2 : CP
 //niv 3 : department
 //niv 4 : region
 //niv 4 : pays / global / tout
-var levelCommunexion = 1;
+/*var levelCommunexion = 1;
 function selectScopeLevelCommunexion(level){
 
 	var department = "";
@@ -903,9 +901,9 @@ function selectScopeLevelCommunexion(level){
 	$(".btn-scope-niv-1").attr("data-original-title", "Niveau 1 - " + cityNameCommunexion + ", " + cpCommunexion);
 	$('.tooltips').tooltip();
 
-	if(typeof startSearch == "function")
-	startSearch();
-}
+	//if(typeof startSearch == "function")
+	//startSearch();
+}*/
 
 
 </script>

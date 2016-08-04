@@ -7,7 +7,9 @@
     <i class="fa fa-spin fa-refresh"></i> Chargement des activités ...</h2>
 </div>
 
-<?php $this->renderPartial(@$path."first_step_directory"); ?> 
+<?php 
+
+	$this->renderPartial(@$path."first_step_directory"); ?> 
 
 <script type="text/javascript">
   //Icons by default categories
@@ -32,7 +34,9 @@
     // var allSearchType = <?php echo json_encode($params['request']['searchType']); ?>;
   <?php } ?>
   //********** FILTERS **********
+   console.log(<?php echo json_encode($params) ?>);
   <?php
+	 
   $allSearchParams = array("sourceKey", "searchType", "searchTag","searchCategory","searchLocalityNAME","searchLocalityCODE_POSTAL_INSEE","searchLocalityDEPARTEMENT","searchLocalityINSEE","searchLocalityREGION");
   foreach ($allSearchParams as $oneSearchParam) {
     //In params set with value
@@ -170,16 +174,16 @@
         if (index > -1) removeSearchType(type);
         else addSearchType(type);
       });
-      initBtnToogleCommunexion();
-      $(".btn-activate-communexion").click(function(){
-        toogleCommunexion();
-      });
+      //initBtnToogleCommunexion();
+      //$(".btn-activate-communexion").click(function(){
+      //  toogleCommunexion();
+      //});
     <?php } ?>
     //initBtnScopeList();
     startSearch(0, indexStepInit);
   });
 function startSearch(indexMin, indexMax){
-    // console.log("startSearch", indexMin, indexMax, indexStep);
+     console.log("startSearch", indexMin, indexMax, indexStep);
     
     $("#listTagClientFilter").html('spiner');
     if(loadingData) return;
@@ -198,6 +202,8 @@ function startSearch(indexMin, indexMax){
     }
     // if(name.length>=3 || name.length == 0){
       var locality = "";
+      communexionActivated=true;
+      levelCommunexion = 1;
       if(communexionActivated){
         if(levelCommunexion == 1) locality = inseeCommunexion;
         if(levelCommunexion == 2) locality = cpCommunexion;

@@ -405,7 +405,7 @@ var	dateLimit = 0;
 var lastOffset="";
 var streamType="news";
 var months = ["<?php echo Yii::t('common','january') ?>", "<?php echo Yii::t('common','febuary') ?>", "<?php echo Yii::t('common','march') ?>", "<?php echo Yii::t('common','april') ?>", "<?php echo Yii::t('common','may') ?>", "<?php echo Yii::t('common','june') ?>", "<?php echo Yii::t('common','july') ?>", "<?php echo Yii::t('common','august') ?>", "<?php echo Yii::t('common','september') ?>", "<?php echo Yii::t('common','october') ?>", "<?php echo Yii::t('common','november') ?>", "<?php echo Yii::t('common','december') ?>"];
-var contextMap = {
+/*var contextMap = {
 	"tags" : [],
 	"scopes" : {
 		codeInsee : [],
@@ -413,7 +413,7 @@ var contextMap = {
 		region :[],
 		addressLocality : []
 	},
-};
+};*/
 var formCreateNews;
 var indexStep = 5;
 var currentIndexMin = 0;
@@ -438,13 +438,11 @@ var peopleReference=false;
 var mentionsContact = [];
 jQuery(document).ready(function() 
 {
-//	console.log(dataNewsSearch);
 	if(contextParentType=="city"){
 		$("#cityInsee").val(inseeCommunexion);
 		$("#cityPostalCode").val(cpCommunexion);
 		$(".cityBadge").html("<i class=\"fa fa-university\"></i> "+cpCommunexion);
 	}
-	//canManageNews="";
 	$(".my-main-container").off(); 
 	if(contextParentType=="pixels"){
 		tagsNews=["bug","idea"];
@@ -458,22 +456,7 @@ jQuery(document).ready(function()
 	//$("#tags").select2('val', "");
 	if(contextParentType != "city")
 
-		$(".moduleLabel").html("<?php echo @$headerName; ?>");
-	//<span class='text-red'><i class='fa fa-rss'></i> Fil d'actus de</span>
-	//if(contextParentType!="city"){
-		
-		//if(contextParentId == idSession)
-		/*$(".moduleLabel").html("<i class='fa fa-rss'></i> Mon fil d'actus" + 
-								"<img class='img-profil-parent' src='<?php echo $imgProfil; ?>'>");
-		else
-		$(".moduleLabel").html("<span class='text-red'><i class='fa fa-rss'></i> Fil d'actus de</span> <?php echo addslashes(@$contextName); ?>" + 
-								"<img class='img-profil-parent' src='<?php echo $imgProfil; ?>'>");*/
-		
-		
-	/*}else{
-		
-	}*/
-	
+		$(".moduleLabel").html("<?php echo @$headerName; ?>");	
 	// SetTimeout => Problem of sequence in js script reader
 	setTimeout(function(){
 		//loadStream(currentIndexMin+indexStep, currentIndexMax+indexStep);
@@ -503,8 +486,6 @@ jQuery(document).ready(function()
 		});
 	},500);
 
-	Sig.restartMap();
-	Sig.showMapElements(Sig.map, news);
 	initFormImages();
 	if(myContacts != null){
 		$.each(myContacts["people"], function (key,value){

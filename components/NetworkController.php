@@ -80,6 +80,7 @@ class NetworkController extends Controller
       "dir"                  => array("href" => "/ph/network/default/dir", "public" => true),
       "simplydirectory"       => array("href" => "/ph/network/default/simplyDirectory", "public" => true),
       "simplydirectory2"       => array("href" => "/ph/network/default/simplyDirectory2", "public" => true),
+      "directory2"       => array("href" => "/ph/network/default/directory2", "public" => true),
       "agenda"                => array("href" => "/ph/network/default/agenda", "public" => true),
       "news"                  => array("href" => "/ph/network/default/news", "public" => true),
       "home"                  => array("href" => "/ph/network/default/home", "public" => true),
@@ -109,6 +110,8 @@ class NetworkController extends Controller
       "detail"          => array("href" => "/ph/network/element/detail", "public" => true),
       "getalllinks"     => array("href" => "/ph/network/element/getalllinks"),
       "simply"          => array("href" => "/ph/network/element/simply", "public" => true),
+       "directory"       => array("href" => "/ph/network/element/directory", "public" => true),
+      "directory2"       => array("href" => "/ph/network/element/directory2", "public" => true),
     ),
     
     "document" => array(
