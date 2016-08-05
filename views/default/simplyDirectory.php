@@ -1,10 +1,9 @@
-<div class="my-main-container col-md-12" id="repertory" >
+<div class="my-main-container col-md-12 no-padding" id="repertory" >
   <div id="dropdown_search" class="col-md-12 container list-group-item"></div>
 </div>
 <div class="col-md-12 no-padding hide" id="ficheInfoDetail" style="top: 0px;
     opacity: 1;
     display: block;">
-    <i class="fa fa-spin fa-refresh"></i> Chargement des activités ...</h2>
 </div>
 
 <?php 
@@ -421,7 +420,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   var url = "javascript:"; //baseUrl+'/'+moduleId+ "/default/simple#" + o.type + ".detail.id." + id;
                   var url = baseUrl+'/'+moduleId+ "/default/dir#" + type + ".simply.id." + id;
                  // var onclick = 'loadByHash("#organization.simply.id.' + id + '");';
-                  var onclick = 'getAjaxFiche("#element.detail.type.'+type+'.id.'+id+'");';
+                  var onclick = 'getAjaxFiche("#element.detail.type.'+o.typeSig+'.id.'+id+'");';
                   var onclickCp = "";
                   var target = " target='_blank'";
                   var dataId = "";
@@ -1103,6 +1102,17 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
   //   loadClientFeatures();
   // }
   function getAjaxFiche(url){
+	if(location.hash == ""){
+	    history.pushState(null, "New Title", url);
+    }
+    if(isMapEnd){
+		pathTitle="à la cartographie";
+	    showMap();
+    }
+    else{
+	    pathTitle="à l'annuaire";
+    }
+    isEntityView=true;
 	url='/'+url.replace( "#","" ).replace( /\./g,"/" );
     $("#ficheInfoDetail").removeClass("hide");
     $("#repertory").fadeOut();
@@ -1112,11 +1122,23 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     getAjax('#ficheInfoDetail', baseUrl+'/'+moduleId+url,
     	function(){
 	    $.unblockUI();
+	    $(".panel-group .panel-default").fadeOut();
+		$html="<div class='panel panel-back'><a href='javascript:;' onclick='reverseToRepertory();'> Revenir "+pathTitle+" des tiers-lieux</a></div>";
+		$(".panel-group").append($html);
+
     },"html");
-  }
+    }
   function reverseToRepertory(){
+	isEntityView=false;
     $("#ficheInfoDetail").addClass("hide");
     $("#repertory").fadeIn();
+    $(".panel-group .panel-default").fadeIn();
+    $(".panel-group .panel-back").hide();
+   
+    history.replaceState(location);
+    Sig.restartMap();
+	Sig.showMapElements(Sig.map, contextMap);	
+    
   }
 
 </script>

@@ -396,7 +396,7 @@ var loadableUrls = {
     "#project.detail" : {title:'PROJECT DETAIL ', icon : 'lightbulb-o' },
     "#project.addchartsv" : {title:'EDIT CHART ', icon : 'puzzle-piece' },
     "#gantt.addtimesheetsv" : {title:'EDIT TIMELINE ', icon : 'tasks' },
-    "#news" : {title:'NEWS DETAIL ', icon : 'rss', showEntity : true },
+    "#news" : {title:'NEWS DETAIL ', icon : 'rss', showEntity : true, urlParams : "?isFirst=1" },
     "#gallery" : {title:'NEWS DETAIL ', icon : 'rss', showEntity : true },
     "#organization.detail" : {title:'ORGANIZATION DETAIL ', icon : 'users' },
     //"#element.detail" : {title:'ORGANIZATION DETAIL ', icon : 'users' },
@@ -453,6 +453,9 @@ function jsController(hash){
 			if(typeof endPoint.showEntity != undefined && endPoint.showEntity){
 			//	setTimeout(function{
 				//showMap(false);
+				if(typeof endPoint.urlParams != "undefined"){
+					hash = hash+endPoint.urlExtra;
+				}
 				getAjaxFiche(hash);
 				res = true;
 				return false;

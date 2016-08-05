@@ -35,6 +35,11 @@ $cssAnsScriptFilesModule = array(
 );
 HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->assetsUrl);
 ?>	
+<?php 
+	if($type != City::CONTROLLER && !@$_GET["renderPartial"])
+		$this->renderPartial('../pod/headerEntity', array("entity"=>$parent, "type" => $type, "viewer" => @$viewer)); 
+?>
+
 	<!-- start: PAGE CONTENT -->
 <?php 
 	$viewer = isset($_GET["viewer"]) ? true : false;
@@ -43,7 +48,7 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->
 	$contextTitle = "";
 	$imgProfil = $this->module->assetsUrl . "/images/news/profile_default_l.png"; 
 	if( isset($type) && $type == Organization::COLLECTION && isset($parent) ){
-		Menu::organization( $parent );
+		//Menu::organization( $parent );
 		//$thisOrga = Organization::getById($parent["_id"]);
 		$contextName = addslashes($parent["name"]);
 		$contextIcon = "users";
@@ -57,7 +62,7 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->
 		$headerName= "<i class='fa fa-circle text-green'></i> <i class='fa fa-rss'></i> Journal de l'organisation";//.$contextName;
 	}
 	else if((isset($type) && $type == Person::COLLECTION) || (isset($parent) && !@$type)){
-		Menu::person($parent);
+		//Menu::person($parent);
 		if(@$viewer || !@Yii::app()->session["userId"] || (Yii::app()->session["userId"] !=$contextParentId)){
 			//Visible de tous sur
 			$contextName =addslashes($parent["name"]);
@@ -83,7 +88,7 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->
 		$iconBegin= "connectdevelop";
 	}
 	else if( isset($type) && $type == Project::COLLECTION && isset($parent) ){
-		Menu::project( $parent );
+		//Menu::project( $parent );
 		$contextName = addslashes($parent["name"]);
 		$contextIcon = "lightbulb-o";
 		$contextTitle = Yii::t("common", "Contributors of project");
@@ -93,7 +98,7 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->
 		$iconBegin= "lock";
 		$headerName= "<i class='fa fa-circle text-purple'></i> <i class='fa fa-rss'></i> Journal du projet";//.$contextName;
 	}else if( isset($type) && $type == Event::COLLECTION && isset($parent) ){
-		Menu::event( $parent );
+		//Menu::event( $parent );
 		$contextName = addslashes($parent["name"]);
 		$contextIcon = "calendar";
 		$contextTitle = Yii::t("common", "Contributors of event");
@@ -118,7 +123,7 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->
 
 	$imgProfil = "";
 	if($contextParentType != "city"){
-		Menu::news($type);
+		//Menu::news($type);
 		//$this->renderPartial('../default/panels/toolbar'); 
 	}
 ?>

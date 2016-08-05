@@ -107,7 +107,11 @@
     }
 ?>
 <style>
-
+	#dropdown_params{
+		background-image: url("<?php echo $this->module->assetsUrl; ?>/images/bg/footer_menu_left.png");
+		background-repeat:no-repeat;
+		background-position:0% 87%;
+	}
 	#menu-bottom .btn-param-postal-code{
 		border-radius: 0px;
 		left: 0px;
@@ -335,14 +339,26 @@ var proverbs = <?php echo json_encode(random_pic()) ?>;
 var hideScrollTop = true;
 var lastUrl = null;
 var isMapEnd = <?php echo (isset( $_GET["map"])) ? "true" : "false" ?>;
-
+var contextMap = [];
+var isEntityView = false;
 //console.warn("isMapEnd 1",isMapEnd);
 jQuery(document).ready(function() {
 	//Simply load default
 	$('.bg-main-menu').hide();
 	$('.bg-main-menu').html($('.menu-col-search').html());
 	$('#btn-menu-launch').click(function(){
+
+		if(!$('.menu-col-search').is(":visible")){
+			$(".bgpixeltree").removeClass("col-md-12 col-sm-12 col-xs-12").addClass("col-md-10 col-sm-10 col-xs-10");
+			showAfter=false;
+		}else{
+			showAfter=true;
+		}
+
 		$('.menu-col-search').toggle("slow");
+		if(showAfter){
+			$(".bgpixeltree").removeClass("col-md-10 col-sm-10 col-xs-10").addClass("col-md-12 col-sm-12 col-xs-12");
+		}
 	});
 	<?php if(isset(Yii::app()->session['userId']) && //et que le two_step est terminé
 			(!isset($me["two_steps_register"]) || $me["two_steps_register"] != true)){ ?>
@@ -366,8 +382,8 @@ jQuery(document).ready(function() {
   	//$(".my-main-container").css("min-height", $(".sigModuleBg").height());
     $(".main-col-search").css("min-height", $(".sigModuleBg").height());
 
-    $('#btn-toogle-map').click(function(e){ showMap();  	});
-    $('.main-btn-toogle-map').click(function(e){ showMap(); });
+    $('#btn-toogle-map').click(function(e){ showMap(); });
+    $('.main-btn-toogle-map').click(function(e){ showMap();});
 
     $("#mapCanvasBg").show();
     
@@ -603,7 +619,7 @@ function showMap(show)
      							opacity:0,
 						      }, 'slow' );
 
-		setTimeout(function(){ $(".my-main-container").hide(); }, 1000);
+		setTimeout(function(){ $(".bgpixeltree").hide(); }, 1000);
 		var timer = setTimeout("Sig.constructUI()", 1000);
 		
 	}else{
@@ -621,7 +637,7 @@ function showMap(show)
      							top: 0,
      							opacity:1
 						      }, 'slow' );
-		setTimeout(function(){ $(".my-main-container").show(); }, 100);
+		setTimeout(function(){ $(".bgpixeltree").show(); }, 100);
 
 		if(typeof Sig != "undefined")
 		if(Sig.currentMarkerPopupOpen != null){
