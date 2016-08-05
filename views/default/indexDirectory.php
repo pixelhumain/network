@@ -441,7 +441,6 @@ jQuery(document).ready(function() {
 	} 
 	else{ //si l'utilisateur est déjà passé par le two_step_register
  		if(location.hash != "#default.home" && location.hash != "#" && location.hash != ""){
-
 			loadByHash(location.hash);
 			return;
 		}
@@ -573,7 +572,6 @@ function checkScroll(){
 
 function showMap(show)
 {
-
 	//if(typeof Sig == "undefined") { alert("Pas de SIG"); return; } 
 	console.log("typeof SIG : ", typeof Sig);
 	if(typeof Sig == "undefined") show = false;

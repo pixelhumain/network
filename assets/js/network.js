@@ -396,9 +396,10 @@ var loadableUrls = {
     "#project.detail" : {title:'PROJECT DETAIL ', icon : 'lightbulb-o' },
     "#project.addchartsv" : {title:'EDIT CHART ', icon : 'puzzle-piece' },
     "#gantt.addtimesheetsv" : {title:'EDIT TIMELINE ', icon : 'tasks' },
-    "#news.detail" : {title:'NEWS DETAIL ', icon : 'rss' },
+    "#news" : {title:'NEWS DETAIL ', icon : 'rss', showEntity : true },
+    "#gallery" : {title:'NEWS DETAIL ', icon : 'rss', showEntity : true },
     "#organization.detail" : {title:'ORGANIZATION DETAIL ', icon : 'users' },
-    "#element.detail" : {title:'ORGANIZATION DETAIL ', icon : 'users' },
+    //"#element.detail" : {title:'ORGANIZATION DETAIL ', icon : 'users' },
     "#organization.simply" : {title:'ORGANIZATION DETAIL ', icon : 'users' },
     "#need.detail" : {title:'NEED DETAIL ', icon : 'cubes' },
     "#city.detail" : {title:'CITY ', icon : 'university' },
@@ -417,7 +418,7 @@ var loadableUrls = {
     "#default.directory" : {title:'COMMUNECTED DIRECTORY', icon : 'connectdevelop',"urlExtraParam":"isSearchDesign=1"},
     "#default.simplyDirectory" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
     //"#default.index" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
-    "#element.detail" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
+    "#element" : {title:'COMMUNECTED NEWS ', icon : 'rss', showEntity : true },
     "#default.simplydirectory2" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
     "#default.news" : {title:'COMMUNECTED NEWS ', icon : 'rss' },
     "#default.agenda" : {title:'COMMUNECTED AGENDA ', icon : 'calendar'},
@@ -445,9 +446,19 @@ function jsController(hash){
 		//console.log("replaceAndShow2",urlIndex);
 		if( hash.indexOf(urlIndex) >= 0 )
 		{
+			//alert(hash);
 			endPoint = loadableUrls[urlIndex];
+			console.log(endPoint);
 			//console.log("jsController 2",endPoint,"login",endPoint.login );
-			if( typeof endPoint.login == undefined || !endPoint.login || ( endPoint.login && userId ) ){
+			if(typeof endPoint.showEntity != undefined && endPoint.showEntity){
+			//	setTimeout(function{
+				//showMap(false);
+				getAjaxFiche(hash);
+				res = true;
+				return false;
+			//	}, 100);
+			}
+			else if( typeof endPoint.login == undefined || !endPoint.login || ( endPoint.login && userId ) ){
 				//alises are renaming of urls example default.home could be #home
 				if( endPoint.alias ){
 					endPoint = jsController(endPoint.alias);
@@ -461,7 +472,7 @@ function jsController(hash){
 					extraParams = (endPoint.urlExtraParam) ? "?"+endPoint.urlExtraParam : "";
 					urlExtra = (endPoint.urlExtra) ? endPoint.urlExtra : "";
 
-					showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" )+urlExtra+extraParams, endPoint.title,endPoint.icon );
+					showAjaxPanel( '/'+hash.replace( "#","" ).replace( /\./g,"/" )+urlExtra+extraParams, endPoint.title,endPoint.icon);
 
 					if(endPoint.menu)
 						$("."+endPoint.menu).removeClass("hide");
@@ -511,10 +522,10 @@ function loadByHash( hash , back ) {
         hashT = hash.split(".");
         showAjaxPanel( 'main-col-search','list' );
     }*/
-    else if( hash.indexOf("#element.detail") >= 0 ){
-        hashT = hash.split(".");
-        showAjaxPanel( 'detail-col-search','detail' );
-    }
+    //else if( hash.indexOf("#element") >= 0 || hash.indexOf("#news") >= 0 || hash.indexOf("#gallery") >= 0 ){
+      //  hashT = hash.split(".");
+        //showAjaxPanel( 'detail-col-search','detail' );
+   // }
 
  //    else if( hash.indexOf("#rooms.index.type") >= 0 ){
  //        hashT = hash.split(".");
@@ -617,7 +628,7 @@ function showAjaxPanel (url,title,icon) {
 		getAjax('.main-col-search',baseUrl+'/'+moduleId+url,function(data){ 
 			/*if(!userId && userIdBefore != userId )
 				window.location.reload();*/
-
+				
 
 			$(".main-col-search").slideDown(); 
 			initNotifications(); 

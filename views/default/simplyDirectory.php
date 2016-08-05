@@ -67,7 +67,10 @@
   var timeout = null;
   jQuery(document).ready(function() {
     // addSearchTag("CIGALES");
-    showMap(true);
+	if  (location.hash == "")
+    	showMap(true);
+    else
+    	showMap(false);
     // selectScopeLevelCommunexion(levelCommunexion);
     topMenuActivated = true;
     hideScrollTop = true; 
@@ -418,7 +421,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   var url = "javascript:"; //baseUrl+'/'+moduleId+ "/default/simple#" + o.type + ".detail.id." + id;
                   var url = baseUrl+'/'+moduleId+ "/default/dir#" + type + ".simply.id." + id;
                  // var onclick = 'loadByHash("#organization.simply.id.' + id + '");';
-                  var onclick = 'getAjaxFiche("organizations","organization", "'+ id +'");';
+                  var onclick = 'getAjaxFiche("#element.detail.type.'+type+'.id.'+id+'");';
                   var onclickCp = "";
                   var target = " target='_blank'";
                   var dataId = "";
@@ -1099,13 +1102,14 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
   //   });
   //   loadClientFeatures();
   // }
-  function getAjaxFiche(contextCollection,contextController, contextId){
+  function getAjaxFiche(url){
+	url='/'+url.replace( "#","" ).replace( /\./g,"/" );
     $("#ficheInfoDetail").removeClass("hide");
     $("#repertory").fadeOut();
     $.blockUI({
 				message : "<h4 style='font-weight:300' class='text-dark padding-10'><i class='fa fa-spin fa-circle-o-notch'></i><br>Chargement en cours ...</span></h4>"
 	});
-    getAjax('#ficheInfoDetail', baseUrl+'/'+moduleId+"/element/detail/type/"+contextController+"/id/"+contextId,
+    getAjax('#ficheInfoDetail', baseUrl+'/'+moduleId+url,
     	function(){
 	    $.unblockUI();
     },"html");

@@ -287,8 +287,8 @@ else if( @$type == PROJECT::CONTROLLER && @$project ){
 	$parentType=Project::COLLECTION;
 	$connectType="contributors";
 }
-
-$this->renderPartial('../default/panels/toolbar'); 
+if($type != City::CONTROLLER && !@$_GET["renderPartial"])
+	$this->renderPartial('../pod/headerEntity', array("entity"=>$element, "type" => $parentType)); 
 
 $countPeople = 0; $countOrga = 0; $countProject = 0; $countEvent = 0; $countFollowers = 0; $followsProject = 0; $followsPeople = 0 ; $followsOrga = 0; $countAttendees = 0; $countGuests = 0;
 if (@$people)
@@ -666,6 +666,21 @@ if (@$follows){
 						 		$strHTML .=  '<a class="startDateEvent end double" '.$url.'>'.date('m/d/Y', $e["endDate"]->sec).'</a>';
 						 		
 							}else{
+								if (!empty($e["startDate"]) && !empty($e["endDate"])) {
+									if (gettype($e["startDate"]) == "object" && gettype($e["endDate"]) == "object") {
+										//Set TZ to UTC in order to be the same than Mongo
+										date_default_timezone_set('UTC');
+										$e["startDate"] = date('Y-m-d H:i:s', $e["startDate"]->sec);
+										$e["endDate"] = date('Y-m-d H:i:s', $e["endDate"]->sec);
+									} else {
+										//Manage old date with string on date event
+										$now = time();
+										$yesterday = mktime(0, 0, 0, date("m")  , date("d")-1, date("Y"));
+										$yester2day = mktime(0, 0, 0, date("m")  , date("d")-2, date("Y"));
+										$e["endDate"] = date('Y-m-d H:i:s', $yesterday);
+										$e["startDate"] = date('Y-m-d H:i:s',$yester2day);
+									}
+								}
 								$start = dateToStr($e["startDate"], "fr", true);
 								$end = dateToStr($e["endDate"], "fr", true);
 
@@ -819,6 +834,10 @@ if (@$follows){
 		</div>
 	</div>
 </div>
+<?php if(!isset($_GET["renderPartial"])){ ?>
+</div>
+<?php } ?>
+
 <!-- end: PAGE CONTENT-->
 
 <?php 
