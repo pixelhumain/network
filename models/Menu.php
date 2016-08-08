@@ -298,21 +298,25 @@ class Menu {
  public static function element($element,$type)
     {
         
-        if( !is_array( Yii::app()->controller->toolbarMBZ ))
+          if( !is_array( Yii::app()->controller->toolbarMBZ ))
             Yii::app()->controller->toolbarMBZ = array();
 
         $id = (string)$element["_id"];
 		if( isset($type) && $type == Organization::COLLECTION && isset($element) ){
-			$controller=Organization::CONTROLLER;
+			$controller = Organization::CONTROLLER;
+			$strongLinks = "members";
 		}
 		else if((isset($type) && $type == Person::COLLECTION) || (isset($element))){
 			$controller=Person::CONTROLLER;
+			$strongLinks = "members";
 		}
 		else if( isset($type) && $type == Project::COLLECTION && isset($element) ){
 			$controller=Project::CONTROLLER;
+			$strongLinks = "contributors";
 		}
 		else if( isset($type) && $type == Event::COLLECTION && isset($element) ){
 			$controller=Event::CONTROLLER;
+			$strongLinks = "attendees";
 		}
 
         //HOME
@@ -338,7 +342,7 @@ class Menu {
         			Yii::t("common",ucfirst($controller)." community"),
         			Yii::t("common","Community") ,
         			'connectdevelop',
-        			"showElementPad('directory')", $controller, "directory");
+        			"showElementPad('directory')", $controller, "directory","communityBtn hide");
        
        //ALBUM
         //-----------------------------
@@ -358,22 +362,22 @@ class Menu {
         */
         // ADD MEMBER
         //-----------------------------
-        if( Authorisation::isOrganizationAdmin(Yii::app()->session['userId'],$id) ){
+        /*if( Authorisation::isOrganizationAdmin(Yii::app()->session['userId'],$id) ){
 	        self::entry("right", 'onclick',
             			Yii::t('common','Add a member to this organization'), 
             			Yii::t("common",'Add member'),'plus',
             			"loadByHash('#organization.addmember.id.".$id."')",null,null);
-        }
+        }*/
 
         //SEND MESSAGE
         //-----------------------------
-        if( Authorisation::isOrganizationMember(Yii::app()->session['userId'],$id) ){
+		//   if( Authorisation::isOrganizationMember(Yii::app()->session['userId'],$id) ){
             /*self::entry("right", 'onclick',
                         Yii::t( "common", "Send a message to this Organization"), 
                         Yii::t( "common", "Contact"),
                         'envelope-o',
                         "loadByHash( '#news.index.type.organizations.id.".$id."')",null,null);*/
-        }
+		// }
         
         //FOLLOW BUTTON
         //-----------------------------
@@ -383,47 +387,34 @@ class Menu {
         */
         if( !isset( $element["disabled"] ) ){
             //Link button 
-            if(isset($element["_id"]) && isset(Yii::app()->session["userId"]) && 
+            if($type != Person::COLLECTION && isset($element["_id"]) && isset(Yii::app()->session["userId"]) && 
                 Link::isLinked((string)$element["_id"], $type, Yii::app()->session["userId"])){
 	            
 	            self::entry("right", 'onclick',
                         Yii::t( "common", "Leave this ".$controller),
                         Yii::t( "common", "Leave"),
                         'fa fa-unlink disconnectBtnIcon',
-                        "disconnectTo('".$type."','".$id."','".Yii::app()->session["userId"]."','".Person::COLLECTION."','members')",null,null,"text-red"); 
-                /*$htmlFollowBtn = array('tooltip' => Yii::t( "common", "Leave this Organization"), 
-                                       'position'   => "right",
-                                       'label' => Yii::t( "common", "Leave"), 
-                                       "iconClass"=>"disconnectBtnIcon fa fa-unlink",
-                                       disconnectTo(parentType,parentId,childId,childType,connectType)
-                                        "href"=>"<a href='javascript:;' class='removeMemberBtn text-red tooltips btn btn-default' data-name='".$organization["name"]."' data-memberof-id='".$organization["_id"]."' data-member-type='".Person::COLLECTION."' data-member-id='".Yii::app()->session["userId"]."'");
-                    array_push(Yii::app()->controller->toolbarMBZ, $htmlFollowBtn);*/
+                        "disconnectTo('".$type."','".$id."','".Yii::app()->session["userId"]."','".Person::COLLECTION."','".			$strongLinks."')",null,null,"text-red"); 
             } else if (isset($element["_id"]) && isset(Yii::app()->session["userId"]) && 
                 isset($element["links"]["followers"][Yii::app()->session["userId"]])){
 	            self::entry("right", 'onclick',
-                        Yii::t( "common", "Unfollow this person"),
+                        Yii::t( "common", "Unfollow this ".$controller),
                         Yii::t( "common", "Unfollow"),
                         'fa fa-unlink disconnectBtnIcon',
                         "disconnectTo('".$type."','".$id."','".Yii::app()->session["userId"]."','".Person::COLLECTION."','followers')",null,null,"text-red"); 
-
-	            /*if (@Yii::app()->session["userId"]){
-			        $href = "<a href='javascript:;' class='connectBtn tooltips btn btn-default ' id='addMeAsMemberInfo'";
-		        }
-		        else{
-					$href = "<a href='javascript:;' class='tooltips btn btn-default' onclick='showPanel(\"box-login\");'";
-		        }
-                $htmlFollowBtn = array('tooltip' => Yii::t( "common", "Join this Organization"), 
-                                        'position'   => "right",
-                                        'label' => Yii::t( "common", "Join"), 
-                                        "iconClass"=> "connectBtnIcon fa fa-unlink",
-                                        "href"=> $href);
-				array_push(Yii::app()->controller->toolbarMBZ, $htmlFollowBtn);*/
+            } else if(@$element["_id"] && @Yii::app()->session["userId"] && 
+                !@$element["links"]["followers"][Yii::app()->session["userId"]] && $type == Person::COLLECTION){
+	                self::entry("right", 'onclick',
+	                        Yii::t( "common", "Follow this ".$controller),
+	                        Yii::t( "common", "Follow"),
+	                        'fa fa-link followBtn',
+	                        "follow('".$type."','".$id."','".Yii::app()->session["userId"]."','".Person::COLLECTION."')",null,null);
             }
             //Ask Admin button
-            if (! Authorisation::isOrganizationAdmin(Yii::app()->session["userId"], $id) && @Yii::app()->session["userId"]) {
+            if ($type != Person::COLLECTION && !in_array(Yii::app()->session["userId"], Authorisation::listAdmins($id, $type,true)) && @Yii::app()->session["userId"]) {
 	            $connectAs="admin";
-	            if(!@$element["links"]["members"][Yii::app()->session["userId"]]){
-		            $connectAs="member";
+	            if(!@$element["links"][$type][Yii::app()->session["userId"]]){
+		            $connectAs=substr ( $strongLinks , 0 , (strlen($strongLinks)-1));
 		            if (!@$element["links"]["followers"][Yii::app()->session["userId"]]){
 			            self::entry("right", 'onclick',
 	                        Yii::t( "common", "Follow this ".$controller),
@@ -434,7 +425,7 @@ class Menu {
 	            }
 
                 //Test if user has already asked to become an admin
-                if(!in_array(Yii::app()->session["userId"], Authorisation::listAdmins($id, Organization::COLLECTION,true))){
+                if(!in_array(Yii::app()->session["userId"], Authorisation::listAdmins($id, $type,true))){
                     self::entry("right", 'onclick',
                             Yii::t( "common", "Declare me as ".$connectAs." of this ".$controller),
                             Yii::t( "common", "Become ".$connectAs),

@@ -163,6 +163,18 @@
 		border-radius: 50% 50% 50% 0%;
 		background-color: rgb(177, 194, 204) !important;
 	}
+	.breadcrumbs{
+   	 height: 100px;
+   	 text-align:center;
+   	 line-height:50px;
+	}
+	.breadcrumb > li {
+		display : inherit;
+		font-size: 16px;
+	}
+	.breadcrumb > li + li::before {
+		
+	}
 	/*.btn-scope-niv-5:hover{
 		background-color: rgb(109, 120, 140) !important;
 	}

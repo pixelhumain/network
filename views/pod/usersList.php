@@ -154,7 +154,7 @@
 						
 					?>
 					
-						<a href="javascript:;" onclick="loadByHash('#<?php echo $redirect; ?>.detail.id.<?php if (@$e["_id"]) echo $e['_id']; else echo $e["id"]?>')" title="<?php echo $name ?>" class="btn no-padding contentImg <?php echo $grayscale ?>">
+						<a href="javascript:;" onclick="getAjaxFiche('#element.detail.type.<?php echo $e["type"] ?>.id.<?php echo $e["id"] ?>');" title="<?php echo $name ?>" class="btn no-padding contentImg <?php echo $grayscale ?>">
 	
 						<?php if($e && !empty($e["profilThumbImageUrl"])) {
 							// Utiliser profilThumbImageUrl && createUrl(/.$profilThumbUrl.)

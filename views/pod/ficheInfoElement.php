@@ -375,7 +375,7 @@
 		//Type Organization
 		// $('#type').editable({
 		// 	url: baseUrl+"/"+moduleId+"/organization/updatefield", 
-		// 	value: '<?php echo (isset($element)) ? $element["type"] : ""; ?>',
+		// 	value: '<?php echo (isset($element["type"])) ? $element["type"] : ""; ?>',
 		// 	source: function() {
 		// 		return types;
 		// 	},

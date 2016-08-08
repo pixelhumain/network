@@ -1124,11 +1124,13 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 	    history.pushState(null, "New Title", url);
     }
     if(isMapEnd){
-		pathTitle="à la cartographie";
+		pathTitle="Cartographie";
+		pathIcon = "map-marker";
 	    showMap();
     }
     else{
-	    pathTitle="à l'annuaire";
+	    pathTitle="Annuaire";
+	    pathIcon = "list";
     }
     isEntityView=true;
 	url='/'+url.replace( "#","" ).replace( /\./g,"/" );
@@ -1141,12 +1143,21 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     	function(){
 	    $.unblockUI();
 	    $(".panel-group .panel-default").fadeOut();
-		$html="<div class='panel panel-back'><a href='javascript:;' onclick='reverseToRepertory();'> Revenir "+pathTitle+" des tiers-lieux</a></div>";
+	    console.log(contextData);
+		$html="<div class='panel panel-back padding-5'>"+
+				"<ol class='breadcrumb'><li><a href='javascript:;' onclick='reverseToRepertory();'><i class='fa fa-"+pathIcon+"'> "+pathTitle+"</a></li>"+
+					"<li><a href='#'>Library</a></li><li class='active'>Data</li></ol>"+
+					"<a href='javascript:;' class='btn' onclick='reverseToRepertory();'>"+
+						"<i class='fa fa-"+pathIcon+"'></i> 'Retour "+pathTitle+" des tiers-lieux"+
+					"</a>"+
+				"</div>";
 		$(".panel-group").append($html);
-
     },"html");
   }
   function reverseToRepertory(){
+	  if(isMapEnd){
+	    showMap();
+    }
 	isEntityView=false;
     $("#ficheInfoDetail").addClass("hide");
     $("#repertory").fadeIn();

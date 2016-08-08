@@ -52,6 +52,7 @@ if($('#breadcum').length)$('#breadcum').html('<i class="fa fa-search fa-2x" styl
 		    			$this->renderPartial('../pod/ficheInfoElement',$params); 
 		    		?>
 		    	</div>
+		    	<?php if ($type != Person::COLLECTION){ ?>
 			    <div class="col-md-4 no-padding">
 					<div class="col-md-12 col-xs-12">
 						<?php   $this->renderPartial('../pod/usersList', array(  $controller => $element,
@@ -64,6 +65,7 @@ if($('#breadcum').length)$('#breadcum').html('<i class="fa fa-search fa-2x" styl
 						?>
 			    	</div>
 				</div>
+				<?php } ?>
 			</div>
 		 </div>
 	</div>
