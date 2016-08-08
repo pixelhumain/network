@@ -37,10 +37,11 @@
         "event" : false
     },
     "result" : {
-        "displayImage" : false,
+        "displayImage" : true,
         "displayType" : false,
         "fullLocality" : true,
-        "datesEvent" : false
+        "datesEvent" : false,
+        "displayShortDescription" : true
     },
     "request" : {
         "pagination" : 1000,

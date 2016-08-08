@@ -461,6 +461,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                     });
                   }
                   mapElements.push(o);
+                  contextMap.push(o);
                   // console.log(tagsClasses);
                   var name = typeof o.name != "undefined" ? o.name : "";
                   var website = typeof o.url != "undefined" ? o.url : "";
@@ -477,15 +478,26 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   if(description == "") description = (typeof o.description != "undefined" &&
                                      o.description != null) ? o.description : "";
                   description = "";
+                  if(o.profilMediumImageUrl != "undefined" && o.profilMediumImageUrl != "")
+                  	pathmedium = baseUrl+o.profilMediumImageUrl;
+                  else
+                  	pathmedium = "<?php echo $this->module->assetsUrl ?>/images/thumbnail-default.jpg"; 
+                  shortDescription = (typeof o.shortDescription != "undefined" &&
+                                     o.shortDescription != null) ? o.shortDescription : "";
+
                   var startDate = (typeof o.startDate != "undefined") ? "Du "+dateToStr(o.startDate, "fr", true, true) : null;
                   var endDate   = (typeof o.endDate   != "undefined") ? "Au "+dateToStr(o.endDate, "fr", true, true)   : null;
                   /***** VERSION SIMPLY *****/
                   str += "<div id='"+id+"' class='row list-group-item item searchEntity "+mix+" "+tagsClasses+" "+fullLocality+"' >";
-                    <?php if(isset($params['result']['displayImage']) && $params['result']['displayImage']) { ?>
-                    str += "<div class='entityTop col-md-2' onclick='"+onclick+"'>";
-                        str += "<img class='image' src='http://paniersdumarais.weebly.com/uploads/1/4/6/5/1465996/5333680.jpg' />";
-                    str += "</div>";
-                   <?php } ?>
+                  <?php if(isset($params['result']['displayImage']) && $params['result']['displayImage']) { ?>
+                  	str += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 padding-10 center">'+
+				  				'<img class="img-responsive thumbnail" src="'+pathmedium+'">'+
+				  			'</div>';
+                    <?php } ?>
+                   // str += "<div class='entityTop col-md-2' onclick='"+onclick+"'>";
+                      //  str += "<img class='image' src='http://paniersdumarais.weebly.com/uploads/1/4/6/5/1465996/5333680.jpg' />";
+                    //str += "</div>";
+
                     str += "<div class='entityMiddle col-md-5 name' onclick='"+onclick+"'>";
                         str += "<a class='entityName text-dark'>" + name + "</a><br/>";
                         if(website != "" && website != " ")
@@ -502,7 +514,12 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                          str += htmlIco+"" + typeIco + "";
                       str += "</div>";
                     <?php } ?>
-                   
+                    <?php if(isset($params['result']['displayShortDescription']) && $params['result']['displayShortDescription']) { ?>
+						str += "<div class='entityMiddle col-md-5 type '>";
+                        str += 		shortDescription;
+						str += "</div>";
+                       <?php } ?>
+
                     target = "";
                     // str += "<div class='row entityMiddle fullLocality'>";
                       
@@ -1102,6 +1119,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
   //   loadClientFeatures();
   // }
   function getAjaxFiche(url){
+	$("#ficheInfoDetail").empty();
 	if(location.hash == ""){
 	    history.pushState(null, "New Title", url);
     }
@@ -1127,15 +1145,14 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 		$(".panel-group").append($html);
 
     },"html");
-    }
+  }
   function reverseToRepertory(){
 	isEntityView=false;
     $("#ficheInfoDetail").addClass("hide");
     $("#repertory").fadeIn();
     $(".panel-group .panel-default").fadeIn();
     $(".panel-group .panel-back").hide();
-   
-    history.replaceState(location);
+	history.replaceState(null, '', window.location.href.split('#')[0]);
     Sig.restartMap();
 	Sig.showMapElements(Sig.map, contextMap);	
     

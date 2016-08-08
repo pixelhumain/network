@@ -15,7 +15,7 @@ var loadStream = function(indexMin, indexMax){
     currentIndexMax = indexMax;
     if(indexMin == 0 && indexMax == indexStep) {
       totalData = 0;
-      mapElements = new Array(); 
+      //mapElements = new Array(); 
     }
     else{ if(scrollEnd) return; }
     if(viewer != "")
