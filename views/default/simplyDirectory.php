@@ -1145,11 +1145,8 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 	    $(".panel-group .panel-default").fadeOut();
 	    console.log(contextData);
 		$html="<div class='panel panel-back padding-5'>"+
-				"<ol class='breadcrumb'><li><a href='javascript:;' onclick='reverseToRepertory();'><i class='fa fa-"+pathIcon+"'> "+pathTitle+"</a></li>"+
-					"<li><a href='#'>Library</a></li><li class='active'>Data</li></ol>"+
-					"<a href='javascript:;' class='btn' onclick='reverseToRepertory();'>"+
-						"<i class='fa fa-"+pathIcon+"'></i> 'Retour "+pathTitle+" des tiers-lieux"+
-					"</a>"+
+				"<ol class='breadcrumb'><li><a href='javascript:;' onclick='reverseToRepertory();'><i class='fa fa-"+pathIcon+"'> </i> "+pathTitle+"</a></li>"+
+					"<li><i class='fa fa-level-up' style='transform:rotate(90deg);'></i> <a href='javascript:;' onclick='getAjaxFiche(\"#element.detail."+contextData.typeSig+".id."+contextData._id.$id+"\")'>"+contextData.name+"</a></li>"+
 				"</div>";
 		$(".panel-group").append($html);
     },"html");

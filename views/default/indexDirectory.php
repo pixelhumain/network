@@ -171,9 +171,10 @@
 	.breadcrumb > li {
 		display : inherit;
 		font-size: 16px;
+		padding-left: 5px;
 	}
 	.breadcrumb > li + li::before {
-		
+		content:inherit !important;
 	}
 	/*.btn-scope-niv-5:hover{
 		background-color: rgb(109, 120, 140) !important;
