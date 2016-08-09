@@ -27,7 +27,9 @@
 				"Coworking" : "Coworking",
                 "Tiers Lieu" : "TiersLieu",
                 "FabLab" : "fablab",
-                "Atelier artistique" : "atelierArtistique"
+                "Atelier artistique" : "atelierArtistique",
+				"Café solidaire" : "cafeSolidaire",
+				"Repair Café" : "repairCafe"
             }
         }
     },

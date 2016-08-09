@@ -1118,7 +1118,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
   //   });
   //   loadClientFeatures();
   // }
-  function getAjaxFiche(url){
+  function getAjaxFiche(url, breadcrumb){
 	$("#ficheInfoDetail").empty();
 	if(location.hash == ""){
 	    history.pushState(null, "New Title", url);
@@ -1144,11 +1144,18 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 	    $.unblockUI();
 	    $(".panel-group .panel-default").fadeOut();
 	    console.log(contextData);
-		$html="<div class='panel panel-back padding-5'>"+
-				"<ol class='breadcrumb'><li><a href='javascript:;' onclick='reverseToRepertory();'><i class='fa fa-"+pathIcon+"'> </i> "+pathTitle+"</a></li>"+
-					"<li><i class='fa fa-level-up' style='transform:rotate(90deg);'></i> <a href='javascript:;' onclick='getAjaxFiche(\"#element.detail."+contextData.typeSig+".id."+contextData._id.$id+"\")'>"+contextData.name+"</a></li>"+
-				"</div>";
-		$(".panel-group").append($html);
+	    if(breadcrumb){
+		    $html= "<li style='margin-left:15px;'><i class='fa fa-level-up' style='transform:rotate(90deg);'></i> <a href='javascript:;' onclick='getAjaxFiche(\"#element.detail.type."+contextData.typeSig+".id."+contextData._id.$id+"\")'>"+contextData.name+"</a></li>"+
+					"</div>";
+			$(".breadcrumbVertical").append($html);
+
+	    } else {
+			$html="<div class='panel panel-back padding-5'>"+
+					"<ol class='breadcrumbVertical'><li><a href='javascript:;' onclick='reverseToRepertory();'><i class='fa fa-"+pathIcon+"'> </i> "+pathTitle+"</a></li>"+
+						"<li><i class='fa fa-level-up' style='transform:rotate(90deg);'></i> <a href='javascript:;' onclick='getAjaxFiche(\"#element.detail.type."+contextData.typeSig+".id."+contextData._id.$id+"\")'>"+contextData.name+"</a></li>"+
+					"</div>";
+			$(".panel-group").append($html);
+		}
     },"html");
   }
   function reverseToRepertory(){

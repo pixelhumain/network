@@ -168,12 +168,14 @@
    	 text-align:center;
    	 line-height:50px;
 	}
-	.breadcrumb > li {
+	.breadcrumbVertical{
+		padding:inherit;
+	}
+	.breadcrumbVertical > li {
 		display : inherit;
 		font-size: 16px;
-		padding-left: 5px;
 	}
-	.breadcrumb > li + li::before {
+	.breadcrumbVertical > li + li::before {
 		content:inherit !important;
 	}
 	/*.btn-scope-niv-5:hover{
