@@ -622,7 +622,9 @@ if (@$follows){
 
 						//$url = Yii::app()->createUrl('/'.$moduleId.'/'.$type.'/dashboard/id/'.$id);
 						$name = ( @$e["name"] ) ? $e["name"] : "" ;
-						$url = "loadByHash('#".$type.".detail.id.".$id."')";
+						if($type=="person")
+							$type="citoyen";
+						$url = "getAjaxFiche('#element.detail.type.".$type."s.id.".$id."',true);";
 						$url = 'href="javascript:;" onclick="'.$url.'"';	
 						$process = "";
 						if(@$e["isAdminPending"])
