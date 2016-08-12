@@ -888,6 +888,4 @@
 	function callbackFindByInseeError(){
 		console.log("erreur getlatlngbyinsee", error);
 	}
-	
-
 </script>
