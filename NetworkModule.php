@@ -57,10 +57,11 @@ class NetworkModule extends CWebModule
 	            Yii::getPathOfAlias($this->id.'.assets') );
 	    return $this->_assetsUrl;
 	}
-	public function getParams($paramsGet=""){
+	
+	/*public function getParams($paramsGet=""){
 	//	echo 	Yii::app()->controller->module->viewPath;
       //$pathParams = Yii->controller->module->viewPath.'/default/params/';
-      $pathParams = Yii::app()->controller->module->viewPath.'/default/params/';
+      $pathParams = $_SERVER["DOCUMENT_ROOT"].'/modules/network/views/default/params/';
       if(isset($paramsGet) && !empty($paramsGet) && is_file($pathParams.$paramsGet.'.json')){
         $json = file_get_contents($pathParams.$paramsGet.'.json');
         $params = json_decode($json, true);
@@ -70,6 +71,6 @@ class NetworkModule extends CWebModule
         $params = json_decode($json, true);
       }
       return $params;
-    }
+    }*/
 
 }
