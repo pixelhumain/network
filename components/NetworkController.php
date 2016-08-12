@@ -113,7 +113,13 @@ class NetworkController extends Controller
        "directory"       => array("href" => "/ph/network/element/directory", "public" => true),
       "directory2"       => array("href" => "/ph/network/element/directory2", "public" => true),
     ),
-    
+    "gantt"=> array(
+      "index"            => array("href" => "/ph/network/gantt/index", "public" => true),
+      "savetask"         => array("href" => "/ph/network/gantt/savetask"),
+      "removetask"       => array("href" => "/ph/network/gantt/removetask"),
+      "generatetimeline" => array("href" => "/ph/network/gantt/generatetimeline"),
+      "addtimesheetsv"   => array("href" => "/ph/network/gantt/addtimesheetsv"),
+    ),
     "document" => array(
       "resized"             => array("href"=> "/ph/network/document/resized", "public" => true),
       "list"                => array("href"=> "/ph/network/document/list"),

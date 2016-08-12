@@ -1,3 +1,40 @@
+<?php 
+$cssAnsScriptFilesTheme = array(
+	//X-editable
+	'/assets/plugins/x-editable/css/bootstrap-editable.css',
+	'/assets/plugins/x-editable/js/bootstrap-editable.js' , 
+	//DatePicker
+	'/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' ,
+	'/assets/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr.js' ,
+	'/assets/plugins/bootstrap-datepicker/css/datepicker.css',
+	
+	//DateTime Picker
+	'/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js' , 
+	'/assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fr.js' , 
+	'/assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css',
+	//Wysihtml5
+	'/assets/plugins/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css',
+	'/assets/plugins/wysihtml5/bootstrap-wysihtml5-0.0.2/wysiwyg-color.css',
+	'/assets/plugins/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.min.js' , 
+	'/assets/plugins/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5.js' , 
+	'/assets/plugins/wysihtml5/wysihtml5.js',
+	
+	'/assets/plugins/moment/min/moment.min.js',
+	'/assets/plugins/Chart.js/Chart.min.js'
+);
+HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesTheme);
+$cssAnsScriptFilesModule = array(
+	//Data helper
+	'/js/dataHelpers.js',
+	'/js/postalCode.js',
+	'/js/activityHistory.js'
+);
+HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->assetsUrl);
+$cssAnsScriptFilesModuleSS = array(
+	'/plugins/Chart.js/Chart.min.js',
+);
+HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModuleSS,Yii::app()->theme->baseUrl."/assets");
+?>
 <style>
 	/*.headerEntity{
 		margin-top:-10px;
@@ -72,7 +109,79 @@
 			font-size:13px;
 		}
 	}
-
+		progress[value] {
+    /* Get rid of the default appearance */
+    appearance: none;   
+    /* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
+    border: none;
+    /* Add dimensions */
+	width: 100%; height: 20px;
+    /* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
+    background-color: whiteSmoke;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+    /* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
+    color: royalblue;
+    position: relative;
+	}
+	/*
+	Webkit browsers provide two pseudo classes that can be use to style HTML5 progress element.
+	-webkit-progress-bar -> To style the progress element container
+	-webkit-progress-value -> To style the progress element value.
+	*/
+	
+	progress[value]::-webkit-progress-bar {
+	    background-color: whiteSmoke;
+	    border-radius: 3px;
+	    box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+	}
+	
+	progress[value]::-webkit-progress-value {
+	    position: relative;
+	    
+	    background-size: 35px 20px, 100% 100%, 100% 100%;
+	    border-radius:3px;
+	    
+	    /* Let's animate this */
+	    animation: animate-stripes 5s linear infinite;
+	}
+	
+	@keyframes animate-stripes { 100% { background-position: -100px 0; } }
+	
+	/* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
+	progress[value]::-moz-progress-bar {
+	    /* Gradient background with Stripes */
+	    background-image:
+	    -moz-linear-gradient( 135deg,
+		    transparent,
+		    transparent 33%,
+		    rgba(0,0,0,.1) 33%,
+		    rgba(0,0,0,.1) 66%,
+		    transparent 66%),
+	    -moz-linear-gradient( top,
+	        rgba(255, 255, 255, .25),
+	        rgba(0,0,0,.2)),
+	    -moz-linear-gradient( left, #09c, #f44);    
+	    background-size: 35px 20px, 100% 100%, 100% 100%;
+	    border-radius:3px;
+	    /* Firefox doesn't support CSS3 keyframe animations on progress element. Hence, we did not include animate-stripes in this code block */
+	}
+	
+	.progressStyle::-webkit-progress-value
+	{
+	    /* Gradient background with Stripes */
+	    background-image:
+	    -webkit-linear-gradient( 135deg,
+	        transparent,
+		    transparent 33%,
+		    rgba(0,0,0,.1) 33%,
+		    rgba(0,0,0,.1) 66%,
+		    transparent 66%),
+	    -webkit-linear-gradient( top,
+	        rgba(255, 255, 255, .25),
+	        rgba(0,0,0,.2)),
+	    -webkit-linear-gradient( left, #09c, #ff0);
+	}
 </style>
 
 <div class="row headerEntity bg-light">
