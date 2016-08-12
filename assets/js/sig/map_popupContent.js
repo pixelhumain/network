@@ -157,7 +157,7 @@
 
 			var onclick = "";
 			var url = '#'+typeElement+'.'+action+'.id.'+id;
-			onclick = 'getAjaxFiche("#element.detail.type.'+data['typeSig']+'.id.'+id+'");';
+			onclick = 'getAjaxFiche("#element.detail.type.'+typeElement+'.id.'+id+'");';
 			
 
 			popupContent += "<button class='item_map_list popup-marker' id='popup"+id+"' onclick='"+onclick+"'>";
