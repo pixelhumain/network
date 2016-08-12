@@ -132,7 +132,7 @@
 				<i class="fa fa-map-marker"></i> <?php echo Yii::t("common","Where") ?> ? 
 			<?php }else{ ?>
 				<i class="fa fa-angle-down"></i> Coordonnées
-			<? } ?>
+			<?php } ?>
 		</div>
 		<div class="row info-coordonnees entityDetails text-dark" style="margin-top: 10px !important;">
 			<div class="col-md-6 col-sm-6">	
