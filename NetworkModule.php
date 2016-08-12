@@ -60,7 +60,7 @@ class NetworkModule extends CWebModule
 	public function getParams($paramsGet=""){
 	//	echo 	Yii::app()->controller->module->viewPath;
       //$pathParams = Yii->controller->module->viewPath.'/default/params/';
-      $pathParams = Yii::app()->controller->module->viewPath.'/modules/network/views/default/params/';
+      $pathParams = Yii::app()->controller->module->viewPath.'/default/params/';
       if(isset($paramsGet) && !empty($paramsGet) && is_file($pathParams.$paramsGet.'.json')){
         $json = file_get_contents($pathParams.$paramsGet.'.json');
         $params = json_decode($json, true);
