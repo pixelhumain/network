@@ -271,15 +271,10 @@
 
 		<i class="fa fa-connectdevelop"></i> <span id="main-title-menu">L'Annuaire</span> <span class="text-red">COMMUNE</span>CTÉ
 	</h1>-->
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
 	<?php $this->renderPartial("simply_short_info_profil", array("params" => Yii::app()->params['networkParams'])); ?>
-=======
-	<?php $this->renderPartial("simply_short_info_profil", array("params" => $params)); ?>
->>>>>>> Stashed changes
-=======
-	<?php $this->renderPartial("simply_short_info_profil", array("params" => $params)); ?>
->>>>>>> Stashed changes
+
+
 
 	<!-- <button class="menu-button btn-menu btn-menu-top bg-azure tooltips" id="btn-toogle-map"
 			data-toggle="tooltip" data-placement="right" title="Carte" alt="Carte">

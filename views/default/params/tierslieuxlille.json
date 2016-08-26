@@ -28,8 +28,8 @@
                 "Tiers Lieu" : "TiersLieu",
                 "FabLab" : "fablab",
                 "Atelier artistique" : "atelierArtistique",
-				"Café solidaire" : "cafeSolidaire",
-				"Repair Café" : "repairCafe"
+				        "Café solidaire" : "cafeSolidaire",
+				        "Repair Café" : "repairCafe"
             }
         },
         "linksTag" : {
@@ -102,13 +102,7 @@
             "LILLE"
         ],
         "searchTag" : [
-            "tiers-lieux",
-            "coworking",
-            "Tiers lieu",
-            "Tiers-Lieux",
-            "Tiers Lieux",
-            "TiersLieux",
-            "tiersLieux"
+          "TiersLieux"
         ]
     }
 }
