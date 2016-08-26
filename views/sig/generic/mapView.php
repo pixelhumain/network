@@ -1,21 +1,24 @@
 <?php
 	//securise tous les paramètres utilisés dans mapView.php
-	$elements = array('usePanel', 		'useRightList',  'useResearchTools', 	'useZoomButton',
-					  'useHomeButton', 	'useFullScreen', 'useHelpCoordinates', 	'useChartsMarkers');
+	$elements = array('usePanel',
+										'useRightList',
+										'useResearchTools',
+										'useZoomButton',
+					  				'useHomeButton',
+										'useFullScreen',
+										'useHelpCoordinates',
+										'useChartsMarkers');
 
 	foreach($elements as $element){
 		$sigParams[$element] = isset($sigParams[$element]) ? $sigParams[$element] : false;
 	}
-	
+	$sigParams['useRightList'] = false;
+
 ?>
 <div class="sigModule<?php echo $sigParams['sigKey']; ?>">
 	<div class="mapCanvas" id="mapCanvas<?php echo $sigParams['sigKey']; ?>">
 		<!-- <center><img class="world_pix" style="margin-top:50px;" src="<?php echo $this->module->assetsUrl; ?>/images/shattered.png"></center> -->
     </div>
-
-	<div class="bg-main-menu bgpixeltree_sig hidden-xs"></div>
-
-	
 
 	<?php if($sigParams['useRightList']){ ?>
 		<div id="right_tool_map" class="hidden-xs hidden-sm">
@@ -33,7 +36,7 @@
 							<i class='fa fa-star'></i> Tous
 						</button>
 					</ul>
-				</div>	
+				</div>
 			<?php } ?>
 			<?php if($sigParams['useFilterType']){ ?>
 				<div class="btn-group btn-group-lg dropdown  pull-right" id="btn-filter">
@@ -47,17 +50,17 @@
 						</button>
 					</ul>
 				</div>
-			<?php } ?>	
+			<?php } ?>
 			<span class="right_tool_map_header_title">Résultats</span>
 				<span class="right_tool_map_header_info">935 / 1034</span>
-				
+
 			</div>
-			
+
 			<!-- 	PSEUDO SEARCH -->
 			<div id="map_pseudo_filters">
 
 				<input class="form-control date-range active" type="text" id="input_name_filter" placeholder="filtrer par nom ...">
-				
+
 			</div>
 			<!-- 	PSEUDO SEARCH -->
 
@@ -101,7 +104,7 @@
 		<?php if($sigParams['useResearchTools']){ ?>
 			<input type="text" class="pull-left input-search-place-in-map txt-find-place" id="txt-find-place" placeholder="rechercher un lieu" style="margin-top:2px;">
 			<button type="button" class="btn btn-map pull-right" id="btn-find-more"><i class="fa fa-ellipsis-h"></i></button>
-				
+
 			<div class="" class="pull-right">
 			  	<div class="hidden" id="full-research">
 					<input type="text" class="input-search-place-in-map input-2s" 				 id="txt-num-place" 	placeholder="n°" 		style="margin-top:2px;">
@@ -120,24 +123,24 @@
 		<?php } ?>
 			<i class="fa fa-refresh fa-spin fa-2x" id="ico_reload"></i>
 		</div>
-	
+
 		<?php if($sigParams['useChartsMarkers']){ ?>
 			<div class="btn-group-vertical btn-group-lg btn-group-charts" id="btn-group-charts-map">
-			
+
 			</div>
 		<?php } ?>
 
 		<div class="btn-group-map tools-btn">
-		
-			
+
+
 
 			<?php if($sigParams['useSatelliteTiles']){ ?>
 				<div class="btn-group btn-group-lg">
 					<button type="button" class="btn btn-map" id="btn-satellite"><i class="fa fa-magic"></i></button>
 				</div>
-			<?php } ?>	
+			<?php } ?>
 			<?php if($sigParams['useZoomButton']){ ?>
-				<div class="btn-group btn-group-lg">		
+				<div class="btn-group btn-group-lg">
 					<button type="button" class="btn btn-map " id="btn-zoom-out"><i class="fa fa-search-minus"></i></button>
 					<button type="button" class="btn btn-map" id="btn-zoom-in"><i class="fa fa-search-plus"></i></button>
 				</div>
@@ -146,9 +149,9 @@
 				<div class="btn-group btn-group-lg">
 					<button type="button" class="btn btn-map" id="btn-home"><i class="fa fa-bullseye"></i></button>
 				</div>
-			<?php } ?>	
-			
-			
+			<?php } ?>
+
+
 		</div>
 
 		<div id="mapLegende" class="text-azure">Legende</div>

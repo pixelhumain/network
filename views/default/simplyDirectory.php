@@ -6,9 +6,9 @@
     display: block;">
 </div>
 
-<?php 
+<?php
 
-	$this->renderPartial(@$path."first_step_directory"); ?> 
+	$this->renderPartial(@$path."first_step_directory"); ?>
 
 <script type="text/javascript">
   //Icons by default categories
@@ -16,12 +16,12 @@
   var params = <?php echo json_encode($params) ?>;
   console.log("Params //////////////////");
   console.log(params);
-  <?php 
+  <?php
     if(isset($params['filter']['linksTag'])){
       foreach($params['filter']['linksTag'] as $key => $val){
         if(isset($val['image'])){?>
         linksTagImages.<?php echo $val['tagParent']; ?> = {};
-      <?php 
+      <?php
       }
     }
   }
@@ -35,7 +35,7 @@
   //********** FILTERS **********
    console.log(<?php echo json_encode($params) ?>);
   <?php
-	 
+
   $allSearchParams = array("sourceKey", "searchType", "searchTag","searchCategory","searchLocalityNAME","searchLocalityCODE_POSTAL_INSEE","searchLocalityDEPARTEMENT","searchLocalityINSEE","searchLocalityREGION");
   foreach ($allSearchParams as $oneSearchParam) {
     //In params set with value
@@ -53,7 +53,7 @@
   var allTags = new Object();
   var allTypes = new Object();
   var indexStepInit = 100;
-  
+
   //With different pagination params
   <?php if(isset($params['request']['pagination']) && $params['request']['pagination'] > 0){ ?>
     indexStepInit = <?php echo $params['request']['pagination'] ;?>;
@@ -72,10 +72,10 @@
     	showMap(false);
     // selectScopeLevelCommunexion(levelCommunexion);
     topMenuActivated = true;
-    hideScrollTop = true; 
+    hideScrollTop = true;
     checkScroll();
     var timeoutSearch = setTimeout(function(){ }, 100);
-    
+
     setTimeout(function(){ $("#input-communexion").hide(300); }, 300);
     $(".moduleLabel").html("<i class='fa fa-connectdevelop'></i> <span id='main-title-menu'>Cartographie des Tiers-Lieux </span> <span class='text-red'>MEL</span>");
     $('.tooltips').tooltip();
@@ -106,7 +106,7 @@
         $('#dropdown_search').removeClass('col-md-12');
         $('#dropdown_paramsBtn').addClass('active');
       }
-     
+
     });
     /***** CHANGE THE VIEW GRID OR LIST *****/
     $('#grid').hide();
@@ -136,7 +136,7 @@
       $('#grid').hide();
     });
     /******** EVENTS ********/
-    
+
     $('#reset').on('click', function() {
       searchTag = allsearchTag;
       searchCategory = allsearchCategory;
@@ -145,9 +145,9 @@
       startSearch(0, indexStepInit);
     });
     <?php if(isset($params['mode']) && $params['mode'] == "client"){ ?>
-        
+
         //Charger tous les éléments
-     
+
     <?php } else{ ?>
       $(".my-main-container").scroll(function(){
         if(!loadingData && !scrollEnd){
@@ -186,11 +186,10 @@
   });
 function startSearch(indexMin, indexMax){
      console.log("startSearch", indexMin, indexMax, indexStep);
-    
     $("#listTagClientFilter").html('spiner');
     if(loadingData) return;
     loadingData = true;
-    
+
     // console.log("loadingData true");
     indexStep = indexStepInit;
     var name = $('#searchBarText').val();
@@ -200,7 +199,7 @@ function startSearch(indexMin, indexMax){
     currentIndexMax = indexMax;
     if(indexMin == 0 && indexMax == indexStep) {
       totalData = 0;
-      mapElements = new Array(); 
+      mapElements = new Array();
     }
     // if(name.length>=3 || name.length == 0){
       var locality = "";
@@ -212,7 +211,7 @@ function startSearch(indexMin, indexMax){
         if(levelCommunexion == 3) locality = cpCommunexion.substr(0, 2);
         if(levelCommunexion == 4) locality = inseeCommunexion;
         if(levelCommunexion == 5) locality = "";
-      } 
+      }
       autoCompleteSearch(name, locality, indexMin, indexMax);
 }
 function addSearchType(type){
@@ -262,7 +261,7 @@ function removeSearchCategory(category){
     });
   }
   // var index = searchCategory.indexOf(category);
-  
+
   // if (index > -1) {
   //   //Masquer tous les tags des catégories
   //   $('.checkbox[data-parent="'+category+'"]').each(function(){
@@ -290,7 +289,7 @@ function removeSearchTag(tag){
   }
 }
 var loadingData = false;
-var mapElements = new Array(); 
+var mapElements = new Array();
 var tagsFilter = new Array();
 var mix = "";
 <?php if(isset($params['mode']) && $params['mode'] == 'client') { ?>
@@ -313,30 +312,30 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     console.log("searchLocalityREGION : ",searchLocalityREGION);
     console.log("searchTag : ",searchTag);
     console.log("searchCategory : ",searchCategory);
-    
+
     //To merge Category and tags which are finally all tags
     var searchTagGlobal = [];
     if (undefined !== searchTag && searchTag.length)$.merge(searchTagGlobal,searchTag);
     if (undefined !== searchCategory && searchCategory.length)$.unique($.merge(searchTagGlobal,searchCategory));
     console.log("searchTagGlobal : "+searchTagGlobal);
     var data = {
-      "name" : name, 
-      "locality" : locality, 
-      "searchType" : searchType, 
-      "searchTag" : searchTagGlobal, 
+      "name" : name,
+      "locality" : "xxxx",
+      "searchType" : searchType,
+      "searchTag" : searchTagGlobal,
       "searchLocalityNAME" : searchLocalityNAME,
-      "searchLocalityCODE_POSTAL_INSEE" : searchLocalityCODE_POSTAL_INSEE, 
+      "searchLocalityCODE_POSTAL_INSEE" : searchLocalityCODE_POSTAL_INSEE,
       "searchLocalityDEPARTEMENT" : searchLocalityDEPARTEMENT,
       "searchLocalityINSEE" : searchLocalityINSEE,
       "searchLocalityREGION" : searchLocalityREGION,
-      "searchBy" : searchBy, 
+      "searchBy" : searchBy,
       "indexMin" : indexMin,
-      "indexMax" : indexMax, 
+      "indexMax" : indexMax,
       "sourceKey" : sourceKey
     };
     //console.log("loadingData true");
     loadingData = true;
-    
+
     str = "<i class='fa fa-circle-o-notch fa-spin'></i>";
     $(".btn-start-search").html(str);
     $(".btn-start-search").addClass("bg-azure");
@@ -346,7 +345,6 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     $("#btnShowMoreResult").html("<i class='fa fa-spin fa-circle-o-notch'></i> Recherche en cours ...");
     else
     $("#dropdown_search").html("<center><span class='search-loaderr text-dark' style='font-size:20px;'><i class='fa fa-spin fa-circle-o-notch'></i> Recherche en cours ...</span></center>");
-      
     if(isMapEnd)
       $.blockUI({
         message : "<h1 class='homestead text-red'><i class='fa fa-spin fa-circle-o-notch'></i><span class='text-dark'> En cours ...</span></h1>"
@@ -358,7 +356,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
           dataType: "json",
           error: function (data){
              console.log("error");
-             console.dir(data);          
+             console.dir(data);
           },
           success: function(data){
             if(!data.res){ toastr.error(data.content); }
@@ -366,9 +364,9 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
             {
               var countData = 0;
               $.each(data.res, function(i, v) { if(v.length!=0){ countData++; } });
-              
+
               totalData += countData;
-            
+
               str = "";
               var city, postalCode = "";
               var mapElements = new Array();
@@ -380,17 +378,17 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   var color = mapColorIconTop["default"];
                   // mapElements.push(o);
                   // allElement.push(o);
-                  
-                 
+
+
                   typeIco = o.type;
                   ico = ("undefined" != typeof mapIconTop[typeIco]) ? mapIconTop[typeIco] : mapIconTop["default"];
                   color = ("undefined" != typeof mapColorIconTop[typeIco]) ? mapColorIconTop[typeIco] : mapColorIconTop["default"];
-                  
+
                   htmlIco ="<i class='fa "+ ico +" text-"+color+"'></i>";
                   if("undefined" != typeof o.profilThumbImageUrl && o.profilThumbImageUrl != ""){
                     var htmlIco= "<img width='80' height='80' alt='' class='img-circle bg-"+color+"' src='"+baseUrl+o.profilThumbImageUrl+"'/>";
                   }
-                  
+
                   // o.profilImageUrl = "/upload/communecter/network/Alimentation/fa-cutlery505719fabnone.png";
                   // o.profilMarkerImageUrl = "/upload/communecter/network/Alimentation/thumb/profil-marker.png";
                   // o.profilThumbImageUrl = "/upload/communecter/network/Alimentation/thumb/profil-resized.png";
@@ -400,14 +398,14 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                     city = o.address.addressLocality;
                     postalCode = o.cp ? o.cp : o.address.postalCode ? o.address.postalCode : "";
                   }
-                  
+
                   //console.dir(o);
                   var id = getObjectId(o);
                   var tagsClasses = "";
                   var insee = o.insee ? o.insee : "";
                   type = o.type;
                   if(type=="citoyen") type = "person";
-                  
+
                   //Consolidate types
                   if(type != "undefined" && type != null){
                     if(typeof allTypes[type] != "undefined"){
@@ -438,14 +436,14 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                       if(value != ""){
                         //Display info in item
                         tags +=   "<a href='javascript:' class='badge bg-red btn-tag tagFilter' value='"+ value +"'>#" + value + "</a>";
-                        // manageTagFilter("#"+value); 
+                        // manageTagFilter("#"+value);
                         //Consolidate tags
                         // if(typeof allTags[value] != "undefined"){
                         //   allTags[value] = allTags[value] + 1;
                         // }
                         // else{
                         //   allTags[value] = 1;
-                        // } 
+                        // }
                         //Default Image adn color
                         if(find == false && value in linksTagImages == true){
                           find = true;
@@ -467,11 +465,11 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   var website = typeof o.url != "undefined" ? o.url : "";
                   var postalCode = (typeof o.address != "undefined" &&
                             typeof o.address.postalCode != "undefined") ? o.address.postalCode : "";
-                  
+
                   if(postalCode == "") postalCode = typeof o.cp != "undefined" ? o.cp : "";
                   var cityName = (typeof o.address != "undefined" &&
                           typeof o.address.addressLocality != "undefined") ? o.address.addressLocality : "";
-                  
+
                   var fullLocality = postalCode + " " + cityName;
                   var description = (typeof o.shortDescription != "undefined" &&
                             o.shortDescription != null) ? o.shortDescription : "";
@@ -481,7 +479,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   if(o.profilMediumImageUrl != "undefined" && o.profilMediumImageUrl != "")
                   	pathmedium = baseUrl+o.profilMediumImageUrl;
                   else
-                  	pathmedium = "<?php echo $this->module->assetsUrl ?>/images/thumbnail-default.jpg"; 
+                  	pathmedium = "<?php echo $this->module->assetsUrl ?>/images/thumbnail-default.jpg";
                   shortDescription = (typeof o.shortDescription != "undefined" &&
                                      o.shortDescription != null) ? o.shortDescription : "";
 
@@ -507,7 +505,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                           str += "<a href='"+url+"' onclick='"+onclickCp+"'"+target+ ' data-id="' + dataId + '"' + "  class='entityLocality'><i class='fa fa-home'></i> " + fullLocality + "</a><br/>";
                         <?php } ?>
                     str += "</div>";
-                    
+
                     <?php if(isset($params['result']['displayType']) && $params['result']['displayType']) { ?>
                       str += "<div class='entityMiddle col-md-2 type '>";
                         typeIco = "";
@@ -522,7 +520,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
                     target = "";
                     // str += "<div class='row entityMiddle fullLocality'>";
-                      
+
                     //   <?php if(isset($params['result']['datesEvent']) && $params['result']['datesEvent']) { ?>
                     //     // str += "<hr>";
                     //     str += "<div class='row entityMiddle datesEvent'>";
@@ -539,7 +537,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                       if(typeof o.isFollowed != "undefined" )
                         isFollowed=true;
                       if(type!="city" && id != "<?php echo Yii::app()->session['userId']; ?>")
-                      str += "<a href='javascript:;' class='btn btn-default btn-sm btn-add-to-directory bg-white tooltips followBtn'" + 
+                      str += "<a href='javascript:;' class='btn btn-default btn-sm btn-add-to-directory bg-white tooltips followBtn'" +
                             'data-toggle="tooltip" data-placement="left" data-original-title="Suivre"'+
                             " data-ownerlink='follow' data-id='"+id+"' data-type='"+type+"' data-name='"+name+"' data-isFollowed='"+isFollowed+"'>"+
                                 "<i class='fa fa-chain'></i>"+ //fa-bookmark fa-rotate-270
@@ -548,15 +546,15 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                       str += "<hr>";
                       if(tags=="") tags = "<a href='#' class='badge bg-red btn-tag'>#</a>";
                       str += tags;
-                    str += "</div>";          
+                    str += "</div>";
                   str += "</div>";
               }); //end each
-              if(str == "") { 
-                  $(".btn-start-search").html("<i class='fa fa-search'></i>"); 
+              if(str == "") {
+                  $(".btn-start-search").html("<i class='fa fa-search'></i>");
                   if(indexMin == 0){
-                    //ajout du footer   
-                    var msg = "Aucun résultat";    
-                    if(name == "" && locality == "") msg = "<h3 class='text-dark'><i class='fa fa-3x fa-keyboard-o'></i><br> Préciser votre recherche pour plus de résultats ...</h3>"; 
+                    //ajout du footer
+                    var msg = "Aucun résultat";
+                    if(name == "" && locality == "") msg = "<h3 class='text-dark'><i class='fa fa-3x fa-keyboard-o'></i><br> Préciser votre recherche pour plus de résultats ...</h3>";
                     str += '<div class="center" id="footerDropdown">';
                     str += "<hr style='float:left; width:100%;'/><label style='margin-bottom:10px; margin-left:15px;' class='text-dark'>"+msg+"</label><br/>";
                     str += "</div>";
@@ -565,9 +563,9 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   }
               }
               else
-              {       
-                //ajout du footer     
-              
+              {
+                //ajout du footer
+
                   str += '</div><div class="center col-md-12" id="footerDropdown">';
                   str += "<hr style='float:left; width:100%;'/><label id='countResult' class='text-dark'></label><br/>";
                   <?php if(isset($params['mode']) && $params['mode'] != "client"){ ?>
@@ -582,10 +580,10 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   $("#footerDropdown").remove();
                   //on calcul la valeur du nouveau scrollTop
                   var heightContainer = $(".my-main-container")[0].scrollHeight - 180;
-                  
+
                   //on affiche le résultat à l'écran
                   $("#dropdown_search").append(str);
-    
+
                 //si on est sur une première recherche
                 }else{
                   //on affiche le résultat à l'écran
@@ -593,18 +591,18 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   //on scroll pour coller le haut de l'arbre au menuTop
                   // $(".my-main-container").scrollTop(95);
                 }
-               
+
                 //On met à jour les filtres
                 <?php if(isset($params['mode']) && $params['mode'] == "client"){ ?>
                   loadClientFilters(allTypes, allTags);
                 <?php } else{ ?>
                   loadServerFilters(allTypes, allTags);
-                <?php } ?>                
+                <?php } ?>
                 //on affiche par liste par défaut
                 $('#list').click();
                 //remet l'icon "loupe" du bouton search
                 $(".btn-start-search").html("<i class='fa fa-search'></i>");
-                
+
                 //active le chargement de la suite des résultat au survol du bouton "afficher plus de résultats"
                 //(au cas où le scroll n'ait pas lancé le chargement comme prévu)
                 $("#btnShowMoreResult").mouseenter(function(){
@@ -613,7 +611,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                     $("#btnShowMoreResult").mouseenter(function(){});
                   }
                 });
-                
+
                 //initialise les boutons pour garder une entité dans Mon répertoire (boutons links)
                 // initBtnLink();
               } //end else (str=="")
@@ -629,10 +627,10 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
               $(".btn-start-search").removeClass("bg-azure");
             }
             // console.log("scrollEnd ? ", scrollEnd, indexMax, countData , indexMin);
-            
+
             //si le nombre de résultat obtenu est inférieur au indexStep => tous les éléments ont été chargé et affiché
             if(indexMax - countData > indexMin){
-              $("#btnShowMoreResult").remove(); 
+              $("#btnShowMoreResult").remove();
               scrollEnd = true;
             }else{
               scrollEnd = false;
@@ -646,105 +644,9 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
             $("#countResult").html(length+" résultat"+s);
             $.unblockUI();
           }
-    });               
+    });
   }
-  // function initBtnLink(){
-  //   $('.tooltips').tooltip();
-  //   //parcours tous les boutons link pour vérifier si l'entité est déjà dans mon répertoire
-  //   $.each($(".followBtn"), function(index, value){
-  //     var id = $(value).attr("data-id");
-  //     var type = $(value).attr("data-type");
-  //     if(type == "person") type = "people";
-  //     else type = type + "s";
-  //     //console.log("#floopItem-"+type+"-"+id);
-  //     if($("#floopItem-"+type+"-"+id).length){
-  //       //console.log("I FOLLOW THIS");
-  //       if(type=="people"){
-  //         $(value).html("<i class='fa fa-unlink text-green'></i>");
-  //         $(value).attr("data-original-title", "Ne plus suivre cette personne");
-  //         $(value).attr("data-ownerlink","unfollow");
-  //       }
-  //       else{
-  //         $(value).html("<i class='fa fa-user-plus text-green'></i>");
-          
-  //         if(type == "organizations")
-  //           $(value).attr("data-original-title", "Vous êtes membre de cette organization");
-  //         else if(type == "projects")
-  //           $(value).attr("data-original-title", "Vous êtes contributeur de ce projet");
-          
-  //         //(value).attr("onclick", "");
-  //         $(value).removeClass("followBtn");
-  //       }
-  //     }
-  //     if($(value).attr("data-isFollowed")=="true"){
-  //       $(value).html("<i class='fa fa-unlink text-green'></i>");
-  //       $(value).attr("data-original-title", "Ne plus suivre");
-  //       $(value).attr("data-ownerlink","unfollow");
-  //       $(value).addClass("followBtn");
-  //     }
-  //   });
-    //on click sur les boutons link
-  //   $(".followBtn").click(function(){
-  //     formData = new Object();
-  //     formData.parentId = $(this).attr("data-id");
-  //     formData.childId = "<?php echo Yii::app() -> session["userId"] ?>";
-  //     formData.childType = "<?php echo Person::COLLECTION ?>";
-  //     var type = $(this).attr("data-type");
-  //     var name = $(this).attr("data-name");
-  //     var id = $(this).attr("data-id");
-  //     //traduction du type pour le floopDrawer
-  //     var typeOrigine = type + "s";
-  //     if(typeOrigine == "persons"){ typeOrigine = "<?php echo Person::COLLECTION ?>";}
-  //     formData.parentType = typeOrigine;
-  //     if(type == "person") type = "people";
-  //     else type = type + "s";
-  //   var thiselement = this;
-  //   $(this).html("<i class='fa fa-spin fa-circle-o-notch text-azure'></i>");
-  //   //console.log(formData);
-  //   if ($(this).attr("data-ownerlink")=="follow"){
-  //     $.ajax({
-  //       type: "POST",
-  //       url: baseUrl+"/"+moduleId+"/link/follow",
-  //       data: formData,
-  //       dataType: "json",
-  //       success: function(data) {
-  //         if(data.result){
-  //           //addFloopEntity(data.parent["_id"]["$id"], data.parentType, data.parent);
-  //           toastr.success(data.msg); 
-  //           $(thiselement).html("<i class='fa fa-unlink text-green'></i>");
-  //           $(thiselement).attr("data-ownerlink","unfollow");
-  //           $(thiselement).attr("data-original-title", "Ne plus suivre");
-  //           //if(type=="people"){
-  //             addFloopEntity(id, type, data.parentEntity);
-  //           //}
-  //         }
-  //         else
-  //           toastr.error(data.msg);
-  //       },
-  //     });
-  //   } else if ($(this).attr("data-ownerlink")=="unfollow"){
-  //     formData.connectType =  "followers";
-  //     // console.log(formData);
-  //     $.ajax({
-  //       type: "POST",
-  //       url: baseUrl+"/"+moduleId+"/link/disconnect",
-  //       data : formData,
-  //       dataType: "json",
-  //       success: function(data){
-  //         if ( data && data.result ) {
-  //           $(thiselement).html("<i class='fa fa-chain'></i>");
-  //           $(thiselement).attr("data-ownerlink","follow");
-  //           $(thiselement).attr("data-original-title", "Suivre");
-  //           removeFloopEntity(data.parentId, type);
-  //           toastr.success("<?php echo Yii::t("common","You are not following") ?> "+data.parentEntity.name); //+" <?php echo Yii::t("common","anymore") ?>");  
-  //         } else {
-  //            toastr.error("You leave succesfully");
-  //         }
-  //       }
-  //     });
-  //   }
-  //   });
-  // }
+
   function setSearchValue(value){
     $("#searchBarText").val(value);
     startSearch(0, 100);
@@ -758,281 +660,15 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       tagsFilter.push(tag);
     }
   }
-  // function loadClientFeatures(){
-  //   /*** EXTEND FUNCTION FOR CASE SENSITIVE ***/
-  //   $.expr[":"].contains = $.expr.createPseudo(function (arg) {
-  //       return function (elem) {
-  //           return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
-  //       };
-  //   });
-  //   // To keep our code clean and modular, all custom functionality will be contained inside a single object literal called "multiFilter".
-  //   var multiFilter = {
-      
-  //     // Declare any variables we will need as properties of the object
-  //     $filterGroups: null,
-  //     $filterUi: null,
-  //     $reset: null,
-  //     groups: [],
-  //     outputArray: [],
-  //     outputString: '',
-      
-  //     // The "init" method will run on document ready and cache any jQuery objects we will need.
-      
-  //     init: function(){
-  //       var self = this; // As a best practice, in each method we will asign "this" to the variable "self" so that it remains scope-agnostic. We will use it to refer to the parent "checkboxFilter" object so that we can share methods and properties between all parts of the object.
-        
-  //       self.$filterUi = $('#Filters');
-  //       self.$filterGroups = $('.filter-group');
-  //       self.$reset = $('#Reset');
-  //       self.$container = $('#dropdown_search');
-        
-  //       self.$filterGroups.each(function(){
-  //         self.groups.push({
-  //           $inputs: $(this).find('input'),
-  //           active: [],
-  //           tracker: false
-  //         });
-  //       });
-        
-  //       self.bindHandlers();
-  //     },
-      
-  //     // The "bindHandlers" method will listen for whenever a form value changes. 
-  //     bindHandlers: function(){
-  //       var self = this,
-  //           typingDelay = 300,
-  //           typingTimeout = -1,
-  //           resetTimer = function() {
-  //             clearTimeout(typingTimeout);
-              
-  //             typingTimeout = setTimeout(function() {
-  //               self.parseFilters();
-  //             }, typingDelay);
-  //           };
-        
-  //       self.$filterGroups
-  //         .filter('.checkboxes')
-  //         .on('change', function() {
-  //           self.parseFilters();
-  //         });
-        
-  //       self.$filterGroups
-  //         .filter('.search')
-  //         .on('keyup change', resetTimer);
-        
-  //       self.$reset.on('click', function(e){
-  //         e.preventDefault();
-  //         self.$filterUi[0].reset();
-  //         self.$filterUi.find('input[type="text"]').val('');
-  //         self.parseFilters();
-  //       });
-  //     },
-      
-  //     // The parseFilters method checks which filters are active in each group:
-      
-  //     parseFilters: function(){
-  //       var self = this;
-     
-  //       // loop through each filter group and add active filters to arrays
-        
-  //       for(var i = 0, group; group = self.groups[i]; i++){
-  //         group.active = []; // reset arrays
-  //         group.$inputs.each(function(){
-  //           var searchTerm = '',
-  //               $input = $(this),
-  //               minimumLength = 3;
-            
-  //           if ($input.is(':checked')) {
-  //             group.active.push(this.value);
-  //           }
-            
-  //           if ($input.is('[type="text"]') && this.value.length >= minimumLength) {
-  //             searchTerm = this.value
-  //               .trim()
-  //               .toLowerCase()
-  //               .replace(' ', '-');
-              
-  //             group.active[0] = '[class*="' + searchTerm + '"]'; 
-  //             //To add content search
-  //             group.active[1] = ".item:contains('"+$( "#searchBarText" ).val()+"')"; 
-  //           }
-  //         });
-  //         group.active.length && (group.tracker = 0);
-  //       }
-        
-  //       self.concatenate();
-  //     },
-      
-  //     // The "concatenate" method will crawl through each group, concatenating filters as desired:
-      
-  //     concatenate: function(){
-  //       var self = this,
-  //         cache = '',
-  //         crawled = false,
-  //         checkTrackers = function(){
-  //           var done = 0;
-            
-  //           for(var i = 0, group; group = self.groups[i]; i++){
-  //             (group.tracker === false) && done++;
-  //           }
-  //           return (done < self.groups.length);
-  //         },
-  //         crawl = function(){
-  //           for(var i = 0, group; group = self.groups[i]; i++){
-  //             group.active[group.tracker] && (cache += group.active[group.tracker]);
-  //             if(i === self.groups.length - 1){
-  //               self.outputArray.push(cache);
-  //               cache = '';
-  //               updateTrackers();
-  //             }
-  //           }
-  //         },
-  //         updateTrackers = function(){
-  //           for(var i = self.groups.length - 1; i > -1; i--){
-  //             var group = self.groups[i];
-  //             if(group.active[group.tracker + 1]){
-  //               group.tracker++; 
-  //               break;
-  //             } else if(i > 0){
-  //               group.tracker && (group.tracker = 0);
-  //             } else {
-  //               crawled = true;
-  //             }
-  //           }
-  //         };
-        
-  //       self.outputArray = []; // reset output array
-  //       do{
-  //         crawl();
-  //       }
-  //       while(!crawled && checkTrackers());
-  //       self.outputString = self.outputArray.join();
-        
-  //       // If the output string is empty, show all rather than none:
-        
-  //       !self.outputString.length && (self.outputString = 'all'); 
-        
-  //       console.log(self.outputString); 
-        
-  //       // ^ we can check the console here to take a look at the filter string that is produced
-  //       // Send the output string to MixItUp via the 'filter' method: 
-  //       if(self.$container.mixItUp('isLoaded')){
-  //         self.$container.mixItUp('filter', self.outputString);
-  //       }
-  //     }
-  //   };
-    // On document ready, initialise our code
-    // if(execute == true){
-  //     $(function(){
-            
-  //       // Initialize multiFilter code
-  //       multiFilter.init();
-            
-  //       // Instantiate MixItUp 
-  //       $('#dropdown_search').mixItUp({
-  //         controls: {
-  //           enable: false // we won't be needing these
-  //         },
-  //         animation: {
-  //           // easing: 'cubic-bezier(0.86, 0, 0.07, 1)',
-  //           // queueLimit: 3,
-  //           // duration: 600
-  //           enable: false
-  //         }
-  //       });
-  //       $('#dropdown_search').on('mixEnd', function(e, state){
-  //         //on met à jour le nombre de résultat
-  //         $("#countResult").html(state.totalShow+" résultats");
-  //         //On met à jour la map et les filtres
-  //         var mapData = new Array();
-  //         var tagsData = typesData = new Object();
-  //         $.each(state.$show, function(index, value){
-  //           $.each(allElement, function(index2, value2){
-  //             //Display
-  //             if(value['id'] == getObjectId(value2)){
-                
-  //               //map
-  //               mapData.push(value2);
-  //               //filtre
-  //               // if(typeof typesData[value2.type] == "undefined"){
-  //               //   typesData[value2.type] = 1;
-  //               // }else{
-  //               //   typesData[value2.type] = typesData[value2.type] + 1;
-  //               // }
-  //               //tags
-  //               // $.each(value2.tags, function(index3, value3){
-  //               //     // console.log(value3);
-  //               //     if(typeof tagsData[value3] == "undefined"){
-  //               //       tagsData[value3] = 1;
-  //               //     }else{
-  //               //       tagsData[value3] = tagsData[value3] + 1;
-  //               //     }
-  //               // });
-  //             }
-  //           });
-  //         });
-  //         // Sig.restartMap();
-  //         Sig.showMapElements(Sig.map, mapData);
-  //         // console.log(typesData);
-  //         // loadClientFilters(typesData,tagsData);
-          
-  //         //On remonte
-  //         $(".my-main-container").scrollTop(99);
-  //       });
-  //     });
-  //   // }
-  // }
+
   function loadServerFeatures(){
-    //on active les filtres
-    // $('.typeFilter').on('click', function() {
-    //   var type = $(this).data("value");
-    //   var index = searchType.indexOf(type);
-    //   if(type == "all" && searchType.length > 1){
-    //     $.each(allSearchType, function(index, value){ removeSearchType(value); }); return;
-    //   }
-    //   if(type == "all" && searchType.length == 1){
-    //     $.each(allSearchType, function(index, value){ addSearchType(value); }); return;
-    //   }
-    //   if (index > -1) {
-    //     removeSearchType(type);
-    //     $(this).css( "background-color", "gray" );
-    //   }
-    //   else{
-    //     addSearchType(type);
-    //     $(this).css( "background-color", "#2497d0" );
-    //   }
-    //   startSearch(0,indexStepInit);
-    // });
-    //on click sur les boutons link
-    // $(".btn-tag").click(function(){
-    //   setSearchValue($(this).data("value"));
-    // });
+
   }
   function loadServerFilters(types,tags){
     var displayLimit = 10;
     var classToHide = "";
     var i = 0;
-    // console.log(tags);
-    //We update the tag menu
-    // $("#listTypesFilter").html(' ');
-    // $.each(types, function(index, value){
-    //   $("#listTypesFilter").append('<a href="#default.simplydirectory" class="typeFilter" data-value="'+index+'s">'+index+' ('+value+')</a>');
-    // });
-    
-    // i=0;
-    // classToHide = "";
-    // $("#listTagFilter").html(' ');
-    // $.each(tags, function(index, value){
-    //   i+=1;
-    //   $("#listTagFilter").append('<a href="javascript:;" class="tagFilter tagHidden '+classToHide+'" value="'+index+'">#'+index+' ('+value+')</a>');
-    //   if(i == displayLimit)classToHide = "hidden";
-    // });
-    // if(i > 10)$("#listTagFilter").append('<div id="moreTag"><i class="fa fa-plus fa-2x"></i></div>');
-    // $("#moreTag").click(function(){
-    //    $(".tagHidden").removeClass("hidden");
-    //    $("#moreTag").hide();
-    // });
-    //Display active
+
     var breadcum  = "";
     //All desacactivate
     $('.tagFilter').prop("checked", false );
@@ -1059,7 +695,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     else{
       $('#breadcum').html('<i class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><label id="countResult" class="text-dark"></label>');
     }
-    
+
     $(".tagFilter").off().click(function(e){
       var tag = $(this).attr("value");
       var index = searchTag.indexOf(tag);
@@ -1171,8 +807,8 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     $(".panel-group .panel-back").hide();
 	history.replaceState(null, '', window.location.href.split('#')[0]);
     Sig.restartMap();
-	Sig.showMapElements(Sig.map, contextMap);	
-    
+	Sig.showMapElements(Sig.map, contextMap);
+
   }
 
 </script>

@@ -24,14 +24,59 @@
             "background-color" : "#f5f5f5",
             "image" : "Travail.png",
             "tagsAdditional" : {
-				"Coworking" : "Coworking",
+				        "Coworking" : "Coworking",
                 "Tiers Lieu" : "TiersLieu",
                 "FabLab" : "fablab",
                 "Atelier artistique" : "atelierArtistique",
 				"Café solidaire" : "cafeSolidaire",
 				"Repair Café" : "repairCafe"
             }
-        }
+        },
+        "linksTag" : {
+            "Tiers Lieux" : {
+                "tagParent" : "TiersLieux",
+                "background-color" : "#f5f5f5",
+                "image" : "Travail.png",
+                "tags" : {
+                    "TiersLieux" : "TiersLieux",
+                    "Tiers-Lieux" : "Tiers-Lieux",
+                    "Tiers Lieux" : "Tiers Lieux",
+                    "Tiers-Lieu" : "Tiers-Lieu",
+                    "tiers-lieux" : "tiers-lieux"
+                }
+            },
+            "Coworking" : {
+                "tagParent" : "Coworking",
+                "background-color" : "#f5f5f5",
+                "image" : "Travail.png",
+                "tags" : {
+                    "Coworking" : "Coworking",
+                    "Co-working" : "Co-working"
+                }
+            },
+            "Fablab" : {
+                "tagParent" : "Fablab",
+                "background-color" : "#f5f5f5",
+                "image" : "Equipement.png",
+                "tags" : {
+                    "Fablab" : "Fablab",
+                    "Fab-lab" : "Fab-lab",
+                    "Fab lab" : "Fab lab",
+                    "FabLab" : "FabLab",
+                    "Fab-Lab" : "Fab-Lab",
+                    "FabLab" : "FabLab"
+                }
+            },
+            "Atelier artistique" : {
+                "tagParent" : "atelierArtistique",
+                "background-color" : "#f5f5f5",
+                "image" : "Creation.png",
+                "tags" : {
+                    "atelierArtistique" : "atelierArtistique",
+                    "AtelierArtistique" : "AtelierArtistique"
+                }
+            }
+          }
     },
     "add" : {
         "organization" : true,
