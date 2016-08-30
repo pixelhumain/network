@@ -36,7 +36,7 @@
    console.log(<?php echo json_encode($params) ?>);
   <?php
 
-  $allSearchParams = array("sourceKey", "searchType", "searchTag","searchCategory","searchLocalityNAME","searchLocalityCODE_POSTAL_INSEE","searchLocalityDEPARTEMENT","searchLocalityINSEE","searchLocalityREGION");
+  $allSearchParams = array("mainTag", "sourceKey", "searchType", "searchTag","searchCategory","searchLocalityNAME","searchLocalityCODE_POSTAL_INSEE","searchLocalityDEPARTEMENT","searchLocalityINSEE","searchLocalityREGION");
   foreach ($allSearchParams as $oneSearchParam) {
     //In params set with value
     if(isset($params['request'][$oneSearchParam]) && is_array($params['request'][$oneSearchParam])){ ?>
@@ -139,8 +139,10 @@
 
     $('#reset').on('click', function() {
       searchTag = allsearchTag;
+      searchLocalityNAME = allsearchLocalityNAME;
       searchCategory = allsearchCategory;
       $('.tagFilter').removeClass('active');
+      $('.villeFilter').removeClass('active');
       $('.categoryFilter').removeClass('active');
       startSearch(0, indexStepInit);
     });
@@ -288,6 +290,24 @@ function removeSearchTag(tag){
     $('.tagFilter[value="'+tag+'"]').prop("checked", false );
   }
 }
+
+function addSearchVille(ville){
+  var index = searchLocalityNAME.indexOf(ville);
+  if (index == -1) {
+    searchLocalityNAME.push(ville);
+    $('.villeFilter[value="'+ville+'"]').addClass('active');
+    $('.villeFilter[value="'+ville+'"]').prop("checked", true );
+  }
+}
+function removeSearchVille(ville){
+  var index = searchLocalityNAME.indexOf(ville);
+  if (index > -1) {
+    searchLocalityNAME.splice(index, 1);
+    $('.villeFilter[value="'+ville+'"]').removeClass('active');
+    $('.villeFilter[value="'+ville+'"]').prop("checked", false );
+  }
+}
+
 var loadingData = false;
 var mapElements = new Array();
 var tagsFilter = new Array();
@@ -331,7 +351,8 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       "searchBy" : searchBy,
       "indexMin" : indexMin,
       "indexMax" : indexMax,
-      "sourceKey" : sourceKey
+      "sourceKey" : sourceKey,
+      "mainTag" : mainTag
     };
     //console.log("loadingData true");
     loadingData = true;
@@ -671,6 +692,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
 
     var breadcum  = "";
     //All desacactivate
+    $('.villeFilter').prop("checked", false );
     $('.tagFilter').prop("checked", false );
     $('.categoryFilter').prop("checked", false );
     //One by One Tag
@@ -678,6 +700,12 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       //Display
       $('.tagFilter[value="'+value+'"]').prop("checked", true );
       if($('.tagFilter[value="'+value+'"]').length)breadcum = breadcum+"<span class='label label-danger tagFilter' value='"+value+"'>"+$('.tagFilter[value="'+value+'"]').attr("data-label")+"</span> ";
+      //Open menu
+      manageCollapse(value,true);
+    });
+    $.each(searchLocalityNAME, function(index, value){
+      //Display
+      $('.villeFilter[value="'+value+'"]').prop("checked", true );
       //Open menu
       manageCollapse(value,true);
     });
@@ -710,6 +738,22 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       }
       if (index > -1) removeSearchTag(tag);
       else addSearchTag(tag);
+      startSearch(0, indexStepInit);
+    });
+    $(".villeFilter").off().click(function(e){
+      var ville = $(this).attr("value");
+      var index = searchLocalityNAME.indexOf(ville);
+      if(ville == "all"){
+        searchLocalityNAME = [];
+        $('.villeFilter[value="all"]').addClass('active');
+        startSearch(0, indexStepInit);
+        return;
+      }
+      else{
+        $('.villeFilter[value="all"]').removeClass('active');
+      }
+      if (index > -1) removeSearchVille(ville);
+      else addSearchVille(ville);
       startSearch(0, indexStepInit);
     });
     $(".categoryFilter").off().click(function(e){

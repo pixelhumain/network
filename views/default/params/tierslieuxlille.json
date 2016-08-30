@@ -24,59 +24,17 @@
             "background-color" : "#f5f5f5",
             "image" : "Travail.png",
             "tagsAdditional" : {
+                "Télétravail" : "Télétravail",
 				        "Coworking" : "Coworking",
-                "Tiers Lieu" : "TiersLieu",
+                "Médiation Numérique" : "Médiation Numérique",
                 "FabLab" : "fablab",
-                "Atelier artistique" : "atelierArtistique",
-				        "Café solidaire" : "cafeSolidaire",
-				        "Repair Café" : "repairCafe"
+                "Accompagnement de projets" : "Accompagnement de projets",
+				        "Bar/restauration" : "barRestauration",
+                "Atelier Artistique" : "atelierArtistique",
+                "Salle de réunion" : "salleReunion",
+				        "Communauté Catalyst" : "catalyst"
             }
-        },
-        "linksTag" : {
-            "Tiers Lieux" : {
-                "tagParent" : "TiersLieux",
-                "background-color" : "#f5f5f5",
-                "image" : "Travail.png",
-                "tags" : {
-                    "TiersLieux" : "TiersLieux",
-                    "Tiers-Lieux" : "Tiers-Lieux",
-                    "Tiers Lieux" : "Tiers Lieux",
-                    "Tiers-Lieu" : "Tiers-Lieu",
-                    "tiers-lieux" : "tiers-lieux"
-                }
-            },
-            "Coworking" : {
-                "tagParent" : "Coworking",
-                "background-color" : "#f5f5f5",
-                "image" : "Travail.png",
-                "tags" : {
-                    "Coworking" : "Coworking",
-                    "Co-working" : "Co-working"
-                }
-            },
-            "Fablab" : {
-                "tagParent" : "Fablab",
-                "background-color" : "#f5f5f5",
-                "image" : "Equipement.png",
-                "tags" : {
-                    "Fablab" : "Fablab",
-                    "Fab-lab" : "Fab-lab",
-                    "Fab lab" : "Fab lab",
-                    "FabLab" : "FabLab",
-                    "Fab-Lab" : "Fab-Lab",
-                    "FabLab" : "FabLab"
-                }
-            },
-            "Atelier artistique" : {
-                "tagParent" : "atelierArtistique",
-                "background-color" : "#f5f5f5",
-                "image" : "Creation.png",
-                "tags" : {
-                    "atelierArtistique" : "atelierArtistique",
-                    "AtelierArtistique" : "AtelierArtistique"
-                }
-            }
-          }
+        }
     },
     "add" : {
         "organization" : true,
@@ -95,14 +53,15 @@
         "searchType" : [
             "organizations"
         ],
-        "searchLocalityDEPARTEMENT" : [
-            "59"
-        ],
         "searchLocalityNAME" : [
-            "LILLE"
+            "Lille",
+            "Roncq",
+            "Villeneuve dascq",
+            "Hellemmes",
+            "Mons En Baroeul",
+            "Roubaix",
+            "Tourcoing"
         ],
-        "searchTag" : [
-          "TiersLieux"
-        ]
+        "mainTag" : ["TiersLieux"]
     }
 }
