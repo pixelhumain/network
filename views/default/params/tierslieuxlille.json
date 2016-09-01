@@ -18,23 +18,54 @@
     },
    "filter" : {
         "types" : false,
-        "tags" : {
-            "activate" : true,
-            "title" : "Type de tiers-lieux",
-            "background-color" : "#f5f5f5",
-            "image" : "Travail.png",
-            "tagsAdditional" : {
-                "Télétravail" : "Télétravail",
-				        "Coworking" : "Coworking",
-                "Médiation Numérique" : "Médiation Numérique",
-                "FabLab" : "fablab",
-                "Accompagnement de projets" : "Accompagnement de projets",
-				        "Bar/restauration" : "barRestauration",
-                "Atelier Artistique" : "atelierArtistique",
-                "Salle de réunion" : "salleReunion",
-				        "Communauté Catalyst" : "catalyst"
+        "linksTag" : {
+            "Type de tiers-lieu" : {
+                "tagParent" : "Type",
+                "background-color" : "#f5f5f5",
+                "image" : "Travail.png",
+                "tags" : {
+                  "Télétravail" : "Télétravail",
+  				        "Coworking" : "Coworking",
+                  "Médiation Numérique" : "Médiation Numérique",
+                  "FabLab" : "fablab",
+                  "Accompagnement de projets" : "Accompagnement de projets",
+  				        "Bar/restauration" : "barRestauration",
+                  "Atelier Artistique" : "atelierArtistique",
+                  "Salle de réunion" : "salleReunion",
+  				        "Communauté Catalyst" : "catalyst"
+                }
+            },
+            "Modèle de gestion" : {
+                "tagParent" : "Modele",
+                "background-color" : "#f5f5f5",
+                "image" : "Loisir.png",
+                "tags" : {
+                  "Commun" : "commun",
+  				        "Association" : "association",
+                  "Business" : "business",
+                  "Public" : "public"
+                }
+            },
+            "État du projet" : {
+                "tagParent" : "Etat",
+                "background-color" : "#f5f5f5",
+                "image" : "Reparation.png",
+                "tags" : {
+                  "En projet" : "projet",
+  				        "Ouvert" : "ouvert"
+                }
+            },
+            "Taille de l'espace" : {
+                "tagParent" : "Surface",
+                "background-color" : "#f5f5f5",
+                "image" : "Information.png",
+                "tags" : {
+                  "Moins de 60m2" : "surface<60m2",
+  				        "Entre 60 et 200m2" : "surface60~200m2",
+                  "Plus de 200m2" : "surface>200m2"
+                }
             }
-        }
+          }
     },
     "add" : {
         "organization" : true,
