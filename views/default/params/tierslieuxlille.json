@@ -29,7 +29,7 @@
                   "Médiation Numérique" : "Médiation numérique",
                   "FabLab" : "Fablab",
                   "Accompagnement de projets" : "Accompagnement de projets",
-  				  "Bar/restauration" : "Bar restauration",
+  				  "Bar ou restauration" : "Bar ou restauration",
                   "Atelier" : "Atelier",
                   "Salle de réunion" : "Salle de réunion",
   				  "Communauté Catalyst" : "Catalyst"
@@ -70,7 +70,7 @@
                 "tags" : {
                   "En projet" : "En projet",
                   "En démarrage" : "En démarrage",
-  				  "Lieu ouvert" : "En fonctionnement"
+  				  "En fonctionnement" : "En fonctionnement"
                 }
             },
             "Taille de l'espace" : {
@@ -79,7 +79,7 @@
                 "image" : "Information.png",
                 "tags" : {
                   "Moins de 60m2" : "Moins de 60m2",
-  				        "Entre 60 et 200m2" : "Entre 60 et 200m2",
+  				  "Entre 60 et 200m2" : "Entre 60 et 200m2",
                   "Plus de 200m2" : "Plus de 200m2"
                 }
             }
