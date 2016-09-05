@@ -29,7 +29,6 @@
                   "Médiation Numérique" : "Médiation numérique",
                   "FabLab" : "Fablab",
                   "Accompagnement de projets" : "Accompagnement de projets",
-  				  "Bar ou restauration" : "Bar ou restauration",
                   "Atelier" : "Atelier",
                   "Salle de réunion" : "Salle de réunion",
   				  "Communauté Catalyst" : "Catalyst"
@@ -49,7 +48,9 @@
                     "Jardin partagé" : "Jardin partagé",
                     "Cinéma" : "Cinéma",
                     "Domiciliation" : "Domiciliation",
-                    "Atelier participatif" : "Atelier participatif"
+                    "Atelier participatif" : "Atelier participatif",
+                    "Restaurant" : "Restaurant",
+                    "Bar":"Bar"
                 }
             },
             "Modèle de gestion" : {
