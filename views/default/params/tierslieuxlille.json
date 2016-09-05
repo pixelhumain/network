@@ -25,14 +25,31 @@
                 "image" : "Travail.png",
                 "tags" : {
                   "Télétravail" : "Télétravail",
-  				        "Coworking" : "Coworking",
-                  "Médiation Numérique" : "Médiation Numérique",
-                  "FabLab" : "fablab",
+  				  "Coworking" : "Coworking",
+                  "Médiation Numérique" : "Médiation numérique",
+                  "FabLab" : "Fablab",
                   "Accompagnement de projets" : "Accompagnement de projets",
-  				        "Bar/restauration" : "barRestauration",
-                  "Atelier Artistique" : "atelierArtistique",
-                  "Salle de réunion" : "salleReunion",
-  				        "Communauté Catalyst" : "catalyst"
+  				  "Bar/restauration" : "Bar restauration",
+                  "Atelier" : "Atelier",
+                  "Salle de réunion" : "Salle de réunion",
+  				  "Communauté Catalyst" : "Catalyst"
+                }
+            },
+            "Services complémentaires" : {
+                "tagParent" : "Service",
+                "background-color" : "#f5f5f5",
+                "image" : "Service.png",
+                "tags" : {
+                    "Espace détente" : "Espace détente",
+                    "Cuisine à disposition" : "Cuisine à disposition",
+                    "Achat groupé" : "Achat groupé",
+                    "Bar participatif" : "Bar participatif",
+                    "Cuisine participative" : "Cuisine participative",
+                    "Epicerie participative" : "Epicerie participative",
+                    "Jardin partagé" : "Jardin partagé",
+                    "Cinéma" : "Cinéma",
+                    "Domiciliation" : "Domiciliation",
+                    "Atelier participatif" : "Atelier participatif"
                 }
             },
             "Modèle de gestion" : {
@@ -41,7 +58,7 @@
                 "image" : "Loisir.png",
                 "tags" : {
                   "Commun" : "commun",
-  				        "Association" : "association",
+  				  "Association" : "association",
                   "Business" : "business",
                   "Public" : "public"
                 }
