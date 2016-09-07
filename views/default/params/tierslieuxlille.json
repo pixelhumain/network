@@ -31,7 +31,8 @@
                   "Accompagnement de projets" : "Accompagnement de projets",
                   "Atelier" : "Atelier",
                   "Salle de réunion" : "Salle de réunion",
-  				  "Communauté Catalyst" : "Catalyst"
+  				  "Communauté Catalyst" : "Catalyst",
+  				  "Location de l'espace" : "Location de l'espace"
                 }
             },
             "Services complémentaires" : {
@@ -40,13 +41,12 @@
                 "image" : "Service.png",
                 "tags" : {
                     "Espace détente" : "Espace détente",
-                    "Cuisine à disposition" : "Cuisine à disposition",
+                    "Cuisine" : "Cuisine",
                     "Achat groupé" : "Achat groupé",
                     "Bar participatif" : "Bar participatif",
                     "Cuisine participative" : "Cuisine participative",
                     "Epicerie participative" : "Epicerie participative",
-                    "Jardin partagé" : "Jardin partagé",
-                    "Cinéma" : "Cinéma",
+                    "Jardiné" : "Jardin",
                     "Domiciliation" : "Domiciliation",
                     "Atelier participatif" : "Atelier participatif",
                     "Restaurant" : "Restaurant",
