@@ -19,7 +19,7 @@ class ElementController extends NetworkController {
       return array(
             'detail'                => 'citizenToolKit.controllers.element.DetailAction',
             'getalllinks'                => 'citizenToolKit.controllers.element.GetAllLinksAction',
-            'directory'                => 'citizenToolKit.controllers.element.directoryAction'
+            'directory'                => 'citizenToolKit.controllers.element.DirectoryAction'
         );
   }
 }
