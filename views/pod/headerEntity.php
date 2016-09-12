@@ -305,7 +305,7 @@ function showElementPad(type){
 					"directory": 
 						{ "url"  : "element/directory/type/<?php echo $type ?>/id/<?php echo (string)$entity["_id"] ?>?tpl=directory2&", 
 						  "hash" : "element.directory.type.<?php echo $type ?>.id.<?php echo (string)$entity["_id"] ?>",
-						  "data" : {"links":contextMapEntity, "element":element}
+						  "data" : {"links": contextMapEntity, "element":element}
 						} ,
 					"gallery" :
 						{ 
