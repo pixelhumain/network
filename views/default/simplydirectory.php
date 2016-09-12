@@ -1,37 +1,42 @@
-
-<div class="my-main-container col-md-10" >
-  <div id="dropdown_search" class="container list-group-item"></div>
+<div class="my-main-container col-md-12 no-padding" id="repertory" >
+  <div id="dropdown_search" class="col-md-12 container list-group-item"></div>
+</div>
+<div class="col-md-12 no-padding hide" id="ficheInfoDetail" style="top: 0px;
+    opacity: 1;
+    display: block;">
 </div>
 
-<?php $this->renderPartial(@$path."first_step_directory"); ?> 
+<?php
+
+	$this->renderPartial(@$path."first_step_directory"); ?>
 
 <script type="text/javascript">
-
-
   //Icons by default categories
   var linksTagImages = new Object();
-  <?php 
+  var params = <?php echo json_encode($params) ?>;
+  console.log("Params //////////////////");
+  console.log(params);
+  <?php
     if(isset($params['filter']['linksTag'])){
       foreach($params['filter']['linksTag'] as $key => $val){
         if(isset($val['image'])){?>
         linksTagImages.<?php echo $val['tagParent']; ?> = {};
-      <?php 
+      <?php
       }
     }
   }
   // echo "console.log(linksTagImages);";
   ?>
-
   //********** FILTER TYPE ITEM **********
   <?php if(isset($params['request']['searchType']) && is_array($params['request']['searchType'])){ ?>
     // var searchType = <?php echo json_encode($params['request']['searchType']); ?>;
     // var allSearchType = <?php echo json_encode($params['request']['searchType']); ?>;
   <?php } ?>
-
   //********** FILTERS **********
+   console.log(<?php echo json_encode($params) ?>);
   <?php
-  $allSearchParams = array("sourceKey", "searchType", "searchTag","searchCategory","searchLocalityNAME","searchLocalityCODE_POSTAL_INSEE","searchLocalityDEPARTEMENT","searchLocalityINSEE","searchLocalityREGION");
 
+  $allSearchParams = array("mainTag", "sourceKey", "searchType", "searchTag","searchCategory","searchLocalityNAME","searchLocalityCODE_POSTAL_INSEE","searchLocalityDEPARTEMENT","searchLocalityINSEE","searchLocalityREGION");
   foreach ($allSearchParams as $oneSearchParam) {
     //In params set with value
     if(isset($params['request'][$oneSearchParam]) && is_array($params['request'][$oneSearchParam])){ ?>
@@ -44,59 +49,47 @@
        <?php echo "var all".$oneSearchParam;?> = [];
     <?php }
   }?>
-
   var allElement = new Array();
   var allTags = new Object();
   var allTypes = new Object();
   var indexStepInit = 100;
-  
+
   //With different pagination params
   <?php if(isset($params['request']['pagination']) && $params['request']['pagination'] > 0){ ?>
     indexStepInit = <?php echo $params['request']['pagination'] ;?>;
   <?php } ?>
-
   var indexStep = indexStepInit;
   var currentIndexMin = 0;
   var currentIndexMax = indexStep;
   var scrollEnd = false;
   var totalData = 0;
-
   var timeout = null;
-
-
   jQuery(document).ready(function() {
-
     // addSearchTag("CIGALES");
-    showMap(true);
-
+	if  (location.hash == "")
+    	showMap(true);
+    else
+    	showMap(false);
     // selectScopeLevelCommunexion(levelCommunexion);
-
     topMenuActivated = true;
-    hideScrollTop = true; 
+    hideScrollTop = true;
     checkScroll();
     var timeoutSearch = setTimeout(function(){ }, 100);
-    
+
     setTimeout(function(){ $("#input-communexion").hide(300); }, 300);
-
-    $(".moduleLabel").html("<i class='fa fa-connectdevelop'></i> <span id='main-title-menu'>L'Annuaire</span> <span class='text-red'>COMMUNE</span>CTÉ");
-
+    $(".moduleLabel").html("<i class='fa fa-connectdevelop'></i> <span id='main-title-menu'>Cartographie des Tiers-Lieux </span> <span class='text-red'>MEL</span>");
     $('.tooltips').tooltip();
-
     $('.main-btn-toogle-map').click(function(e){ showMap(); });
     $('#breadcum_search').click(function(e){ showMap();    });
-
     <?php if(isset($params['mode']) && $params['mode'] == "client"){ ?>
-
     <?php } else { ?>
       $('#searchBarText').keyup(function(e){
           clearTimeout(timeoutSearch);
           timeoutSearch = setTimeout(function(){ startSearch(0, indexStepInit); }, 800);
       });
     <?php } ?>
-
     /***** CHANGE THE VIEW PARAMS  *****/
     // $('#dropdown_params').show();
-
     $('#dropdown_paramsBtn').click(function(event){
       event.preventDefault();
       if($('#dropdown_paramsBtn').hasClass('active')){
@@ -113,12 +106,10 @@
         $('#dropdown_search').removeClass('col-md-12');
         $('#dropdown_paramsBtn').addClass('active');
       }
-     
-    });
 
+    });
     /***** CHANGE THE VIEW GRID OR LIST *****/
     $('#grid').hide();
-
     $('#list').click(function(event){
       event.preventDefault();
       $('#dropdown_search .item').addClass('list-group-item');
@@ -131,7 +122,7 @@
       $('#grid').show();
       $('#list').hide();
     });
-    $('#grid').click(function(event){
+   $('#grid').click(function(event){
       event.preventDefault();
       $('#dropdown_search .item').removeClass('list-group-item');
       $('#dropdown_search .item').addClass('grid-group-item');
@@ -144,25 +135,21 @@
       $('#list').show();
       $('#grid').hide();
     });
-
     /******** EVENTS ********/
-    
 
     $('#reset').on('click', function() {
       searchTag = allsearchTag;
+      searchLocalityNAME = allsearchLocalityNAME;
       searchCategory = allsearchCategory;
       $('.tagFilter').removeClass('active');
+      $('.villeFilter').removeClass('active');
       $('.categoryFilter').removeClass('active');
       startSearch(0, indexStepInit);
     });
-
-
-
     <?php if(isset($params['mode']) && $params['mode'] == "client"){ ?>
 
-        
         //Charger tous les éléments
-     
+
     <?php } else{ ?>
       $(".my-main-container").scroll(function(){
         if(!loadingData && !scrollEnd){
@@ -179,71 +166,56 @@
             }
         }
       });
-
       $(".btn-filter-type").click(function(e){
         var type = $(this).attr("type");
         var index = searchType.indexOf(type);
-
         if(type == "all" && searchType.length > 1){
           $.each(allSearchType, function(index, value){ removeSearchType(value); }); return;
         }
         if(type == "all" && searchType.length == 1){
           $.each(allSearchType, function(index, value){ addSearchType(value); }); return;
         }
-
         if (index > -1) removeSearchType(type);
         else addSearchType(type);
       });
-
-      initBtnToogleCommunexion();
-      $(".btn-activate-communexion").click(function(){
-        toogleCommunexion();
-      });
+      //initBtnToogleCommunexion();
+      //$(".btn-activate-communexion").click(function(){
+      //  toogleCommunexion();
+      //});
     <?php } ?>
-
     //initBtnScopeList();
     startSearch(0, indexStepInit);
-
   });
-
-
 function startSearch(indexMin, indexMax){
-    // console.log("startSearch", indexMin, indexMax, indexStep);
-    
+     console.log("startSearch", indexMin, indexMax, indexStep);
     $("#listTagClientFilter").html('spiner');
-
     if(loadingData) return;
     loadingData = true;
-    
+
     // console.log("loadingData true");
     indexStep = indexStepInit;
-
     var name = $('#searchBarText').val();
-
     if(typeof indexMin == "undefined") indexMin = 0;
     if(typeof indexMax == "undefined") indexMax = indexStep;
-
     currentIndexMin = indexMin;
     currentIndexMax = indexMax;
-
     if(indexMin == 0 && indexMax == indexStep) {
       totalData = 0;
-      mapElements = new Array(); 
+      mapElements = new Array();
     }
-
     // if(name.length>=3 || name.length == 0){
       var locality = "";
+      communexionActivated=true;
+      levelCommunexion = 1;
       if(communexionActivated){
         if(levelCommunexion == 1) locality = inseeCommunexion;
         if(levelCommunexion == 2) locality = cpCommunexion;
         if(levelCommunexion == 3) locality = cpCommunexion.substr(0, 2);
         if(levelCommunexion == 4) locality = inseeCommunexion;
         if(levelCommunexion == 5) locality = "";
-      } 
+      }
       autoCompleteSearch(name, locality, indexMin, indexMax);
 }
-
-
 function addSearchType(type){
   var index = searchType.indexOf(type);
   if (index == -1) {
@@ -260,20 +232,16 @@ function removeSearchType(type){
     $(".search_"+type).addClass("fa-circle-o");
   }
 }
-
 function addSearchCategory(category){
   console.log('add'+category+' dans '+searchCategory);
   var index = searchCategory.indexOf(category);
   if (index == -1) searchCategory.push(category);
   // var index = searchCategory.indexOf(category);
-
   // if (index == -1) {
-
   //   //Ajoute tous les tags des catégories
   //   $('.checkbox[data-parent="'+category+'"]').each(function(){
   //     addSearchTag($(this).attr("value"));
   //   });
-
   //   // searchCategory.push(category);
   //   $('.categoryFilter[value="'+category+'"]').addClass('active');
   //   // console.log($('.checkbox[data-parent="'+category+'"]'));
@@ -285,34 +253,27 @@ function addSearchCategory(category){
     });
   }
 }
-
 function removeSearchCategory(category){
   console.log('remove '+category+' dans '+searchCategory);
-
   var index = searchCategory.indexOf(category);
   if (index > -1) searchCategory.splice(index, 1);
-
   if($('.checkbox[data-parent="'+category+'"]').length){
     $('.checkbox[data-parent="'+category+'"]').each(function(){
       removeSearchTag($(this).attr("value"));
     });
   }
-
   // var index = searchCategory.indexOf(category);
-  
+
   // if (index > -1) {
   //   //Masquer tous les tags des catégories
   //   $('.checkbox[data-parent="'+category+'"]').each(function(){
   //     removeSearchTag($(this).attr("value"));
   //   });
-
   //   searchCategory.splice(index, 1);
   //   $('.categoryFilter[value="'+category+'"]').removeClass('active');
   //   $('.checkbox[data-parent="'+category+'"]').prop( "checked", false );
   // }
 }
-
-
 function addSearchTag(tag){
   var index = searchTag.indexOf(tag);
   if (index == -1) {
@@ -321,7 +282,6 @@ function addSearchTag(tag){
     $('.tagFilter[value="'+tag+'"]').prop("checked", true );
   }
 }
-
 function removeSearchTag(tag){
   var index = searchTag.indexOf(tag);
   if (index > -1) {
@@ -331,14 +291,30 @@ function removeSearchTag(tag){
   }
 }
 
+function addSearchVille(ville){
+  var index = searchLocalityNAME.indexOf(ville);
+  if (index == -1) {
+    searchLocalityNAME.push(ville);
+    $('.villeFilter[value="'+ville+'"]').addClass('active');
+    $('.villeFilter[value="'+ville+'"]').prop("checked", true );
+  }
+}
+function removeSearchVille(ville){
+  var index = searchLocalityNAME.indexOf(ville);
+  if (index > -1) {
+    searchLocalityNAME.splice(index, 1);
+    $('.villeFilter[value="'+ville+'"]').removeClass('active');
+    $('.villeFilter[value="'+ville+'"]').prop("checked", false );
+  }
+}
+
 var loadingData = false;
-var mapElements = new Array(); 
+var mapElements = new Array();
 var tagsFilter = new Array();
 var mix = "";
 <?php if(isset($params['mode']) && $params['mode'] == 'client') { ?>
   mix = "mix";
 <?php } ?>
-
 function autoCompleteSearch(name, locality, indexMin, indexMax){
     var levelCommunexionName = { 1 : "INSEE",
                              2 : "CODE_POSTAL_INSEE",
@@ -356,48 +332,44 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     console.log("searchLocalityREGION : ",searchLocalityREGION);
     console.log("searchTag : ",searchTag);
     console.log("searchCategory : ",searchCategory);
-    
+
     //To merge Category and tags which are finally all tags
     var searchTagGlobal = [];
     if (undefined !== searchTag && searchTag.length)$.merge(searchTagGlobal,searchTag);
     if (undefined !== searchCategory && searchCategory.length)$.unique($.merge(searchTagGlobal,searchCategory));
     console.log("searchTagGlobal : "+searchTagGlobal);
-
     var data = {
-      "name" : name, 
-      "locality" : locality, 
-      "searchType" : searchType, 
-      "searchTag" : searchTagGlobal, 
+      "name" : name,
+      "locality" : "xxxx",
+      "searchType" : searchType,
+      "searchTag" : searchTagGlobal,
       "searchLocalityNAME" : searchLocalityNAME,
-      "searchLocalityCODE_POSTAL_INSEE" : searchLocalityCODE_POSTAL_INSEE, 
+      "searchLocalityCODE_POSTAL_INSEE" : searchLocalityCODE_POSTAL_INSEE,
       "searchLocalityDEPARTEMENT" : searchLocalityDEPARTEMENT,
       "searchLocalityINSEE" : searchLocalityINSEE,
       "searchLocalityREGION" : searchLocalityREGION,
-      "searchBy" : searchBy, 
+      "searchBy" : searchBy,
       "indexMin" : indexMin,
-      "indexMax" : indexMax, 
-      "sourceKey" : sourceKey
+      "indexMax" : indexMax,
+      "sourceKey" : sourceKey,
+      "mainTag" : mainTag
     };
-
     //console.log("loadingData true");
     loadingData = true;
-    
+
     str = "<i class='fa fa-circle-o-notch fa-spin'></i>";
     $(".btn-start-search").html(str);
     $(".btn-start-search").addClass("bg-azure");
     $(".btn-start-search").removeClass("bg-dark");
     //$("#dropdown_search").css({"display" : "inline" });
-
     if(indexMin > 0)
     $("#btnShowMoreResult").html("<i class='fa fa-spin fa-circle-o-notch'></i> Recherche en cours ...");
     else
     $("#dropdown_search").html("<center><span class='search-loaderr text-dark' style='font-size:20px;'><i class='fa fa-spin fa-circle-o-notch'></i> Recherche en cours ...</span></center>");
-      
     if(isMapEnd)
       $.blockUI({
         message : "<h1 class='homestead text-red'><i class='fa fa-spin fa-circle-o-notch'></i><span class='text-dark'> En cours ...</span></h1>"
       });
-
     $.ajax({
       type: "POST",
           url: baseUrl+"/" + moduleId + "/search/simplyautocomplete",
@@ -405,7 +377,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
           dataType: "json",
           error: function (data){
              console.log("error");
-             console.dir(data);          
+             console.dir(data);
           },
           success: function(data){
             if(!data.res){ toastr.error(data.content); }
@@ -413,52 +385,48 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
             {
               var countData = 0;
               $.each(data.res, function(i, v) { if(v.length!=0){ countData++; } });
-              
+
               totalData += countData;
-            
+
               str = "";
               var city, postalCode = "";
               var mapElements = new Array();
               allTags = data.filters;
-
               //parcours la liste des résultats de la recherche
               $.each(data.res, function(i, o) {
                   var typeIco = i;
                   var ico = mapIconTop["default"];
                   var color = mapColorIconTop["default"];
-
                   // mapElements.push(o);
                   // allElement.push(o);
-                  
-                 
+
+
                   typeIco = o.type;
                   ico = ("undefined" != typeof mapIconTop[typeIco]) ? mapIconTop[typeIco] : mapIconTop["default"];
                   color = ("undefined" != typeof mapColorIconTop[typeIco]) ? mapColorIconTop[typeIco] : mapColorIconTop["default"];
-                  
+
                   htmlIco ="<i class='fa "+ ico +" text-"+color+"'></i>";
                   if("undefined" != typeof o.profilThumbImageUrl && o.profilThumbImageUrl != ""){
                     var htmlIco= "<img width='80' height='80' alt='' class='img-circle bg-"+color+"' src='"+baseUrl+o.profilThumbImageUrl+"'/>";
                   }
-                  
+
                   // o.profilImageUrl = "/upload/communecter/network/Alimentation/fa-cutlery505719fabnone.png";
                   // o.profilMarkerImageUrl = "/upload/communecter/network/Alimentation/thumb/profil-marker.png";
                   // o.profilThumbImageUrl = "/upload/communecter/network/Alimentation/thumb/profil-resized.png";
                   city="";
-
                   var postalCode = o.cp
                   if (o.address != null) {
                     city = o.address.addressLocality;
                     postalCode = o.cp ? o.cp : o.address.postalCode ? o.address.postalCode : "";
                   }
-                  
+
                   //console.dir(o);
                   var id = getObjectId(o);
                   var tagsClasses = "";
                   var insee = o.insee ? o.insee : "";
-
                   type = o.type;
                   if(type=="citoyen") type = "person";
-                  
+
                   //Consolidate types
                   if(type != "undefined" && type != null){
                     if(typeof allTypes[type] != "undefined"){
@@ -468,10 +436,10 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                       allTypes[type] = 1;
                     }
                   }
-
                   var url = "javascript:"; //baseUrl+'/'+moduleId+ "/default/simple#" + o.type + ".detail.id." + id;
                   var url = baseUrl+'/'+moduleId+ "/default/dir#" + type + ".simply.id." + id;
-                  var onclick = 'loadByHash("#organization.simply.id.' + id + '");';
+                 // var onclick = 'loadByHash("#organization.simply.id.' + id + '");';
+                  var onclick = 'getAjaxFiche("#element.detail.type.'+o.typeSig+'.id.'+id+'");';
                   var onclickCp = "";
                   var target = " target='_blank'";
                   var dataId = "";
@@ -482,25 +450,21 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                     target = "";
                     dataId = o.name; //.replace("'", "\'");
                   }
-
                   var tags = "";
                   var find = false;
                   if(typeof o.tags != "undefined" && o.tags != null){
                     $.each(o.tags, function(key, value){
                       if(value != ""){
-
                         //Display info in item
                         tags +=   "<a href='javascript:' class='badge bg-red btn-tag tagFilter' value='"+ value +"'>#" + value + "</a>";
-                        // manageTagFilter("#"+value); 
-
+                        // manageTagFilter("#"+value);
                         //Consolidate tags
                         // if(typeof allTags[value] != "undefined"){
                         //   allTags[value] = allTags[value] + 1;
                         // }
                         // else{
                         //   allTags[value] = 1;
-                        // } 
-
+                        // }
                         //Default Image adn color
                         if(find == false && value in linksTagImages == true){
                           find = true;
@@ -510,43 +474,49 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                           o.typeSig = value;
                           o.type = "organizations";
                         }
-
                         //Filter Client (Attention erreur firefox js)
                         // tagsClasses += ' '+value.replace("/[^A-Za-z0-9]/", "", value) ;
                       }
                     });
                   }
-
                   mapElements.push(o);
+                  contextMap.push(o);
                   // console.log(tagsClasses);
-
                   var name = typeof o.name != "undefined" ? o.name : "";
                   var website = typeof o.url != "undefined" ? o.url : "";
                   var postalCode = (typeof o.address != "undefined" &&
                             typeof o.address.postalCode != "undefined") ? o.address.postalCode : "";
-                  
+
                   if(postalCode == "") postalCode = typeof o.cp != "undefined" ? o.cp : "";
                   var cityName = (typeof o.address != "undefined" &&
                           typeof o.address.addressLocality != "undefined") ? o.address.addressLocality : "";
-                  
-                  var fullLocality = postalCode + " " + cityName;
 
+                  var fullLocality = postalCode + " " + cityName;
                   var description = (typeof o.shortDescription != "undefined" &&
                             o.shortDescription != null) ? o.shortDescription : "";
                   if(description == "") description = (typeof o.description != "undefined" &&
                                      o.description != null) ? o.description : "";
                   description = "";
+                  if(o.profilMediumImageUrl != "undefined" && o.profilMediumImageUrl != "")
+                  	pathmedium = baseUrl+o.profilMediumImageUrl;
+                  else
+                  	pathmedium = "<?php echo $this->module->assetsUrl ?>/images/thumbnail-default.jpg";
+                  shortDescription = (typeof o.shortDescription != "undefined" &&
+                                     o.shortDescription != null) ? o.shortDescription : "";
 
                   var startDate = (typeof o.startDate != "undefined") ? "Du "+dateToStr(o.startDate, "fr", true, true) : null;
                   var endDate   = (typeof o.endDate   != "undefined") ? "Au "+dateToStr(o.endDate, "fr", true, true)   : null;
-
                   /***** VERSION SIMPLY *****/
                   str += "<div id='"+id+"' class='row list-group-item item searchEntity "+mix+" "+tagsClasses+" "+fullLocality+"' >";
-                    <?php if(isset($params['result']['displayImage']) && $params['result']['displayImage']) { ?>
-                    str += "<div class='entityTop col-md-2' onclick='"+onclick+"'>";
-                        str += "<img class='image' src='http://paniersdumarais.weebly.com/uploads/1/4/6/5/1465996/5333680.jpg' />";
-                    str += "</div>";
-                   <?php } ?>
+                  <?php if(isset($params['result']['displayImage']) && $params['result']['displayImage']) { ?>
+                  	str += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 padding-10 center">'+
+				  				'<img class="img-responsive thumbnail" src="'+pathmedium+'">'+
+				  			'</div>';
+                    <?php } ?>
+                   // str += "<div class='entityTop col-md-2' onclick='"+onclick+"'>";
+                      //  str += "<img class='image' src='http://paniersdumarais.weebly.com/uploads/1/4/6/5/1465996/5333680.jpg' />";
+                    //str += "</div>";
+
                     str += "<div class='entityMiddle col-md-5 name' onclick='"+onclick+"'>";
                         str += "<a class='entityName text-dark'>" + name + "</a><br/>";
                         if(website != "" && website != " ")
@@ -556,17 +526,22 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                           str += "<a href='"+url+"' onclick='"+onclickCp+"'"+target+ ' data-id="' + dataId + '"' + "  class='entityLocality'><i class='fa fa-home'></i> " + fullLocality + "</a><br/>";
                         <?php } ?>
                     str += "</div>";
-                    
+
                     <?php if(isset($params['result']['displayType']) && $params['result']['displayType']) { ?>
                       str += "<div class='entityMiddle col-md-2 type '>";
                         typeIco = "";
                          str += htmlIco+"" + typeIco + "";
                       str += "</div>";
                     <?php } ?>
-                   
+                    <?php if(isset($params['result']['displayShortDescription']) && $params['result']['displayShortDescription']) { ?>
+						str += "<div class='entityMiddle col-md-5 type '>";
+                        str += 		shortDescription;
+						str += "</div>";
+                       <?php } ?>
+
                     target = "";
                     // str += "<div class='row entityMiddle fullLocality'>";
-                      
+
                     //   <?php if(isset($params['result']['datesEvent']) && $params['result']['datesEvent']) { ?>
                     //     // str += "<hr>";
                     //     str += "<div class='row entityMiddle datesEvent'>";
@@ -576,8 +551,6 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                     //     str += "<a href='"+url+"' onclick='"+onclick+"'"+target+"  class='entityDate bg-azure badge'><i class='fa fa-caret-right'></i> " + endDate + "</a>";
                     //     str += "</div>";
                     //   <?php } ?>
-
-
                     // str += "</div>";
                     str += "<div class='entityBottom col-md-5'>";
                       <?php if( isset( Yii::app()->session['userId'] ) ) { ?>
@@ -585,7 +558,7 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                       if(typeof o.isFollowed != "undefined" )
                         isFollowed=true;
                       if(type!="city" && id != "<?php echo Yii::app()->session['userId']; ?>")
-                      str += "<a href='javascript:;' class='btn btn-default btn-sm btn-add-to-directory bg-white tooltips followBtn'" + 
+                      str += "<a href='javascript:;' class='btn btn-default btn-sm btn-add-to-directory bg-white tooltips followBtn'" +
                             'data-toggle="tooltip" data-placement="left" data-original-title="Suivre"'+
                             " data-ownerlink='follow' data-id='"+id+"' data-type='"+type+"' data-name='"+name+"' data-isFollowed='"+isFollowed+"'>"+
                                 "<i class='fa fa-chain'></i>"+ //fa-bookmark fa-rotate-270
@@ -594,19 +567,15 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                       str += "<hr>";
                       if(tags=="") tags = "<a href='#' class='badge bg-red btn-tag'>#</a>";
                       str += tags;
-
-
-                    str += "</div>";          
+                    str += "</div>";
                   str += "</div>";
-
               }); //end each
-
-              if(str == "") { 
-                  $(".btn-start-search").html("<i class='fa fa-search'></i>"); 
+              if(str == "") {
+                  $(".btn-start-search").html("<i class='fa fa-search'></i>");
                   if(indexMin == 0){
-                    //ajout du footer   
-                    var msg = "Aucun résultat";    
-                    if(name == "" && locality == "") msg = "<h3 class='text-dark'><i class='fa fa-3x fa-keyboard-o'></i><br> Préciser votre recherche pour plus de résultats ...</h3>"; 
+                    //ajout du footer
+                    var msg = "Aucun résultat";
+                    if(name == "" && locality == "") msg = "<h3 class='text-dark'><i class='fa fa-3x fa-keyboard-o'></i><br> Préciser votre recherche pour plus de résultats ...</h3>";
                     str += '<div class="center" id="footerDropdown">';
                     str += "<hr style='float:left; width:100%;'/><label style='margin-bottom:10px; margin-left:15px;' class='text-dark'>"+msg+"</label><br/>";
                     str += "</div>";
@@ -615,29 +584,27 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   }
               }
               else
-              {       
-                //ajout du footer     
-              
+              {
+                //ajout du footer
+
                   str += '</div><div class="center col-md-12" id="footerDropdown">';
                   str += "<hr style='float:left; width:100%;'/><label id='countResult' class='text-dark'></label><br/>";
                   <?php if(isset($params['mode']) && $params['mode'] != "client"){ ?>
                     str += '<button class="btn btn-default" id="btnShowMoreResult"><i class="fa fa-angle-down"></i> Afficher plus de résultat</div></center>';
                     str += "</div>";
                   <?php } ?>
-
                 //si on n'est pas sur une première recherche (chargement de la suite des résultat)
                 if(indexMin > 0){
                   //on supprime l'ancien bouton "afficher plus de résultat"
                   $("#btnShowMoreResult").remove();
                   //on supprimer le footer (avec nb résultats)
                   $("#footerDropdown").remove();
-
                   //on calcul la valeur du nouveau scrollTop
                   var heightContainer = $(".my-main-container")[0].scrollHeight - 180;
-                  
+
                   //on affiche le résultat à l'écran
                   $("#dropdown_search").append(str);
-    
+
                 //si on est sur une première recherche
                 }else{
                   //on affiche le résultat à l'écran
@@ -646,23 +613,16 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                   // $(".my-main-container").scrollTop(95);
                 }
 
-               
-
                 //On met à jour les filtres
                 <?php if(isset($params['mode']) && $params['mode'] == "client"){ ?>
                   loadClientFilters(allTypes, allTags);
                 <?php } else{ ?>
                   loadServerFilters(allTypes, allTags);
-                <?php } ?>                
-
-
+                <?php } ?>
                 //on affiche par liste par défaut
                 $('#list').click();
-
-
                 //remet l'icon "loupe" du bouton search
                 $(".btn-start-search").html("<i class='fa fa-search'></i>");
-                
 
                 //active le chargement de la suite des résultat au survol du bouton "afficher plus de résultats"
                 //(au cas où le scroll n'ait pas lancé le chargement comme prévu)
@@ -672,159 +632,48 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
                     $("#btnShowMoreResult").mouseenter(function(){});
                   }
                 });
-                
+
                 //initialise les boutons pour garder une entité dans Mon répertoire (boutons links)
                 // initBtnLink();
-
               } //end else (str=="")
-
               //signal que le chargement est terminé
               // console.log("loadingData false");
               loadingData = false;
-
               <?php if(isset($params['mode']) && $params['mode'] == "client"){ ?>
                loadClientFeatures();
               <?php } else{ ?>
                 loadServerFeatures();
               <?php } ?>
-
               //quand la recherche est terminé, on remet la couleur normal du bouton search
               $(".btn-start-search").removeClass("bg-azure");
             }
-
             // console.log("scrollEnd ? ", scrollEnd, indexMax, countData , indexMin);
-            
+
             //si le nombre de résultat obtenu est inférieur au indexStep => tous les éléments ont été chargé et affiché
             if(indexMax - countData > indexMin){
-              $("#btnShowMoreResult").remove(); 
+              $("#btnShowMoreResult").remove();
               scrollEnd = true;
             }else{
               scrollEnd = false;
             }
-
            //affiche les éléments sur la carte
             Sig.showMapElements(Sig.map, mapElements);
-
            //on affiche le nombre de résultat en bas
             var s = "";
             var length = ($( "div.searchEntity" ).length);
             if(length > 1) s = "s";
             $("#countResult").html(length+" résultat"+s);
-
             $.unblockUI();
           }
-    });               
+    });
   }
-
-  // function initBtnLink(){
-  //   $('.tooltips').tooltip();
-  //   //parcours tous les boutons link pour vérifier si l'entité est déjà dans mon répertoire
-  //   $.each($(".followBtn"), function(index, value){
-  //     var id = $(value).attr("data-id");
-  //     var type = $(value).attr("data-type");
-  //     if(type == "person") type = "people";
-  //     else type = type + "s";
-  //     //console.log("#floopItem-"+type+"-"+id);
-  //     if($("#floopItem-"+type+"-"+id).length){
-  //       //console.log("I FOLLOW THIS");
-  //       if(type=="people"){
-  //         $(value).html("<i class='fa fa-unlink text-green'></i>");
-  //         $(value).attr("data-original-title", "Ne plus suivre cette personne");
-  //         $(value).attr("data-ownerlink","unfollow");
-  //       }
-  //       else{
-  //         $(value).html("<i class='fa fa-user-plus text-green'></i>");
-          
-  //         if(type == "organizations")
-  //           $(value).attr("data-original-title", "Vous êtes membre de cette organization");
-  //         else if(type == "projects")
-  //           $(value).attr("data-original-title", "Vous êtes contributeur de ce projet");
-          
-  //         //(value).attr("onclick", "");
-  //         $(value).removeClass("followBtn");
-  //       }
-  //     }
-  //     if($(value).attr("data-isFollowed")=="true"){
-  //       $(value).html("<i class='fa fa-unlink text-green'></i>");
-  //       $(value).attr("data-original-title", "Ne plus suivre");
-  //       $(value).attr("data-ownerlink","unfollow");
-  //       $(value).addClass("followBtn");
-  //     }
-  //   });
-
-    //on click sur les boutons link
-  //   $(".followBtn").click(function(){
-  //     formData = new Object();
-  //     formData.parentId = $(this).attr("data-id");
-  //     formData.childId = "<?php echo Yii::app() -> session["userId"] ?>";
-  //     formData.childType = "<?php echo Person::COLLECTION ?>";
-  //     var type = $(this).attr("data-type");
-  //     var name = $(this).attr("data-name");
-  //     var id = $(this).attr("data-id");
-  //     //traduction du type pour le floopDrawer
-  //     var typeOrigine = type + "s";
-  //     if(typeOrigine == "persons"){ typeOrigine = "<?php echo Person::COLLECTION ?>";}
-  //     formData.parentType = typeOrigine;
-  //     if(type == "person") type = "people";
-  //     else type = type + "s";
-
-  //   var thiselement = this;
-  //   $(this).html("<i class='fa fa-spin fa-circle-o-notch text-azure'></i>");
-  //   //console.log(formData);
-  //   if ($(this).attr("data-ownerlink")=="follow"){
-  //     $.ajax({
-  //       type: "POST",
-  //       url: baseUrl+"/"+moduleId+"/link/follow",
-  //       data: formData,
-  //       dataType: "json",
-  //       success: function(data) {
-  //         if(data.result){
-  //           //addFloopEntity(data.parent["_id"]["$id"], data.parentType, data.parent);
-  //           toastr.success(data.msg); 
-  //           $(thiselement).html("<i class='fa fa-unlink text-green'></i>");
-  //           $(thiselement).attr("data-ownerlink","unfollow");
-  //           $(thiselement).attr("data-original-title", "Ne plus suivre");
-  //           //if(type=="people"){
-  //             addFloopEntity(id, type, data.parentEntity);
-  //           //}
-  //         }
-  //         else
-  //           toastr.error(data.msg);
-  //       },
-  //     });
-  //   } else if ($(this).attr("data-ownerlink")=="unfollow"){
-  //     formData.connectType =  "followers";
-  //     // console.log(formData);
-  //     $.ajax({
-  //       type: "POST",
-  //       url: baseUrl+"/"+moduleId+"/link/disconnect",
-  //       data : formData,
-  //       dataType: "json",
-  //       success: function(data){
-  //         if ( data && data.result ) {
-  //           $(thiselement).html("<i class='fa fa-chain'></i>");
-  //           $(thiselement).attr("data-ownerlink","follow");
-  //           $(thiselement).attr("data-original-title", "Suivre");
-  //           removeFloopEntity(data.parentId, type);
-  //           toastr.success("<?php echo Yii::t("common","You are not following") ?> "+data.parentEntity.name); //+" <?php echo Yii::t("common","anymore") ?>");  
-  //         } else {
-  //            toastr.error("You leave succesfully");
-  //         }
-  //       }
-  //     });
-  //   }
-  //   });
-  // }
 
   function setSearchValue(value){
     $("#searchBarText").val(value);
     startSearch(0, 100);
   }
-
-
   function manageTagFilter(tag){
     var index = tagsFilter.indexOf(tag);
-
     if (index > -1) {
       tagsFilter.splice(index, 1);
     }
@@ -833,324 +682,33 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
     }
   }
 
-  // function loadClientFeatures(){
-
-  //   /*** EXTEND FUNCTION FOR CASE SENSITIVE ***/
-  //   $.expr[":"].contains = $.expr.createPseudo(function (arg) {
-  //       return function (elem) {
-  //           return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
-  //       };
-  //   });
-
-
-  //   // To keep our code clean and modular, all custom functionality will be contained inside a single object literal called "multiFilter".
-  //   var multiFilter = {
-      
-  //     // Declare any variables we will need as properties of the object
-  //     $filterGroups: null,
-  //     $filterUi: null,
-  //     $reset: null,
-  //     groups: [],
-  //     outputArray: [],
-  //     outputString: '',
-      
-  //     // The "init" method will run on document ready and cache any jQuery objects we will need.
-      
-  //     init: function(){
-  //       var self = this; // As a best practice, in each method we will asign "this" to the variable "self" so that it remains scope-agnostic. We will use it to refer to the parent "checkboxFilter" object so that we can share methods and properties between all parts of the object.
-        
-  //       self.$filterUi = $('#Filters');
-  //       self.$filterGroups = $('.filter-group');
-  //       self.$reset = $('#Reset');
-  //       self.$container = $('#dropdown_search');
-        
-  //       self.$filterGroups.each(function(){
-  //         self.groups.push({
-  //           $inputs: $(this).find('input'),
-  //           active: [],
-  //           tracker: false
-  //         });
-  //       });
-        
-  //       self.bindHandlers();
-  //     },
-      
-  //     // The "bindHandlers" method will listen for whenever a form value changes. 
-  //     bindHandlers: function(){
-  //       var self = this,
-  //           typingDelay = 300,
-  //           typingTimeout = -1,
-  //           resetTimer = function() {
-  //             clearTimeout(typingTimeout);
-              
-  //             typingTimeout = setTimeout(function() {
-  //               self.parseFilters();
-  //             }, typingDelay);
-  //           };
-        
-  //       self.$filterGroups
-  //         .filter('.checkboxes')
-  //         .on('change', function() {
-  //           self.parseFilters();
-  //         });
-        
-  //       self.$filterGroups
-  //         .filter('.search')
-  //         .on('keyup change', resetTimer);
-        
-  //       self.$reset.on('click', function(e){
-  //         e.preventDefault();
-  //         self.$filterUi[0].reset();
-  //         self.$filterUi.find('input[type="text"]').val('');
-  //         self.parseFilters();
-  //       });
-  //     },
-      
-  //     // The parseFilters method checks which filters are active in each group:
-      
-  //     parseFilters: function(){
-  //       var self = this;
-     
-  //       // loop through each filter group and add active filters to arrays
-        
-  //       for(var i = 0, group; group = self.groups[i]; i++){
-  //         group.active = []; // reset arrays
-  //         group.$inputs.each(function(){
-  //           var searchTerm = '',
-  //               $input = $(this),
-  //               minimumLength = 3;
-            
-  //           if ($input.is(':checked')) {
-  //             group.active.push(this.value);
-  //           }
-            
-  //           if ($input.is('[type="text"]') && this.value.length >= minimumLength) {
-  //             searchTerm = this.value
-  //               .trim()
-  //               .toLowerCase()
-  //               .replace(' ', '-');
-              
-  //             group.active[0] = '[class*="' + searchTerm + '"]'; 
-
-  //             //To add content search
-  //             group.active[1] = ".item:contains('"+$( "#searchBarText" ).val()+"')"; 
-  //           }
-  //         });
-  //         group.active.length && (group.tracker = 0);
-  //       }
-        
-  //       self.concatenate();
-  //     },
-      
-  //     // The "concatenate" method will crawl through each group, concatenating filters as desired:
-      
-  //     concatenate: function(){
-  //       var self = this,
-  //         cache = '',
-  //         crawled = false,
-  //         checkTrackers = function(){
-  //           var done = 0;
-            
-  //           for(var i = 0, group; group = self.groups[i]; i++){
-  //             (group.tracker === false) && done++;
-  //           }
-
-  //           return (done < self.groups.length);
-  //         },
-  //         crawl = function(){
-  //           for(var i = 0, group; group = self.groups[i]; i++){
-  //             group.active[group.tracker] && (cache += group.active[group.tracker]);
-
-  //             if(i === self.groups.length - 1){
-  //               self.outputArray.push(cache);
-  //               cache = '';
-  //               updateTrackers();
-  //             }
-  //           }
-  //         },
-  //         updateTrackers = function(){
-  //           for(var i = self.groups.length - 1; i > -1; i--){
-  //             var group = self.groups[i];
-
-  //             if(group.active[group.tracker + 1]){
-  //               group.tracker++; 
-  //               break;
-  //             } else if(i > 0){
-  //               group.tracker && (group.tracker = 0);
-  //             } else {
-  //               crawled = true;
-  //             }
-  //           }
-  //         };
-        
-  //       self.outputArray = []; // reset output array
-
-  //       do{
-  //         crawl();
-  //       }
-  //       while(!crawled && checkTrackers());
-
-  //       self.outputString = self.outputArray.join();
-        
-  //       // If the output string is empty, show all rather than none:
-        
-  //       !self.outputString.length && (self.outputString = 'all'); 
-        
-  //       console.log(self.outputString); 
-        
-  //       // ^ we can check the console here to take a look at the filter string that is produced
-  //       // Send the output string to MixItUp via the 'filter' method: 
-  //       if(self.$container.mixItUp('isLoaded')){
-  //         self.$container.mixItUp('filter', self.outputString);
-  //       }
-  //     }
-  //   };
-
-
-    // On document ready, initialise our code
-    // if(execute == true){
-  //     $(function(){
-            
-  //       // Initialize multiFilter code
-  //       multiFilter.init();
-            
-  //       // Instantiate MixItUp 
-  //       $('#dropdown_search').mixItUp({
-  //         controls: {
-  //           enable: false // we won't be needing these
-  //         },
-  //         animation: {
-  //           // easing: 'cubic-bezier(0.86, 0, 0.07, 1)',
-  //           // queueLimit: 3,
-  //           // duration: 600
-  //           enable: false
-  //         }
-  //       });
-
-  //       $('#dropdown_search').on('mixEnd', function(e, state){
-  //         //on met à jour le nombre de résultat
-  //         $("#countResult").html(state.totalShow+" résultats");
-
-  //         //On met à jour la map et les filtres
-  //         var mapData = new Array();
-  //         var tagsData = typesData = new Object();
-  //         $.each(state.$show, function(index, value){
-  //           $.each(allElement, function(index2, value2){
-  //             //Display
-  //             if(value['id'] == getObjectId(value2)){
-                
-  //               //map
-  //               mapData.push(value2);
-
-  //               //filtre
-  //               // if(typeof typesData[value2.type] == "undefined"){
-  //               //   typesData[value2.type] = 1;
-  //               // }else{
-  //               //   typesData[value2.type] = typesData[value2.type] + 1;
-  //               // }
-
-  //               //tags
-  //               // $.each(value2.tags, function(index3, value3){
-  //               //     // console.log(value3);
-  //               //     if(typeof tagsData[value3] == "undefined"){
-  //               //       tagsData[value3] = 1;
-  //               //     }else{
-  //               //       tagsData[value3] = tagsData[value3] + 1;
-  //               //     }
-  //               // });
-  //             }
-  //           });
-  //         });
-  //         // Sig.restartMap();
-  //         Sig.showMapElements(Sig.map, mapData);
-  //         // console.log(typesData);
-  //         // loadClientFilters(typesData,tagsData);
-          
-  //         //On remonte
-  //         $(".my-main-container").scrollTop(99);
-  //       });
-  //     });
-  //   // }
-  // }
-
   function loadServerFeatures(){
-    //on active les filtres
-    // $('.typeFilter').on('click', function() {
-    //   var type = $(this).data("value");
-    //   var index = searchType.indexOf(type);
 
-    //   if(type == "all" && searchType.length > 1){
-    //     $.each(allSearchType, function(index, value){ removeSearchType(value); }); return;
-    //   }
-    //   if(type == "all" && searchType.length == 1){
-    //     $.each(allSearchType, function(index, value){ addSearchType(value); }); return;
-    //   }
-
-    //   if (index > -1) {
-    //     removeSearchType(type);
-    //     $(this).css( "background-color", "gray" );
-    //   }
-    //   else{
-    //     addSearchType(type);
-    //     $(this).css( "background-color", "#2497d0" );
-    //   }
-
-    //   startSearch(0,indexStepInit);
-    // });
-
-    //on click sur les boutons link
-    // $(".btn-tag").click(function(){
-    //   setSearchValue($(this).data("value"));
-    // });
   }
-
-
   function loadServerFilters(types,tags){
     var displayLimit = 10;
     var classToHide = "";
     var i = 0;
 
-    // console.log(tags);
-    //We update the tag menu
-
-
-    // $("#listTypesFilter").html(' ');
-    // $.each(types, function(index, value){
-    //   $("#listTypesFilter").append('<a href="#default.simplydirectory" class="typeFilter" data-value="'+index+'s">'+index+' ('+value+')</a>');
-    // });
-    
-    // i=0;
-    // classToHide = "";
-    // $("#listTagFilter").html(' ');
-    // $.each(tags, function(index, value){
-    //   i+=1;
-    //   $("#listTagFilter").append('<a href="javascript:;" class="tagFilter tagHidden '+classToHide+'" value="'+index+'">#'+index+' ('+value+')</a>');
-    //   if(i == displayLimit)classToHide = "hidden";
-    // });
-    // if(i > 10)$("#listTagFilter").append('<div id="moreTag"><i class="fa fa-plus fa-2x"></i></div>');
-    // $("#moreTag").click(function(){
-    //    $(".tagHidden").removeClass("hidden");
-    //    $("#moreTag").hide();
-    // });
-
-    //Display active
     var breadcum  = "";
-
     //All desacactivate
+    $('.villeFilter').prop("checked", false );
     $('.tagFilter').prop("checked", false );
     $('.categoryFilter').prop("checked", false );
-
     //One by One Tag
     $.each(searchTag, function(index, value){
-
       //Display
       $('.tagFilter[value="'+value+'"]').prop("checked", true );
-
       if($('.tagFilter[value="'+value+'"]').length)breadcum = breadcum+"<span class='label label-danger tagFilter' value='"+value+"'>"+$('.tagFilter[value="'+value+'"]').attr("data-label")+"</span> ";
       //Open menu
       manageCollapse(value,true);
     });
-
+    $.each(searchLocalityNAME, function(index, value){
+      //Display
+      $('.villeFilter[value="'+value+'"]').prop("checked", true );
+      //Open menu
+      manageCollapse(value,true);
+    });
     //One by One Category
     $.each(searchCategory, function(index, value){
       $('.categoryFilter[value="'+value+'"]').prop( "checked", true );
@@ -1159,21 +717,16 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       breadcum = breadcum+"<span class='label label-danger categoryFilter' value='"+value+"'>"+value+"</span> ";
       // manageCollapse(value,true);
     });
-
     if(breadcum != ""){
       $('#breadcum').html('<i id="breadcum_search" class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i>'+breadcum+'<i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><label id="countResult" class="text-dark"></label>');
     }
     else{
-
       $('#breadcum').html('<i class="fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i><i class="fa fa-chevron-right fa-1x" style="padding: 10px 10px 0px 10px;""></i><label id="countResult" class="text-dark"></label>');
     }
 
-    
     $(".tagFilter").off().click(function(e){
-
       var tag = $(this).attr("value");
       var index = searchTag.indexOf(tag);
-
       if(tag == "all"){
         searchTag = [];
         $('.tagFilter[value="all"]').addClass('active');
@@ -1183,12 +736,26 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       else{
         $('.tagFilter[value="all"]').removeClass('active');
       }
-
       if (index > -1) removeSearchTag(tag);
       else addSearchTag(tag);
       startSearch(0, indexStepInit);
     });
-
+    $(".villeFilter").off().click(function(e){
+      var ville = $(this).attr("value");
+      var index = searchLocalityNAME.indexOf(ville);
+      if(ville == "all"){
+        searchLocalityNAME = [];
+        $('.villeFilter[value="all"]').addClass('active');
+        startSearch(0, indexStepInit);
+        return;
+      }
+      else{
+        $('.villeFilter[value="all"]').removeClass('active');
+      }
+      if (index > -1) removeSearchVille(ville);
+      else addSearchVille(ville);
+      startSearch(0, indexStepInit);
+    });
     $(".categoryFilter").off().click(function(e){
       var category = $(this).attr("value");
       ;
@@ -1201,11 +768,9 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
       startSearch(0, indexStepInit);
     });
   }
-
   // function loadClientFilters(types, tags){
   //   var displayLimit = 10;
   //   var classToHide = "";
-
   //   var i = 0;
   //   $("#listTypesClientFilter").html(' ');
   //   $.each(types, function(index, value){
@@ -1218,7 +783,6 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
   //      $(".typeHidden").removeClass("hidden");
   //      $("#moreTypes").hide();
   //   });
-
   //   i=0;
   //   classToHide = "";
   //   $("#listTagClientFilter").html(' ');
@@ -1233,11 +797,62 @@ function autoCompleteSearch(name, locality, indexMin, indexMax){
   //      $("#moreTag").hide();
   //   });
   //   loadClientFeatures();
-
   // }
+  function getAjaxFiche(url, breadcrumb){
+	$("#ficheInfoDetail").empty();
+	if(location.hash == ""){
+	    history.pushState(null, "New Title", url);
+    }
+    if(isMapEnd){
+		pathTitle="Cartographie";
+		pathIcon = "map-marker";
+	    showMap();
+    }
+    else{
+	    pathTitle="Annuaire";
+	    pathIcon = "list";
+    }
+    isEntityView=true;
+	url='/'+url.replace( "#","" ).replace( /\./g,"/" );
+    $("#ficheInfoDetail").removeClass("hide");
+    $("#repertory").fadeOut();
+    $.blockUI({
+				message : "<h4 style='font-weight:300' class='text-dark padding-10'><i class='fa fa-spin fa-circle-o-notch'></i><br>Chargement en cours ...</span></h4>"
+	});
+    getAjax('#ficheInfoDetail', baseUrl+'/'+moduleId+url,
+    	function(){
+	    $.unblockUI();
+	    $(".panel-group .panel-default").fadeOut();
+	    console.log(contextData);
+	    if(breadcrumb){
+		    if($(".lastElementBreadcrumb").length > 0)
+		    	$(".lastElementBreadcrumb").remove();
+		    $html= "<li class='lastElementBreadcrumb' style='margin-left:15px;'><i class='fa fa-level-up' style='transform:rotate(90deg);'></i> <a href='javascript:;' onclick='getAjaxFiche(\"#element.detail.type."+contextData.typeSig+".id."+contextData._id.$id+"\")'>"+contextData.name+"</a></li>"+
+					"</div>";
+			$(".breadcrumbVertical").append($html);
 
+	    } else {
+			$html="<div class='panel panel-back padding-5'>"+
+					"<ol class='breadcrumbVertical'><li><a href='javascript:;' onclick='reverseToRepertory();'><i class='fa fa-"+pathIcon+"'> </i> "+pathTitle+"</a></li>"+
+						"<li><i class='fa fa-level-up' style='transform:rotate(90deg);'></i> <a href='javascript:;' onclick='getAjaxFiche(\"#element.detail.type."+contextData.typeSig+".id."+contextData._id.$id+"\", true)'>"+contextData.name+"</a></li>"+
+					"</div>";
+			$(".panel-group").append($html);
+		}
+    },"html");
+  }
+  function reverseToRepertory(){
+	  if(isMapEnd){
+	    showMap();
+    }
+	isEntityView=false;
+    $("#ficheInfoDetail").addClass("hide");
+    $("#repertory").fadeIn();
+    $(".panel-group .panel-default").fadeIn();
+    $(".panel-group .panel-back").hide();
+	history.replaceState(null, '', window.location.href.split('#')[0]);
+    Sig.restartMap();
+	Sig.showMapElements(Sig.map, contextMap);
 
-
+  }
 
 </script>
-

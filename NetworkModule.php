@@ -4,7 +4,7 @@
  *
  * @author Tibor Katelbach <oceatoon@mail.com>
  * @version 0.0.3
- *
+ * 
 */
 
 class NetworkModule extends CWebModule
@@ -13,7 +13,7 @@ class NetworkModule extends CWebModule
 	{
 		// this method is called when the module is being created
 		// you may place code here to customize the module or the application
-
+		
 		Yii::app()->setComponents(array(
 		    'errorHandler'=>array(
 		        'errorAction'=>'/'.$this->id.'/error'
@@ -23,7 +23,7 @@ class NetworkModule extends CWebModule
 		Yii::app()->homeUrl = Yii::app()->createUrl($this->id);
 		Yii::app()->theme  = "ph-dori";
 		Yii::app()->language = (isset(Yii::app()->session["lang"])) ? Yii::app()->session["lang"] : 'fr';
-		
+		Yii::app()->params['networkParams'] = self::getParams(Yii::app()->params['networkParams']);
 		// import the module-level models and components
 		$this->setImport(array(
 			'citizenToolKit.models.*',
@@ -57,4 +57,20 @@ class NetworkModule extends CWebModule
 	            Yii::getPathOfAlias($this->id.'.assets') );
 	    return $this->_assetsUrl;
 	}
+	
+	/*public function getParams($paramsGet=""){
+	//	echo 	Yii::app()->controller->module->viewPath;
+      //$pathParams = Yii->controller->module->viewPath.'/default/params/';
+      $pathParams = $_SERVER["DOCUMENT_ROOT"].'/modules/network/views/default/params/';
+      if(isset($paramsGet) && !empty($paramsGet) && is_file($pathParams.$paramsGet.'.json')){
+        $json = file_get_contents($pathParams.$paramsGet.'.json');
+        $params = json_decode($json, true);
+      }
+      else{
+        $json = file_get_contents($pathParams."default.json");
+        $params = json_decode($json, true);
+      }
+      return $params;
+    }*/
+
 }

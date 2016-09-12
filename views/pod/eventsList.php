@@ -33,8 +33,8 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesTheme);
 					?>
 					<tr id="<?php echo Event::COLLECTION.(string)$e["_id"];?>">
 						<td class="center" style="padding-left: 18px;">
-							<?php  $url = '#event.detail.id.'.$e["_id"]; ?>
-							<a href="javascript:;" onclick="loadByHash('<?php echo $url?>')" class="text-dark">
+							<?php  $url = '#element.detail.type.'.Event::COLLECTION.'.id.'.$e["_id"]; ?>
+							<a href="javascript:;" onclick="getAjaxFiche('<?php echo $url?>',true)" class="text-dark">
 							<?php if ($e && isset($e["imagePath"])){ ?>
 								<img width="50" height="50" alt="image" class="img-circle" src="<?php echo Yii::app()->createUrl('/'.$this->module->id.'/document/resized/50x50'.$e['imagePath']) ?>">
 							<?php } else { ?>

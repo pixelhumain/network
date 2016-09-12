@@ -52,9 +52,9 @@
 	position: fixed !important;
 	opacity: 0;
 	z-index: 10;
-	top: -60px;
+	/*top: -60px;*/
 	/*width: 73% !important;*/
-	margin-left: -15px;
+	/*margin-left: -15px;*/
 	moz-box-shadow: 0px 2px 4px -3px #656565;
 	-webkit-box-shadow: 0px 2px 4px -3px #656565;
 	-o-box-shadow: 0px 2px 4px -3px #656565;
@@ -411,13 +411,13 @@ button.btn-menu-notif{
 }
 
 button#btn-toogle-map{
-	right: -31px;
+	/*right: -31px;*/
 	font-size: 24px;
 	width: 45px;
 	height: 51px;
 	padding: 5px;
 	top: 0px;
-	position: absolute !important;
+	/*position: absolute !important;*/
 	border-radius: 0px 0px 10px 0px;
 	z-index: 15;
 	box-shadow: 2px 0px 5px -1px rgba(66, 66, 66, 0.79) !important;

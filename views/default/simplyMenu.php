@@ -4,16 +4,15 @@
 }
 
 </style>
-<div  class="col-md-12" id="dropdown_params">
-
-  <!-- <center><button id="reset" class="btn btn-default">Initialiser filtre</button></center>--> 
+<div  class="col-md-12 padding-5" id="dropdown_params">
+  <!-- <center><button id="reset" class="btn btn-default">Initialiser filtre</button></center>-->
   <!-- <label id='countResult' class='text-dark'></label> -->
   <!-- FILTER TEXT -->
   <!-- <input id="searchBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control"> -->
-  
+
   <div class="panel-group">
 
-    
+
     <div class="panel panel-default">
       <?php if(isset($params['skin']['iconeAdd']) && $params['skin']['iconeAdd']){ ?>
         <div class="panel-heading">
@@ -24,7 +23,7 @@
         </div>
       <?php } ?>
 
-      <input id="searchClientBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control">
+      <!--<input id="searchClientBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control">-->
 
       <?php
       if(isset($params['filter']['linksTag']) && is_array($params['filter']['linksTag'])){
@@ -52,13 +51,13 @@
             </ul>
           </div>
         <?php }
-      } 
+      }
       if(isset($params['filter']['tags']) && isset($params['filter']['tags']['activate']) && $params['filter']['tags']['activate']){ ?>
         <div class="panel-heading">
           <h4 class="panel-title" onclick="manageCollapse('tags', 'false')">
             <!-- <input type="checkbox" class="checkbox categoryFilter" value="tags" style="vertical-align: bottom; display: inline-block"/>-->
             <a data-toggle="collapse" href="#tags" style="color:#719FAB" data-label="tags">
-             <?php if(isset($listTag['image'])){
+             <?php if(isset($params['filter']['tags'])){
                   echo "<img src='".$this->module->assetsUrl."/images/network/".$params['filter']['tags']['image']."' width='20px'/>";
               } ?>
               <?php echo $params['filter']['tags']['title']; ?>
@@ -67,14 +66,36 @@
           </h4>
         </div>
         <div id="list_tags" class="panel-collapse collapse">
-          <ul class="list-group">
+          <ul class="list-group no-margin">
              <!-- Tags -->
               <?php if(isset($params['filter']['tags']['tagsAdditional']) && is_array($params['filter']['tags']['tagsAdditional']))foreach($params['filter']['tags']['tagsAdditional'] as $label => $tag){?>
                 <li class="list-group-item"><input type="checkbox" class="checkbox tagFilter" value="<?php echo $tag; ?>" data-parent="tags" data-label="<?php echo $label; ?>"/><?php echo $label; ?></li>
               <?php } ?>
           </ul>
         </div>
+      <?php }
+      if(isset($params['request']['searchLocalityNAME'])){ ?>
+        <div class="panel-heading">
+          <h4 class="panel-title" onclick="manageCollapse('villes', 'false')">
+            <a data-toggle="collapse" href="#villes" style="color:#719FAB" data-label="villes">
+             <?php if(isset($params['request']['searchLocalityNAME'])){
+                  echo "<img src='".$this->module->assetsUrl."/images/network/Logement.png' width='20px'/>";
+              } ?>
+              Villes
+              <i class="fa fa-chevron-right right" aria-hidden="true" id="fa_villes"></i>
+            </a>
+          </h4>
+        </div>
+        <div id="list_villes" class="panel-collapse collapse">
+          <ul class="list-group no-margin">
+             <!-- Tags -->
+              <?php foreach($params['request']['searchLocalityNAME'] as $label){?>
+                <li class="list-group-item"><input type="checkbox" class="checkbox villeFilter" value="<?php echo $label; ?>" data-parent="villes" data-label="<?php echo $label; ?>"/><?php echo $label; ?></li>
+              <?php } ?>
+          </ul>
+        </div>
       <?php } ?>
+
       <div class="panel-heading">
          <h4 class="panel-title">
           <center><a id="reset" ><i class="fa fa-refresh"></i>Réinitialiser</a></center>
@@ -85,8 +106,8 @@
 </div>
 
 <script type="text/javascript">
-  
-  
+
+
   function manageCollapse(div, forcer){
     if(forcer == true){
       $("#list_"+div).show();
@@ -118,4 +139,3 @@
   });
 
 </script>
-

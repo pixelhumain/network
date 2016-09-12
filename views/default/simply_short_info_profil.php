@@ -45,12 +45,10 @@
   }
 
   .main-top-menu .menu-info-simply{
-    /*right: 20px;
-    top: 9px;
-    */
-    padding-right: 10px;
-    position:relative;
-    float:right;
+    margin-top: 8px;
+    padding-right: 0px;
+    position: relative;
+    float: right;
   }
 
   .menu-info-simply .dropdown-menu{
@@ -155,19 +153,45 @@
   padding-right:10px;
   padding-left:10px;
 }
+#btn-menu-launch{
+	padding: 12px;
+	margin-right: 10px;
+	margin-left: 1px;
+	box-shadow: 4px 0px 5px -4px rgba(66, 66, 66, 0.79) !important;
+	-webkit-box-shadow: 4px 0px 5px -4px rgba(66, 66, 66, 0.79) !important;
+	-o-box-shadow: 4px 0px 5px -4px rgba(66, 66, 66, 0.79) !important;
+	box-shadow: 4px 0px 5px -4px rgba(66, 66, 66, 0.79) !important;
+}
 
 </style>
   
 
-<div class="menu-info-simply row <?php echo isset($type) ? $type : ''; ?>">
-    <!-- <input type="text" class="text-dark input-global-search hidden-xs" placeholder="rechercher ..."/>
-    <div class="dropdown-result-global-search"></div>-->
+<!--<div class="col-md-12 col-sm-12 col-xs-12 menu-info-simply row <?php echo isset($type) ? $type : ''; ?> no-padding">-->
+    <!-- <input type="text" class="text-dark input-global-search hidden-xs" placeholder="rechercher ..."/>-->
+    <div class="dropdown-result-global-search"></div>
+	<a class="pull-left text-dark"  id="btn-menu-launch">
+		<i class="fa fa-bars fa-2x"></i>
+	</a>
+    <?php if(@$params['skin']["logo"]){ ?>
+    
+	<a class="pull-left tooltips" href="javascript:loadByHash('#default.view.page.index.dir.docs')"  id="main-btn-co"
+		data-toggle="tooltip" data-placement="bottom" 
+		title="Lire la documentation" 
+		alt="Lire la documentation">
+    	<img src="<?php echo $this->module->assetsUrl.'/images/'.$params['skin']["logo"] ?>" />
+    </a> 
+    <?php } ?>
+    <?php if(@$params['skin']["title"]){ ?>
+	<h1 class="homestead text-dark no-padding pull-left" id="main-title" style="font-size:18px;margin-bottom: 0px; display: inline-block;margin-top:15px;margin-left:10px;">
+			<?php echo $params['skin']["title"] ?>
+	</h1>
+    <?php } ?>
     <div class="pull-left">
-
+	  <?php if(isset($params['skin']['breadcrumb']) && $params['skin']['breadcrumb']) { ?>
       <label class="menu-button btn-menu btn-default btn-menu-global-search tooltips text-dark" id="breadcum" style="cursor:pointer;">
         <i class="breadcum_search fa fa-search fa-2x" style="padding-top: 10px;padding-left: 20px;"></i>
       </label>
-
+	  <?php } ?>
       <div class="dropdown pull-right hidden-xs">
         <?php if(isset($params['skin']['displayButtonGridList']) && $params['skin']['displayButtonGridList']) { ?>
            <button id="grid" class="dropdown-toggle menu-name-profil text-dark" style="display:none">
@@ -179,11 +203,10 @@
         <?php } ?>
       </div>
     </div>
-
     <div class="pull-left">
       <div class="dropdown pull-right hidden-xs">
          <?php if(isset($params['skin']['iconeSearchPlus']) && $params['skin']['iconeSearchPlus']) { ?>
-           <button id="dropdown_paramsBtn" class="menu-name-profil text-dark">
+           <button id="dropdown_paramsBtn hide" class="menu-name-profil text-dark">
               <i class="fa fa-search-plus fa-2x"></i>
             </button>
            <?php } ?>
@@ -224,16 +247,21 @@
       </div>
     </div>
    
-      <div class="dropdown pull-left hidden-xs">
-       <form class="Filters filter-group search" role="recherche">
+      <!--<div class="dropdown pull-left hidden-xs">
+       <form class="Filters filter-group search" role="recherche">-->
           <!-- <div class="form-group" style="display:inline;"> -->
             <!-- <div class="input-group filter-group search" style="display:table;"> -->
               <!-- <span class="input-group-addon" style="width:1% ;background-color:#999"></span> -->
               <!-- <input id="searchBarText" type="text" placeholder="Que recherchez-vous ?" class="form-control"> -->
             <!-- </div> -->
           <!-- </div> -->
-      </form>
-    </div>
+      <!--</form>
+    </div>-->
+    <button class="btn-menu btn-menu-top bg-white text-azure tooltips pull-right" id="btn-toogle-map"
+      data-toggle="tooltip" data-placement="bottom" title="Carte" alt="Carte">
+      <i class="fa fa-map-marker"></i>
+  </button>
+
     <div class="dropdown pull-left hidden-xs">
       <!-- <button id="btn-start-search" class="menu-button btn-menu btn-default btn-menu-global-search tooltips text-dark" 
           data-toggle="tooltip" data-placement="left" title="Rechercher quelque chose" alt="Rechercher quelque chose">
@@ -241,8 +269,8 @@
       </button> -->
     </div>
 
-     
-
+     <div class="menu-info-profil">
+	
     <div class="topMenuButtons pull-right">
 
 
@@ -300,15 +328,6 @@
       <?php } ?>
     </div>
   </div>
-
-    
-    
-
-   <button class="menu-button btn-menu btn-menu-top bg-azure tooltips" id="btn-toogle-map"
-      data-toggle="tooltip" data-placement="right" title="Carte" alt="Carte">
-      <i class="fa fa-map-marker"></i>
-  </button>
-
     
   </div>
 

@@ -143,12 +143,12 @@
 			var typeElement = "";
 			//To keep link valid
 			type = data['type'];
-			if(type == "people") 		typeElement = "person";
-			if(type == "citoyens") 		typeElement = "person";
-			if(type == "organizations") typeElement = "organization";
-			if(type == "organization")	typeElement = "organization";
-			if(type == "events") 		typeElement = "event";
-			if(type == "projects") 		typeElement = "project";
+			if(type == "people") 		typeElement = "citoyens";
+			if(type == "citoyens") 		typeElement = "citoyens";
+			if(type == "organizations") typeElement = "organizations";
+			if(type == "organization")	typeElement = "organizations";
+			if(type == "events") 		typeElement = "events";
+			if(type == "projects") 		typeElement = "projects";
 			console.log("type", type);
 			
 			
@@ -157,7 +157,7 @@
 
 			var onclick = "";
 			var url = '#'+typeElement+'.'+action+'.id.'+id;
-			onclick = 'loadByHash("'+url+'");';
+			onclick = 'getAjaxFiche("#element.detail.type.'+typeElement+'.id.'+id+'");';
 			
 
 			popupContent += "<button class='item_map_list popup-marker' id='popup"+id+"' onclick='"+onclick+"'>";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	$cs = Yii::app()->getClientScript();
 
 	$cs->registerScriptFile(Yii::app()->theme->baseUrl. '/assets/plugins/jquery-validation/dist/jquery.validate.min.js' , CClientScript::POS_END);
@@ -18,7 +18,7 @@
 
 	//FloopDrawer
 	$cs->registerScriptFile($this->module->assetsUrl. '/js/floopDrawerRight.js' , CClientScript::POS_END);
-	
+
 	$cs->registerScriptFile($this->module->assetsUrl. '/js/sig/localisationHtml5.js' , CClientScript::POS_END);
 	//geolocalisation nominatim et byInsee
 	$cs->registerScriptFile($this->module->assetsUrl. '/js/sig/geoloc.js' , CClientScript::POS_END);
@@ -35,7 +35,7 @@
         if(file_exists ( "../../modules/network/assets/images/proverb" )){
           $files = glob('../../modules/network/assets/images/proverb/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
           $res = array();
-          for ($i=0; $i < 8; $i++) { 
+          for ($i=0; $i < 8; $i++) {
             array_push( $res , str_replace("../../modules/network/assets", Yii::app()->controller->module->assetsUrl, $files[array_rand($files)]) );
           }
           return $res;
@@ -44,40 +44,40 @@
     }
 ?>
 
-<?php 
+<?php
 	//si l'utilisateur n'est pas connecté
  	if(!isset(Yii::app()->session['userId'])){
-		$inseeCommunexion 	 = isset( Yii::app()->request->cookies['inseeCommunexion'] ) ? 
+		$inseeCommunexion 	 = isset( Yii::app()->request->cookies['inseeCommunexion'] ) ?
 		   			    			  Yii::app()->request->cookies['inseeCommunexion'] : "";
-		
-		$cpCommunexion 		 = isset( Yii::app()->request->cookies['cpCommunexion'] ) ? 
+
+		$cpCommunexion 		 = isset( Yii::app()->request->cookies['cpCommunexion'] ) ?
 		   			    			  Yii::app()->request->cookies['cpCommunexion'] : "";
-		
-		$cityNameCommunexion = isset( Yii::app()->request->cookies['cityNameCommunexion'] ) ? 
+
+		$cityNameCommunexion = isset( Yii::app()->request->cookies['cityNameCommunexion'] ) ?
 		   			    			  Yii::app()->request->cookies['cityNameCommunexion'] : "";
 
-		$regionNameCommunexion = isset( Yii::app()->request->cookies['regionNameCommunexion'] ) ? 
+		$regionNameCommunexion = isset( Yii::app()->request->cookies['regionNameCommunexion'] ) ?
 		   			    			  Yii::app()->request->cookies['regionNameCommunexion'] : "";
 
-		$countryCommunexion = isset( Yii::app()->request->cookies['countryCommunexion'] ) ? 
+		$countryCommunexion = isset( Yii::app()->request->cookies['countryCommunexion'] ) ?
 		   			    			  Yii::app()->request->cookies['countryCommunexion'] : "";
 	}
 	//si l'utilisateur est connecté
 	else{
 		$me = Person::getById(Yii::app()->session['userId']);
-		$inseeCommunexion 	 = isset( $me['address']['codeInsee'] ) ? 
+		$inseeCommunexion 	 = isset( $me['address']['codeInsee'] ) ?
 		   			    			  $me['address']['codeInsee'] : "";
-		
-		$cpCommunexion 		 = isset( $me['address']['postalCode'] ) ? 
+
+		$cpCommunexion 		 = isset( $me['address']['postalCode'] ) ?
 		   			    			  $me['address']['postalCode'] : "";
-		
-		$cityNameCommunexion = isset( $me['address']['addressLocality'] ) ? 
+
+		$cityNameCommunexion = isset( $me['address']['addressLocality'] ) ?
 		   			    			  $me['address']['addressLocality'] : "";
-		
-		$regionNameCommunexion = isset( $me['address']['regionName'] ) ? 
+
+		$regionNameCommunexion = isset( $me['address']['regionName'] ) ?
 		   			    			  $me['address']['regionName'] : "";
-		
-		$countryCommunexion = isset( $me['address']['country'] ) ? 
+
+		$countryCommunexion = isset( $me['address']['country'] ) ?
 		   			    			  $me['address']['country'] : "";
 
 
@@ -90,7 +90,7 @@
 ?>
 
 <div id="mainMap">
-	<?php 
+	<?php
 		$layoutPath = 'webroot.themes.'.Yii::app()->theme->name.'.views.layouts.';
 		$this->renderPartial($layoutPath.'mainMap');
 	?>
@@ -99,7 +99,7 @@
 <?php //get all my link to put in floopDrawer
 	if(isset(Yii::app()->session['userId'])){
       $myContacts = Person::getPersonLinksByPersonId(Yii::app()->session['userId']);
-      $myFormContact = $myContacts; 
+      $myFormContact = $myContacts;
       $getType = (isset($_GET["type"]) && $_GET["type"] != "citoyens") ? $_GET["type"] : "citoyens";
     }else{
       $myFormContact = null;
@@ -107,7 +107,11 @@
     }
 ?>
 <style>
-
+	#dropdown_params{
+		background-image: url("<?php echo $this->module->assetsUrl; ?>/images/bg/footer_menu_left.png");
+		background-repeat:no-repeat;
+		background-position:0% 87%;
+	}
 	#menu-bottom .btn-param-postal-code{
 		border-radius: 0px;
 		left: 0px;
@@ -125,7 +129,7 @@
 		border: none;
 		background-color: rgba(255, 255, 255, 0.45) !important;
 		box-shadow: 0px 0px 3px 3px rgba(114, 114, 114, 0.1);
-	} 
+	}
 	.btn-scope.selected{
 		background-color: rgb(233, 96, 118) !important;
 	}
@@ -150,7 +154,7 @@
 		height: 135px;
 		left: 16px;
 	}
-	
+
 	.btn-scope-niv-5{
 		bottom: 0px;
 		width: 167px;
@@ -158,6 +162,21 @@
 		left: 0px;
 		border-radius: 50% 50% 50% 0%;
 		background-color: rgb(177, 194, 204) !important;
+	}
+	.breadcrumbs{
+   	 height: 100px;
+   	 text-align:center;
+   	 line-height:50px;
+	}
+	.breadcrumbVertical{
+		padding:inherit;
+	}
+	.breadcrumbVertical > li {
+		display : inherit;
+		font-size: 16px;
+	}
+	.breadcrumbVertical > li + li::before {
+		content:inherit !important;
 	}
 	/*.btn-scope-niv-5:hover{
 		background-color: rgb(109, 120, 140) !important;
@@ -167,13 +186,10 @@
 	}*/
 
 
-	.my-main-container{
-		min-height:1000px;
-	}
 
-	.main-col-search{
+	/*.main-col-search{
 		min-height:1000px;
-	}
+	}*/
 
 
 @media screen and (min-width: 900px) and (max-width: 1120px) {
@@ -202,7 +218,7 @@
 		z-index: 1;
 		border: none;
 		box-shadow: 0px 0px 3px 3px rgba(114, 114, 114, 0.1);
-	} 
+	}
 	.btn-scope-niv-2{
 		height: 43px;
 	}
@@ -212,15 +228,15 @@
 	.btn-scope-niv-4{
 		height: 123px;
 	}
-	
+
 	.btn-scope-niv-5{
 		height: 163px;
 	}
 
-} 
-	
+}
+
 </style>
-<?php if(isset($params['skin']['displayScope']) && $params['skin']['displayScope']){ ?>
+<?php if(isset(Yii::app()->params['networkParams']['skin']['displayScope']) && Yii::app()->params['networkParams']['skin']['displayScope']){ ?>
 	<button class="btn-scope btn-scope-niv-5 tooltips" level="5"
 			data-toggle="tooltip" data-placement="top" title="Niveau 5 : Global" alt="Niveau 5 : Global" ></button>
 	<button class="bg-red btn-scope btn-scope-niv-4 tooltips" level="4"
@@ -233,9 +249,9 @@
 	<button class="menu-button menu-button-title bg-red tooltips hidden-xs btn-param-postal-code btn-scope-niv-1"
 			data-toggle="tooltip" data-placement="top" title="Niveau 1 :  Commune" alt="Niveau 1 : Commune" >
 		<i class="fa fa-crosshairs"></i>
-	</button> 
+	</button>
 <?php } ?>
-<?php if(isset($params['skin']['displayCommunexion']) && $params['skin']['displayCommunexion']){ ?>
+<?php if(isset(Yii::app()->params['networkParams']['skin']['displayCommunexion']) && Yii::app()->params['networkParams']['skin']['displayCommunexion']){ ?>
 	<div id="input-communexion">
 		<span class="search-loader text-red">Communexion : <span style='font-weight:300;'>un code postal et c'est parti !</span></span>
 		<input id="searchBarPostalCode" class="input-search text-red" type="text" placeholder="un code postal ?">
@@ -243,25 +259,22 @@
 <?php } ?>
 
 
-<div class="col-md-12 col-sm-12 col-xs-12 main-top-menu">
-	
-	<a href="javascript:loadByHash('#default.simplyDirectory')" class="hidden-xs" >
-		<?php if(isset($params['skin']['logo']) && $params['skin']['logo']) echo $params['skin']['logo']; ?>
-	</a>
-	<?php 
+<div class="col-md-12 col-sm-12 col-xs-12 main-top-menu no-padding">
+	<?php
 		if(!isset($urlPhotoProfil)) $urlPhotoProfil = "";
 	 	if(!isset($me)) $me = "";
-	 	// $this->renderPartial("menuSmall", array("me"=>$me,"urlPhotoProfil"=>$urlPhotoProfil)); 
-	?> 
-	
-	<?php if(isset($params['skin']['title']) && $params['skin']['title']) echo $params['skin']['title']; ?>
+	 	// $this->renderPartial("menuSmall", array("me"=>$me,"urlPhotoProfil"=>$urlPhotoProfil));
+	?>
+
 	<!-- <h1 class="homestead text-dark no-padding moduleLabel" id="main-title"
 		style="font-size:22px;margin-bottom: 0px; margin-top: 15px; display: inline-block;">
-		
+
 		<i class="fa fa-connectdevelop"></i> <span id="main-title-menu">L'Annuaire</span> <span class="text-red">COMMUNE</span>CTÉ
 	</h1>-->
 
-	<?php $this->renderPartial("simply_short_info_profil", array("params" => $params)); ?> 
+	<?php $this->renderPartial("simply_short_info_profil", array("params" => Yii::app()->params['networkParams'])); ?>
+
+
 
 	<!-- <button class="menu-button btn-menu btn-menu-top bg-azure tooltips" id="btn-toogle-map"
 			data-toggle="tooltip" data-placement="right" title="Carte" alt="Carte">
@@ -270,27 +283,28 @@
 
 </div>
 
+<div class="col-md-2 col-sm-2 col-xs-2 menu-col-search no-padding no-margin" style="top: 50px; height:100%;">
+	<?php $this->renderPartial("simplyMenu", array("params" => Yii::app()->params['networkParams'])); ?>
+</div>
+<div class="col-md-10 col-sm-10 col-xs-10 no-padding no-margin my-main-container bgpixeltree" style="opacity:0;height:692px;">
 
-<div class="col-md-12 col-sm-12 col-xs-12 no-padding no-margin my-main-container bgpixeltree" style="opacity:0">
 
-	<div class="col-md-2 col-sm-2 col-xs-2 menu-col-search" style="top: 50px;">
-		<?php $this->renderPartial("simplyMenu", array("params" => $params)); ?>
+	<div class="col-md-12 col-sm-12 col-xs-12 main-col-search" style="top: 50px">
+		<?php $this->renderPartial("simplyDirectory",array("params" => Yii::app()->params['networkParams'])); ?>
 	</div>
 
-	<div class="col-md-10 col-sm-10 col-xs-10 main-col-search" style="top: 50px">
-	</div>
 
-	<?php //if(!isset(Yii::app()->session['userId'])) 
-	$this->renderPartial("simply_login_register", array("params" => $params)); 
+	<?php //if(!isset(Yii::app()->session['userId']))
+	$this->renderPartial("simply_login_register", array("params" => Yii::app()->params['networkParams']));
 	?>
 </div>
 
 <script type="text/javascript">
-	
+
 
 	var mapIconTop = {
 	    "default" : "fa-arrow-circle-right",
-	    "citoyen":"<?php echo Person::ICON ?>", 
+	    "citoyen":"<?php echo Person::ICON ?>",
 	    "NGO":"<?php echo Organization::ICON ?>",
 	    "LocalBusiness" :"<?php echo Organization::ICON_BIZ ?>",
 	    "Group" : "<?php echo Organization::ICON_GROUP ?>",
@@ -304,7 +318,7 @@
 	  };
 	var mapColorIconTop = {
 	    "default" : "dark",
-	    "citoyen":"yellow", 
+	    "citoyen":"yellow",
 	    "NGO":"green",
 	    "LocalBusiness" :"green",
 	    "Group" : "green",
@@ -334,25 +348,37 @@ var countryCommunexion = "<?php echo $countryCommunexion; ?>";
 var latCommunexion = 0;
 var lngCommunexion = 0;
 
-/* variables globales communexion */	
+/* variables globales communexion */
 var myContacts = <?php echo ($myFormContact != null) ? json_encode($myFormContact) : "null"; ?>;
 var userConnected = <?php echo isset($me) ? json_encode($me) : "null"; ?>;
 
-var proverbs = <?php echo json_encode(random_pic()) ?>;  
+var proverbs = <?php echo json_encode(random_pic()) ?>;
 
 var hideScrollTop = true;
 var lastUrl = null;
 var isMapEnd = <?php echo (isset( $_GET["map"])) ? "true" : "false" ?>;
-
+var contextMap = [];
+var isEntityView = false;
 //console.warn("isMapEnd 1",isMapEnd);
 jQuery(document).ready(function() {
-
 	//Simply load default
-	$('.bg-main-menu').html($('.menu-col-search').html());
+	$('#btn-menu-launch').click(function(){
 
+		if(!$('.menu-col-search').is(":visible")){
+			$(".bgpixeltree").removeClass("col-md-12 col-sm-12 col-xs-12").addClass("col-md-10 col-sm-10 col-xs-10");
+			showAfter=false;
+		}else{
+			showAfter=true;
+		}
+
+		$('.menu-col-search').toggle("slow");
+		if(showAfter){
+			$(".bgpixeltree").removeClass("col-md-10 col-sm-10 col-xs-10").addClass("col-md-12 col-sm-12 col-xs-12");
+		}
+	});
 	<?php if(isset(Yii::app()->session['userId']) && //et que le two_step est terminé
 			(!isset($me["two_steps_register"]) || $me["two_steps_register"] != true)){ ?>
-		
+
 		var path = "/";
 		if(location.hostname.indexOf("localhost") >= 0) path = "/ph/";
 
@@ -361,28 +387,28 @@ jQuery(document).ready(function() {
 		$.cookie('cpCommunexion',   		cpCommunexion,  		{ expires: 365, path: path });
 		$.cookie('regionNameCommunexion',   regionNameCommunexion,  { expires: 365, path: path });
 		$.cookie('countryCommunexion',   	countryCommunexion,  	{ expires: 365, path: path });
-		
+
 	<?php } ?>
 
 
-  	if(inseeCommunexion != ""){
+  	/*if(inseeCommunexion != ""){
   		$(".btn-menu2, .btn-menu3, .btn-menu4 ").show(400);
-  	}
+  	}*/
 
-  	$(".my-main-container").css("min-height", $(".sigModuleBg").height());
+  	//$(".my-main-container").css("min-height", $(".sigModuleBg").height());
     $(".main-col-search").css("min-height", $(".sigModuleBg").height());
 
-    $('#btn-toogle-map').click(function(e){ showMap();  	});
-    $('.main-btn-toogle-map').click(function(e){ showMap(); });
+    $('#btn-toogle-map').click(function(e){ showMap(); });
+    $('.main-btn-toogle-map').click(function(e){ showMap();});
 
     $("#mapCanvasBg").show();
-    
+
     $(".my-main-container").scroll(function(){
     	//console.log("scrolling my-container");
     	checkScroll();
     });
 
-    $(".btn-scope").click(function(){
+/*    $(".btn-scope").click(function(){
     	var level = $(this).attr("level");
     	selectScopeLevelCommunexion(level);
     });
@@ -391,11 +417,11 @@ jQuery(document).ready(function() {
     });
     $(".btn-scope").mouseout(function(){
     	$(".btn-scope-niv-"+levelCommunexion).addClass("selected");
-    });
-    
+    });*/
+
     initNotifications();
-	initFloopDrawer();
-    
+	//initFloopDrawer();
+
     $(window).resize(function(){
       resizeInterface();
     });
@@ -408,13 +434,12 @@ jQuery(document).ready(function() {
 		$(".search-loader").html("<i class='fa fa-check'></i> Vous êtes communecté à " + cityNameCommunexion + ', ' + cpCommunexion);
 	}
 
-	toogleCommunexion();
-
-	//manages the back button state 
-	//every url change (loadByHash) is pushed into history.pushState 
+	//toogleCommunexion();
+	//manages the back button state
+	//every url change (loadByHash) is pushed into history.pushState
 	//onclick back btn popstate is launched
 	//
-    $(window).bind("popstate", function(e) {
+   /* $(window).bind("popstate", function(e) {
       //console.dir(e);
       console.log("history.state",$.isEmptyObject(history.state),location.hash);
       console.warn("popstate history.state",history.state);
@@ -423,17 +448,17 @@ jQuery(document).ready(function() {
 	        //console.warn("poped state",location.hash);
 	        //alert("popstate");
 	        loadByHash(location.hash,true);
-	    } 
+	    }
 	    allReadyLoad = false;
       }
 
       lastUrl = location.hash;
     });
-
+*/
 
 	//console.log("start timeout MAIN MAP LOOOOOL");
 	//$("#btn-toogle-map").hide();
-	
+
 
 
     //console.log("hash", location.hash);
@@ -445,21 +470,20 @@ jQuery(document).ready(function() {
 	if(userConnected != null && typeof userConnected["two_steps_register"] != "undefined" && userConnected["two_steps_register"] == true){
 		loadByHash("#default.twostepregister");
 		return;
-	} 
+	}
 	else{ //si l'utilisateur est déjà passé par le two_step_register
  		if(location.hash != "#default.home" && location.hash != "#" && location.hash != ""){
-
 			loadByHash(location.hash);
 			return;
 		}
-		else{ 
-			loadByHash("#default.simplyDirectory.params.<?php echo $get; ?>");
+		else{
+			//loadByHash("#default.simplyDirectory");
 		}
 	}
 	checkScroll();
 });
 
-function startNewCommunexion(country){
+/*function startNewCommunexion(country){
 	var locality = $('#searchBarPostalCode').val();
 	locality = locality.replace(/[^\w\s-']/gi, '');
 
@@ -503,16 +527,16 @@ function startNewCommunexion(country){
 	        	$(".search-loader").html("<i class='fa fa-crosshairs'></i> Sélectionnez une commune ...");
 	        	showMap(true);
 	        	Sig.showMapElements(Sig.map, data);
-	        	
+
 	        }
 
 	        $.unblockUI();
 
           }
-          
+
       }
     });
-}
+}*/
 
 function resizeInterface()
 {
@@ -524,14 +548,14 @@ function resizeInterface()
   //console.log("heightDif", heightDif);
   $(".floopScroll").css({"minHeight" : height-heightDif});
   $(".floopScroll").css({"maxHeight" : height-heightDif});
-  $(".my-main-container").css("min-height", $(".sigModuleBg").height());
+  $(".my-main-container").css("height", "100%");
   $(".main-col-search").css("min-height", $(".sigModuleBg").height());
   //$("ul.notifList").css({"maxHeight" : height-heightDif});
 
 }
 
 function initNotifications(){
-	
+
 	$('.main-top-menu .btn-menu-notif').off().click(function(){
 	  console.log("click notification main-top-menu");
       showNotif();
@@ -543,7 +567,7 @@ function initNotifications(){
 }
 function showNotif(show){
 	if(typeof show == "undefined"){
-		if($("#notificationPanelSearch").css("display") == "none") show = true; 
+		if($("#notificationPanelSearch").css("display") == "none") show = true;
     	else show = false;
     }
 
@@ -580,8 +604,7 @@ function checkScroll(){
 
 function showMap(show)
 {
-
-	//if(typeof Sig == "undefined") { alert("Pas de SIG"); return; } 
+	//if(typeof Sig == "undefined") { alert("Pas de SIG"); return; }
 	console.log("typeof SIG : ", typeof Sig);
 	if(typeof Sig == "undefined") show = false;
 
@@ -599,7 +622,7 @@ function showMap(show)
 		if(Sig.currentMarkerPopupOpen != null){
 			Sig.currentMarkerPopupOpen.fire('click');
 		}
-		
+
 		$(".btn-group-map").show( 700 );
 		$("#right_tool_map").show(700);
 		$(".btn-menu5, .btn-menu-add").hide();
@@ -612,9 +635,9 @@ function showMap(show)
      							opacity:0,
 						      }, 'slow' );
 
-		setTimeout(function(){ $(".my-main-container").hide(); }, 1000);
+		setTimeout(function(){ $(".bgpixeltree").hide(); }, 1000);
 		var timer = setTimeout("Sig.constructUI()", 1000);
-		
+
 	}else{
 		isMapEnd =false;
 		hideMapLegende();
@@ -630,7 +653,7 @@ function showMap(show)
      							top: 0,
      							opacity:1
 						      }, 'slow' );
-		setTimeout(function(){ $(".my-main-container").show(); }, 100);
+		setTimeout(function(){ $(".bgpixeltree").show(); }, 100);
 
 		if(typeof Sig != "undefined")
 		if(Sig.currentMarkerPopupOpen != null){
@@ -640,10 +663,10 @@ function showMap(show)
 		if($(".box-add").css("display") == "none" && <?php echo isset(Yii::app()->session['userId']) ? "true" : "false"; ?>)
 			$("#ajaxSV").show( 700 );
 
-		showTopMenu(true);	
+		showTopMenu(true);
 		checkScroll();
 	}
-		
+
 }
 
 
@@ -662,21 +685,21 @@ function setScopeValue(btn){
 		var path = "/";
 		if(location.hostname.indexOf("localhost") >= 0) path = "/ph/";
 
-		
+
 		<?php if(!isset(Yii::app()->session['userId'])){ ?>
-		
+
 			$.cookie('inseeCommunexion',   	inseeCommunexion,  	{ expires: 365, path: path });
 			$.cookie('cityNameCommunexion', cityNameCommunexion,{ expires: 365, path: path });
-			$.cookie('cpCommunexion',   	cpCommunexion,  	{ expires: 365, path: path });		
+			$.cookie('cpCommunexion',   	cpCommunexion,  	{ expires: 365, path: path });
 			$.cookie('regionNameCommunexion',   regionNameCommunexion,  { expires: 365, path: path });
 			$.cookie('countryCommunexion',   	countryCommunexion,  	{ expires: 365, path: path });
-			
+
 			//$(".btn-param-postal-code").attr("data-original-title", cityNameCommunexion + " en détail");
 			//$(".btn-param-postal-code").attr("onclick", "loadByHash('#city.detail.insee."+inseeCommunexion+"')");
 			$(".search-loader").html("<i class='fa fa-check'></i> Vous êtes communecté à " + cityNameCommunexion + ', ' + cpCommunexion);
 			$(".btn-geoloc-auto .lbl-btn-menu-name-city").html("<span class='lbl-btn-menu-name'>" + cityNameCommunexion + ", </span>" + cpCommunexion);
 
-				
+
 		<?php } ?>
 
 		if(location.hash.indexOf("#default.twostepregister") == -1)
@@ -685,7 +708,7 @@ function setScopeValue(btn){
 		selectScopeLevelCommunexion(levelCommunexion);
 
   		$(".btn-menu2, .btn-menu3, .btn-menu4 ").show(400);
-	
+
 		Sig.clearMap();
 		console.log("hash city ? ", location.hash.indexOf("#default.city"));
 		if(location.hash == "#default.home"){
@@ -695,35 +718,35 @@ function setScopeValue(btn){
 			startSearch();
 		}
 	}
-	
+
   	console.log("setScopeValue", inseeCommunexion, cityNameCommunexion, cpCommunexion);
 }
 
-function showLocalActorsCityCommunexion(){
+/*function showLocalActorsCityCommunexion(){
 	console.log("showLocalActorsCityCommunexion");
-	var data = { "name" : "", 
+	var data = { "name" : "",
  			 "locality" : inseeCommunexion,
- 			 "searchType" : [ "persons", "organizations", "projects", "events", "cities" ], 
+ 			 "searchType" : [ "persons", "organizations", "projects", "events", "cities" ],
  			 "searchBy" : "INSEE",
-    		 "indexMin" : 0, 
-    		 "indexMax" : 500  
+    		 "indexMin" : 0,
+    		 "indexMax" : 500
     		};
 
     $(".moduleLabel").html("<i class='fa fa-spin fa-circle-o-notch'></i> Les acteurs locaux : <span class='text-red'>" + cityNameCommunexion + ", " + cpCommunexion + "</span>");
-	
+
 	$.blockUI({
 		message : "<h1 class='homestead text-red'><i class='fa fa-spin fa-circle-o-notch'></i> " + cpCommunexion + " : Commune<span class='text-dark'>xion en cours ...</span></h1>"
 	});
 
 	showMap(true);
-	
+
 	$.ajax({
       type: "POST",
           url: baseUrl+"/" + moduleId + "/search/globalautocomplete",
           data: data,
           dataType: "json",
           error: function (data){
-             console.log("error"); console.dir(data);          
+             console.log("error"); console.dir(data);
           },
           success: function(data){
             if(!data){ toastr.error(data.content); }
@@ -732,22 +755,22 @@ function showLocalActorsCityCommunexion(){
             	Sig.showMapElements(Sig.map, data);
             	$(".moduleLabel").html("<i class='fa fa-connect-develop'></i> Les acteurs locaux : <span class='text-red'>" + cityNameCommunexion + ", " + cpCommunexion + "</span>");
 				$(".search-loader").html("<i class='fa fa-check'></i> Vous êtes communecté à " + cityNameCommunexion + ', ' + cpCommunexion);
-				
+
 				toastr.success('Vous êtes communecté !<br/>' + cityNameCommunexion + ', ' + cpCommunexion);
 				$.unblockUI();
             }
           }
  	});
 
-	}
+	}*/
 
 
 var topMenuActivated = true;
-function showTopMenu(show){ 
+function showTopMenu(show){
 
-	if(typeof show == "undefined") 
+	if(typeof show == "undefined")
 		show = $("#main-top-menu").css("opacity") == 1;
-	
+
 	if(show){
 		$(".main-top-menu").animate({ top: 0, opacity:1 }, 500 );
 	}
@@ -757,7 +780,7 @@ function showTopMenu(show){
 }
 
 
-function initFloopDrawer(){
+/*function initFloopDrawer(){
 	console.log("initFloopDrawer");
 	//console.dir(myContacts);
 	if(myContacts != null){
@@ -778,7 +801,7 @@ function initFloopDrawer(){
 
       bindEventFloopDrawer();
     }
-}
+}*/
 
 // function initBtnScopeList(){
 // 	$(".btn-scope-list").click(function(){
@@ -786,28 +809,28 @@ function initFloopDrawer(){
 // 	});
 // }
 
-function setInputPlaceValue(thisBtn){
+/*function setInputPlaceValue(thisBtn){
 	//if(location.hash == "#default.home"){
 		//$("#autoGeoPostalCode").val($(thisBtn).attr("val"));
 	//}else{
 		$("#searchBarPostalCode").val($(thisBtn).attr("val"));
-		
+
 		console.log("setInputPlaceValue")
 		$("#input-communexion").show();
 		//$("#searchBarPostalCode").animate({"width" : "350px !important", "padding-left" : "70px !important;"}, 200);
 		setTimeout(function(){ $("#input-communexion").hide(300); }, 300);
-	  	
+
 	//}
 	//$.cookie("HTML5CityName", 	 $(thisBtn).attr("val"), 	   { path : '/ph/' });
 	startNewCommunexion();
-}
+}*/
 
-var communexionActivated = false;
+/*var communexionActivated = false;
 function toogleCommunexion(init){ //this = jQuery Element
-  
+
   if(init != true)
   communexionActivated = !communexionActivated;
-	
+
   console.log("communexionActivated", communexionActivated);
   if(communexionActivated){
     //btn.removeClass("text-red");
@@ -818,7 +841,7 @@ function toogleCommunexion(init){ //this = jQuery Element
 
     if(inseeCommunexion != "")
     $(".search-loader").html("<i class='fa fa-check'></i> Vous êtes communecté à " + cityNameCommunexion + ', ' + cpCommunexion);
-				
+
    // $("#searchBarPostalCode").animate({"width" : "0px !important", "padding-left" : "51px !important;"}, 200);
     //$(".lbl-scope-list").html("<i class='fa fa-check'></i> " + cityNameCommunexion.toLowerCase() + ", " + cpCommunexion);
     selectScopeLevelCommunexion(levelCommunexion);
@@ -830,9 +853,9 @@ function toogleCommunexion(init){ //this = jQuery Element
     $(".btn-activate-communexion, .btn-param-postal-code").addClass("text-red");
     $(".btn-activate-communexion, .btn-param-postal-code").removeClass("bg-red");
     //$("#searchBarPostalCode").animate({"width" : "350px !important", "padding-left" : "70px !important;"}, 200);
-    
+
     $(".search-loader").html("<i class='fa fa-times'></i> Communection désactivée (" + cityNameCommunexion + ', ' + cpCommunexion + ")");
-				
+
     $(".lbl-scope-list").hide(400);
     $("#searchBarPostalCode").val("");
   }
@@ -849,18 +872,18 @@ function showInputCommunexion(){
 
 	if(communexionActivated)
 	$("#searchBarPostalCode").animate({"width" : "350px !important", "padding-left" : "70px !important;"}, 200 );
-	
+
 	$("#input-communexion").show(300);
 	$(".main-col-search").animate({ opacity:0.3 }, 200 );
 	$(".hover-info").hide();
-}
+}*/
 
 //niv 1 : city
 //niv 2 : CP
 //niv 3 : department
 //niv 4 : region
 //niv 4 : pays / global / tout
-var levelCommunexion = 1;
+/*var levelCommunexion = 1;
 function selectScopeLevelCommunexion(level){
 
 	var department = "";
@@ -889,13 +912,13 @@ function selectScopeLevelCommunexion(level){
 		$('.search-loader').html("<i class='fa fa-check'></i> Vous êtes connecté " + endMsg)
 	}
 
-	
+
 	if(level == 1) endMsg = cityNameCommunexion + ", " + cpCommunexion;
 	if(level == 2) endMsg = cpCommunexion;
 	if(level == 3) endMsg = "Département " + department;
 	if(level == 4) endMsg = "Votre région " + regionNameCommunexion;
 	if(level == 5) endMsg = "Tout le réseau";
-	
+
 	if(!communexionActivated)
     toogleCommunexion();
 
@@ -908,13 +931,9 @@ function selectScopeLevelCommunexion(level){
 	$(".btn-scope-niv-1").attr("data-original-title", "Niveau 1 - " + cityNameCommunexion + ", " + cpCommunexion);
 	$('.tooltips').tooltip();
 
-	if(typeof startSearch == "function")
-	startSearch();
-}
+	//if(typeof startSearch == "function")
+	//startSearch();
+}*/
+
 
 </script>
-
-
-
-
-

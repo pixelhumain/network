@@ -80,6 +80,7 @@ class NetworkController extends Controller
       "dir"                  => array("href" => "/ph/network/default/dir", "public" => true),
       "simplydirectory"       => array("href" => "/ph/network/default/simplyDirectory", "public" => true),
       "simplydirectory2"       => array("href" => "/ph/network/default/simplyDirectory2", "public" => true),
+      "directory2"       => array("href" => "/ph/network/default/directory2", "public" => true),
       "agenda"                => array("href" => "/ph/network/default/agenda", "public" => true),
       "news"                  => array("href" => "/ph/network/default/news", "public" => true),
       "home"                  => array("href" => "/ph/network/default/home", "public" => true),
@@ -105,7 +106,20 @@ class NetworkController extends Controller
       "detail"          => array("href" => "/ph/network/project/detail", "public" => true),
       "simply"          => array("href" => "/ph/network/project/detail", "public" => true),
     ),
-    
+	"element"=> array(
+      "detail"          => array("href" => "/ph/network/element/detail", "public" => true),
+      "getalllinks"     => array("href" => "/ph/network/element/getalllinks"),
+      "simply"          => array("href" => "/ph/network/element/simply", "public" => true),
+       "directory"       => array("href" => "/ph/network/element/directory", "public" => true),
+      "directory2"       => array("href" => "/ph/network/element/directory2", "public" => true),
+    ),
+    "gantt"=> array(
+      "index"            => array("href" => "/ph/network/gantt/index", "public" => true),
+      "savetask"         => array("href" => "/ph/network/gantt/savetask"),
+      "removetask"       => array("href" => "/ph/network/gantt/removetask"),
+      "generatetimeline" => array("href" => "/ph/network/gantt/generatetimeline"),
+      "addtimesheetsv"   => array("href" => "/ph/network/gantt/addtimesheetsv"),
+    ),
     "document" => array(
       "resized"             => array("href"=> "/ph/network/document/resized", "public" => true),
       "list"                => array("href"=> "/ph/network/document/list"),
@@ -142,6 +156,21 @@ class NetworkController extends Controller
       'updatecitiesgeoformat' => array("href" => "/ph/network/city/updatecitiesgeoformat","public" => true),
       'getinfoadressbyinsee'  => array("href" => "/ph/network/city/getinfoadressbyinsee"),
     ),
+    "news"=> array(
+      "index"   => array( "href" => "/ph/network/news/index", "public" => true,'title' => "Fil d'actualités - N.E.W.S", "subTitle"=>"Nord.Est.West.Sud","pageTitle"=>"Fil d'actualités - N.E.W.S"),
+      "latest"  => array( "href" => "/ph/network/news/latest"),
+      "save"    => array( "href" => "/ph/network/news/save"),
+      "detail"    => array( "href" => "/ph/network/news/detail"),
+      "delete"    => array( "href" => "/ph/network/news/delete"),
+      "updatefield"    => array( "href" => "/ph/network/news/updatefield"),
+      "extractprocess" => array( "href" => "/ph/network/news/extractprocess"),
+      "moderate" => array( "href" => "/ph/network/news/moderate"),
+    ),
+	 "gallery" => array(
+      "index"        => array("href" => "ph/network/gallery/index"),
+      "removebyid"   => array("href" => "ph/network/gallery/removebyid"),
+    ),
+
     "log"=> array(
       "monitoring" => array("href" => "/ph/network/log/monitoring"),
     ),
