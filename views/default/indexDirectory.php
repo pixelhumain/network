@@ -403,10 +403,15 @@ jQuery(document).ready(function() {
 
     $("#mapCanvasBg").show();
 
-    $(".my-main-container").scroll(function(){
+    //Modif SBAR
+    $(".my-main-container").bind("scroll", function _checkScroll(){
     	//console.log("scrolling my-container");
     	checkScroll();
     });
+    /*$(".my-main-container").scroll(function _checkScroll() {
+    	//console.log("scrolling my-container");
+    	checkScroll();
+    });*/
 
 /*    $(".btn-scope").click(function(){
     	var level = $(this).attr("level");

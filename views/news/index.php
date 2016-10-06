@@ -448,7 +448,8 @@ jQuery(document).ready(function()
 		$("#cityPostalCode").val(cpCommunexion);
 		$(".cityBadge").html("<i class=\"fa fa-university\"></i> "+cpCommunexion);
 	}
-	$(".my-main-container").off(); 
+	//Modif SBAR
+	//$(".my-main-container").off(); 
 	if(contextParentType=="pixels"){
 		tagsNews=["bug","idea"];
 	}

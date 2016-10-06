@@ -151,7 +151,7 @@
         //Charger tous les éléments
 
     <?php } else{ ?>
-      $(".my-main-container").scroll(function(){
+      $(".my-main-container").bind("scroll", function _scrollDirectory(){
         if(!loadingData && !scrollEnd){
             var heightContainer = $(".my-main-container")[0].scrollHeight;
             var heightWindow = $(window).height();
