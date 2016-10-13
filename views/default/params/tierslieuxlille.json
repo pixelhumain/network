@@ -25,14 +25,14 @@
                 "image" : "Travail.png",
                 "tags" : {
                   "Télétravail" : "Télétravail",
-  				  "Coworking" : "Coworking",
+                  "Coworking" : "Coworking",
                   "Médiation Numérique" : "Médiation numérique",
                   "FabLab" : "Fablab",
                   "Accompagnement de projets" : "Accompagnement de projets",
                   "Atelier" : "Atelier",
                   "Salle de réunion" : "Salle de réunion",
-  				  "Communauté Catalyst" : "Catalyst",
-  				  "Location de l'espace" : "Location de l'espace"
+                  "Communauté Catalyst" : "Catalyst",
+                  "Espace à louer" : "Espace à louer"
                 }
             },
             "Services complémentaires" : {
@@ -59,7 +59,7 @@
                 "image" : "Loisir.png",
                 "tags" : {
                   "Commun" : "Commun",
-  				  "Association" : "Association",
+                  "Association" : "Association",
                   "Business" : "Business",
                   "Public" : "Public"
                 }
@@ -71,7 +71,7 @@
                 "tags" : {
                   "En projet" : "En projet",
                   "En démarrage" : "En démarrage",
-  				  "En fonctionnement" : "En fonctionnement"
+                  "En fonctionnement" : "En fonctionnement"
                 }
             },
             "Taille de l'espace" : {
@@ -80,7 +80,7 @@
                 "image" : "Information.png",
                 "tags" : {
                   "Moins de 60m2" : "Moins de 60m2",
-  				  "Entre 60 et 200m2" : "Entre 60 et 200m2",
+                  "Entre 60 et 200m2" : "Entre 60 et 200m2",
                   "Plus de 200m2" : "Plus de 200m2"
                 }
             }
