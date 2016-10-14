@@ -63,6 +63,10 @@ class DefaultController extends NetworkController {
   public function actionView($page,$dir=null,$layout=null) 
   {
     if(@$dir){
+      
+      if( strpos($dir,"docs") !== false )
+        $dir = "../".$dir;
+
       if(strpos($dir,"|")){
         $dir=str_replace("|", "/", $dir);
       }

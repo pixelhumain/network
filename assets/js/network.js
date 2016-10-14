@@ -454,7 +454,7 @@ function jsController(hash){
 			//	setTimeout(function{
 				//showMap(false);
 				if(typeof endPoint.urlParams != "undefined"){
-					hash = hash+endPoint.urlExtra;
+					hash = hash+endPoint.urlParams;
 				}
 				getAjaxFiche(hash);
 				res = true;
@@ -492,7 +492,16 @@ function jsController(hash){
 	});
 	return res;
 }
-
+function  bindLBHLinks() { 
+	$(".lbh").off().on("click",function(e) {  		
+		e.preventDefault();
+		console.warn("***************************************");
+		console.warn("bindLBHLinks",$(this).attr("href"));
+		console.warn("***************************************");
+		var h = ($(this).data("hash")) ? $(this).data("hash") : $(this).attr("href");
+	    loadByHash( h );
+	});
+}
 //back sert juste a differencier un load avec le back btn
 //ne sert plus, juste a savoir d'ou vient drait l'appel
 function loadByHash( hash , back ) { 
@@ -501,6 +510,9 @@ function loadByHash( hash , back ) {
     console.warn("loadByHash",hash,back);
     if( jsController(hash) ){
     	console.log("loadByHash >>> jsController",hash);
+    }
+    else if(hash == "#" || hash == "#reset"){
+	    loadByHash();
     }
     else if( hash.indexOf("#panel") >= 0 ){
     	panelName = hash.substr(7);
@@ -605,7 +617,6 @@ function showAjaxPanel (url,title,icon) {
 	var urlImgRand = "";
 	
 	showNotif(false);
-			
 	$(".main-col-search").animate({ top: -1500, opacity:0 }, 800 );
 
 	setTimeout(function(){

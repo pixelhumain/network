@@ -1,4 +1,14 @@
+<?php
+	
+$cssAnsScriptFilesModule = array(
+	//Data helper
+	//'/js/dataHelpers.js',
+	'/js/postalCode.js',
+	//'/js/activityHistory.js'
+);
+HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->assetsUrl);
 
+?>
 <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
 <script type="text/javascript">
     $('head').append('<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/jquery-editable/css/jquery-editable.css" rel="stylesheet" />');
