@@ -3,7 +3,7 @@
 	'/plugins/mixitup/src/jquery.mixitup.js',
 	'/js/pages-gallery.js',
 	);
-HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule ,Yii::app()->theme->baseUrl."/assets");
+HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule ,Yii::app()->request->baseUrl);
 
 $contextIcon = "photo";
 if( isset($parent) ){

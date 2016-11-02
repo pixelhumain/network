@@ -1,20 +1,21 @@
 <?php
 	$cs = Yii::app()->getClientScript();
 
-	$cs->registerScriptFile(Yii::app()->theme->baseUrl. '/assets/plugins/jquery-validation/dist/jquery.validate.min.js' , CClientScript::POS_END);
-	$cs->registerScriptFile(Yii::app()->theme->baseUrl. '/assets/plugins/jquery-validation/localization/messages_fr.js' , CClientScript::POS_END);
-	$cs->registerCssFile(Yii::app()->theme->baseUrl. '/assets/plugins/lightbox2/css/lightbox.css');
-	$cs->registerScriptFile(Yii::app()->theme->baseUrl. '/assets/plugins/lightbox2/js/lightbox.min.js' , CClientScript::POS_END);
+	$cs->registerScriptFile(Yii::app()->getRequest()->getBaseUrl(true). '/plugins/jquery-validation/dist/jquery.validate.min.js' , CClientScript::POS_END);
+	$cs->registerScriptFile(Yii::app()->getRequest()->getBaseUrl(true). '/plugins/jquery-validation/localization/messages_fr.js' , CClientScript::POS_END);
+	$cs->registerCssFile(Yii::app()->getRequest()->getBaseUrl(true). '/plugins/lightbox2/css/lightbox.css');
+	$cs->registerScriptFile(Yii::app()->getRequest()->getBaseUrl(true).'/plugins/lightbox2/js/lightbox.min.js' , CClientScript::POS_END);
 	//$cs->registerScriptFile(Yii::app()->theme->baseUrl. '/assets/plugins/flexSlider/js/jquery.flexSlider-min.js' , CClientScript::POS_END);
 
 	//Data helper
 	$cs->registerScriptFile($this->module->assetsUrl. '/js/dataHelpers.js' , CClientScript::POS_END);
+		$cs->registerScriptFile($this->module->assetsUrl. '/js/postalCode.js' , CClientScript::POS_END);
 	//Data helper
-	//$cs->registerScriptFile($this->module->assetsUrl. '/js/network.js' , CClientScript::POS_END);
+	$cs->registerScriptFile($this->module->assetsUrl. '/js/network.js' , CClientScript::POS_END);
 	//Validation
-	$cs->registerScriptFile(Yii::app()->theme->baseUrl. '/assets/plugins/jquery-validation/dist/jquery.validate.min.js' , CClientScript::POS_END);
+	$cs->registerScriptFile(Yii::app()->getRequest()->getBaseUrl(true). '/plugins/jquery-validation/dist/jquery.validate.min.js' , CClientScript::POS_END);
 	//select2
-	$cs->registerScriptFile(Yii::app()->theme->baseUrl. '/assets/plugins/select2/select2.min.js' , CClientScript::POS_END);
+	$cs->registerScriptFile(Yii::app()->getRequest()->getBaseUrl(true). '/plugins/select2/select2.min.js' , CClientScript::POS_END);
 
 	//FloopDrawer
 	$cs->registerScriptFile($this->module->assetsUrl. '/js/floopDrawerRight.js' , CClientScript::POS_END);

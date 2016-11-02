@@ -24,7 +24,7 @@ $cssAnsScriptFilesModule = array(
 	'/plugins/jquery-mentions-input-master/jquery.mentionsInput.css',
 	'/plugins/jquery-mentions-input-master/lib/jquery.events.input.js'
 );
-HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule ,Yii::app()->theme->baseUrl."/assets");
+HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule ,Yii::app()->request->baseUrl);
 $cs = Yii::app()->getClientScript();
 
 $cssAnsScriptFilesModule = array(
