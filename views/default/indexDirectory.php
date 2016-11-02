@@ -468,11 +468,11 @@ jQuery(document).ready(function() {
 	console.dir(userConnected);
 
 	//si l'utilisateur doit passer par le two_step_register
-	if(userConnected != null && typeof userConnected["two_steps_register"] != "undefined" && userConnected["two_steps_register"] == true){
-		loadByHash("#default.twostepregister");
-		return;
-	}
-	else{ //si l'utilisateur est déjà passé par le two_step_register
+//	if(userConnected != null && typeof userConnected["two_steps_register"] != "undefined" && userConnected["two_steps_register"] == true){
+//		loadByHash("#default.twostepregister");
+//		return;
+//	}
+//	else{ //si l'utilisateur est déjà passé par le two_step_register
  		if(location.hash != "#default.home" && location.hash != "#" && location.hash != ""){
 			loadByHash(location.hash);
 			return;
@@ -480,7 +480,7 @@ jQuery(document).ready(function() {
 		else{
 			//loadByHash("#default.simplyDirectory");
 		}
-	}
+//	}
 	checkScroll();
 });
 
