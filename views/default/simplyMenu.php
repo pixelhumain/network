@@ -109,6 +109,7 @@
 
 
   function manageCollapse(div, forcer){
+	  div = div.replace(/'/g, "\\'");
     if(forcer == true){
       $("#list_"+div).show();
     }else{
