@@ -3,9 +3,9 @@
     "mode" : "server",
     "skin" : {
         "logo" : false,
-        "title" : false,
+        "title" : "Cartographie des Communs à Lille",
         "displayScope" : false,
-        "displayCommunexion" : false,
+        "displayCommunexion" : true,
         "profilBar" : false,
         "displayButtonGridList" : false,
         "class" : {
@@ -20,9 +20,9 @@
         "tags" : true
     },
     "add" : {
-        "organization" : false,
+        "organization" : true,
         "project" : false,
-        "event" : false
+        "event" : true
     },
     "result" : {
         "displayImage" : false,
@@ -36,7 +36,13 @@
             "organizations"
         ],
         "searchLocalityNAME" : [
-            "LILLE"
+            "Lille",
+            "Roncq",
+            "Villeneuve dascq",
+            "Hellemmes",
+            "Mons En Baroeul",
+            "Roubaix",
+            "Tourcoing"
         ],
         "searchTag" : [
             "commun",
