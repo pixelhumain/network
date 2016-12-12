@@ -166,7 +166,7 @@
         }
     },
     "add" : {
-        "organization" : false,
+        "organization" : true,
         "project" : false,
         "event" : false
     },
